@@ -1,12 +1,363 @@
-﻿﻿![在这里插入图片描述](https://img-blog.csdnimg.cn/a8da9382eb9341da9151643d3bfd1431.jpeg#pic_center)
+﻿
 
 
 @[TOC](目录)
-# 前言：最近得到师傅指点，建议我多学习下设计模式，简单记录下学习过程中的一些知识点
-一个很好的学习设计模式的网站：[链接](https://refactoringguru.cn/design-patterns/creational-patterns)
-# 1.设计模式（创建型）
+# 系列文章目录
+欢迎大家访问并指正我写的其他学习笔记：
 
-创建型模式提供了创建对象的机制， 能够提升已有代码的灵活性和可复用性。创建型设计模式包括以下五种：
+[c#学习笔记](https://blog.csdn.net/weixin_48239221/article/details/125677042?spm=1001.2014.3001.5501)
+[C# 中的多线程和异步编程](https://blog.csdn.net/weixin_48239221/article/details/127350766)
+[WPF学习笔记](https://blog.csdn.net/weixin_48239221/article/details/123747510)
+[Prism学习笔记](https://blog.csdn.net/weixin_48239221/article/details/126235043)
+[.NET Core学习笔记](https://blog.csdn.net/weixin_48239221/article/details/126441494)
+
+---
+# 前言
+最近得到师傅指点，建议我多学习下设计模式，简单记录下学习过程中的一些知识点。
+
+1. 推荐一个很好的学习设计模式的网站，该笔记部分内容参考自该网站，[点击此处链接进入](https://refactoringguru.cn/design-patterns/creational-patterns)
+2. 推荐一个B站博主讲的关于设计模式的课程，该笔记部分内容也参考自该网站，[点击此处链接进入](https://www.bilibili.com/video/BV1u3411P7Na/?spm_id_from=333.999.0.0&vd_source=4f56e4e53e0b60896f7cf23c14182a20)
+﻿![在这里插入图片描述](https://img-blog.csdnimg.cn/a8da9382eb9341da9151643d3bfd1431.jpeg#pic_center)
+---
+# 1.设计模式的6大原则
+我们在进行软件开发时，不仅仅需要将最基本的业务给完成，还要考虑整个项目的可维护性和可复用性，我们开发的项目不单单需要我们自己来维护，同时也需要其他的开发者一起来进行共同维护，因此我们在编写代码时，应该尽可能的规范。如果我们在编写代码时不注重这些问题，整个团队项目就像一座屎山，随着项目的不断扩大，整体结构只会越来越遭。
+
+甚至到最后你会发现，我们的程序居然是稳定运行在BUG之上的...
+
+所以，为了尽可能避免这种情况的发生，我们就来聊聊面向对象6大设计原则。
+## 1.开闭原则
+**开闭原则：软件实体应当对于扩展是开放的，对于修改是封闭的。**
+
+一个软件实体，比如类、模块和函数应该对扩展开放，对修改关闭。其中，对扩展开放是针对提供方来说的，对修改关闭是针对调用方来说的。
+
+举个生活中的例子：比如我有一个生产拖拉机的工厂，现在我要引入一个新的产品：口罩，那我是直接修改拖拉机的生产线使其能生产口罩好呢，还是直接新建一个用于生产口罩的工厂线呢。举这个例子，也是表达**面向对象程序设计的一个观点：扩展优于修改**。想要达到这样的效果，我们需要使用接口和抽象类。
+
+## 2.单一职责原则
+
+**单一职责原则：一个类只负责一个功能领域中相应的职责，并且该职责被完整地封装在一个类中。**
+
+比如，我们现在有一个People类：
+
+```csharp
+using System;
+namespace Application
+{
+    /// <summary>
+    /// 一个人类
+    /// </summary>
+    public class People
+    {
+        /// <summary>
+        /// 会写程序
+        /// </summary>
+        public void Coding()
+        {
+            Console.WriteLine("我会写代码");
+        }
+
+        /// <summary>
+        /// 会打螺丝
+        /// </summary>
+        public void Working()
+        {
+            Console.WriteLine("我会打螺丝");
+        }
+
+        /// <summary>
+        /// 会送外卖
+        /// </summary>
+        public void Riding()
+        {
+            Console.WriteLine("会送外卖");
+        }
+    }
+}
+```
+可以看到，这个人类可以说是很全能的，能写程序、能会打螺丝，还会送外卖。可是，这个类是不是显得有点臃肿了。“闻道有先后，术业有专攻，如是而已”，不应该是程序员负责写代码，富士康的工人打螺丝，骑手送外卖吗？显然这个People类过于臃肿（而且根据开闭原则，扩展优于修改，当我们修改People类中的行为比如添加一个会开飞机的行为时，都需要从内部修改这个类而不是从外部去扩展比如增肌一个会开飞机的飞行员类，这违背了扩展优于修改的开闭原则）。
+
+因此根据单一职责原则，我们需要进行更明确的划分，同种类型的操作我们一般才会放在一起：
+
+```csharp
+using System;
+namespace Application
+{
+    /// <summary>
+    /// 程序员类
+    /// </summary>
+    public class Coder
+    {
+        /// <summary>
+        /// 会写程序
+        /// </summary>
+        public void Coding()
+        {
+            Console.WriteLine("我会写代码");
+        }
+    }
+    /// <summary>
+    /// 工人类
+    /// </summary>
+    public class Worker
+    {
+        /// <summary>
+        /// 会打螺丝
+        /// </summary>
+        public void Working()
+        {
+            Console.WriteLine("我会打螺丝");
+        }
+    }
+
+    /// <summary>
+    /// 骑手类
+    /// </summary>
+    public class Rider
+    {
+        /// <summary>
+        /// 会送外卖
+        /// </summary>
+        public void Riding()
+        {
+            Console.WriteLine("会送外卖");
+        }
+    }
+}
+}
+```
+## 3.迪米特法则（最少知道原则）
+
+**迪米特法则：一个实体类应当尽量少的与其他实体类之间发生相互作用，使得系统功能模块相对独立。**
+
+简单来说就是，一个类/者模块对其他的类/模块有越少的交互越好。当一个类发生改动，那么，与其相关的类（比如用到此类啥方法的类）需要尽可能少的受影响（比如修改了一个类中的方法名、字段名等，可能其他用到这些方法或是字段的类也需要跟着修改）这样我们在维护项目的时候会更加轻松一些。
+
+说白了，迪米特法则的核心思想就是降低耦合度。
+
+
+## 4.里氏代换原则
+**里氏代换原则：所有引用基类的地方必须能透明地使用其子类的对象。**
+
+简单的说就是，子类可以扩展父类的功能，但不能改变父类原有的功能：
+
+1. 子类可以实现父类的抽象方法，但不能覆盖父类的非抽象方法。
+2. 子类可以增加自己特有的方法。
+3. 当子类的方法重载父类的方法时，方法的前置条件（即方法的输入/入参）要比父类方法的输入参数更宽松。
+4. 当子类的方法实现父类的方法时（重写/重载或实现抽象方法），方法的后置条件（即方法的输出/返回值）要比父类更严格或与父类一样。
+
+比如我们下面的例子：
+
+```csharp
+using System;
+namespace Application
+{
+    public abstract class Father
+    {
+        public void Coding()
+        {
+            Console.WriteLine("我会写代码");
+        }
+    }
+
+    public class Child : Father
+    {
+        public void Gaming()
+        {
+            Console.WriteLine("我会打游戏");
+        }
+    }
+
+}
+
+```
+可以看到Child类继承自抽象类Father，但是并没有对父类Father中的方法进行重写，而且还在父类的基础上进行了扩展，这符合里氏代换原则。
+
+再来看下面一段代码：
+
+```csharp
+using System;
+namespace Application
+{
+    public abstract class Father
+    {
+        public void Coding()
+        {
+            Console.WriteLine("我会写代码");
+        }
+    }
+
+    public class Child : Father
+    {
+        public void Gaming()
+        {
+            Console.WriteLine("我会打游戏");
+        }
+
+        public new void Coding()//覆盖父类Father中的Coding方法
+        {
+            Console.WriteLine("我不想写代码了,我要躺平");
+        }
+    }
+}
+
+```
+可以看到，现在我们对父类的方法进行了重写，显然，父类的行为已经被我们给覆盖了，这个子类已经不具备父类的原本的行为，很显然违背了里氏替换原则。
+
+要是程序员连敲代码都不会了，还能叫做程序员吗？
+
+所以，对于这种情况，我们不需要再继承自Father类了，我们可以提升一下，将此行为定义到People中：
+
+```csharp
+using System;
+namespace Application
+{
+    public abstract class People
+    {
+        public abstract void Coding();
+    }
+
+    public class Father:People
+    {
+        public override void Coding()//重写父类People中的Coding方法
+        {
+            Console.WriteLine("我会写代码");
+        }
+    }
+
+    public class Child : People
+    {
+        public void Gaming()
+        {
+            Console.WriteLine("我会打游戏");
+        }
+
+        public override void Coding()//覆盖父类Father中的Coding方法
+        {
+            Console.WriteLine("我不想写代码了,我要躺平");
+        }
+    }
+}
+
+```
+## 5.依赖倒转原则
+
+**依赖倒转原则：针对接口编程，依赖于抽象而不依赖于具体。**
+
+## 6.接口隔离原则
+**接口隔离原则：客户端不应依赖那些它不需要的接口。**
+
+使用多个隔离的接口，比使用单个接口要好，这是一个降低类之间的耦合度的意思，我们在定义接口的时候，一定要注意控制接口的粒度，比如下面的例子：
+
+```csharp
+using System;
+namespace Application
+{
+    /// <summary>
+    /// 电子设备的接口
+    /// </summary>
+    public interface IDevice
+    {
+        string GetCpu();//获得CPU信息
+        string GetName();//获得名称
+        string GetMemory();//获得内存
+    }
+
+    /// <summary>
+    /// 电脑本身也是电子设备，我们继承自此接口
+    /// </summary>
+    public class Computer : IDevice
+    {
+        public string GetCpu()
+        {
+            return "AMD 6800h";
+        }
+
+        public string GetMemory()
+        {
+            return "16G+512G";
+        }
+
+        public string GetName()
+        {
+            return "Redmi Book Pro 14 2022锐龙版";
+        }
+    }
+
+    /// <summary>
+    /// 电风扇也是电子设备
+    /// </summary>
+    public class Fun : IDevice
+    {
+        public string GetCpu()
+        {
+            return null;//就一个破风扇，还需要Cpu? 呸
+        }
+
+        public string GetMemory()
+        {
+            return null;//风扇也不需要内存吧
+        }
+
+        public string GetName()
+        {
+            return "小破风扇";
+        }
+    }
+}
+```
+可以看出来，上面的接口定义得有些问题，风扇Fun类继承了Idevice接口，可是风扇不需要Cpu和内存啊，也就是说，接口中的GetCpu和GetMemory方法对于风扇来讲有些多余了（风扇压根就不需要CPU和内存啊），因此根据接口隔离原则，我们需要把它分得更细一点：
+
+```csharp
+using System;
+namespace Application
+{
+    /// <summary>
+    /// 智能电子设备的接口
+    /// </summary>
+    public interface ISmartDevice
+    {
+        string GetCpu();//获得CPU信息
+        string GetName();//获得名称
+        string GetMemory();//获得内存
+    }
+
+    /// <summary>
+    /// 普通电子设备的接口
+    /// </summary>
+    public interface INormalDevice
+    {
+        string GetName();//获得名称
+    }
+
+    public class Computer : ISmartDevice
+    {
+        public string GetCpu()
+        {
+            return "AMD 6800h";
+        }
+
+        public string GetMemory()
+        {
+            return "16G+512G";
+        }
+
+        public string GetName()
+        {
+            return "Redmi Book Pro 14 2022锐龙版";
+        }
+    }
+
+    public class Fun : INormalDevice
+    {
+        public string GetName()
+        {
+            return "小破风扇";
+        }
+    }
+}
+
+```
+
+# 2.设计模式（创建型）
+**创建型模式提供了创建对象的机制， 能够提升已有代码的灵活性和可复用性。** 创建型设计模式包括以下五种：
 
 * **单例模式**：让你能保证一个类只有一个实例，并提供一个访问该实例的全局节点。
 * **工厂模式**：在父类中提供一个创建对象的接口以允许子类决定实例化对象的类型。
@@ -179,7 +530,7 @@ s1和s2是相同的两个对象
   - 单例模式可能掩盖不良设计， 比如程序各组件之间相互了解过多等；
   - 该模式在多线程环境下需要进行特殊处理， 避免多个线程多次创建单例对象；
   - 单例的客户端代码单元测试可能会比较困难， 因为许多测试框架以基于继承的方式创建模拟对象。 由于单例类的构造函数是私有的， 而且绝大部分语言无法重写静态方法， 所以你需要想出仔细考虑模拟单例的方法。 要么干脆不编写测试代码， 或者不使用单例模式。
-
+---
 ## 2.工厂方法模式
 
 我们知道，如果需要创建一个对象，那么最简单的方式就是直接new一个即可。而工厂方法模式代替了传统的直接new的形式，那么为什么要替代传统的new形式呢？
@@ -187,7 +538,6 @@ s1和s2是相同的两个对象
 可以想象一下，如果所有的对象我们都通过new的方式去创建，那么当我们的程序中大量使用此对象时，突然有一天这个对象的构造方法或是类名发生了修改，那我们岂不是得挨个去进行修改？根据迪米特法则，我们应该尽可能地少与其他类进行交互，所以我们可以将那些需要频繁出现的对象创建，封装到一个工厂类中，当我们需要对象时，直接调用工厂类中的工厂方法来为我们生成对象，这样，就算类出现了变动，我们也只需要修改工厂中的代码即可，而不是大面积地进行修改。下面首先讲述简单工厂模式，再讲述工厂模式：
 
 ### 1.简单工厂模式
-
 #### 1.什么是简单工厂模式：
 
 又称静态工厂方法模式，它属于类创建模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都有共同的父类（这个父类一般是抽象类）。
@@ -785,29 +1135,25 @@ namespace PrototypePattern
 姓名:小明,性别:男,年龄:18,爱好:唱歌跳舞做饭爬山
 ```
 **在C#中，string类型和数组也属于引用类型，而string类型比较特殊（具体可查资料），因此只需要手动克隆List类型的Hobbies属性即可实现深克隆。**
-# 2.设计模式的6大原则简述
 
-## 1.开闭原则
+---
+# 3.设计模式（结构型）
+**结构型设计模式关注如何将现有的类或对象组织在一起形成更加强大的结构，并同时保持结构的灵活和高效。** 结构型设计模式包括以下七种：
 
-开闭原则：程序对于扩展是开放的，对于修改是封闭的。
-举个生活中的例子：比如我有一个生产拖拉机的工厂，现在我要引入一个新的产品：口罩，那我是直接修改拖拉机的生产线使其能生产口罩好呢，还是直接新建一个用于生产口罩的工厂线呢。举这个例子，也是表达**面向对象程序设计的一个观点：扩展优于修改**。想要达到这样的效果，我们需要使用接口和抽象类。
+* **适配器模式**：让接口不兼容的对象能够相互合作。
 
-## 2.单一职责原则
+* **桥接模式**：可将一个大类或一系列紧密相关的类拆分为抽象和实现两个独立的层次结构， 从而能在开发时分别使用。
 
-一个类只负责一个功能领域中相应的职责。
+* **组合模式**：可以使用它将对象组合成树状结构， 并且能像使用独立对象一样使用它们。
 
-## 3.迪米特法则（最少知道原则）
+* **装饰模式**： 允许你通过将对象放入包含行为的特殊封装对象中来为原对象绑定新的行为。
 
-一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。
+* **外观模式**：能为程序库、 框架或其他复杂类提供一个简单的接口。
 
-## 4.里氏代换原则
+* **享元模式**：摒弃了在每个对象中保存所有数据的方式， 通过共享多个对象所共有的相同状态， 让你能在有限的内存容量中载入更多对象。
 
-任何基类可以出现的地方，子类一定可以出现。
+* **代理模式**：让你能够提供对象的替代品或其占位符。 代理控制着对于原对象的访问， 并允许在将请求提交给对象前后进行一些处理。
 
-## 5.依赖倒置原则
+## 1.适配器模式
 
-针对接口编程，依赖于抽象而不依赖于具体。
 
-## 6.接口隔离原则
-
-使用多个隔离的接口，比使用单个接口要好，这是一个降低类之间的耦合度的意思。
