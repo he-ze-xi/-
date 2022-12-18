@@ -1,24 +1,24 @@
-﻿
-@[TOC](目录)
-# 记录工作中遇到的WPF知识点和问题
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3c51088946e84609b197ae00068aa614.jpeg#pic_center)
-### 1.Wpf中内置的控件
-* 按钮：Button和RepeatButton。
-* 数据显示：DataGrid、ListView、TreeView。
-* 日期显示和选择：Calendar、DataPicker。
-* 对话框:OpenFileDialog、PrintDIalog、SaveFileDialog。
-* 数字墨迹：Incanvas、InkPresenter。
-* 文档：DocumentViewer、FlowDocumentPageViewer、FlowDocumentPageReader、FlowDocumentScrollViewer、StickNoteControl。
-* 输入：TextBox、RichTextBox、PasswordBox。
-* 布局：Border、BulletDecorator、Canvas、DockPanel、Expander、Grid、GridSplitter 、GroupBox、Panel、ResizeGrip、Separator、ScrollBar、ScrollViewer、StackPanel、Thumb、Viewbox、VirtualizingStackPanel、Window、WrapPanel。
-* 媒体：Image、MediaElenment、SoundplayerAction。
-* 菜单：ContentMenu、Menu、ToolBar。
-* 导航：Frame、Hyperlink、Page、NavigationWindow、TabControl。
-* 选项：CheckBox、ComboBox、ListBox、RadioButton、Slider。
-* 用户信息：AccessText、Label、Popup、ProgressBar、StatusBar、TextBlock、ToolTip。
-### 2.Template模板
-在WPF中有三种类型的模板,分别为为数据模板**DataTemplate** 、 控件模板**ControlTemplate**、面板模板**ItemsPanelTemplate**。
-#### 1.ControlTemplate
+﻿@[TOC](目录)
+# 前言
+### 1.ShowInTaskbar 属性
+控制是否显示窗口的任务栏按钮。
+### 2.Wpf中内置的控件
+按钮：Button和RepeatButton。
+数据显示：DataGrid、ListView、TreeView。
+日期显示和选择：Calendar、DataPicker。
+对话框:OpenFileDialog、PrintDIalog、SaveFileDialog。
+数字墨迹：Incanvas、InkPresenter。
+文档：DocumentViewer、FlowDocumentPageViewer、FlowDocumentPageReader、FlowDocumentScrollViewer、StickNoteControl。
+输入：TextBox、RichTextBox、PasswordBox。
+布局：Border、BulletDecorator、Canvas、DockPanel、Expander、Grid、GridSplitter 、GroupBox、Panel、ResizeGrip、Separator、ScrollBar、ScrollViewer、StackPanel、Thumb、Viewbox、VirtualizingStackPanel、Window、WrapPanel。
+媒体：Image、MediaElenment、SoundplayerAction。
+菜单：ContentMenu、Menu、ToolBar。
+导航：Frame、Hyperlink、Page、NavigationWindow、TabControl。
+选项：CheckBox、ComboBox、ListBox、RadioButton、Slider。
+用户信息：AccessText、Label、Popup、ProgressBar、StatusBar、TextBlock、ToolTip。
+### 3.模板（Template)
+在WPF中有三种类型的模板,分别为为数据模板DataTemplate 、 控件模板ControlTemplate、面板模板ItemsPanelTemplate。
+#### （1）控件模板
 ControlTemplate它决定了控件“长成什么样子”，并让开发者有机会在控件原有的内部逻辑基础上扩展自己的逻辑,它不仅能用于来定义控件的外观、样式, 还可通过控件模板的触发器(ControlTemplate.Triggers)修改控件的行为、响应动画等。
 举例：
 - 效果：
@@ -263,11 +263,11 @@ MessageBoxResult的属性：
 ### 5.ContentPresenter
 ContentPresenter是一个基础控件，其他的控件可以继承他，主要作用是实现内容的显示，可以是任何内容。
 ### 6.画刷
-* LinearGradientBrush是线性渐变画刷。
-* SolidColorBrush 是纯色画刷。
-* RadialGradientBrush是径向渐变画刷。
-* ImageBrush是图片画刷。
-* GradientBrush是渐变画刷。
+LinearGradientBrush是线性渐变画刷。
+SolidColorBrush 是纯色画刷。
+RadialGradientBrush是径向渐变画刷。
+ImageBrush是图片画刷。
+GradientBrush是渐变画刷。
 ### 7.路由事件
 （1）Button中有个click事件，该事件就是定义好的路由事件。
 （2）路由事件和依赖属性一样，也需要注册，使用 EventManager.RegisterRoutedEvent方法来注册路由事件。
@@ -368,8 +368,7 @@ namespace WpfApp2.CustomControls
 运行结果如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1aac352b9b05410fa6d185d5f01f977c.png#pic_center)
 单击Test按钮后，会弹出右边的那个对话框，成功实现单击Test按钮触发自定义的路由事件。
-### 8.依赖属性
-#### 1.先看一个例子
+### 8.依赖项属性
 先举个例子，在WPF中如果我们自定义了一个叫ButtonExpand的用户控件，该控件继承自按钮Button类，这时我们想向ButtonExpand控件中添加一张背景图Image类以实现背景图效果，而Button类中没有这个Image属性，我们就可以在这时注册一个依赖项属性，此时该控件就有了这个新的属性，在前台xaml文件中我们就可以直接使用这个新的属性。
 一个简短的例子来注册并使用依赖属性：
 
@@ -463,89 +462,6 @@ namespace WpfApp1.customcontrols
 ```xml
 <customcontrols:StreamingStatusButton  ImageSource="assets/s1.png" />
 ```
-#### 2.WPF为什么需要依赖属性
-以上是一个使用依赖属性的简单例子，那么WPF为什么需要依赖属性？
-
- WPF的设计理念是：数据驱动，UI与逻辑松耦合。
- 
-1. 什么是依赖属性？
-依赖属性是一种可以自已没有值，但是可以通过Binding方式，从数据源（依赖别人的数据）获得值的属性。
-
-2. 为什么要有依赖属性
-传统的CLR属性：
-
-```csharp
-public class Person
-{
-    private string _Name;
-    public string Name
-    {
-        get
-        {
-             return _Name;
-         }
-         set
-         {
-            _Name = value;
-         }
-     }
- }
-```
-CLR属性存在的问题：
-
-在多继承的情况下，每次继承，父类的字段都被继承，孙孙辈对象占用内存空间不可避免的膨胀。
-
-3. 如何添加依赖属性？
-在多继承，大多数字段并没有被修改的情况下，如何少对象的体积。
-数据驱动指导思想下，数据如何保存简单一致，同步
-
-```csharp
-// 1. 使类型继承DependencyObject类
-    public class Person : DependencyObject
-    {
-        // 2. 声明一个静态只读的DependencyProperty 字段
-        public static readonly DependencyProperty nameProperty;
-        static Person()
-        {
-            // 3. 注册定义的依赖属性
-            nameProperty = DependencyProperty.Register("Name", typeof(string), typeof(Person), 
-                new PropertyMetadata("Learning Hard",OnValueChanged)); 
-        }
-        // 4. 属性包装器，通过它来读取和设置我们刚才注册的依赖属性
-        public string Name
-        {
-            get { return (string)GetValue(nameProperty); }
-            set { SetValue(nameProperty, value); }
-        }
-        private static void OnValueChanged(DependencyObject dpobj, DependencyPropertyChangedEventArgs e)
-        {
-            // 当只发生改变时回调的方法
-        }
-    }
-```
-4. 依赖属性的优势：
-* 解决多继承，且大多数字段值不改变的情况下，减少内存占比
-将一个DependencyProperty对象存储在一个全局的Hashtable中；通过依赖对象(DependencyObject)的GetValue和SetValue存取数据；
-
-* 以数据为中心，当数据源改变时，所以关联的UI数据改变
-依赖属性值可以通过Binding依赖于其它对象上，这就使得数据源一变动；依赖于此数据源的依赖属性全部进行更新
-#### 3.什么时候需要定义依赖属性？
-* 希望支持动态资源引用
-
-* 希望支持动画
-
-* 希望支持数据绑定
-
-* 希望支持属性值继承
-
-* 希望该属性发生改变时触发一系列的行为
-
-* 希望该属性有自己的元数据
-
-* 希望在样式中使用该属性
-
-* 希望得到WPF样式器的支持，比如在wpf窗口中直接修改该属性
-
 ### 9.命令Command
 一个简单地创建一些Command命令的例子：
  2. 如下图，在Base文件中，创建一个CommandBase类，该类存放了command命令的初始化工作
@@ -920,7 +836,7 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/fdc842903d9e43e28b3db9acac3136ad.png#pic_center)
 代码：
 ```xml
-  <Grid>
+<Grid>
         <ItemsControl Grid.Row="1" ItemsSource="{Binding TaskBars}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -930,14 +846,20 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
 
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="5" Background="{Binding Color}"  Margin="10">
+                    <Border
+                        CornerRadius="5"
+                        Background="{Binding Color}" 
+                        Margin="10">
                         <Border.Style>
                             <Style TargetType="Border">
                                 <Style.Triggers>
                                     <Trigger Property="IsMouseOver" Value="True">
                                         <Setter Property="Effect">
                                             <Setter.Value>
-                                                <DropShadowEffect  Color="#DDDDDD" ShadowDepth="1" BlurRadius="10"/>
+                                                <DropShadowEffect 
+                                                    Color="#DDDDDD"
+                                                    ShadowDepth="1"
+                                                    BlurRadius="10"/>
                                             </Setter.Value>
                                         </Setter>
                                     </Trigger>
@@ -946,12 +868,30 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
                         </Border.Style>
                         <Grid>
                             <StackPanel Margin="20,10">
-                                <TextBlock Margin="0,15" FontSize="15" Text="{Binding Title}"/>
-                                <TextBlock FontSize="40" FontWeight="Bold" Text="{Binding Content}"/>
+                                <TextBlock 
+                                    Margin="0,15"
+                                    FontSize="15"
+                                    Text="{Binding Title}"/>
+                                <TextBlock 
+                                    FontSize="40"
+                                    FontWeight="Bold" 
+                                    Text="{Binding Content}"/>
                             </StackPanel>
                             <Canvas ClipToBounds="True">
-                                <Border Canvas.Top="10"  Canvas.Right="-50" Width="120"  Height="120"  CornerRadius="100" Background="#FFFFFF" Opacity="0.1"/>
-                                <Border Canvas.Top="80"  Canvas.Right="-30" Width="120"  Height="120" CornerRadius="100" Background="#FFFFFF" Opacity="0.1"/>
+                                <Border Canvas.Top="10" 
+                                        Canvas.Right="-50"
+                                        Width="120" 
+                                        Height="120"
+                                        CornerRadius="100"
+                                        Background="#FFFFFF"
+                                        Opacity="0.1"/>
+                                <Border Canvas.Top="80" 
+                                        Canvas.Right="-30"
+                                        Width="120" 
+                                        Height="120"
+                                        CornerRadius="100"
+                                        Background="#FFFFFF"
+                                        Opacity="0.1"/>
                             </Canvas>
                         </Grid>
                     </Border>
@@ -961,13 +901,6 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
     </Grid>
 ```
 ```csharp
-    public class MyTasks
-    {
-        public string Title { get; set; }
-        public string Content { get; set; }
-        public string Color { get; set; }
-    }
-    
  public class MyTasksViewModel
     {
         private ObservableCollection<MyTasks> _tasks;
@@ -979,11 +912,11 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
 
         public MyTasksViewModel()
         {
-             TaskBars = new ObservableCollection<MyTasks>();
-            TaskBars.Add(new MyTasks() { Title = "汇总", Content = "9", Color = "#FF0CA0FF"});
-            TaskBars.Add(new MyTasks() { Title = "已完成", Content = "9", Color = "#FF1ECA3A"});
-            TaskBars.Add(new MyTasks() { Title = "完成", Content = "100%", Color = "#FF02C6DC" });
-            TaskBars.Add(new MyTasks() { Title = "备忘录", Content = "19", Color = "#FFFFA000" });
+            TaskBars= new ObservableCollection<MyTasks>();
+            TaskBars.Add(new MyTasks() { Icon = "ClockFast", Title = "汇总", Content = "9", Color = "#FF0CA0FF", Target = "" });
+            TaskBars.Add(new MyTasks() { Icon = "ClockCheckOutline", Title = "已完成", Content = "9", Color = "#FF1ECA3A", Target = "" });
+            TaskBars.Add(new MyTasks() { Icon = "ChartLineVarient", Title = "完成", Content = "100%", Color = "#FF02C6DC", Target = "" });
+            TaskBars.Add(new MyTasks() { Icon = "PlaylistStar", Title = "备忘录", Content = "19", Color = "#FFFFA000", Target = "" });
         }
     }
 ```
@@ -1026,9 +959,9 @@ ItemsControl.ItemsPanel是定义ItemsControl各个项的布局，ItemsPanelTempl
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dcf10be22a20493a96137bf88652c68a.png#pic_center)
 前台代码如下：
 ```xml
-    <Grid>
+<Grid>
         <ScrollViewer>
-
+            
             <ItemsControl Grid.Row="1" HorizontalAlignment="Center" ItemsSource="{Binding MemoDtos}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -1054,8 +987,20 @@ ItemsControl.ItemsPanel是定义ItemsControl各个项的布局，ItemsPanelTempl
                                 <TextBlock Padding="10,5" FontWeight="Bold" Text="{Binding Title}"/>
                                 <TextBlock Padding="10,5" Text="{Binding Content}" Grid.Row="1"/>
                                 <Canvas Grid.RowSpan="2" ClipToBounds="True">
-                                    <Border Canvas.Top="10"  Canvas.Right="-50" Width="120"  Height="120"  CornerRadius="100" Background="#FFFFFF" Opacity="0.1"/>
-                                    <Border Canvas.Top="80"  Canvas.Right="-30" Width="120" Height="120" CornerRadius="100" Background="#FFFFFF" Opacity="0.1"/>
+                                    <Border Canvas.Top="10" 
+                                        Canvas.Right="-50"
+                                        Width="120" 
+                                        Height="120"
+                                        CornerRadius="100"
+                                        Background="#FFFFFF"
+                                        Opacity="0.1"/>
+                                    <Border Canvas.Top="80" 
+                                        Canvas.Right="-30"
+                                        Width="120" 
+                                        Height="120"
+                                        CornerRadius="100"
+                                        Background="#FFFFFF"
+                                        Opacity="0.1"/>
                                 </Canvas>
                             </Grid>
                         </mt:TransitioningContent>
@@ -1107,7 +1052,12 @@ UpdateSourceTrigger的默认值是Default，其他值有PropertyChanged、LostFo
                         <TextDecorationCollection>
                             <TextDecoration>
                                 <TextDecoration.Pen>
-                                    <Pen Brush="Black" DashCap="Round" EndLineCap="Round"  StartLineCap="Round"Thickness="10">
+                                    <Pen
+                                                    Brush="Black"
+                                                    DashCap="Round"
+                                                    EndLineCap="Round"
+                                                    StartLineCap="Round"
+                                                    Thickness="10">
                                         <Pen.DashStyle>
                                             <DashStyle Dashes="0.0,1.2" Offset="0.6" />
                                         </Pen.DashStyle>
@@ -1326,186 +1276,4 @@ public class MainViewModel : Screen, IPage,IHandle<ShowProcessEvent>
   	//此方法里写订阅事件后具体的逻辑
   }
 ```
-### 27.DataGrid表格
-WPF中的DataGrid表格是一个很复杂而且很常用的控件，这里面有好多知识点，简单记录下对DataGrid表格的学习。
-#### 1.DataGrid中一些常见的属性：
-1. **CanUserReorderColumns**：是否允许用户通过使用鼠标拖拽列标题，更改列的显示顺序；
-
-2. **AutoGenerateColumns**：是否根据数据源集合自动生成列，如果设置成false，那么就需要自己定义一些列；
-
-3. **CanUserSortColumns**：用来判断是否允许用户按列对表中内容进行排序；
-
-4. **CanUserDeleteRows**：是否允许删除行；
-
-5. **SelectionMode**：设置DataGrid的选取模式，是否可以选取多行。SelectionMode="Single"表示只能选择一行，SelectionMode="Extended"表示可以选择多行；
-
-6. **SelectionUnit**：设置每次选中的方式，是一行还是一个单元格。SelectionUnit="FullRow"表示每次选取的是一行，SelectionUnit="Cell"表示每次选取的是一个单元格；
-
-7. **IsReadOnly**：设置单元格只读，不可编辑；
- 
-8. **StringFormat属性**： <TextBlock Text="{Binding Value,StringFormat={}{0:F4}}" 这一句话表示对float类型的Value显示4位小数在View中：StringFormat 表示格式化显示数值，常用于数字的小数点显示，绑定内容的前缀后缀的添加以及时间的格式化形式；
-
-9. **DecimalPlaces**：小数要显示的位数;
-
-#### 2. DataGrid列（重点）
-目前DataGrid中可用的列有如下：
-* DataGridTextColumn：用于展示普通文本的列
-* DataGridCheckBoxColumn：用于在列上展示一些单选框，以表示用户是否选中；
-* DataGridComboBoxColumn：用于展示一些可供用户从列表集合中选择的数据列；
-* DataGridHyperlinkColumn：用于展示一些超链接的列；
-* DataGridTemplateColumn：自定义单元格的列，可以在这个列里自定义一些布局，比如加个按钮；
-
-下图是微软官方给出的关于这几种列的数据类型：
-| 生成的列类型 |  数据类型|
-|--|--|
-| DataGridTextColumn | String类型 |
-| DataGridCheckBoxColumn| Bool类型|
-| DataGridComboBoxColumn| Enum类型|
-| DataGridHyperlinkColumn| Uri类型|
-
-下面直接上代码来展示效果：
-
-1. 文件结构（这是基于Prism模板创建的工程，只需要关注DataGridExampleView和DataGridExampleViewModel这两个文件的代码即可，其他文件可以忽略）：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7a34035c76db416abcc6d4f392994963.png)
-2. DataGridExampleView代码：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/00502aef655541aa888b1c5a4183c3cb.png)
-
-```xml
-<UserControl x:Class="BlankApp1.Views.DataGridExampleView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:BlankApp1.Views"
-             xmlns:VideModels="clr-namespace:BlankApp1.ViewModels"
-             xmlns:Converter="clr-namespace:BlankApp1.Converter"
-             mc:Ignorable="d" 
-             xmlns:core="clr-namespace:System;assembly=mscorlib"
-             xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             d:DesignHeight="450" d:DesignWidth="800" Background="White">
-    <UserControl.Resources>
-
-        <ObjectDataProvider x:Key="SexHobbyKey" MethodName="GetValues" ObjectType="{x:Type core:Enum}">
-            <ObjectDataProvider.MethodParameters>
-                <x:Type Type="VideModels:HobbyType"/>
-            </ObjectDataProvider.MethodParameters>
-        </ObjectDataProvider>
-        
-        <Converter:QQConverter x:Key="QQConverter"/>
-    </UserControl.Resources>
-    
-    <DataGrid Width="600" AutoGenerateColumns="False" CanUserSortColumns="False" Height="400" IsReadOnly="True" ItemsSource="{Binding Students}" SelectionUnit="Cell" VerticalAlignment="Center" HorizontalAlignment="Center" CanUserAddRows="False">
-        <DataGrid.Columns>
-            <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-            <DataGridCheckBoxColumn Header="状态" Binding="{Binding IsSelected}"/>
-            <DataGridComboBoxColumn Header="爱好" SelectedItemBinding="{Binding Hobby}" ItemsSource="{Binding Source={StaticResource SexHobbyKey}}"/>
-            <DataGridHyperlinkColumn Header="QQ邮箱" Binding="{Binding Email}"  Width="150"/>
-            <DataGridHyperlinkColumn Header="QQ" Binding="{Binding Email,Converter={StaticResource QQConverter}}"  Width="150"/>
-            <DataGridTemplateColumn Header="操作">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Button Width="60" Height="40" Content="编辑"/>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
-</UserControl>
-```
-
-3. DataGridExampleViewModel代码：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/76e0c48cd6574a5295e3b8b89a033fae.png)
-```csharp
-using Prism.Mvvm;
-using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BlankApp1.ViewModels
-{
-    public class Student
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public int Age { get; set; }
-        public bool IsSelected { get; set; }
-        public HobbyType Hobby { get; set; }
-        public string Email { get; set; }
-    }
-
-    public enum HobbyType
-    {
-        Basketball,
-        FootBall,
-        TableTennis
-    }
-
-
-    public class DataGridExampleViewModel:BindableBase
-    {
-        public List<Student> _students = new List<Student>();
-        public List<Student> Students
-        {
-            get { return _students; }
-            set { _students = value;RaisePropertyChanged(); }
-        }
-
-        public DataGridExampleViewModel()
-        {
-            List<Student> studentList = new List<Student>();
-            studentList.Add(new Student { Email = "1221343567@qq.com",Id = 1, IsSelected = false, Name = "John Doe", Age = 19, Hobby = HobbyType.Basketball });
-            studentList.Add(new Student { Email = "124567@qq.com", Id = 2, IsSelected = false, Name = "Jane Doe", Age = 18, Hobby = HobbyType.FootBall });
-            studentList.Add(new Student { Email = "1dfgh54567@qq.com", Id = 3, IsSelected = true, Name = "Marry Doe", Age = 21, Hobby = HobbyType.Basketball });
-            studentList.Add(new Student { Email = "12879567@qq.com", Id = 4, IsSelected = false, Name = "Kang Doe", Age = 17, Hobby = HobbyType.Basketball });
-            Students =studentList;
-        }
-    }
-}
-
-```
-4. 转换器QQConverter类
-![在这里插入图片描述](https://img-blog.csdnimg.cn/079291a0845d431a9f3528a7998e7627.png)
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Data;
-
-namespace BlankApp1.Converter
-{
-    /// <summary>
-    /// 该转换器类用于把QQ邮箱转化为QQ号码
-    /// </summary>
-    public class QQConverter : IValueConverter
-    {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            string QQEmail = value.ToString();
-            int index = QQEmail.IndexOf("@");
-            string QQ=QQEmail.Substring(0,index);
-            return QQ;
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-        {
-            return null; 
-        }
-    }
-}
-
-```
-5. 运行演示：
-
-![](https://img-blog.csdnimg.cn/ce647000c6fc4b8db5a752ee1ce5b9de.png)
-### 28. 待学习：
-*  Monitor.TryEnter
-* Dispatcher.CurrentDispatcher
-* 
+### 27.
