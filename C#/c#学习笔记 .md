@@ -1,8 +1,26 @@
 ﻿@[TOC](目录)
-# 记录在学习以及工作中遇到的C#知识点，并全部总结至此笔记中
-### 语句块
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e11bbe262854404d97393c63166b8413.png#pic_center)
-### Write和WriteLine的区别：
+
+```bash 	
+  	2022.06，我正式走上了所追求、热爱的编程道路，用此文记录C#学习过程中的问题点。
+  	“书山有路勤为径，学海无涯苦作舟！”
+    日后我也可以成为很厉害的技术大佬！
+```
+
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3267ac06a4b342f6a73c59fa96c1cd8e.jpeg#pic_center)
+### 1.C#类型的分类
+| 值类型 |  引用类型|
+|--|--|
+|sbyte、byte、float|object|
+|short、ushort、double|string|
+|int、uint、char|dynamic|
+|long、ulong、decimal|delegate|
+|bool、struct、class|array|
+|enum|interface|
+
+
+
+### 2.Write和WriteLine的区别：
 （1）Write没有在字符串后面添加换行符，而WriteLine则在每个字符串后面添加了换行符。如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2763bc17077e408e8c13f2f04c20f797.png#pic_center)
 
@@ -28,10 +46,10 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4ed60b063ce84a4d8c1c760e5e28f7f7.png#pic_center)
-### params
+### 3.params
 params是一个计算机函数，表示函数的参数是可变个数的，即可变的方法参数，用于表示类型相同，但参数数量不确定。
 C#开发语言中 params 是关键字，**params主要的用处是在给函数传参数的时候用，就是当函数的参数不固定的时候。 在函数的参数数目可变而执行的代码差异很小的时候很有用！C#语法规定，params后边必定跟数组。作用是把不定数量的、同类型的参数装入这个数组中.**
-### 托管代码和非托管代码
+### 4.托管代码和非托管代码
 （1）托管代码：
 运行在CLR(CLR是一个通用语言架构，它定义了一个代码运行的环境）下的代码就是托管代码，诸如C#、VB.NET 写的代码都会先编译成MSIL（MS中间代码），并运行在CLR的子集CLI(Common Language Infrastructure）中，最终根据不同的平台使用JIT（just in Time）编译成机器代码。
 与Java机制不同在于Java是经过一次编译和一次解释运行，C#是经过两次编译运行,这两个阶段分别为：源代码编译为托管代码，托管代码编译为微软平台的专用语言，又称机器语言。
@@ -43,99 +61,116 @@ C#开发语言中 params 是关键字，**params主要的用处是在给函数�
 1、托管代码是一种中间语言，运行在CLR上；非托管代码被编译为机器码，运行在机器上。
 2、托管代码独立于平台和语言，能更好的实现不同语言平台之间的兼容；非托管代码依赖于平台和语言。
 3、托管代码可享受CLR提供的服务（如安全检测、垃圾回收等），不需要自己完成这些操作；非托管代码需要自己提供安全检测、垃圾回收等操作。
-### DllImport的使用：
+### 5.DllImport的使用：
 托管代码生成的DLL文件，可以在VS中直接通过添加引用的方式使用。
 非托管代码生成的DLL文件，比如使用C++编写的代码编译生成的DLL，不能在VS中直接引用，可以通过DllImport方法来使用。
-### WriteLine、ReadLine和ReadKey：
-console.ReadLine()是等待输入，并按回车继续。
-console.WriteLine()是向控制台窗口产生输出。
-Console.ReadKey()是等待键盘输入，退出程序。使调试时能看到输出结果。如果没有此句，命令窗口会一闪而过。
-### C#中访问修饰符
-在C#语言中，共有五种访问修饰符：public、private、protected、internal、protected internal。
-（1）作用范围：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)
-（2）在c#中，
-1. 类、结构的默认修饰符是internal。
-2. 类中所有的成员默认修饰符是private。
-3. 接口默认修饰符是internal。
-4. 接口的成员默认修饰符是public。
-5. 命名空间、枚举类型成员默认修饰符是public。
-6. 委托的默认修饰符是internal。
-### 类型的实例化
+### 6.WriteLine、ReadLine和ReadKey：
+<font color=red>console.ReadLine()是等待输入，并按回车继续。</font>
+<font color=red>console.WriteLine()是向控制台窗口产生输出。</font>
+<font color=red>Console.ReadKey()是等待键盘输入，退出程序。使调试时能看到输出结果。如果没有此句，命令窗口会一闪而过。</font>
+### 7.C#中访问修饰符
+在C#语言中，共有五种访问修饰符：***public、private、protected、internal、protected internal***。
+1. 作用范围：
+
+|访问修饰符|说明  |
+|--|--|
+|public|公有访问，不受任何限制|
+|private|私有访问，只限于本类成员访问，子类、实例都不能访问|
+|protected|保护访问，只限本类和子类访问，实例不能访问|
+|internal|内部访问，只限本项目访问，其他不能访问|
+|protected internal|内部保护访问，只限本项目或子类访问，其他不能访问|
+
+2. 在c#中：
+* 类、结构的默认修饰符是internal。
+* 类中所有的成员默认修饰符是private。
+*  接口默认修饰符是internal。
+* 接口的成员默认修饰符是public。
+*  命名空间、枚举类型成员默认修饰符是public。
+*  委托的默认修饰符是internal。
+### 8.类型的实例化
 从某一个类型模板创建实际的对象，就称为实例化该类型。
-### 成员可以分为两种：数据成员和函数成员
+### 9.成员可以分为两种：数据成员和函数成员
 数据成员：保存了这个类的对象或作为一个整体的类相关的数据；
 函数成员：执行代码，函数成员定义类型的行为。
-### 枚举enum和结构struct的区别：
+### 10.枚举enum和结构struct的区别：
 enum与struct的区别是：枚举里的变量都是整型的同类型，而struct是由不同类型
 的变量所组成的，默认情况下，枚举的第一个值为0，后面每个连续的元素值递增1。
-### 运行中的程序使用两个内存区域来存储数据：栈和堆。
-### 栈存储几种类型的数据：
-某些类型变量的值；
-程序当前的执行环境；
-传递给方法的参数。
-### 与栈不同，堆里的内存能够以任意顺序存入和移除.
-### 堆和栈：
+### 11.运行中的程序使用栈和堆来存储数据
+### 12.栈存储几种类型的数据：
+* 某些类型变量的值；
+* 程序当前的执行环境；
+* 传递给方法的参数。
+### 13.与栈不同，堆里的内存能够以任意顺序存入和移除.
+### 14.堆和栈：
 栈是一个内存数组，是一个LIFO（Last-In First-Out，后进先出）的数据结构。
 堆和栈的区别主要有五大点，分别是：
-（1）申请方式的不同。栈由系统自动分配，而堆是人为申请开辟;
-（2）申请大小的不同。栈获得的空间较小，而堆获得的空间较大;
-（3）申请效率的不同。栈由系统自动分配，速度较快，而堆一般速度比较慢;
-（4）存储内容的不同。栈在函数调用时，函数调用语句的下一条可执行语句的地址第一个进栈，然后函数的各个参数进栈，其中静态变量是不入栈的。而堆一般是在头部用一个字节存放堆的大小，堆中的具体内容是人为安排;
-（5）底层不同。栈是连续的空间，而堆是不连续的空间。
-### 在声明一个类时使用static关键字，具有两个方面的意义：
-防止程序员写代码来实例化该静态类；
-防止在类的内部声明任何实例字段或方法。
-### static在内存中的地址为：程序的全局数据区。
-### 值类型和引用类型
+* 申请方式的不同。栈由系统自动分配，而堆是人为申请开辟;
+* 申请大小的不同。栈获得的空间较小，而堆获得的空间较大;
+* 申请效率的不同。栈由系统自动分配，速度较快，而堆一般速度比较慢;
+* 存储内容的不同。栈在函数调用时，函数调用语句的下一条可执行语句的地址第一个进栈，然后函数的各个参数进栈，其中静态变量是不入栈的。而堆一般是在头部用一个字节存放堆的大小，堆中的具体内容是人为安排;
+* 底层不同。栈是连续的空间，而堆是不连续的空间。
+### 15.在声明一个类时使用static关键字的意义
+两条意义：
+*  防止程序员写代码来实例化该静态类；
+* 防止在类的内部声明任何实例字段或方法。
+### 16.static在内存中的地址
+<font color=red>程序的全局数据区。</font>
+### 17.值类型和引用类型
 数据项的类型定义了存储数据需要的内存大小及组成该类型的数据成员。类型还决定了对象在内存中的存储位置——栈或堆。
-类型被分为两种：值类型和引用类型，这两种类型的对象在内存中的存储方式不同。
-值类型只需要一段单独的内存，用于存储实际的数据。
+类型被分为两种：**值类型和引用类型**，这两种类型的对象在内存中的存储方式不同：
+
+* 值类型只需要一段单独的内存，用于存储实际的数据。
 引用类型需要两段内存，第一段存储实际的数据，它总是位于堆中；第二段是一个引用，指向数据在堆中的存放位置。
-对于值类型，数据存放在栈里；对于引用类型，实际数据存放在堆里而引用存放在栈里。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8942b2baa46c4d22ab74fc8ac3b38bb6.png#pic_center)
-### C#的4种变量
-分别是本地变量、字段、参数、数组元素。
-本地变量：在方法的作用域保存临时数据，不是类型的成员。
-字段：保存和类型或类型实例相关的数据，是类型的成员。
-参数：用于从一个方法到另一个方法传递数据的临时变量，不是类型的成员。
-数组元素：（通常是）同类数据项构成的有序集合的一个成员，可以为本地变量，也可以为类型的成员。
-###简单的变量声明
+* 对于值类型，数据存放在栈里；对于引用类型，实际数据存放在堆里而引用存放在栈里。
+### 18.C#的4种变量
+分别是**本地变量、字段、参数、数组元素**。
+* 本地变量：在方法的作用域保存临时数据，不是类型的成员。
+* 字段：保存和类型或类型实例相关的数据，是类型的成员。
+* 参数：用于从一个方法到另一个方法传递数据的临时变量，不是类型的成员。
+* 数组元素：（通常是）同类数据项构成的有序集合的一个成员，可以为本地变量，也可以为类型的成员。
+
+简单的变量声明：
 一个简单的变量声明至少需要一个类型和一个名称，如int a,其中int为类型，a为名称。
-### 变量 、字段、属性的区别：
+### 19.变量 、字段、属性的区别：
 一句话：字段、属性都是变量，只是为了区分和数据安全设置的。
-字段的使用场景：与类或者对象关系密切，建议使用private修饰。
-属性的使用场景：对字段进行封装，提供get/set关键字，进行访问。
-变量的使用场景：与类或者对象关系不密切，常常在方法或者语句块中使用。
+* 字段的使用场景：与类或者对象关系密切，建议使用private修饰。
+* 属性的使用场景：对字段进行封装，提供get/set关键字，进行访问。
+* 变量的使用场景：与类或者对象关系不密切，常常在方法或者语句块中使用。
+
 字段和属性是相对于类而言的，而变量相对于方法或者语句块而言，可以在任何地方使用。
-### 常量字段const表现得像静态字段，但在内存中没有存储位置。
+### 20.常量字段const表现得像静态字段，但在内存中没有存储位置。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/27ee9e5c6ed04080898d33520c572f7e.png#pic_center)
 虽然常量成员表现得像一个静态量，但**不能将常量声明为静态static**，如：static const int a=3.14这句语法是错误的。
-### 析构函数执行在类的实例被销毁之前需要的清理或释放非托管资源的行为。
-### 非托管资源是指通过Win32 Api获得的文件句柄，或非托管内存块。
-### const和readonly：
+### 21.析构函数执行在类的实例被销毁之前需要的清理或释放非托管资源的行为。
+### 22.非托管资源是指通过Win32 Api获得的文件句柄，或非托管内存块。
+### 23.const和readonly：
 const是静态常量，readonly是动态常量。
 静态常量是指编译器在编译时候会对常量进行解析，并将常量的值替换成初始化的那个值；而动态常量的值则是在运行的那一刻才获得的，编译器编译期间将其标示为只读常量，而不用常量的值代替，这样动态常量不必在声明的时候就初始化，而可以延迟到构造函数中初始化。
-区别：可以通过静态常量与动态常量的特性来说明：
-      1）const修饰的常量在声明的时候必须初始化;readonly修饰的常量则可以延迟到构造函数初始化 。
-      2）const修饰的常量在编译期间就被解析，即常量值被替换成初始化的值;readonly修饰的常量则延迟到运行的时候。
-      此外const常量既可以声明在类中也可以在函数体内，但是static readonly常量只能声明在类中。
-###  this用法(指代当前实例、扩展方法、索引器)
-#### 1.**this指代当前实例：**
+
+区别可以通过静态常量与动态常量的特性来说明：
+
+   * const修饰的常量在声明的时候必须初始化;readonly修饰的常量则可以延迟到构造函数初始化 。
+   * const修饰的常量在编译期间就被解析，即常量值被替换成初始化的值;readonly修饰的常量则延迟到运行的时候。
+   * 此外const常量既可以声明在类中也可以在函数体内，但是static readonly常量只能声明在类中。
+###  24.this用法(指代当前实例、扩展方法、索引器)
+#### 1.this指代当前实例
  this关键字在类中使用，是对当前实例的引用，它只能被用在下列类成员的代码块中：
- （1）实例构造函数；
- （2）实例方法；
- （3）属性和索引器的实例访问器。
- 值得注意的是，静态成员并不是实例的一部分，所以不能在任何静态函数成员的代码中使用this关键字，确切来说，this用于下列目的：
- 用于区分类的成员和本地变量或参数；
- 作为调用方法的实参。
-#### 2. **this用作扩展方法：**
+ * 实例构造函数；
+ * 实例方法；
+ * 属性和索引器的实例访问器。
+ 
+ 值得注意的是，静态成员并不是实例的一部分，所以不能在任何静态函数成员的代码中使用this关键字。
+ 确切来说，this用于下列目的：
+ * 用于区分类的成员和本地变量或参数；
+ * 作为调用方法的实参。
+#### 2. this用作扩展方法
  扩展方法能够向现有类型“添加”方法，而无需创建新的派生类型、重新编译或以其他方式修改原始类型。扩展方法是一种特殊的静态方法，但可以像扩展类型上的实例方法一样进行调用。C#扩展方法第一个参数指定该方法作用于哪个类型，并且该参数以 this 修饰符为前缀。
     需要注意的几点：
-   （1）**扩展方法（this 需要扩展的类 命名），如：public static void ExtensionEat(this Person person)；**
-（2）**扩展方法必须是静态类的一个静态方法。**
-（3）**调用扩展方法,必须用对象来调用 。**
-如图看一段代码：
+   * 扩展方法（this 需要扩展的类 命名），如：public static void ExtensionEat(this Person person)；
+* 扩展方法必须是静态类的一个静态方法。
+* 调用扩展方法,必须用对象来调用 。
+
+如下看一段代码：
 
 ```csharp
 using System;
@@ -262,17 +297,19 @@ public class Program
   }
 ```
 索引器的索引值（Index）类型不限定为整数，如上两个图代码中的整形和字符串型索引。
+
 索引器与属性的区别：
-（1）索引器的命名只能为this，而属性可以任意命名（开头字母大写）；
-（2）索引器可以重载，属性不可以；
-（3）索引器不可用static进行声明，属性可以。
-### 派生类屏蔽基类的成员：
+* 索引器的命名只能为this，而属性可以任意命名（开头字母大写）；
+* 索引器可以重载，属性不可以；
+* 索引器不可用static进行声明，属性可以。
+### 25.派生类屏蔽基类的成员：
 虽然派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽基类成员，这也是继承的主要功能之一，很实用。**派生类屏蔽基类成员的关键字是new**，在派生类中屏蔽一些基类成员的一些要点如下：
-（1）要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。
-（2）通过在派生类中声明新的带有相同签名的函数成员，可以隐藏或屏蔽继承的基类的函数成员。注意：签名由名称和参数列表组成，不包括返回类型。
-（3）**要让编译器知道你在故意屏蔽继承的成员，实用new修饰符**。否则，程序会成功编译，但会警告你隐藏了一个继承的成员。
-（4）也可以屏蔽静态成员。
-### virtual的使用
+
+* 要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。
+* 通过在派生类中声明新的带有相同签名的函数成员，可以隐藏或屏蔽继承的基类的函数成员。注意：签名由名称和参数列表组成，不包括返回类型。
+* **要让编译器知道你在故意屏蔽继承的成员，实用new修饰符**。否则，程序会成功编译，但会警告你隐藏了一个继承的成员。
+* 也可以屏蔽静态成员。
+### 26.virtual的使用
 **当使用基类引用访问派生类对象时，得到的是基类的成员**。**虚方法可以使基类的引用访问“升至”派生类级别**。可以使用基类引用调用派生类的方法，只需要满足以下条件：
 （1）派生类的方法和基类的方法拥有相同的签名和返回类型；
 （2）基类的方法使用virtual标注；
@@ -280,7 +317,7 @@ public class Program
 可对比以下两图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/96218732bf764e3c88f1e03d1d54de9d.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3f13c4719bbb4b06b413d5e30e396975.png#pic_center)
-### 构造函数初始化语句：
+### 27. 构造函数初始化语句：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2bd56a65141e4c55b123d68643545321.png#pic_center)
 如，一个简单的继承类程序：
 
@@ -355,11 +392,11 @@ namespace Application
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9d905cbd6c284baf878289a4b20b03a6.png#pic_center)
 
 而另外一种形式的构造函数初始化语句（通过this）可以让编译器使用该类中的其他构造函数。
-### readonly字段
+### 28.readonly字段
 **readonly字段只可以在构造函数中初始化**，如果在其他方法中初始化一个readonly字段（即使这个方法只被构造函数调用），会得到一个编译错误。
-### 本地变量与字段的区别：
+### 29.本地变量与字段的区别：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/c68062f503d043cdb70dc45cf58a815a.png#pic_center)
-### 关键字var
+### 30.关键字var
 编译器可以通过初始化语句提供的信息推断出数据类型。
 （1）传统定义变量是已经知道变量的类型，如： int a = 1； string b = “hello”；char c='x';
 而var关键字不用预先知道变量的类型，是根据给变量赋值来判定变量属于什么类型；如var a =1， 则a是整型；var b = “hello”,则b是字符型;var c='x',则c也是字符型。
@@ -369,24 +406,24 @@ namespace Application
 2. 只能用于本地变量，不能用于字段；
 3. 只能在变量声明中包含初始化时使用；
 4. 一旦编译器推断除变量的类型，它就是固定且不能更改的。
-### C#中方法的参数有四种类型
+### 31.C#中方法的参数有四种类型
       （1） 值参数  (不加任何修饰符,是默认的类型)
       （2）引用型参数  (以ref 修饰符声明)
       （3）输出参数  (以out 修饰符声明)
       （4）数组型参数  (以params 修饰符声明)
-### 值参数和引用参数：
+### 32.值参数和引用参数：
 当值参数为值类型时，值被复制，产生一个独立的数据项，当值参数为引用类型时，引用被复制，实参和形参都引用堆中的同一个对象。
 使用引用参数时，必须在方法的声明和调用中都使用ref修饰符。
 引用类型作为值参数和引用参数：
 （1）将引用类型对象作为值参数传递 ：如果在方法内创建一个新对象并赋值给形参，将切断形参与实参之间的关联，并且在方法调用结束之后，新对象也将不复存在。
 （2）将引用类型作为引用参数传递 ：如果在方法内创建一个新对象并赋值给形参，在方法结束后该对象依然存在，并且是实参所引用的值。
-### 输出参数out
+### 33.输出参数out
 引用参数ref修饰的参数必须对其赋初值，但是初值不能是常量（即不能用const修饰），因为按引用传递可能会改变参数的值。在函数使用out参数时，必须看做是尚未赋值（不晓得为什么），实参传递给形参的值在函数执行时会丢失，参考以下代码段：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/be808637c443491c81b670211011f815.png#pic_center)
-### 成员访问修饰符：
+### 34.成员访问修饰符：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/55740405dd3e43f681e280103110a8a2.png#pic_center)
-### 抽象类
+### 35.抽象类
 抽象类是指设计为被继承的类，抽象类只能被用作其他类的基类。
 （1）不能创建抽象类的实例；
 （2）抽象类必须使用abstract修饰符来声明，如下图：
@@ -399,17 +436,17 @@ namespace Application
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d2aa6b92a43a49c4a48a30b7d86211d9.png#pic_center)
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/61d8773c2be04c9e964d8f892cb3043d.png#pic_center)
-### 静态类
+### 36.静态类
 **静态类中所有的成员都是静态的**，静态类用于存放不受实例数据影响的函数或数据。**静态类的一个常见用途就是创建一个包含一组数学方法和值的数学库**。
 关于静态类需要注意的几个地方：
 （1）类本身必须被标记为static;
 （2）**类的所有成员必须是静态的**；
 （3）类可以有一个静态构造函数，但不能有实例构造函数，不能创建该类的实例；
 （4）静态类是隐式封装的，也就是说，不能继承静态类。
-### C#提供隐式转换与显式转换
+### 37.C#提供隐式转换与显式转换
 对于隐式转换，当决定在特定上下文中使用特定类型时，如有必要，编译器会自动执行转换；
 对于显式转换，编译器只在使用显示转换运算符时才执行转换。
-### 运算符重载
+### 38.运算符重载
 运算符重载：通过特定的语法，使某些运算符可以具备特殊的功能。关键字operator，修饰符必须为public static。
 运算符重载的例子：
 
@@ -474,10 +511,10 @@ public class Program
 }
 
 ```
-### C# 关键字explicit和implicit
+### 39.C# 关键字explicit和implicit
 implicit：代表用来声明隐式自定义类型的转换;
 explicit：代表用来声明显示自定义类型的转换。
-### typeof运算符
+### 40.typeof运算符
 typeof用于获取类型的 System.Type 对象
 例如下面代码：
 ```csharp
@@ -519,17 +556,17 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/de8b1b0a8bc54ebb908be6dd97cb9888.png#pic_center)
-### 结构和类的区别
+### 41.结构和类的区别
 结构和类非常相似，都有数据成员和函数成员，最重要的区别是：
 （1）类是引用类型，而结构是值类型；
 （2）结构是隐式封装的，这意味着他们不能被派生。
 **结构也可以有实例构造函数和静态构造函数**，但不能有析构函数。
-### 关于静态字段
+### 42.关于静态字段
 **static修饰的静态字段被类的所有实例共享**，所有实例都访问同一内存位置。如果该内存位置的值被一个实例改变了，这种变化对于所有的实例都改变。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3b11cdc14fb746cf868c567e6c5aea7e.png#pic_center)
-### **可以声明为static的类成员类型(重要)**
+### 43.可以声明为static的类成员类型(重要)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/251c410e0d1948fb94d4b159676a789c.png#pic_center)
-### 枚举
+### 44.枚举
 （1）枚举是一个值类型， 包含一组命名的常量，  枚举类型用 enum 关键字定义。如，声明一个简单的枚举类：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d52f6adae3f348b49583aefbca2e058e.png#pic_center)
 （2）默认情况下， enum 的类型是 int。
@@ -538,13 +575,13 @@ Enum.GetNames：该方法返回一个包含所有枚举名的字符串数组，�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/735f55bd872b40acb1a3c982d6572652.png#pic_center)Enum.GetValues：为了获得枚举的所有值， 可以使用 Enum.GetValues 。 Enum.GetValues 返回枚举值的一个数组。 为了获得整数值， 需要把它转换为枚举的底层类型， 为此应使用 foreach语句，如下图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e24172713c8a49e68e737efc4142b84c.png#pic_center)
 （4）Flags特性：没理解（后续学习）
-### 数组
+### 45.数组
 （1）C#不支持动态数组，也就是说，数组一旦被创建，大小就固定了。
 （2）C#中的各种数组：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9366394396ee4806a52a7e5b864fcbcb.png#pic_center)
 （3）数组中一些可用的方法和属性：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/14c68a2fa9184f3891ca2047c35cf8f1.png#pic_center)
-### 委托
+### 46.委托
 [自己以前写过的委托笔记](https://blog.csdn.net/weixin_48239221/article/details/124169936)
 委托就是可以用方法名调用另一方法的便捷方法，可以理解为一个”命令”。
 委托是一种用户自定义的类型，**它也是引用类型**，委托持有一个或者多个方法，以及一些列预定义操作。
@@ -802,16 +839,16 @@ Func具有Func<TResult>、Func<T,Tresult>、Func<T1,T2,T3……,Tresult>17种类
  - Action可以接受0个至16个传入参数，无返回值；
  -  Predicate只能接受一个传入参数，返回值为bool类型；
 
-### 匿名方法
+### 47.匿名方法
 匿名方法是在初始化委托时内联（inline）声明的方法。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e78e1d094cce4ada9aa7c079334d18e2.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8707f11d6b334f09b1b2bb4c9c0d28ac.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bc2e671e34fe4b448be88ebede0bd9e0.png#pic_center)
-### Lambda表达式
+### 48.Lambda表达式
 Lambda表达式的出现很好地替代了匿名语法，它是匿名方法的简写形式,用来代替匿名方法。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7384da9d9767429a8f8123a0995c2f51.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f1f390676a374f238906385ca0c53b7d.png#pic_center)
-### 一些代码编写规范
+### 49.一些代码编写规范
 （1）类名使用 BigCamelCase 大驼峰风格：
 如：BaseClass,DerivedClass,SecondDerivedClass。
 （2）方法名也用BigCamelCase大驼峰风格：
@@ -832,7 +869,7 @@ Lambda表达式的出现很好地替代了匿名语法，它是匿名方法的�
 如：XOrderImpl 实现 IOrder 接口。
 （8）枚举类名带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开：
 如：枚举名字为 ProcessStatusEnum 的成员名称：SUCCESS / UNKNOWN_REASON。
-### 事件
+### 50.事件
 （1）使用 += 运算符注册事件；使用 -= 运算符取消订阅。
 （2）**C# 中使用事件机制实现线程间的通信**。
 （3）事件模型的5个组成部分
@@ -955,7 +992,7 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ca09eafc244545bfa02300ed5fbc766b.png#pic_center)
-### 接口
+### 51. 接口
 （1）**接口的声明不能包含以下成员：
 数据成员、静态成员。
 接口的声明只能包含如下类型的非静态成员函数的声明：
@@ -1049,7 +1086,7 @@ namespace APP
 ```
 (11)接口隔离原则：在实际项目中，可以实现一些小接口，而不是把功能都集中在一个大接口里。
 
-### 转换
+### 52.转换
 转换是接收一个类型的值并使用它作为另一个类型的等价值的过程。
 使用强制转换表达式，意味着可能要承担数据丢失的后果。
 #### （1）装箱和拆箱
@@ -1102,7 +1139,7 @@ as运算符和强制转换运算符类似，只是不抛出异常。如果转换
 **注意：** 目标类型必须是引用类型。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/be41243b67e341e2b2a7799dcee3a084.png#pic_center)
 （6）当长类型的数据转换成短数据时，数据可能会丢失，需要我们进行显示地强制转换。
-### 泛型
+### 53.泛型
 泛型：多种类型可以共享一组代码。泛型允许我们声明类型参数化的代码，可以用不同的类型进行实例化，也就是说，我们可以用“类型占位符”来写代码，然后在创建类的实例时指明真实的类型。
 （1）**C#提供了5中泛型，包括：类、结构、接口、委托和方法。（注意：前四种是方法，而方法则是成员。）**
 （2）泛型类不是实际的类，而是类的模板，也就是说，我们要先从他们构建实际的类类型，然后创建这个构建后的类类型的实例。这个过程如图：
@@ -1406,7 +1443,7 @@ namespace APP
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2bf93eae33d3433a83270c5018db2a7a.png#pic_center)
 
-### c#中的“\r”和“\n”问题
+### 54.c#中的“\r”和“\n”问题
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/54e7df87da7b41b394b0cf0412256e8b.png#pic_center)
 如下面一段代码：
 ```csharp
@@ -1427,14 +1464,14 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d5d9b174a4964e4f96f802000747ebc8.png#pic_center)
-### 本地变量和字段是否会自动初始化？
+### 55.本地变量和字段是否会自动初始化？
 本地变量是不会自动初始化的，而字段是会自动初始化的。
 例如double rad是本地变量，如果没有赋值，就不会自动初始化；
 字段则可以自动初始化。
-### 属性相比公共字段的优点：
+### 56.属性相比公共字段的优点：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5ad0fb22f10c459ca54da3e18712ecb4.png#pic_center)
-### 枚举器和迭代器
-### LINQ
+### 57.枚举器和迭代器
+### 58.LINQ
 （1）LINQ(发音为link)表示语言集成查询；
 （2）LINQ是.net框架的扩展，它允许我们可以使用SQL查询数据库的方式来查询数据集合；
 （3）使用LINQ，可以从XML文档、数据库、程序对象的集合中查找数据；
@@ -1699,7 +1736,7 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/80d15586b0fb4ca2bd827a6a2e14a043.png#pic_center)
-### 异步编程
+### 59.异步编程
 （1）进程是构成运行程序的资源的集合，这些资源包括虚地址空间、文件句柄和许多其他程序运行所需要的的东西。
 （2）线程代表了真正的执行程序，一旦进程建立，系统会在Main方法的第一行语句处就开始线程的执行。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5a39e6fc2b0c4d95b56c08f500cd6fb4.png#pic_center)
@@ -1738,7 +1775,7 @@ namespace ConsoleApp1
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5e3158a89a4f4e89bee19ca1b57d1b44.png#pic_center)
  （5） [异步编程](https://blog.csdn.net/zls365365/article/details/124601385?ops_request_misc=&request_id=&biz_id=102&utm_term=c?ops_request_misc=&request_id=&biz_id=102&utm_term=c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase&spm=1018.2226.3001.4187#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase)
-### 异常
+### 60.异常
 （1）try语句：
 try语句用来指明因避免出现异常而被保护的代码片段，并在发生异常时提供代码处理异常。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b8493429d10f4522ae380453b4e1603f.png#pic_center)
@@ -1775,12 +1812,12 @@ namespace Application
 运行结果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0cec8d9a5d4340138ba7524474b32c28.png#pic_center)
 
-### 预处理指令
+### 61.预处理指令
 （1）预处理指令指示编译器如何处理源代码。
 （2）预处理指令：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3148177a5d47497a8c45cd755ed1c885.png#pic_center)
 （3）#define和#undef只能用在源文件的第一行，也就是任何C#代码之前使用，在C#代码开始后，#define和#undef就不能再使用。
-### 反射和特性
+### 62.反射和特性
 （1）元数据：有关程序及其类型的数据称为元数据，它们保存在程序的程序集中。
 （2）程序在运行时，可以查看其他程序集或其本身的元数据。一个运行的程序可以查看本身的元数据和其他程序的元数据的行为叫做反射。
 （3）反射在System.Reflection命名空间中。
@@ -1842,7 +1879,7 @@ namespace _8_02
 ```
 运行结果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f640cd78372d46258dab3fdc00404190.png#pic_center)
-### 字符串
+### 63.字符串
 （1）字符串string类型的一些成员：![在这里插入图片描述](https://img-blog.csdnimg.cn/7ec2dcf9f0ca4e5092b8769dacd81286.png#pic_center)
 （2）Spilt方法：
 该方法很有用，该方法会将一个字符串分割成若干个子字符串，并将他们以数组的形式返回。将一组按照预定位置分隔字符串的分隔符传给Spilt方法，就可以指定如何处理输出数组中的空元素（当然，原始字符串依然不会改变）。代码举例如下：
@@ -1915,7 +1952,7 @@ namespace APP
 但是，Parse方法有一个缺点，当转换不成功（即不能把string类型转化为其他类型）时会抛出一个异常，而在编程中要尽量避免异常。TryParse方法可以解决这个问题。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/715d715ccbb34b03a72670343a3f4b3f.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/529faf86840346e0aace9455c9f01e3a.png#pic_center)
-### List < T >
+### 64.List < T >
 （1）List < T >是泛型集合，用法如下代码所示：
 
 ```csharp
@@ -2002,10 +2039,10 @@ namespace practice7_25
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a4cefc345dba40e1b900097b8b9cc2ce.png#pic_center)
 
 
-### 方法重载和重写的区别
+### 65.方法重载和重写的区别
 重写：当一个子类继承一父类，而子类中的方法与父类中的方法的名称，参数个数、类型都完全一致时，就称子类中的这个方法重写了父类中的方法。
 重载：一个类中的方法与另一个方法同名，但是参数表不同，这种方法称之为重载方法。
-### 简述c#中类(class)和结构(struct)的异同
+### 66.简述c#中类(class)和结构(struct)的异同
 **异**:(1)类型不同:
 类是引用类型,在堆上分配地址;
 结构是值类型,在栈上分配地址;
@@ -2016,7 +2053,7 @@ namespace practice7_25
 类： 有默认的构造函数和析构函数，可以使用访问修饰符 ，必须使用new 初始化；
  结构： 没有默认的构造函数，但是可以添加构造函数，没有析构函数 ，可以不使用new 初始化。
 **同**:基类型都是对象（object）
-### 简述c#中接口和类的异同
+### 67.简述c#中接口和类的异同
 **不同点**：
 不能直接实例化接口。
 接口不包含方法的实现。
@@ -2026,7 +2063,7 @@ namespace practice7_25
 接口、类都可以从多个接口继承。
 接口类似于抽象基类：继承接口的任何非抽象类型都必须实现接口的所有成员。
 接口和类都可以包含事件、索引器、属性。
-### 一道C#编程测验题
+### 68. 一道C#编程测验题
 
 ```csharp
 using System;
@@ -2082,13 +2119,13 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/226151d9c6ee4ea589893943f7462cbf.png#pic_center)
-### C#中如何判断传入值的数据类型
+### 69.C#中如何判断传入值的数据类型
 （1）GetType方法：获取当前变量的类型对象
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/269e34b39d2d4e5591fd9bfa1eadccc7.png#pic_center)
 （2）typeof运算符，在此笔记第41条已提到。
-### C#中唯一的非派生类是Object类
+### 70.C#中唯一的非派生类是Object类
 因为C#中所有的类都直接或者间接派生自Object类，因此Object类类是C#中唯一的非派生类。
-### C#转义字符的两种处理方式
+### 71.C#转义字符的两种处理方式
 当声明一个字符串变量时有一些字符是不能以平常的方式包含在变量中的。为了解决这个问题，C#提供了两种不同的C#转义字符方法:：
 （1）第一种方法是使用\
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4663f09db2b240ec9b8c3f11eccf242c.png#pic_center)
@@ -2118,7 +2155,7 @@ namespace APP
             Console.WriteLine("str2的值是{0}:", str2);
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0daf384e486f4192a3d2442127884a9d.png#pic_center)
-### 抽象成员，哪些成员可以声明为抽象的，虚成员和抽象成员的区别
+### 72.抽象成员，哪些成员可以声明为抽象的，虚成员和抽象成员的区别
 （1）抽象成员是抽象类中的成员，抽象成员是指设计为被覆写的函数成员，抽象成员具有以下特征：
  - 抽象成员必须是函数成员，字段和常量不能为抽象成员；
  - 抽象成员必须用Abstract标记；
@@ -2129,7 +2166,7 @@ namespace APP
 （2）虚成员和抽象成员的区别：
 抽象方法是只有方法名称，没有方法体（也就是没有方法具体实现），子类必须用override关键字重写父类抽象方法。
 虚函数有方法体，但是子类可以覆盖，也可不覆盖。
-### 构造函数重载、静态构造函数、构造函数分别什么时候执行？
+### 73.构造函数重载、静态构造函数、构造函数分别什么时候执行？
 先看代码展示：
 
 ```csharp
@@ -2199,7 +2236,7 @@ namespace practice7_25
 
  - 对于构造函数重载，先执行基类的构造函数，再执行子类的构造函数;
  - 对于析构函数，先执行子类的析构函数，再执行基类的析构函数。
-### 测验题：委托的创建和初始化
+### 74.测验题：委托的创建和初始化
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6012af70786a47de8115e7706b2e52fb.png#pic_center)
 ```csharp
 public class Program
@@ -2226,7 +2263,7 @@ public class Program
     }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ac80b7a5374f45519ccca9071074d7e7.png#pic_center)
-### 测验题：判断类型是否是隐式转换
+### 75.测验题：判断类型是否是隐式转换
 隐式转换：类型的转换不会丢失数据或精度。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0de14dac536d49b38d746bf317a3448c.png#pic_center)
 ```csharp
@@ -2257,7 +2294,7 @@ public class Program
     }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/54ea40d9a932440e8bf4bac2ac06c13c.png#pic_center)
-### LINQ的部分知识点考察
+### 76.LINQ的部分知识点考察
 
 ```csharp
    public class Program
@@ -2277,7 +2314,7 @@ public class Program
     }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/683888afd2c24cdebe43f8af8da6133d.png#pic_center)
-### 哪些成员可以在接口内声明，列举接口和抽象类的区别？
+### 77.哪些成员可以在接口内声明，列举接口和抽象类的区别？
 （1）可以在接口内声明的成员：方法、属性、事件、索引器。
 （2）接口和抽象类的区别：
  1. 接口中不能声明常量和字段，抽象类中可以声明任何类成员；
@@ -2287,12 +2324,12 @@ public class Program
  5. 继承接口的类或结构必须隐式或显式实现接口中的所有成员，否则需要将实现类定义为抽象类，并将接口中未实现的成员以抽象的方式实现，继承抽象类的类必须重写实现抽象类中的所有抽象方法，或者抽象类继承抽象类，可以重写部分抽象方法；
  6. 接口不能作为派生类继承，抽象类可以继承非抽象类或抽象类；
  7. 接口可以作为基类来多继承：接口、类和结构，抽象类可以作为基类只能实现单继承，只能让非抽象类或者抽象类继承。
-### 什么叫显式转换，什么叫隐式转换？装箱和拆箱又是什么？
+### 78.什么叫显式转换，什么叫隐式转换？装箱和拆箱又是什么？
 （1）显式转换：类型的转换可能会丢失数据或精度，语言不会自动做的转换需要用到显示转换。
 （2）隐式转换：类型的转换不会丢失数据或精度，因此语言会自动给做的转换叫做隐式转换。
 （3）装箱：值类型到引用类型的隐式转换。任何值类型都可以被隐式转换为object类型，System.ValueType或InterfaceT；
 （4）拆箱：把装箱后的对象转换回值类型的过程。拆箱是显式转换。
-### 进程和线程分别是什么？谈谈进程和线程的区别与联系。
+### 79.进程和线程分别是什么？谈谈进程和线程的区别与联系。
 （1）进程：构成运行程序的资源的集合。这些资源包括虚地址空间，文件句柄和许多其他程序运行所需的东西。
 （2）线程：在进程的内部，系统创建了一个称为线程的内核对象，它代表了真正执行的程序。
 （3）进程和线程的区别与联系：
@@ -2300,7 +2337,7 @@ public class Program
 2. 线程可以派生其他线程，因此在任意时刻，一个进程都可能包含不同状态的多个线程来执行程序的不同部分；
 3. 如果一个进程拥有多个线程，他们将共享进程的资源；
 系统为处理器执行所规划的单元是线程，不是进程。
-### 一道c#试题
+### 80.一道c#试题
 ```csharp
 using System;
 namespace  day
@@ -2324,7 +2361,7 @@ namespace  day
 ```
 结果如图：n1的值为1，n2的值为2
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5dc0b3839f8b4fa3b7fd7ee7d72a99eb.png#pic_center)
-### 使用CancellationTokenSource 取消多线程
+### 81.使用CancellationTokenSource 取消多线程
 CancellationTokenSource 用于取消多线程操作。
 使用步骤：
 （1）声明CancellationTokenSource 对象；
@@ -2417,12 +2454,12 @@ namespace practice01
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/45cc100eb22f497d91787324e68c46b4.png#pic_center)
-### C#中的单例模式与IOC
+### 82.C#中的单例模式与IOC
 今天看项目代码，在IOC(控制反转)这部分知识这边卡了壳，问了下同事，终于理解了它的用法。
 &emsp; 首先将一个类声明为单例模式下的类，然后将它放进IOC容器中，这样每次从IOC容器中取出的时候，就不用再重复实例化该类，减少内存的占用。
 &emsp; 因为传统的实例化都是通过用new关键字实例化，当频繁地在不同文件中使用该类的时候，就可能需要不断地通过new来实例化，极大消耗了内存占用；而通过将单例模式下的类注入IOC容器后，每次用该类的时候可以通过IOC.Get方法取出该类（不管从IOC容器中取多少次，只会对该类进行一次实例化，不会重复实例化）。
 
-### C# string.Join的用法
+### 83.C# string.Join的用法
 发现了string类中一个特别好用的方法string.Join，先直接看效果：
 ```csharp
 int[] arrays = { 2, 8, 29, 19, 12, 13, 99, 89, 105, 108, 81 };
@@ -2441,7 +2478,7 @@ public static String Join<T>(String? separator, IEnumerable<T> values)方法
 // 一个包含要串联的对象的集合。
 
 
-### C#中using
+### 84.C#中using
 #### 1.using指令
 用法：using 命名空间
 如：
@@ -2467,7 +2504,7 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
 
 }
 ```
-### object.ReferenceEquals方法
+### 85.object.ReferenceEquals方法
 在.net中，可以用object.ReferenceEquals比较两个对象是否是同一个对象，是同一个对象的话，返回结果为true，反之返回false。
 如：
 ```csharp
@@ -2476,9 +2513,9 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
  bool result= object.ReferenceEquals(t1, t);
  Console.WriteLine(result);
 ```
-### 读取环境变量
+### 86.读取环境变量
 用Environment.GetEnvironmentVariable方法读取环境变量，并返回一个string类型的结果。
-### C#新语法：顶级语句（C#9.0）
+### 87.C#新语法：顶级语句（C#9.0）
 1.使用vs2022新建一个.net core控制台应用，并选择.net6.0时会有一个是否选择使用顶级语句的按钮，如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/569f121d2fac4fea88fd78b4e60a9568.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dd1512ca04024f2dac4721e97ebaa07a.png#pic_center)
@@ -2487,11 +2524,11 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
 2. 同一个项目中只能有一个文件具有顶级语句。
 3. 顶级语句中可以直接使用await语法，也可以声明函数，如：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/34bf1f6208b24a7989a7116e566f1905.png#pic_center)
-### C#新语法：全局Using指令（C#10.0）
+### 88.C#新语法：全局Using指令（C#10.0）
 1.将 global 修饰符添加到 using 前，这个命名空间就应用到整个项目，不用重复using。
 2.通常创建一个专门用来编写全局using代码的C#文件。
 3.如果csproj中启用了<ImplicitUsings>enable</ImplicitUsings>，编译器会自动隐式增加对于System、System.Linq等常用命名空间的引入，不同各类型项目引入的命名空间也不一样。
-### C#新语法:record类型（C#9.0）
+### 89.C#新语法:record类型（C#9.0）
 1.C# 9.0 中引入了 record，record 是一个特殊类，本质上是Class类型。用它来实现 model 在有些情况下会非常的好用。
 先看一段代码：
 ```csharp
@@ -2539,10 +2576,10 @@ Console.WriteLine(p1==p2);
 Console.WriteLine(p1==p3);
 Console.WriteLine(p1.FirstName);
 ```
-### C#新语法:init（C#9.0）
+### 90.C#新语法:init（C#9.0）
 init是C# 9.0中引入的新的访问器。
 如果一个属性用get和init修饰，而不是get和set修饰，那么该属性只能在本类的构造函数中进行赋值，在本类的其他方法和其他类中均无法赋值。
-### Sealed关键字
+### 91.Sealed关键字
 sealed的英文意思就是密封，禁止的意思，故名思义，就是由它修饰的类或方法将不能被继承或是重写。在c#中sealed关键字可以用来修饰类和方法。
 #### 1.sealed关键字修饰类
 当对一个类应用 sealed 修饰符时，此修饰符会阻止其他类从该类继承。
@@ -2585,10 +2622,10 @@ sealed的英文意思就是密封，禁止的意思，故名思义，就是由�
         }
     }
 ```
-### 异步编程中Task.Run 和 Task.Factory.StartNew 区别
+### 92.异步编程中Task.Run 和 Task.Factory.StartNew 区别
 可以认为Task.Run是简化的Task.Factory.StartNew 的使用，除了需要指定一个线程是长时间占用的，否则就使用 Task.Run。Task.Run方法是从线程池中调用一个新的线程，并不是调用Task.Run方法就一定会开辟一个新的线程；而Task.Factory.StartNew方法是开辟一个新的线程。两个方法实际上没有太大的区别，因此推荐使用Task.Run方法。
 总的来讲，在需要设置线程是长时间运行的才需要使用 Task.Factory.StartNew 方法，不然就使用 Task.Run方法。
-### C#中依赖注入的三种方式
+### 93.C#中依赖注入的三种方式
 #### 1.通过接口注入
 **接口注入：**
 相比构造函数注入和属性注入，接口注入显得有些复杂，使用也不常见。具体思路是先定义一个接口，包含一个设置依赖的方法。然后依赖类，继承并实现这个接口。
@@ -2782,7 +2819,7 @@ namespace Example
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e8f2c797902842f0ab8cbd22a9010c14.png#pic_center)
-### C#中yield关键字使用：yield return和yield break的作用
+### 94.C#中yield关键字使用：yield return和yield break的作用
 C#中，yield关键字的作用是将当前集合中的元素立即返回，只要没有yield break,方法还是会继续执行循环到迭代结束。
 1. yield return是一次一个的返回，yield return例子：
 ```csharp
@@ -2836,7 +2873,7 @@ namespace yield关键字
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bb0cb6a4f7e84c718b24156c29c4dbfb.png#pic_center)
 通过此代码可以看出，此代码返回的结果是1和2，不是1、2和3，因为用了yield break，因此enumerableFuc方法中的第四行yield return 3这一行没有被执行。
-### C#中的克隆
+### 95.C#中的克隆
 克隆比较常用，所以.NET在System命名空间中提供了ICloneable接口，其中就是唯一的一个方法Clone()；使用Colne方法可以完成浅拷贝，但有时候我们还需要完成深拷贝以拷贝类中的引用类型的属性。先来看引用拷贝、浅拷贝、深拷贝三者的区别：
 区分 引用拷贝、浅拷贝和深拷贝：
 
@@ -3003,38 +3040,10 @@ namespace PrototypePattern
 姓名:小明,性别:男,年龄:18,爱好:唱歌跳舞做饭爬山
 ```
 **在C#中，string类型和数组类型也属于引用类型，而string类型比较特殊（具体可查资料），因此只需要手动克隆List类型的Hobbies属性即可实现深克隆。**
-### 关于C#中序列化的一些小问题
-关于序列化的详细知识可参考此篇文章[C# Xml进行序列化与反序列化](https://blog.csdn.net/hjssss/article/details/88718634)
-1. 如果在一个类前加上[Serializable]标签，说明该类可以被序列化，比如：
-```csharp
-[Serializable]      // 表示该类可以被序列化
-public class Person
-{
-.......
-}
-```
-2. 如果在一个属性前加上 [XmlIgnore]这么一个标签，表示在使用Xml读写文件时，该属性将不会被序列化，比如：
-```csharp
-    [Serializable]      // 表示该类可以被序列化
-    public class Person
-    {
-        private string _name;
-        [XmlIgnore]
-        public string Name//该Comment属性不会被序列化，因为在该属性前面加了[XmlIgnore]标签
-        {
-            get { return _name; }
-            set { _name = value; }
-        }
 
-        private string _age;
-        public string Age//该Age属性会被序列化
-        {
-            get { return _age; }
-            set { _age = value; }
-        }
-    }
-```
-### Lazy（延迟初始化）的用法
+
+
+### 96.Lazy（延迟初始化）的用法
 #### 1.Lazy简介
 通过Lazy关键字，我们可以声明某个对象为仅仅当第一次使用的时候，再初始化，如果一直没有调用，那就不初始化，省去了一部分不必要的开销，提升了效率，同时Lazy是天生线程安全的。
 #### 2.应用场景
@@ -3138,9 +3147,10 @@ Data::.ctor->Initialized,name = Test
 Data::Print->name = Test
 Main->lazyData被初始化了吗? value = True
 ```
-### 字典：Dictionary
-#### 1.何时使用Dictionary
-当要存储的东西很多、列表很长时，可以使用Dictionary字典。
+### 97.字典：Dictionary
+#### 1.何时使用Dictionary而不是List
+* 通常情况下，我们可以用int类型的索引来从数组或集合中来查询所需要的数据，但是当索引不是int（如string和double），这时就需要使用Dictionary字典。
+* 当要存储的东西很多、列表很长时，可以使用Dictionary字典,字典的查询效率很高（List集合是循环遍历的查找方式，而字典是哈希查找）。
 #### 2.关于使用Dictionary时的注意事项
 * 字典Dictionary在名称空间System.Collections.Generic下；
 * 字典是一组键（Key）到一组值（Value）的映射；
@@ -3155,48 +3165,56 @@ namespace prop
     public class Practice
     {
         //创建一个字典
-        private Dictionary<string,string> MyDict=new Dictionary<string,string>();
+        public Dictionary<string, string> MyDict = new Dictionary<string, string>();
         public Practice()
         {
             //向字典中添加元素
             MyDict.Add("小明", "听音乐");
             MyDict.Add("小红", "跳舞");
+         
+        }
+    }
 
-
+    public class Program
+    {
+        public static void Main()
+        {
+            Practice practice=new Practice();
             //检索键:方式1
-            Console.WriteLine( MyDict["小明"]);
-            Console.WriteLine(MyDict["小红"]);
+            Console.WriteLine(practice.MyDict["小明"]);
+            Console.WriteLine(practice.MyDict["小红"]);
             //检索键:方式2
-            foreach (var k in MyDict.Keys)
+            foreach (var k in practice.MyDict.Keys)
             {
                 Console.WriteLine(k);
             }
 
             //检索值
-            foreach (var v in MyDict.Values)
+            foreach (var v in practice.MyDict.Values)
             {
                 Console.WriteLine(v);
             }
 
             //字典中的元素个数
-            Console.WriteLine(MyDict.Count);
+            Console.WriteLine(practice.MyDict.Count);
 
             //删除元素
-            MyDict.Remove("小明");
+            Console.WriteLine(practice.MyDict.Remove("小明"));
 
             //判断字典中是否有这个键，返回布尔值
-            bool keyResult = MyDict.ContainsKey("小明");
+            Console.WriteLine(practice.MyDict.ContainsKey("小明")); 
 
             //判断字典中是否有这个值，返回布尔值
-            bool valueResult = MyDict.ContainsValue("小明");
+            Console.WriteLine(practice.MyDict.ContainsValue("小明"));
 
             //当在字典中不能确定是否存在该键时需要使用TryGetValue，以减少一次不必要的查找，同时避免了判断Key值是否存在而引发的“给定关键字不在字典中。”的错误。（TryGetValue是根据ID返回相应的数据，如果没有ID则返回默认值）
-             MyDict.TryGetValue("小明", out string tryResult);
+            practice.MyDict.TryGetValue("小红", out string tryResult);
+            Console.WriteLine(tryResult);
         }
     }
 }
 ```
-### 字典：ConcurrentDictionary的使用
+### 98.字典：ConcurrentDictionary的使用
 ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/值对的线程安全集合。
 也就是说，ConcurrentDictionary可由多个线程同时访问，并且线程安全。
 
@@ -3204,9 +3222,9 @@ ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/
 
 ConcurrentDictionary的用法和Dictionary类似。
 
-### TaskCompletionSource的使用
+### 99.TaskCompletionSource的使用
 MSDN链接：[添加链接描述](https://learn.microsoft.com/zh-cn/dotnet/standard/asynchronous-programming-patterns/)
-#### 使用场景
+
 TaskCompletionSource生成Task方法，使用TaskCompletionSource很简单，只需要实例化它即可。TaskCompletionSource有一个Task属性，可以对该属性暴露的task做操作，比如让它wait或者ContinueWith等操作。当然，这个task由TaskCompletionSource完全控制。
 
 大多数时候，只在目标方法要调用基于事件API，又要返回Task的时候使用。比如下面的ApiWrapper方法，该方法要返回Task<string>,又要调用EventClass对象的Do方法，并且等到Do方法触发Done事件后，Task才能得到结果并返回。
@@ -3244,11 +3262,959 @@ class CD_Ctor
 
 ```
 
-### 待学习：
-* IList接口，IEnumerable接口，ICollection接口
-* C#协程 yield return null
-* 反射、特性
-* 状态机
-* CancellationTokenSource、CancellationToken
-* (额外小知识) Git的基本概念，如：签入、签出、分支、拉取、推送等概念
-* 一些常用的继承自Exception的子异常，在写代码时尽量抛出这些子异常，而不是Exception这样的所有异常的全称。
+再看一个例子：
+
+```csharp
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+
+namespace prop
+{
+   public class Program
+    {
+
+        //选择车票
+        public static async Task<bool> ChoiceTicket(TaskCompletionSource<bool> tcs)
+        {
+            Console.WriteLine("选购火车票");
+            Console.WriteLine("跳转到到支付页面");
+
+            await tcs.Task;//到这里会等待直到其他地方设置了Task的状态
+            Console.WriteLine("订票完成");
+            return true;
+        }
+
+        //选择支付页面
+        public static async Task PayForMoney(TaskCompletionSource<bool> tcs)
+        {
+
+            await Task.Delay(3000).ContinueWith((t) => Console.WriteLine("选购支付宝支付"));
+
+            tcs.SetResult(false);
+            Console.WriteLine("支付完成");
+            Console.WriteLine("跳到火车票软件完成");
+        }
+        public static void Main()
+        {
+            TaskCompletionSource<bool> tcs = new();
+            Task.Run(async () => await ChoiceTicket(tcs));
+            Task.Run(async () => await PayForMoney(tcs));
+
+            Console.Read();
+        }
+    }
+}
+```
+输出结果：
+
+```bash
+选购火车票
+跳转到到支付页面
+选购支付宝支付
+订票完成
+支付完成
+跳到火车票软件完成
+```
+
+### 100. IEnumerable接口与yield return
+**在实际编程中，IEnumerable接口常常和yield关键字配合使用。**
+比如像下面这样的方法，通过yield return每次返回一个数据，即产生了一个数据就返回一个：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/4170bd8c56f64dd99a2bae249d57cf26.png)
+又或者像下面这样的用法：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/52b5a4fab2da4fcf98e92758d163adda.png)
+
+在一些返回集合数据的接口中，我们经常能看到IEnumerable接口的身影，那什么是Enumerable呢？首先它跟C#中的enum关键字所表达的意思是不同的， 从翻译上来看：可枚举的，展开来说就是它的数据是一枚一枚可以让我们列举出来。就像人们排队去打疫苗，排队的人就是可枚举的，他们有的开车，有走着，有早有晚全都按照先来后到的顺序排好队，当医生开始进行打疫苗的工作时，他并不关心有多少人在排队，也不关心是否有人迟到，当然也不能越过第一个人让其后边的人先进来打，他只能说“请下一个人进来打疫苗”，如果没人响应医生就等着，直到有人进来开始接种，当前这个人完成接种后，医生继续叫下一个人，直到所有人都打完疫苗。这样的情景在编程中就体现为对Enumerable数据的操作。
+
+下面看看IEnumerable接口中都有什么东西：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d2a57f601f1245b6a4ef60a1b75ec09e.png)
+IEnumerable< T >泛型接口中：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1fc36f4a32154be2858228a90ac83983.png)
+这两个接口中都有一个IEnumerator的接口，我们称之为枚举器，
+![在这里插入图片描述](https://img-blog.csdnimg.cn/0de171dd8bdc44a4899f83903afacd0e.png)
+IEnumerator接口有三个成员，Current就是保存的当前数据对象，MoveNext方法则是将指针指向下个对象(类似打疫苗情景中的"下一位")，Reset则是将指针复位，泛型版接口则对其内部名为Current的成员指定了类型。也就是说通过枚举我们可以获取一个枚举器，通过枚举器我们能找到一个个数据对象，明白了这一点，我们就能大体上了解如何通过IEnumerable来获取数据了。
+
+如下代码中有一个返回IEnumerable< string >的方法，用来模拟数据的产生，其中用到了一个yield关键字，**yield return就是部分返回（产生了一个数据，就返回一个）**，这个方法最终的运行效果就是一秒钟返回一个当前时间构成一个IEnumerable<string>集合,代码如下：
+
+```csharp
+using System;
+using System.Collections;
+using System.Diagnostics;
+using System.Security.Cryptography;
+
+namespace App
+{
+    class CD_Ctor
+    {
+        public static void Main()
+        {
+            IEnumerable<string> enumerable = DataTimeEnum();
+            foreach (var item in enumerable)
+            {
+                Console.WriteLine(item);
+            }
+        }
+        
+        public static IEnumerable<string> DataTimeEnum()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                string result = DateTime.Now.ToString("F");
+                Thread.Sleep(1000);
+                yield return result;
+            }
+        }
+    }
+}
+```
+最终输出结果：
+```csharp
+2022年10月18日 20:47:19
+2022年10月18日 20:47:20
+2022年10月18日 20:47:21
+2022年10月18日 20:47:22
+2022年10月18日 20:47:23
+2022年10月18日 20:47:24
+2022年10月18日 20:47:25
+2022年10月18日 20:47:26
+2022年10月18日 20:47:27
+2022年10月18日 20:47:28
+```
+
+### 101.反射和特性
+#### 1.反射
+反射就是我们在只知道一个对象的外部而不了解内部结构的情况下，可以知道这个对象的内部实现。
+
+可以通过Type类获取程序集、模块、类的相关信息，可以看到Type类继承自IReflect接口，如下：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/3a5885e488814693b3ad730c74db3f76.png)
+![在这里插入图片描述](https://img-blog.csdnimg.cn/77cdaf584b9848c8ad35b02c061e5338.png)
+代码演示：
+
+```csharp
+using System;
+
+namespace 测试
+{
+    class MainClass
+    {
+        public static void Main(string[] args)
+        {
+            //1.通过对象获取到这个对象所属类的Type对象
+            //TestClass c = new TestClass();
+            //Type t = c.GetType();
+
+            //2.通过Type类中的静态方法GetType获取到类的Type对象
+            //Type t = Type.GetType("TestClass");
+
+            //3.通过typeof关键字获取到类的Type对象
+            Type t = typeof(TestClass);
+
+            Console.WriteLine("----------获取类名(不带命名空间)");
+            Console.WriteLine(t.Name);
+
+            Console.WriteLine("----------获取类名(带命名空间)");
+            Console.WriteLine(t.FullName);
+
+            Console.WriteLine("----------获取程序集");
+            Console.WriteLine(t.Assembly);
+
+            Console.WriteLine("----------获取基类类型");
+            Console.WriteLine(t.BaseType);
+
+            Console.WriteLine("----------获取类中字段");
+            var fields = t.GetFields();
+            foreach (var temp in fields)
+            {
+                Console.WriteLine(temp.Name);
+            }
+
+            Console.WriteLine("----------获取类中属性");
+            var properties = t.GetProperties();
+            foreach (var temp in properties)
+            {
+                Console.WriteLine(temp.Name);
+            }
+
+            Console.WriteLine("----------获取类中方法");
+            var methods = t.GetMethods();
+            foreach (var temp in methods)
+            {
+                Console.WriteLine(temp.Name);
+            }
+
+            Console.WriteLine("----------获取类中成员");
+            var members = t.GetMembers();
+            foreach (var temp in members)
+            {
+                Console.WriteLine(temp.Name);
+            }
+
+            Console.WriteLine("----------获取类中嵌套类");
+            var nesteds = t.GetNestedTypes();
+            foreach (var temp in nesteds)
+            {
+                Console.WriteLine(temp.Name);
+            }
+
+            Console.WriteLine("----------获取类中构造函数");
+            var constructors = t.GetConstructors();
+            foreach (var temp in constructors)
+            {
+                Console.WriteLine(temp.Name);
+            }
+        }
+    }
+
+    public class TestClass
+    {
+        public string _str;
+        public int num { get; set; }
+        public string Fun()
+        {
+            return "你好";
+        }
+        public TestClass()
+        {
+
+        }
+        public class TestNestedClass
+        {
+
+        }
+    }
+}
+
+```
+输出结果：
+
+```csharp
+----------获取类中属性
+num
+----------获取类中方法
+get_num
+set_num
+Fun
+GetType
+ToString
+Equals
+GetHashCode
+----------获取类中成员
+get_num
+set_num
+Fun
+GetType
+ToString
+Equals
+GetHashCode
+.ctor
+num
+_str
+TestNestedClass
+----------获取类中嵌套类
+TestNestedClass
+----------获取类中构造函数
+.ctor
+```
+
+> **得到一个Type类型对象有三种方法：object.GetType()、Type.GetType()、typeof()
+使用object.GetType()必须先创建一个实例，而后两种不需要创建实例，但使用typeof运算符仍然需要知道类型的编译时信息，Type.GetType()静态方法不需要知道类型的编译时信息，所以是首选方法。**
+
+#### 2.特性
+特性，是用来给代码添加额外信息的一种手段，我们通常是将特性标记到方法，类或者属性上，在使用的这些结构的时候，通过反射(reflection)这一非常高级的技术，获取它们通过特性标记的信息，从而进行某些特殊的处理。
+系统也给我们提供了一些特性，比如Serializable 标记一个可序列化的类，DebuggerStepThrough设置方法在调试时为跳过的状态。
+
+特性的使用很简单，在结构声明的上一行，用"[]"扩起特性类名即可：
+
+```csharp
+ [Serializable]
+ class Sunshine{...}
+```
+#### 3.反射和特性配合使用
+
+```csharp
+using System;
+
+namespace 测试
+{
+    [AlarmID((long)AlarmIDs.UVOpenFailure, (long)AlarmIDs.UVCloseFailure, (long)AlarmIDs.UVProcedureAlarm)]
+    class CalculationFailureAlarm: IAlarmProcedure
+    {
+
+    }
+}
+
+```
+
+```csharp
+/// <summary>
+        /// 下面这段代码复刻了一个流程：在类的前面加上[AlarmID((long)AlarmIDs.UVOpenFailure, (long)AlarmIDs.UVCloseFailure, (long)AlarmIDs.UVProcedureAlarm)]这些特性，注入这些特性，C#就自动为我们复刻了以下流程
+        /// </summary>
+        Dictionary<long, Type> AlarmID2Type = new Dictionary<long, Type>(); //实例化一个字典
+        public void xyz()
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();//获取整个应用程序所有的类型
+            foreach (var type in assembly.GetTypes()) //遍历所有的类型
+            {
+                if (type.IsAssignableFrom(typeof(IAlarmProcedure)) //如果有的类型继承自接口IAlarmProcedure且自定义了一些AlarmIDAttribute属性并转化为AlarmIDAttribute类型的alarmID集合
+                    && type.GetCustomAttribute(typeof(AlarmIDAttribute)) is AlarmIDAttribute alarmID)
+                {
+                    foreach (var id in alarmID.AlarmID)
+                        
+                    {
+                        AlarmID2Type[id] = type;//将这些数据存到字典中
+                    }
+                }
+            }
+        }
+        public void HandleID(long alarmID)
+        {
+            (Activator.CreateInstance(AlarmID2Type[alarmID]) as IAlarmProcedure).HandleAsync(null, null); //根据传入的alarmID创造实例并调用相应的HandleAsync方法
+        }
+```
+### 102.属性和字段的区别？为什么要用属性？
+ `时间：2022.11-2 22:47 `
+ 转眼间，距离7月份参加工作已经有4个月了，今天师傅问我C#中属性和字段的区别，我支支吾吾答了一小部分，等于没说（实感自己在编程学习方面的不足），师傅便给我语重心长地讲解了二者的区别，因此晚上回到酒店后做了如下整理：
+
+
+ 1. 字段只管存值，不管对数据的操作，字段一定是占用内存的。
+ 属性可以占用内存，也可以不占用，当属性中封装了字段时，那么属性会占用内存，当不封装字段而是做了其他操作时，是可以不占用内存的。
+
+ 2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
+ 字段一般都声明为private私有的，而属性一般都声明为public公有的。
+ 
+ 3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
+ 
+ 感觉师傅给我讲的关于属性和字段的区别以及属性的优点，我还是没有理解核心区别，今天先写总结到这里，日后再有更深层次的理解了，继续完善。
+
+### 103.事件Event的使用、与委托的区别
+ ` 时间：2022.11-2 23:15`
+ 今天师傅给我讲了些项目代码中事件和委托的使用以及区别，并让我学会多使用evnet事件（可以少用action委托，多用事件），晚上回去作了些总结，记录如下：
+ 先分析委托因为封装不充分而产生的缺点：
+
+ 1. 错误使用赋值操作符导致原本的委托链被覆盖：
+ 如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
+ 
+ 2. 在类的外部也可以调用委托：
+ 尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
+ 总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
+ 事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
+```csharp
+public delegate void action(string str);
+        public event action EventTs
+        {
+            add
+            {
+                ···  //执行+=运算符
+            }
+            remove
+            {
+                ···  //执行-=运算符
+            }
+        }
+```
+
+### 104.关于C#中序列化的一些小问题
+关于序列化的详细知识可参考此篇文章[C# Xml进行序列化与反序列化](https://blog.csdn.net/hjssss/article/details/88718634)
+
+1. 序列号的概念
+序列化就是把一个对象保存到一个文件或数据库字段中去，反序列化就是在适当的时候把这个文件在转化成原来的对象使用。对象的序列化不是类的序列化。对象的序列化表明C#提供了将运行的对象（实时数据）写入硬盘文件或数据库中，此功能可以运用在需要保留程序运行时状态信息的环境下。
+2. 使用序列化的两个重要的原因
+第一个原因：是将对象的状态永久保存在存储媒体中，以便可以在以后重新创建精确的副本；
+第二个原因：是通过值将对象从一个应用程序域发送到另一个应用程序域中。
+前提是要将对象的声明为可以序列化。
+3. 最主要的作用有
+第一个作用：在进程下一次启动的时侯读取上一次保存的对象的信息。
+第二个作用：在不同的AppDomain或进程之间传递数据。
+第三个作用：在分布式应用系统中传递数据。
+序列化是把一个内存中的对象的信息转化成一个可以持久化保存的形式，以便于保存或传输，序列化的主要作用是不同平台之间进行通信，常用的序列化有json、xml、文件等。
+
+4. 代码举例：
+
+```csharp
+using Microsoft.VisualBasic;
+using System.ComponentModel;
+using System.Net;
+using System.Reflection;
+using System.Xml.Serialization;
+using System.Xml;
+
+namespace _11_3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            #region 序列化
+            Student student = new Student
+            {
+                Name = "Tom",
+                Age = 20,
+                Sex = 1
+            };
+            XmlSerializer xmlSerializer = new XmlSerializer(typeof(Student));
+            using (FileStream stream = new FileStream(@"d:\123.xml", FileMode.OpenOrCreate))
+            {
+                xmlSerializer.Serialize(stream, student);
+            }
+            #endregion
+
+            #region 反序列化
+            using (FileStream stream = new FileStream(@"d:\123.xml", FileMode.OpenOrCreate))//FileMode.OpenOrCreate方式，表示如果文件存在就打开，不存在就创建该文件
+            {
+                XmlReader xmlReader = new XmlTextReader(stream);
+                student = xmlSerializer.Deserialize(xmlReader) as Student;
+            }
+            Console.WriteLine("Name: " + student.Name);
+            Console.WriteLine("Sex: " + student.Sex);
+            Console.WriteLine("Age: " + student.Age);
+            #endregion
+
+            Console.WriteLine("操作完成");
+            Console.ReadLine();
+        }
+    }
+
+    [Serializable]      // 在类前加上[Serializable] 特性表示该类可以被序列化
+
+    [XmlRoot("AAABBBCCC")]    // 设置为XML中的根元素名称
+    public class Student
+    {
+        [XmlIgnore] //在属性前加上一个[XmlIngore]特性表示该属性不会被序列化
+        public string Name { get; set; }
+        public int Age { get; set; }
+        public int Sex { get; set; }
+    }
+}
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f11abf1f5fe04731a8e1e08e2c6fe551.png)
+输出结果：
+```csharp
+Name:
+Sex: 1
+Age: 20
+操作完成
+```
+
+### 105.C#中的文件操作
+1. 通过FileInfo和DirectoryInfo类来读取文件和文件夹属性
+	包括：查看文件属性，创建文件，移动文件，重命名文件，判断路径是否存在，创建目录。
+2. 通过File来读写文件。
+3. 使用流来读写文件
+	FileStream,StreamReader(读取流，读取数据)，StreamWriter（写入流，向别人传输）。
+
+相对路径：找当前程序所在的路径。
+绝对路径：加上文件完整的路径名字。
+#### 1.使用FileInfo查看文件属性
+```bash
+小知识：
+		//1 byte=1字节  1024byte=1KB  1024Kb=1MB  1024MB=1GB  1024GB=1T
+        因为C#提供的文件的大小是以B为单位的，所以显示文件大小的时候会出现一大串数字很不方便。所以，FileInfo类中的Length属性为了方便地显示文件大小而出现
+   		函数说明，
+          	如果文件大小是0-1024B 以内的   显示以B为单位
+          	如果文件大小是1KB-1024KB之间的 显示以KB为单位
+          	如果文件大小是1M-1024M之间的   显示以M为单位
+          	如果文件大小是1024M以上的      显示以GB为单位
+```
+
+代码示例：
+
+```csharp
+using System.Text.RegularExpressions;
+
+namespace _002正则表达式
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            //相对路径：找当前程序所在路径
+            FileInfo fileInfo = new FileInfo("TextFile1.txt");
+            Console.WriteLine(fileInfo.Exists);//判断文件是否存在
+            Console.WriteLine(fileInfo.DirectoryName);//获得文件所在路径
+            Console.WriteLine(fileInfo.Name);//获取文件名+后缀
+            Console.WriteLine(fileInfo.Length);//获取文件大小
+            Console.WriteLine(fileInfo.IsReadOnly);//获取文件是否只读
+            fileInfo.CopyTo("Test.txt");//将该文件的内容复制到另外一个新的文件
+            fileInfo.Delete();//删除的是输出路径的文件，工程下的文件还是存在的
+
+            FileInfo fileInfo1 = new FileInfo("Test02.txt");
+            if (fileInfo1.Exists == false)//如果不存在
+            {
+                fileInfo1.Create();//创建当前文件
+            }
+
+            fileInfo1.MoveTo("Test02.txt");//重命名操作
+            
+            Console.ReadKey();
+        }
+    }
+}
+```
+#### 2.使用DirectoryInfo查看文件夹属性
+代码示例：
+
+```csharp
+using System.Text.RegularExpressions;
+
+namespace _002正则表达式
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            DirectoryInfo directoryInfo01 = new DirectoryInfo(@"C:\Users\hezexi\Desktop\C#高级教程\002正则表达式\bin\Debug\net6.0");
+            Console.WriteLine(directoryInfo01.Exists);//目录是否存在
+            Console.WriteLine(directoryInfo01.Name);//目录的名称
+            Console.WriteLine(directoryInfo01.Parent);//目录的上一级目录
+            Console.WriteLine(directoryInfo01.Root);//目录的根目录
+            Console.WriteLine(directoryInfo01.CreationTime);//目录的创建时间
+
+            directoryInfo01.CreateSubdirectory("小何");//在该目录下创建一个子目录，名为小何
+
+            DirectoryInfo directoryInfo02 = new DirectoryInfo("Test-01");
+            if (directoryInfo02.Exists == false)
+            {
+                directoryInfo02.Create();//创建目录
+            }
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+#### 3.使用File来读写文件
+代码示例：
+
+```csharp
+using System.Text.RegularExpressions;
+
+namespace _002正则表达式
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+
+            var strs01= File.ReadAllLines("TextFile1.txt");//读取文件，把每一行文本读取成一个字符串，最后组成一个字符串数组
+            foreach (var item in strs01)
+            {
+                Console.WriteLine(item);
+            }
+
+            var strs02= File.ReadAllText("TextFile1.txt");//读取所有的内容并组成一个字符串
+            Console.WriteLine(strs02);
+
+            File.WriteAllText("TestFile02.txt", "再别康桥");//将字符串内容写入指定的文件，若文件存在就重写；若不存在就创建
+            File.WriteAllLines("TestFile03.txt", new string[] { "断桥残雪", "有何不何", "星座书上" });//将字符串数组写入指定的文件，若文件存在就重写；若不存在就创建
+            var byteDatas = File.ReadAllBytes("head.jpg");//读取字节数据
+            File.WriteAllBytes("head02.png", byteDatas);//往指定路径的文件中写入字节数据
+
+            Console.ReadKey();
+        }
+    }
+}
+```
+#### 4.使用FileStream来读写文件
+FileStream(文件流) 这个类主要用于二进制文件中读写，也可以使用它读写任何文件（包括一些图像、音频文件）。
+
+文件流FileStream 位于命名空间System.IO下，主要用来操作文件流，与File类的读取写入相比File类读取文件时是一次性读取，在操作大型文件时容易导致内存飙升，FileStream类则可以对一个文件分多次进行读取，每次只读取一部分，节省内存空间。FileStream就像把水缸里的水一瓢一瓢的取出来，而不像File类一次性倒出来，因此FileStream对电脑的内存占用资源占用方面相对较小，使用范围更广。
+
+#### 5.使用StreamReader和StreamWriter读写文本文件
+StreamReader(流读取器)和StreamWriter(流写入器)专门用于读写文本文件。
+
+示例一：
+
+```csharp
+using System.Text.RegularExpressions;
+
+namespace _002正则表达式
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            using (FileStream fileStream = new FileStream("TextFile2.txt", FileMode.Open))
+            {
+                using (StreamReader sr = new StreamReader(fileStream))
+                {
+                    string str = "";
+                    while ( (str= sr.ReadLine())!= null)
+                    {
+                        Console.WriteLine(str);
+                    }
+                }
+            }
+                Console.ReadKey();
+        }
+    }
+}
+```
+
+示例二：
+
+```csharp
+using System.Text.RegularExpressions;
+
+namespace _002正则表达式
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            using (FileStream fileStream = new FileStream("TextFile2.txt", FileMode.Append))
+            {
+                using (StreamWriter sr = new StreamWriter(fileStream))
+                {
+                    sr.WriteLine("有何不可");
+                    sr.WriteLine("素颜");
+                }
+            }
+            
+                Console.ReadKey();
+        }
+    }
+}
+```
+### 106.XML
+XML指可扩展标记语言，XML被设计用来传输和存储数据。XML被设计用来结构化、存储以及传输信息。
+
+1.[C# 序列类为 xml 可以使用的特性大全](https://blog.lindexi.com/post/C-%E5%BA%8F%E5%88%97%E7%B1%BB%E4%B8%BA-xml-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E7%89%B9%E6%80%A7%E5%A4%A7%E5%85%A8.html)
+2.[dotnet C# 序列化 XML 时进行自动格式化](https://blog.lindexi.com/post/dotnet-C-%E5%BA%8F%E5%88%97%E5%8C%96-XML-%E6%97%B6%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96.html)
+
+### 107.Json介绍
+1.[C# json 转 xml 字符串](https://blog.lindexi.com/post/C-json-%E8%BD%AC-xml-%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
+2.[dotnet C# 如何让 Json 序列化数组时序列化继承类的属性](https://blog.lindexi.com/post/dotnet-C-%E5%A6%82%E4%BD%95%E8%AE%A9-Json-%E5%BA%8F%E5%88%97%E5%8C%96%E6%95%B0%E7%BB%84%E6%97%B6%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%A7%E6%89%BF%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7.html)
+3.[dotnet 手动解决 json 解析中不合法字符串](https://blog.lindexi.com/post/dotnet-%E6%89%8B%E5%8A%A8%E8%A7%A3%E5%86%B3-json-%E8%A7%A3%E6%9E%90%E4%B8%AD%E4%B8%8D%E5%90%88%E6%B3%95%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
+4.[dotnet 使用 Newtonsoft.Json 输出枚举首字符小写](https://blog.lindexi.com/post/dotnet-%E4%BD%BF%E7%94%A8-Newtonsoft.Json-%E8%BE%93%E5%87%BA%E6%9E%9A%E4%B8%BE%E9%A6%96%E5%AD%97%E7%AC%A6%E5%B0%8F%E5%86%99.html)
+
+### 108.StopWatch计时器
+StopWatch类用于精确测量时间
+简单使用如下：
+
+```csharp
+using System.Diagnostics;
+
+namespace StopWatch练习
+{
+    public class Program
+    {       
+        static void Main(string[] args)
+        {
+            Stopwatch stopwatch = new Stopwatch();
+
+            ///第一次计时
+            stopwatch.Start();//启动StopWatch
+            Console.WriteLine("计时器的运行状态："+stopwatch.IsRunning);//查看StopWtch的运行状态
+            Thread.Sleep(5555);
+            stopwatch.Stop();//停止StopWtch
+            Console.WriteLine("使用时分秒来输出时间格式："+stopwatch.Elapsed);//使用时分秒来输出
+            Console.WriteLine("使用毫秒来输出："+stopwatch.ElapsedMilliseconds);// 使用毫秒来输出
+            Console.WriteLine("计时器的运行状态：" + stopwatch.IsRunning);
+
+            ///第二次计时
+            stopwatch.Start();
+            Thread.Sleep(1000);
+            stopwatch.Stop();
+            Console.WriteLine("使用毫秒来输出："+stopwatch.ElapsedMilliseconds);
+
+            ///第三次计时
+            stopwatch.Restart();//清空前面的时间并重新启动计时
+            stopwatch.Start();
+            Thread.Sleep(3000);
+            stopwatch.Stop();
+            Console.WriteLine("使用毫秒来输出：" +stopwatch.ElapsedMilliseconds);
+            Console.ReadKey();
+        }
+    }
+}
+```
+输出结果：
+
+```bash
+计时器的运行状态：True
+使用时分秒来输出时间格式：00:00:05.5710477
+使用毫秒来输出：5571
+计时器的运行状态：False
+使用毫秒来输出：6585
+使用毫秒来输出：3014
+```
+### 109.Thread.Abort()和Thread.ResetAbort()
+先看一个问题，如下，要在Main方法中如何操作才能执行Foo方法finally中的语句？
+
+```csharp
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+
+namespace prop
+{
+   public class Program
+    {
+        static async void Main(string[] args)
+        {
+            // 请在此处写代码，调用 Foo 函数内的输出代码
+        }
+        private static void Foo()
+        {
+            try
+            {
+                while (true)
+                {
+                    
+                }
+            }
+            finally
+            {
+                Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
+            }
+        }
+    }
+}
+```
+答案之一：使用一个线程调用的方式，调用之后结束线程，此时就会输出
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    using System.Collections.Concurrent;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+
+    namespace prop
+    {
+        public class Program
+        {
+            static void Main(string[] args)
+            {
+                // 请在此处写代码，调用 Foo 函数内的输出代码
+                var thread = new Thread(() =>
+                {
+                    Foo();
+                });
+                thread.Start();
+                Task.Delay(1000).Wait();
+                thread.Abort();//注意，在 dotnet core 不支持 Abort 方法
+                Console.ReadLine();
+            }
+            private static void Foo()
+            {
+                try
+                {
+                    while (true)
+                    {
+
+                    }
+                }
+                finally
+                {
+                    Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
+                }
+            }
+        }
+    }
+}
+
+```
+引深一些：
+Thread类中的Abort方法用于终止正在运行的线程。它可以强制终止线程，而不管线程是否是Sleep中。在执行了Abort方法后，被终止的线程就会继续运行try catch finally 块中代码，因为是强行终止，catch块中之后的语句就不再会执行。除非在catch块中执行Thread.ResetAbort这个静态方法。
+先举例没有ResetAbort()的情况：
+
+```csharp
+using System;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        Thread newThread = new Thread(new ThreadStart(TestMethod));
+        newThread.Start();
+        Thread.Sleep(1000);
+
+        Console.WriteLine("Main aborting new thread.");
+        newThread.Abort("Information from Main.");//强制中止newThread线程
+
+        newThread.Join();//等待newThread线程执行完
+        Console.WriteLine("New thread terminated - Main exiting.");
+        Console.ReadKey();
+    }
+
+    static void TestMethod()
+    {
+        try
+        {
+            while (true)
+            {
+                Console.WriteLine("New thread running.");
+                Thread.Sleep(1000);
+            }
+        }
+        catch (ThreadAbortException abortException)
+        {
+            Console.WriteLine((string)abortException.ExceptionState);
+        }
+        finally
+        {
+            Console.WriteLine("Do somthing else in funally{}.");
+        }
+        Console.WriteLine("Do somthing else here.");
+    }
+}
+```
+输出结果：
+
+```bash
+New thread running.
+Main aborting new thread.
+Information from Main.
+Do somthing else in funally{}.
+New thread terminated - Main exiting.
+```
+看输出结果，可以看到线程被Abort之后，执行catch和finally块中的内容，但是不会执行finally块之后的内容。
+再看增加ResetAbort()的代码：
+
+```csharp
+using System;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        Thread newThread = new Thread(new ThreadStart(TestMethod));
+        newThread.Start();
+        Thread.Sleep(1000);
+
+        Console.WriteLine("Main aborting new thread.");
+        newThread.Abort("Information from Main.");//强制中止newThread线程
+
+        newThread.Join();//等待newThread线程执行完
+        Console.WriteLine("New thread terminated - Main exiting.");
+        Console.ReadKey();
+    }
+
+    static void TestMethod()
+    {
+        try
+        {
+            while (true)
+            {
+                Console.WriteLine("New thread running.");
+                Thread.Sleep(1000);
+                
+            }
+        }
+        catch (ThreadAbortException abortException)
+        {
+            Console.WriteLine((string)abortException.ExceptionState);
+            Thread.ResetAbort();
+        }
+        finally
+        {
+            Console.WriteLine("Do somthing else in funally{}.");
+        }
+        Console.WriteLine("Do somthing else here.");
+    }
+}
+
+```
+输出结果：
+
+```bash
+New thread running.
+Main aborting new thread.
+Information from Main.
+Do somthing else in funally{}.
+Do somthing else here.
+New thread terminated - Main exiting.
+```
+从结果中可以看到，线程被终止了，由于执行了Thread.ResetAbort()，因此就允许继续执行finally块之后的代码。
+注意: 如果Thread.ResetAbort()语句放在catch块中，最好应当把Thread.ResetAbort()语句放在catch{}代码块最后，否则会把abortException.ExceptionState中的内容给清空了。Thread.ResetAbort()还可以放在finally块中，它同样也可以允许继续执行finally块之后的代码。另外，Thread.ResetAbort()只能执行一次，不能执行二次及以上，否则会出新的异常。
+
+现在解释一下，在默认（不调用Thread.ResetAbort()）的情况下， finally块后的代码是执行不到的，这是由于 ThreadAbortException这个异常非常特殊，它会在finally块的最后（如果没有finally块，则是在catch块的最后）重新扔出一个 ThreadAbortException异常。(不过这个异常在外部抓不到，它仅仅是为了退出线程用的)。
+
+### 110.字符串首字符大写的方法。
+
+```csharp
+using System;
+using System.Linq;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        Console.WriteLine(First("spider man")); 
+        Console.ReadKey();
+    }
+
+    public static string First(string input)
+    {
+        if (string.IsNullOrEmpty(input))
+        {
+            throw new ArgumentNullException("输入字符串为空");
+        }
+        return input.First().ToString().ToUpper()+input.Substring(1);
+    }
+}
+
+```
+输出结果：
+
+```csharp
+Spider man
+```
+### 111.使用下划线忽略使用的变量
+这个用的比较多的是在 out 参数后，比如输出的out类型的参数用不到，就可以直接out var _。
+```csharp
+class Test
+{
+    public static void Main()
+    {
+        var str = "123";
+        if (int.TryParse(str, out var _))
+        {
+
+        }
+        Console.ReadKey();
+    }
+}
+```
+### 112.可空类型
+可以在值类型后加一个?符号，使用该符号声明的值类型可以赋值null。
+比如下面,numb变量可以为空。
+
+```csharp
+using System;
+using System.Linq;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        int? numb = null;
+        numb = null;
+        Console.WriteLine(numb);
+        Console.ReadKey();
+    }
+}
+
+```
+如果去掉int?numb=null中的？,在声明的时候就会报错。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d962ffc2f1994653ade2c02c3228305e.png#pic_center)
+### 113.字符串的大量拼接使用 StringBuilder 代替
+根据字符串的原理，如果进行不断的拼接，将会带来一点性能损耗，原因是每次拼接都会创建新的字符串对象。
+
+```csharp
+for (int i = 0; i < n; i++)
+{
+    str += i.ToString();
+}
+```
+如上面代码将会创建大量中间的字符串对象，而最终需要的对象仅仅只有一个字符串。一个优化的方法就是使用 StringBuilder 代替 string 此时能提升不少的性能。
+
