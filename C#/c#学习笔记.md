@@ -1,25 +1,17 @@
-﻿@[TOC](目录)
+﻿﻿@[TOC](目录)
 
 ```bash 	
   	2022.06，我正式走上了所追求、热爱的编程道路，用此文记录C#学习过程中的问题点。
   	“书山有路勤为径，学海无涯苦作舟！”
     日后我也可以成为很厉害的技术大佬！
+    
+    坚信写作写的是内容，所思所想，而不是花样格式！
 ```
 
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3267ac06a4b342f6a73c59fa96c1cd8e.jpeg#pic_center)
-### 1.C#类型的分类
-| 值类型 |  引用类型|
-|--|--|
-|sbyte、byte、float|object|
-|short、ushort、double|string|
-|int、uint、char|dynamic|
-|long、ulong、decimal|delegate|
-|bool、struct、class|array|
-|enum|interface|
-
-
-
+### 1.语句块
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e11bbe262854404d97393c63166b8413.png#pic_center)
 ### 2.Write和WriteLine的区别：
 （1）Write没有在字符串后面添加换行符，而WriteLine则在每个字符串后面添加了换行符。如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2763bc17077e408e8c13f2f04c20f797.png#pic_center)
@@ -65,28 +57,20 @@ C#开发语言中 params 是关键字，**params主要的用处是在给函数�
 托管代码生成的DLL文件，可以在VS中直接通过添加引用的方式使用。
 非托管代码生成的DLL文件，比如使用C++编写的代码编译生成的DLL，不能在VS中直接引用，可以通过DllImport方法来使用。
 ### 6.WriteLine、ReadLine和ReadKey：
-<font color=red>console.ReadLine()是等待输入，并按回车继续。</font>
-<font color=red>console.WriteLine()是向控制台窗口产生输出。</font>
-<font color=red>Console.ReadKey()是等待键盘输入，退出程序。使调试时能看到输出结果。如果没有此句，命令窗口会一闪而过。</font>
+console.ReadLine()是等待输入，并按回车继续。
+console.WriteLine()是向控制台窗口产生输出。
+Console.ReadKey()是等待键盘输入，退出程序。使调试时能看到输出结果。如果没有此句，命令窗口会一闪而过。
 ### 7.C#中访问修饰符
-在C#语言中，共有五种访问修饰符：***public、private、protected、internal、protected internal***。
-1. 作用范围：
-
-|访问修饰符|说明  |
-|--|--|
-|public|公有访问，不受任何限制|
-|private|私有访问，只限于本类成员访问，子类、实例都不能访问|
-|protected|保护访问，只限本类和子类访问，实例不能访问|
-|internal|内部访问，只限本项目访问，其他不能访问|
-|protected internal|内部保护访问，只限本项目或子类访问，其他不能访问|
-
-2. 在c#中：
-* 类、结构的默认修饰符是internal。
-* 类中所有的成员默认修饰符是private。
-*  接口默认修饰符是internal。
-* 接口的成员默认修饰符是public。
-*  命名空间、枚举类型成员默认修饰符是public。
-*  委托的默认修饰符是internal。
+在C#语言中，共有五种访问修饰符：public、private、protected、internal、protected internal。
+（1）作用范围：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)
+（2）在c#中，
+1. 类、结构的默认修饰符是internal。
+2. 类中所有的成员默认修饰符是private。
+3. 接口默认修饰符是internal。
+4. 接口的成员默认修饰符是public。
+5. 命名空间、枚举类型成员默认修饰符是public。
+6. 委托的默认修饰符是internal。
 ### 8.类型的实例化
 从某一个类型模板创建实际的对象，就称为实例化该类型。
 ### 9.成员可以分为两种：数据成员和函数成员
@@ -97,46 +81,42 @@ enum与struct的区别是：枚举里的变量都是整型的同类型，而stru
 的变量所组成的，默认情况下，枚举的第一个值为0，后面每个连续的元素值递增1。
 ### 11.运行中的程序使用栈和堆来存储数据
 ### 12.栈存储几种类型的数据：
-* 某些类型变量的值；
-* 程序当前的执行环境；
-* 传递给方法的参数。
+某些类型变量的值；
+程序当前的执行环境；
+传递给方法的参数。
 ### 13.与栈不同，堆里的内存能够以任意顺序存入和移除.
 ### 14.堆和栈：
 栈是一个内存数组，是一个LIFO（Last-In First-Out，后进先出）的数据结构。
 堆和栈的区别主要有五大点，分别是：
-* 申请方式的不同。栈由系统自动分配，而堆是人为申请开辟;
-* 申请大小的不同。栈获得的空间较小，而堆获得的空间较大;
-* 申请效率的不同。栈由系统自动分配，速度较快，而堆一般速度比较慢;
-* 存储内容的不同。栈在函数调用时，函数调用语句的下一条可执行语句的地址第一个进栈，然后函数的各个参数进栈，其中静态变量是不入栈的。而堆一般是在头部用一个字节存放堆的大小，堆中的具体内容是人为安排;
-* 底层不同。栈是连续的空间，而堆是不连续的空间。
-### 15.在声明一个类时使用static关键字的意义
-两条意义：
-*  防止程序员写代码来实例化该静态类；
-* 防止在类的内部声明任何实例字段或方法。
-### 16.static在内存中的地址
-<font color=red>程序的全局数据区。</font>
+（1）申请方式的不同。栈由系统自动分配，而堆是人为申请开辟;
+（2）申请大小的不同。栈获得的空间较小，而堆获得的空间较大;
+（3）申请效率的不同。栈由系统自动分配，速度较快，而堆一般速度比较慢;
+（4）存储内容的不同。栈在函数调用时，函数调用语句的下一条可执行语句的地址第一个进栈，然后函数的各个参数进栈，其中静态变量是不入栈的。而堆一般是在头部用一个字节存放堆的大小，堆中的具体内容是人为安排;
+（5）底层不同。栈是连续的空间，而堆是不连续的空间。
+### 15.在声明一个类时使用static关键字，具有两个方面的意义：
+防止程序员写代码来实例化该静态类；
+防止在类的内部声明任何实例字段或方法。
+### 16.static在内存中的地址为：程序的全局数据区。
 ### 17.值类型和引用类型
 数据项的类型定义了存储数据需要的内存大小及组成该类型的数据成员。类型还决定了对象在内存中的存储位置——栈或堆。
-类型被分为两种：**值类型和引用类型**，这两种类型的对象在内存中的存储方式不同：
-
-* 值类型只需要一段单独的内存，用于存储实际的数据。
+类型被分为两种：值类型和引用类型，这两种类型的对象在内存中的存储方式不同。
+值类型只需要一段单独的内存，用于存储实际的数据。
 引用类型需要两段内存，第一段存储实际的数据，它总是位于堆中；第二段是一个引用，指向数据在堆中的存放位置。
-* 对于值类型，数据存放在栈里；对于引用类型，实际数据存放在堆里而引用存放在栈里。
+对于值类型，数据存放在栈里；对于引用类型，实际数据存放在堆里而引用存放在栈里。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8942b2baa46c4d22ab74fc8ac3b38bb6.png#pic_center)
 ### 18.C#的4种变量
-分别是**本地变量、字段、参数、数组元素**。
-* 本地变量：在方法的作用域保存临时数据，不是类型的成员。
-* 字段：保存和类型或类型实例相关的数据，是类型的成员。
-* 参数：用于从一个方法到另一个方法传递数据的临时变量，不是类型的成员。
-* 数组元素：（通常是）同类数据项构成的有序集合的一个成员，可以为本地变量，也可以为类型的成员。
-
-简单的变量声明：
+分别是本地变量、字段、参数、数组元素。
+本地变量：在方法的作用域保存临时数据，不是类型的成员。
+字段：保存和类型或类型实例相关的数据，是类型的成员。
+参数：用于从一个方法到另一个方法传递数据的临时变量，不是类型的成员。
+数组元素：（通常是）同类数据项构成的有序集合的一个成员，可以为本地变量，也可以为类型的成员。
+###简单的变量声明
 一个简单的变量声明至少需要一个类型和一个名称，如int a,其中int为类型，a为名称。
 ### 19.变量 、字段、属性的区别：
 一句话：字段、属性都是变量，只是为了区分和数据安全设置的。
-* 字段的使用场景：与类或者对象关系密切，建议使用private修饰。
-* 属性的使用场景：对字段进行封装，提供get/set关键字，进行访问。
-* 变量的使用场景：与类或者对象关系不密切，常常在方法或者语句块中使用。
-
+字段的使用场景：与类或者对象关系密切，建议使用private修饰。
+属性的使用场景：对字段进行封装，提供get/set关键字，进行访问。
+变量的使用场景：与类或者对象关系不密切，常常在方法或者语句块中使用。
 字段和属性是相对于类而言的，而变量相对于方法或者语句块而言，可以在任何地方使用。
 ### 20.常量字段const表现得像静态字段，但在内存中没有存储位置。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/27ee9e5c6ed04080898d33520c572f7e.png#pic_center)
@@ -146,31 +126,26 @@ enum与struct的区别是：枚举里的变量都是整型的同类型，而stru
 ### 23.const和readonly：
 const是静态常量，readonly是动态常量。
 静态常量是指编译器在编译时候会对常量进行解析，并将常量的值替换成初始化的那个值；而动态常量的值则是在运行的那一刻才获得的，编译器编译期间将其标示为只读常量，而不用常量的值代替，这样动态常量不必在声明的时候就初始化，而可以延迟到构造函数中初始化。
-
-区别可以通过静态常量与动态常量的特性来说明：
-
-   * const修饰的常量在声明的时候必须初始化;readonly修饰的常量则可以延迟到构造函数初始化 。
-   * const修饰的常量在编译期间就被解析，即常量值被替换成初始化的值;readonly修饰的常量则延迟到运行的时候。
-   * 此外const常量既可以声明在类中也可以在函数体内，但是static readonly常量只能声明在类中。
+区别：可以通过静态常量与动态常量的特性来说明：
+      1）const修饰的常量在声明的时候必须初始化;readonly修饰的常量则可以延迟到构造函数初始化 。
+      2）const修饰的常量在编译期间就被解析，即常量值被替换成初始化的值;readonly修饰的常量则延迟到运行的时候。
+      此外const常量既可以声明在类中也可以在函数体内，但是static readonly常量只能声明在类中。
 ###  24.this用法(指代当前实例、扩展方法、索引器)
-#### 1.this指代当前实例
+#### 1. this指代当前实例
  this关键字在类中使用，是对当前实例的引用，它只能被用在下列类成员的代码块中：
- * 实例构造函数；
- * 实例方法；
- * 属性和索引器的实例访问器。
- 
- 值得注意的是，静态成员并不是实例的一部分，所以不能在任何静态函数成员的代码中使用this关键字。
- 确切来说，this用于下列目的：
- * 用于区分类的成员和本地变量或参数；
- * 作为调用方法的实参。
+ （1）实例构造函数；
+ （2）实例方法；
+ （3）属性和索引器的实例访问器。
+ 值得注意的是，静态成员并不是实例的一部分，所以不能在任何静态函数成员的代码中使用this关键字，确切来说，this用于下列目的：
+ 用于区分类的成员和本地变量或参数；
+ 作为调用方法的实参。
 #### 2. this用作扩展方法
  扩展方法能够向现有类型“添加”方法，而无需创建新的派生类型、重新编译或以其他方式修改原始类型。扩展方法是一种特殊的静态方法，但可以像扩展类型上的实例方法一样进行调用。C#扩展方法第一个参数指定该方法作用于哪个类型，并且该参数以 this 修饰符为前缀。
     需要注意的几点：
-   * 扩展方法（this 需要扩展的类 命名），如：public static void ExtensionEat(this Person person)；
-* 扩展方法必须是静态类的一个静态方法。
-* 调用扩展方法,必须用对象来调用 。
-
-如下看一段代码：
+   （1）**扩展方法（this 需要扩展的类 命名），如：public static void ExtensionEat(this Person person)；**
+（2）**扩展方法必须是静态类的一个静态方法。**
+（3）**调用扩展方法,必须用对象来调用 。**
+如图看一段代码：
 
 ```csharp
 using System;
@@ -297,18 +272,16 @@ public class Program
   }
 ```
 索引器的索引值（Index）类型不限定为整数，如上两个图代码中的整形和字符串型索引。
-
 索引器与属性的区别：
-* 索引器的命名只能为this，而属性可以任意命名（开头字母大写）；
-* 索引器可以重载，属性不可以；
-* 索引器不可用static进行声明，属性可以。
+（1）索引器的命名只能为this，而属性可以任意命名（开头字母大写）；
+（2）索引器可以重载，属性不可以；
+（3）索引器不可用static进行声明，属性可以。
 ### 25.派生类屏蔽基类的成员：
 虽然派生类不能删除它继承的任何成员，但可以用与基类成员名称相同的成员来屏蔽基类成员，这也是继承的主要功能之一，很实用。**派生类屏蔽基类成员的关键字是new**，在派生类中屏蔽一些基类成员的一些要点如下：
-
-* 要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。
-* 通过在派生类中声明新的带有相同签名的函数成员，可以隐藏或屏蔽继承的基类的函数成员。注意：签名由名称和参数列表组成，不包括返回类型。
-* **要让编译器知道你在故意屏蔽继承的成员，实用new修饰符**。否则，程序会成功编译，但会警告你隐藏了一个继承的成员。
-* 也可以屏蔽静态成员。
+（1）要屏蔽一个继承的数据成员，需要声明一个新的相同类型的成员，并使用相同的名称。
+（2）通过在派生类中声明新的带有相同签名的函数成员，可以隐藏或屏蔽继承的基类的函数成员。注意：签名由名称和参数列表组成，不包括返回类型。
+（3）**要让编译器知道你在故意屏蔽继承的成员，实用new修饰符**。否则，程序会成功编译，但会警告你隐藏了一个继承的成员。
+（4）也可以屏蔽静态成员。
 ### 26.virtual的使用
 **当使用基类引用访问派生类对象时，得到的是基类的成员**。**虚方法可以使基类的引用访问“升至”派生类级别**。可以使用基类引用调用派生类的方法，只需要满足以下条件：
 （1）派生类的方法和基类的方法拥有相同的签名和返回类型；
@@ -1207,7 +1180,7 @@ namespace APP
  封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
  2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
  如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
 3. 泛型方法的调用：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
 4. 泛型方法举例：
@@ -1736,45 +1709,1042 @@ namespace APP
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/80d15586b0fb4ca2bd827a6a2e14a043.png#pic_center)
-### 59.异步编程
-（1）进程是构成运行程序的资源的集合，这些资源包括虚地址空间、文件句柄和许多其他程序运行所需要的的东西。
-（2）线程代表了真正的执行程序，一旦进程建立，系统会在Main方法的第一行语句处就开始线程的执行。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5a39e6fc2b0c4d95b56c08f500cd6fb4.png#pic_center)
-（3）同步方法：如果一个程序调用某个方法，等待其执行所有处理后才继续执行，那么就称这样的方法是同步的。
-（4）C#中的async和await特性可以创建并使用异步方法，该特性由三种部分组成：
- 1. 调用方法：该方法会用来调用异步方法，然会在异步方法执行其他任务的时候继续操作；
- 2. 异步方法（async)：该方法异步执行其工作，然会立即返回到调用方法；
- 3. await表达式：用在异步方法内部，一般和async配合来使用，await指明需要异步执行的任务。一个异步方法可以包含多个表达式，但是如果一个都不包含的话，编译器就会发出警告。
- 代码举例：
+### 59.线程、多线程、异步编程相关
+#### 1.进程和线程分别是什么？谈谈进程和线程的区别与联系。
+（1）进程：构成运行程序的资源的集合。这些资源包括虚地址空间，文件句柄和许多其他程序运行所需的东西。
+（2）线程：在进程的内部，系统创建了一个称为线程的内核对象，它代表了真正执行的程序。
+（3）进程和线程的区别与联系：
+1. 默认情况下，一个进程只包含一个线程，从程序的开始一直执行到结束；
+2. 线程可以派生其他线程，因此在任意时刻，一个进程都可能包含不同状态的多个线程来执行程序的不同部分；
+3. 如果一个进程拥有多个线程，他们将共享进程的资源；
+系统为处理器执行所规划的单元是线程，不是进程。
+
+#### 2.使用CancellationTokenSource 取消多线程
+CancellationTokenSource 用于取消多线程操作。
+使用步骤：
+（1）声明CancellationTokenSource 对象；
+（2）实例化 CancellationTokenSource 对象，此对象管理取消通知并将其发送给单个取消标记。并进行注册回调事件；
+ 注意：想再次启动线程,必须重新再new CancellationTokenSource();因为取消了一次CancellationTokenSource.Cancel()，CancellationToken.IsCancellationRequested的标记一直为true;
+（3）**Cancel()方法调用会设置cancellationManage.IsCancellationRequested为True**;
+调用 CancellationTokenSource.Cancel 方法以提供取消通知。 这会将 CancellationToken.IsCancellationRequested 取消标记的每个副本上的属性设置为 true ；
+代码举例：
+
 ```csharp
 using System;
+using System.Linq;
+using System.Threading;
+
+namespace practice01
+{
+
+    class Program
+    {
+        private static CancellationTokenSource cts;//1.声明CancellationTokenSource对象
+
+        static void Main(string[] args)
+        {
+            while (true)
+            {
+                Console.WriteLine("1.开始运行多线程");
+                Console.WriteLine("2.取消多线程");
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        BeginThread();
+                        break;
+                    case "2":
+                        CancelThread();
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            // Console.ReadKey();
+        }
+
+        /// <summary>
+        /// 回调停止方法
+        /// </当多线程结束即调用Cancel方法后，将会调用此回调方法>
+        private static void CallStopThread()
+        {
+            Console.WriteLine("回调停止方法");
+        }
+
+        /// <summary>
+        /// 取消方法
+        /// </summary>
+        private static void CancelThread()
+        {
+            cts.Cancel();//4.Cancel()方法调用会设置IsCancellationRequested为True;
+        }
+
+        /// <summary>
+        /// 开始运行线程方法
+        /// </summary>
+        private static void StartThread()
+        {
+            for (int i = 0; i < 1000000; i++)
+            {
+                if (cts.IsCancellationRequested) break;//如果为true，就跳出当前循环
+                Console.WriteLine($"开始运行线程方法,线程ID：{Thread.CurrentThread.ManagedThreadId}");
+                Thread.Sleep(1000);
+            }
+        }
+
+        /// <summary>
+        /// 开始运行线程
+        /// </summary>
+        private static void BeginThread()
+        {
+            Console.WriteLine("开始运行1方法");
+            cts = new CancellationTokenSource(); //2.实例化 CancellationTokenSource 对象，此对象管理取消通知并将其发送给单个取消标记。
+            cts.Token.Register(CallStopThread);//3.注册回调事件
+
+            Thread[] ths = new Thread[3];
+            for (int i = 0; i < ths.Count(); i++)
+            {
+                ths[i] = new Thread(StartThread);
+                ths[i].Start();
+            }
+        }
+    }
+}
+```
+![在这里插入图片描述](https://img-blog.csdnimg.cn/45cc100eb22f497d91787324e68c46b4.png#pic_center)
+#### 3. 异步编程
+首先，一个描述很详细的博客链接： [异步编程](https://blog.csdn.net/zls365365/article/details/124601385?ops_request_misc=&request_id=&biz_id=102&utm_term=c?ops_request_misc=&request_id=&biz_id=102&utm_term=c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase&spm=1018.2226.3001.4187#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase)
+
+#### 4.Task.Run 和 Task.Factory.StartNew 区别
+可以认为Task.Run是简化的Task.Factory.StartNew 的使用，除了需要指定一个线程是长时间占用的，否则就使用 Task.Run。Task.Run方法是从线程池中调用一个新的线程，并不是调用Task.Run方法就一定会开辟一个新的线程；而Task.Factory.StartNew方法是开辟一个新的线程。两个方法实际上没有太大的区别，因此推荐使用Task.Run方法。
+总的来讲，在需要设置线程是长时间运行的才需要使用 Task.Factory.StartNew 方法，不然就使用 Task.Run方法。
+
+
+**不推荐他使用 Task.Factory.StartNew ，因为 Task.Run 是比较新的方法。**
+
+**需要知道 `Task.Run` 是在 dotnet framework 4.5 之后才可以使用，但是 `Task.Factory.StartNew` 可以使用比 `Task.Run` 更多的参数，可以做到更多的定制。**
+
+**可以认为 `Task.Run` 是简化的 `Task.Factory.StartNew` 的使用，除了需要指定一个线程是长时间占用的，否则就使用 `Task.Run`**
+
+对比说明如下：
+
+###### 1.创建新线程
+
+下面来使用两个函数创建新的线程：
+
+```c#
+            Task.Run(() =>
+            {
+                var foo = 2;
+            });
+
+            Task.Factory.StartNew(() =>
+            {
+                var foo = 2;
+            });
+```
+
+这时 foo 的创建就在另一个线程，需要知道 Task.Run 用的是线程池，也就是不是调用这个函数就会一定创建一个新的线程，但是会在另一个线程运行。
+
+可以看到，两个方法实际上是没有差别，但是`Task.Run`比较好看，所以推荐使用`Task.Run`。
+
+###### 2.等待线程
+
+创建的线程，如果需要等待线程执行完成再继续，那么可以使用 await 等待。
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1
+class Test
 {
-    class Program
+    private static async void SeenereKousa()
     {
-        public static async Task Test()//异步方法
+        Console.WriteLine("开始 线程" + Thread.CurrentThread.ManagedThreadId);
+        await Task.Run(() =>
         {
-            Console.WriteLine("Test方法开始执行");
-                 //await指明需要异步执行的任务
-            await Task.Run(() => Thread.Sleep(1000));//此处有await,因此程序执行到这里时，会跳出该Test方法，执行 Console.WriteLine("程序执行结束！");这一句代码 。
-            Console.WriteLine("Test方法执行完毕");
+            Console.WriteLine("进入 线程" + Thread.CurrentThread.ManagedThreadId);
+        });
+        Console.WriteLine("退出 线程" + Thread.CurrentThread.ManagedThreadId);
+    }
+    static void Main()
+    {
+        SeenereKousa();
+        Console.ReadKey();
+    }
+
+}
+
+```
+
+输出结果：
+
+```c#
+开始 线程1
+进入 线程3
+退出 线程3
+```
+
+但是需要说的是这里使用 await 主要是给函数调用的外面使用，上面代码在函数里面使用 await 函数是 void 那么和把代码放在 task 里面是相同。
+
+```C#
+private static async void SeenereKousa()
+        {
+            Console.WriteLine("开始 线程"+Thread.CurrentThread.ManagedThreadId);
+            await Task.Run(() =>
+            {
+                Console.WriteLine("进入 线程" + Thread.CurrentThread.ManagedThreadId);
+                Console.WriteLine("退出 线程"+Thread.CurrentThread.ManagedThreadId);
+            });
         }
-        static void Main(string[] args)
+```
+
+但是如果把 void 修改为 Task ，那么等待线程才有用。
+
+除了使用 await 等待，还可以使用 WaitAll 等待。
+
+```C#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Test
+{
+    private static async void SeenereKousa()
+    {
+        Console.WriteLine("开始 线程" + Thread.CurrentThread.ManagedThreadId);
+        var t = Task.Run(() =>
         {
-            Console.WriteLine("程序开始执行！");
-            Program.Test();
-            Console.WriteLine("程序执行结束！");
-            Console.ReadKey();
+            Console.WriteLine("进入 线程" + Thread.CurrentThread.ManagedThreadId);
+        });
+
+        Task.WaitAll(t);
+
+        Console.WriteLine("退出 线程" + Thread.CurrentThread.ManagedThreadId);
+    }
+    static void Main()
+    {
+        SeenereKousa();
+        Console.ReadKey();
+    }
+
+}
+
+```
+
+使用 WaitAll 是在调用 WaitAll 的线程等待，也就是先在线程 1 运行，然后异步到线程3 运行，这时线程1 等待线程2运行完成再继续，所以输出结果：
+
+```C#
+开始 线程1
+进入 线程3
+退出 线程1
+```
+
+###### 3.长时间运行
+
+两个函数最大的不同在于 `Task.Factory.StartNew `可以设置线程是长时间运行，这时线程池就不会等待这个线程回收。
+
+```c#
+        Task.Factory.StartNew(() =>
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                var foo = 2;
+            }
+            Console.WriteLine("进行 线程" + Thread.CurrentThread.ManagedThreadId);
+        }, TaskCreationOptions.LongRunning);
+        Console.ReadKey();
+```
+
+所以在需要设置线程是长时间运行的才需要使用 `Task.Factory.StartNew `不然就使用 `Task.Run`
+
+调用 `Task.Run(foo)` 就和使用下面代码一样：
+
+```c#
+Task.Factory.StartNew(foo, 
+    CancellationToken.None, TaskCreationOptions.DenyChildAttach, TaskScheduler.Default);
+```
+
+实际上 `Task.Run(foo)` 可以认为是对 `Task.Factory.StartNew` 封装，使用简单的默认的参数。如果需要自己定义很多参数，就请使用 `Task.Factory.StartNew` 定义参数。
+
+#### 5.TaskCompletionSource的使用
+
+###### 1.TaskCompletionSource简介以及简单使用方法
+
+MSDN链接：[添加链接描述](https://learn.microsoft.com/zh-cn/dotnet/standard/asynchronous-programming-patterns/)
+
+TaskCompletionSource生成Task方法，使用TaskCompletionSource很简单，只需要实例化它即可。TaskCompletionSource有一个Task属性，可以对该属性暴露的task做操作，比如让它wait或者ContinueWith等操作。当然，这个task由TaskCompletionSource完全控制。
+
+大多数时候，只在目标方法要调用基于事件API，又要返回Task的时候使用。比如下面的ApiWrapper方法，该方法要返回Task<string>,又要调用EventClass对象的Do方法，并且等到Do方法触发Done事件后，Task才能得到结果并返回。
+
+```csharp
+
+class CD_Ctor
+{
+   public static void Main()
+    {
+        var task = ApiWrapper(); 
+        Console.WriteLine("Foo4:"+Thread.CurrentThread.ManagedThreadId);
+        Console.WriteLine(task.Result);
+    }
+
+    public static Task<string> ApiWrapper()
+    {
+        var tcs=new TaskCompletionSource<string>();
+        var api = new EventClass();
+        api.Done += (args) => { tcs.TrySetResult(args); };
+        api.Do();
+        return tcs.Task;
+    }
+
+    public class EventClass
+    {
+        public Action<string> Done = (args) => { };
+        public void Do()
+        {
+            Console.WriteLine("EventClass:"+Thread.CurrentThread.ManagedThreadId);
+            Done("Done");
         }
     }
 }
 
 ```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5e3158a89a4f4e89bee19ca1b57d1b44.png#pic_center)
- （5） [异步编程](https://blog.csdn.net/zls365365/article/details/124601385?ops_request_misc=&request_id=&biz_id=102&utm_term=c?ops_request_misc=&request_id=&biz_id=102&utm_term=c&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase&spm=1018.2226.3001.4187#%E5%BC%82%E6%AD%A5%E7%BC%96%E7%A8%8B&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-4-124601385.nonecase)
+
+再看一个例子：**TaskCompletionSource中有一个SetResult方法，当该方法被调用后。就会让await等待的代码继续往下执行。**
+
+```csharp
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+
+namespace prop
+{
+   public class Program
+    {
+
+        //选择车票
+        public static async Task<bool> ChoiceTicket(TaskCompletionSource<bool> tcs)
+        {
+            Console.WriteLine("选购火车票");
+            Console.WriteLine("跳转到到支付页面");
+
+            await tcs.Task;//到这里会等待直到其他地方设置了Task的状态
+            Console.WriteLine("订票完成");
+            return true;
+        }
+
+        //选择支付页面
+        public static async Task PayForMoney(TaskCompletionSource<bool> tcs)
+        {
+
+            await Task.Delay(3000).ContinueWith((t) => Console.WriteLine("选购支付宝支付"));
+
+            tcs.SetResult(false);//SetResult方法被调用后。就会让await等待的代码即await tcs.Task继续往下执行。
+            Console.WriteLine("支付完成");
+            Console.WriteLine("跳到火车票软件完成");
+        }
+        public static void Main()
+        {
+            TaskCompletionSource<bool> tcs = new();
+            Task.Run(async () => await ChoiceTicket(tcs));
+            Task.Run(async () => await PayForMoney(tcs));
+
+            Console.Read();
+        }
+    }
+}
+```
+输出结果：
+
+```bash
+选购火车票
+跳转到到支付页面
+选购支付宝支付
+订票完成
+支付完成
+跳到火车票软件完成
+```
+
+
+
+###### 2.TaskCompletionSource 的 TrySetResult 是线程安全
+
+在创建一个 TaskCompletionSource 期望让等待的逻辑只会被调用一次，而调用的是多线程，可以使用 TrySetResult 方法，这个方法是线程安全，只会让 TaskCompletionSource 被调用一次。
+
+在多个线程调用 TaskCompletionSource 的 TrySetResult 方法，只有一个线程能进入设置，其他线程将会拿到返回 false 的值
+
+测试代码如下：
+
+```c#
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Test
+{
+
+    private static TaskCompletionSource<bool> _taskCompletionSource;
+    private static async void Foo()
+    {
+        await _taskCompletionSource.Task;
+        Console.WriteLine("F");
+    }
+    static void Main()
+    {
+        _taskCompletionSource = new TaskCompletionSource<bool>();
+
+        Foo();
+
+        var taskList = new List<Task>();
+
+        for (int i = 0; i < 100; i++)
+        {
+            var task = Task.Run(() =>
+            {
+                _taskCompletionSource.TrySetResult(true);
+            });
+
+            taskList.Add(task);
+        }
+
+        Task.WaitAll(taskList.ToArray());
+
+        Console.Read();
+    }
+
+}
+
+```
+
+输出结果：
+
+```c#
+F
+```
+
+#### 6. c#判断代码是否执行超时的几种方式
+###### 1.使用Task
+
+```csharp
+            var task = Task.Factory.StartNew(() =>
+            {
+                Thread.Sleep(3000);
+                Console.WriteLine("d代码执行完毕！");
+            });
+
+            if (!task.Wait(5000))//如果在5秒内task执行完成，那就返回true，否则返回false
+            {
+                Console.WriteLine("已经执行过了3秒！");
+            }
+```
+###### 2.使用Thread
+
+```csharp
+            Thread t = new Thread(() =>
+            {
+                Thread.Sleep(10000);
+                Console.WriteLine("代码执行完毕！");
+            });
+            t.Start();
+            bool isOver = t.Join(3000);
+            if (!isOver)
+            {
+                Console.WriteLine("执行已过了3秒!");
+            }
+            return;
+```
+#### 7.使用Lock以禁止多线程同时调用相同的方法
+
+如果在使用多线程时，在相同的时间内有多个线程同时执行相同的方法，也许就存在数据安全的问题，如多个线程之间对于相同的内存进行同时的读取和修改。为了让多线程每次只能有一个线程执行，可以使用的方法有很多。
+
+在C#里面可以使用关键词lock加上一个对象作为锁定，在进入lock的逻辑，只能有一个线程获取锁，因此在lock里面的代码只能被一个线程同时执行。
+
+例如，以下代码就是标准的锁定方法的代码：
+
+```c#
+    private readonly object _locker=new object();
+    private void LockTest()
+    {
+        lock(_locker)
+        {
+
+        }
+    }
+```
+
+需要注意的细节是创建一个空白的对象 `_locker` 作为字段，使用字段而不是局部变量的原因在于 lock 只有在使用相同的对象才能做到多个线程进入时，只有一个线程执行，其他线程等待。如果是局部变量，那么多个线程都会创建自己的局部变量，因此就做不到让一个线程执行，其他线程等待
+
+其次是这个 `_locker` 应该是私有的，采用私有的可以让整个锁的功能在自己内部的完全控制的代码下使用，而不会担心被其他业务使用。**基于这个原因可以了解到使用 `lock(this)` 是不推荐的，因为 this 将会被其他类所使用，此时就无法完全了解这个锁使用的对象使用的地方。**尽管自己在开发的时候可以关注到，但是在后续更改中不一定能了解这些细节，因此也许就会因此出现相互等待的锁的坑
+
+最后是这个对象应该是 `readonly` 不可变的，原因在于也许在线程进入锁的时候，如果是可变的字段，将也许有其他业务在其他线程下更改了这个对象，也就让其他线程依然可以执行相同的逻辑
+
+而多创建一个对象也用不了多少内存。
+
+#### 8.Thread.Abort()和Thread.ResetAbort()
+先看一个问题，如下，要在Main方法中如何操作才能执行Foo方法finally中的语句？
+
+```csharp
+using System.Collections.Concurrent;
+using System.Runtime.CompilerServices;
+
+namespace prop
+{
+   public class Program
+    {
+        static async void Main(string[] args)
+        {
+            // 请在此处写代码，调用 Foo 函数内的输出代码
+        }
+        private static void Foo()
+        {
+            try
+            {
+                while (true)
+                {
+                    
+                }
+            }
+            finally
+            {
+                Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
+            }
+        }
+    }
+}
+```
+答案之一：使用一个线程调用的方式，调用之后结束线程，此时就会输出
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp4
+{
+    using System.Collections.Concurrent;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+
+    namespace prop
+    {
+        public class Program
+        {
+            static void Main(string[] args)
+            {
+                // 请在此处写代码，调用 Foo 函数内的输出代码
+                var thread = new Thread(() =>
+                {
+                    Foo();
+                });
+                thread.Start();
+                Task.Delay(1000).Wait();
+                thread.Abort();//注意，在 dotnet core 不支持 Abort 方法
+                Console.ReadLine();
+            }
+            private static void Foo()
+            {
+                try
+                {
+                    while (true)
+                    {
+
+                    }
+                }
+                finally
+                {
+                    Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
+                }
+            }
+        }
+    }
+}
+
+```
+引深一些：
+Thread类中的Abort方法用于终止正在运行的线程。它可以强制终止线程，而不管线程是否是Sleep中。在执行了Abort方法后，被终止的线程就会继续运行try catch finally 块中代码，因为是强行终止，catch块中之后的语句就不再会执行。除非在catch块中执行Thread.ResetAbort这个静态方法。
+先举例没有ResetAbort()的情况：
+
+```csharp
+using System;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        Thread newThread = new Thread(new ThreadStart(TestMethod));
+        newThread.Start();
+        Thread.Sleep(1000);
+
+        Console.WriteLine("Main aborting new thread.");
+        newThread.Abort("Information from Main.");//强制中止newThread线程
+
+        newThread.Join();//等待newThread线程执行完
+        Console.WriteLine("New thread terminated - Main exiting.");
+        Console.ReadKey();
+    }
+
+    static void TestMethod()
+    {
+        try
+        {
+            while (true)
+            {
+                Console.WriteLine("New thread running.");
+                Thread.Sleep(1000);
+            }
+        }
+        catch (ThreadAbortException abortException)
+        {
+            Console.WriteLine((string)abortException.ExceptionState);
+        }
+        finally
+        {
+            Console.WriteLine("Do somthing else in funally{}.");
+        }
+        Console.WriteLine("Do somthing else here.");
+    }
+}
+```
+输出结果：
+
+```bash
+New thread running.
+Main aborting new thread.
+Information from Main.
+Do somthing else in funally{}.
+New thread terminated - Main exiting.
+```
+看输出结果，可以看到线程被Abort之后，执行catch和finally块中的内容，但是不会执行finally块之后的内容。
+再看增加ResetAbort()的代码：
+
+```csharp
+using System;
+using System.Threading;
+
+class Test
+{
+    public static void Main()
+    {
+        Thread newThread = new Thread(new ThreadStart(TestMethod));
+        newThread.Start();
+        Thread.Sleep(1000);
+
+        Console.WriteLine("Main aborting new thread.");
+        newThread.Abort("Information from Main.");//强制中止newThread线程
+
+        newThread.Join();//等待newThread线程执行完
+        Console.WriteLine("New thread terminated - Main exiting.");
+        Console.ReadKey();
+    }
+
+    static void TestMethod()
+    {
+        try
+        {
+            while (true)
+            {
+                Console.WriteLine("New thread running.");
+                Thread.Sleep(1000);
+                
+            }
+        }
+        catch (ThreadAbortException abortException)
+        {
+            Console.WriteLine((string)abortException.ExceptionState);
+            Thread.ResetAbort();
+        }
+        finally
+        {
+            Console.WriteLine("Do somthing else in funally{}.");
+        }
+        Console.WriteLine("Do somthing else here.");
+    }
+}
+
+```
+输出结果：
+
+```bash
+New thread running.
+Main aborting new thread.
+Information from Main.
+Do somthing else in funally{}.
+Do somthing else here.
+New thread terminated - Main exiting.
+```
+从结果中可以看到，线程被终止了，由于执行了Thread.ResetAbort()，因此就允许继续执行finally块之后的代码。
+注意: 如果Thread.ResetAbort()语句放在catch块中，最好应当把Thread.ResetAbort()语句放在catch{}代码块最后，否则会把abortException.ExceptionState中的内容给清空了。Thread.ResetAbort()还可以放在finally块中，它同样也可以允许继续执行finally块之后的代码。另外，Thread.ResetAbort()只能执行一次，不能执行二次及以上，否则会出新的异常。
+
+现在解释一下，在默认（不调用Thread.ResetAbort()）的情况下， finally块后的代码是执行不到的，这是由于 ThreadAbortException这个异常非常特殊，它会在finally块的最后（如果没有finally块，则是在catch块的最后）重新扔出一个 ThreadAbortException异常。(不过这个异常在外部抓不到，它仅仅是为了退出线程用的)。
+#### 9.Task线程的开始、暂停、继续、取消
+配合使用CancellationTokenSource和ManualResetEvent来实现线程的开始、暂停、继续、取消功能。
+先看效果：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/1d3bd2aff7714687b893a8abfc8b6f3c.gif#pic_center)
+代码如下(此代码例子中还有同步、并行、异步、事件的举例代码)：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/4919b054ade6424db60b81005f6fc4f6.png)
+代码已经放在仓库，地址为：[仓库链接](https://gitee.com/hezexi/code-exercise/tree/Task%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%BC%80%E5%A7%8B%E3%80%81%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E3%80%81%E5%81%9C%E6%AD%A2/)
+
+1. MainWindow.xaml代码：
+```xml
+<Window x:Class="同步异步多线程.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="{Binding Title}" Height="350" Width="525" >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <Button Content="同步" Width="100"  Command="{Binding SearchCommand}"/>
+                <Button Content="异步" Width="100" Command="{Binding SearchAsyncCommand}"/>
+                <Button Content="并行" Width="100"  Command="{Binding SrearchConcurrentAsyncCommand}"/>
+                <Button Content="事件" Width="100"  Command="{Binding SrearchEventCommand}"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Button Content="开始" Width="100"  Command="{Binding TaskStartCommand}"/>
+                <Button Content="暂停" Width="100"  Command="{Binding TaskPauseCommand}"/>
+                <Button Content="继续" Width="100"  Command="{Binding TaskContinueCommand}"/>
+                <Button Content="停止" Width="100"  Command="{Binding TaskStopCommand}"/>
+            </StackPanel>
+        </StackPanel>
+        <TextBox Grid.Row="1"  ScrollViewer.VerticalScrollBarVisibility="Visible" FontSize="10" Foreground="Black" Text="{Binding ShowText}"/>
+    </Grid>
+</Window>
+
+```
+2. MainWindowViewModel.cs代码：
+```csharp
+using ImTools;
+using Microsoft.Xaml.Behaviors.Core;
+using Prism.Commands;
+using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Diagnostics.Tracing;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Documents;
+using System.Windows.Input;
+using 同步异步多线程.Datas;
+
+namespace 同步异步多线程.ViewModels
+{
+    public class MainWindowViewModel : BindableBase
+    {
+		#region 属性
+		private string _title = "同步、异步、并行";
+		public string Title
+		{
+			get { return _title; }
+			set { SetProperty(ref _title, value); }
+		}
+
+		private string showText;
+		public string ShowText
+		{
+			get { return showText; }
+			set { RaisePropertyChanged(nameof(ShowText)); SetProperty(ref showText, value); }
+		}
+
+		public DelegateCommand SearchCommand { get; set; }
+		public DelegateCommand SearchAsyncCommand { get; set; }
+		public DelegateCommand SrearchConcurrentAsyncCommand { get; set; }
+		public DelegateCommand SrearchEventCommand { get; set; }
+
+		public DelegateCommand TaskStartCommand { get; set; }
+		public DelegateCommand TaskPauseCommand { get; set; }
+		public DelegateCommand TaskContinueCommand { get; set; }
+		public DelegateCommand TaskStopCommand { get; set; }
+
+		private CancellationTokenSource? TokenSource;
+		private ManualResetEvent? ManualReset;//ManualResetEvent可以对所有进行等待的线程进行统一控制
+		#endregion
+
+
+
+		public MainWindowViewModel()
+        {
+            SearchCommand = new DelegateCommand(Search);
+            SearchAsyncCommand = new DelegateCommand(SearchAsync);
+            SrearchConcurrentAsyncCommand = new DelegateCommand(SrearchConcurrentAsync);
+            SrearchEventCommand = new DelegateCommand(SrearchEvent);
+
+
+            TaskStartCommand = new DelegateCommand(TaskStart);
+            TaskPauseCommand = new DelegateCommand(TaskPause);
+            TaskContinueCommand = new DelegateCommand(TaskContinue);
+            TaskStopCommand = new DelegateCommand(TaskStop);
+		}
+
+		public void TaskStart()
+		{
+			TokenSource = new CancellationTokenSource();
+			ManualReset = new ManualResetEvent(true);//true-初始状态为发出信号；false-初始状态为未发出信号
+			int i = 0;
+			Task.Run(() =>
+			{
+				while(!TokenSource.Token.IsCancellationRequested)//如果令牌没有发取消信号
+				{
+					ManualReset.WaitOne();//根据是否收到信号判断是否阻塞当前线程（为true就不会阻塞，为false就会阻塞）
+					Thread.Sleep(200);
+					ShowText += "\r\n" + $"线程{Environment.CurrentManagedThreadId}正在运行第{++i}次{Environment.NewLine}";
+				}
+				
+			},TokenSource.Token);//可以通过CancellationTokenSource令牌来对线程进行操作
+		}
+		public void TaskPause()
+		{
+			ManualReset?.Reset(); //Reset方法重置该值为False(即未发出信号，让线程阻塞在WaitOne处)
+		}
+		public void TaskContinue()
+		{
+			ManualReset.Set();//将该值置为true发出信号。即释放信号，所有等待信号的线程都将获得信号，开始执行WaitOne()后面的语句
+		}
+		public void TaskStop()
+		{
+			TokenSource?.Cancel(); //令牌发送取消信号，以取消其他地方的线程运行
+		}
+		#region
+		/// <summary>
+		/// 并行方式
+		/// </summary>
+		private async void SrearchConcurrentAsync()
+		{
+			Stopwatch stopwatch = Stopwatch.StartNew();
+			ShowText = string.Empty;
+			ShowText += "\r\n" + ("并行检索开始");
+			int index = 0;
+			List<Task<string>> Tasks = new List<Task<string>>();
+			Data.books.ForEach(book =>
+			{
+				Tasks.Add(Task.Run(book.Search));
+			});
+			var tasks = await Task.WhenAll(Tasks);
+			foreach (var result in tasks)
+			{
+				ShowText += "\r\n" + ($"{++index},{result}");
+			}
+			stopwatch.Stop();
+			ShowText += "\r\n" + ($"并行检索完成:{Convert.ToSingle(stopwatch.ElapsedMilliseconds / 1000)}秒");
+
+		}
+		/// <summary>
+		/// 异步方式
+		/// </summary>
+		private async void SearchAsync()
+		{
+			Stopwatch stopwatch = Stopwatch.StartNew();
+			ShowText = string.Empty;
+			ShowText += "\r\n" + ("异步检索开始");
+			int index = 0;
+			foreach (var book in Data.books)
+			{
+				var task = await Task.Run(book.Search);
+				ShowText += "\r\n" + ($"{++index},{task}");
+			}
+			stopwatch.Stop();
+			ShowText += "\r\n" + ($"异步检索完成:{Convert.ToSingle(stopwatch.ElapsedMilliseconds) / 1000}秒");
+		}
+
+		/// <summary>
+		/// 同步方式
+		/// </summary>
+		private void Search()
+		{
+			Stopwatch stopwatch = Stopwatch.StartNew();
+			ShowText = string.Empty;
+			ShowText += "\r\n" + ("同步检索开始");
+			int index = 0;
+			Data.books.ForEach(book => ShowText += "\r\n" + ($"{++index},{book.Search()}"));
+			ShowText += "\r\n" + ($"同步检索完成:{Convert.ToSingle(stopwatch.ElapsedMilliseconds) / 1000}秒");
+		}
+
+		public async void SrearchEvent()
+		{
+			Stopwatch sw = Stopwatch.StartNew();
+			ShowText = string.Empty;
+			ShowText += "\r\n" + ("事件检索开始");
+
+			List<Task> tasks = new List<Task>();
+			foreach (var book in Data.books)
+			{
+				book.EventCompleted += Book_EventCompleted;//事件触发后的执行方法
+				tasks.Add(Task.Run(book.SearchEvent));//SearchEvent方法中的invoke方法来触发该事件
+			}
+
+			await Task.WhenAll(tasks);
+			sw.Stop();
+			ShowText += "\r\n" + ($"事件检索完成:{Convert.ToSingle(sw.ElapsedMilliseconds) / 1000}秒");
+		}
+
+		private void Book_EventCompleted(object sender, BookEventArgs e)
+		{
+			ShowText += "\r\n" + e.Result;
+		}
+		#endregion
+
+
+	}
+}
+
+```
+3. Book.cs代码：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace 同步异步多线程.Datas
+{
+
+	public class BookEventArgs : EventArgs
+	{
+        public string? Name { get; set;}
+        public string? Result { get; set; }
+        public BookEventArgs(string name,string result)
+        {
+            this.Name=name;
+			this.Result=result;
+        }
+    }
+
+	public class Book
+    {
+		public event Action<object?, BookEventArgs> EventCompleted;
+		/// <summary>
+		/// 书名
+		/// </summary>
+		private string name;
+		public string Name
+		{
+			get { return name; }
+			set { name = value; }
+		}
+
+		/// <summary>
+		/// 查询时间
+		/// </summary>
+		private int duration;
+		public int Duration
+		{
+			get { return duration; }
+			set { duration = value; }
+		}
+
+		public Book( string name,int duration)
+		{
+			this.name = name;
+			this.duration = duration;
+		}
+
+		public string Result(long millionSeconds)
+		{
+			return $"{Name.PadRight(12,'-')}用时:{Convert.ToSingle(millionSeconds/1000)}秒";
+		}
+
+		public string Search()
+		{
+			Stopwatch stopwatch	= Stopwatch.StartNew();
+			Thread.Sleep(Duration * 1000);
+			stopwatch.Stop();
+			return Result(stopwatch.ElapsedMilliseconds);
+		}
+
+		/// <summary>
+		/// 带事件的检索方法
+		/// </summary>
+		/// <returns></returns>
+		public void SearchEvent()
+		{
+			Stopwatch stopwatch = Stopwatch.StartNew();
+			Thread.Sleep(Duration * 1000);
+			stopwatch.Stop();
+			EventCompleted?.Invoke(this, new BookEventArgs(Name, Result(stopwatch.ElapsedMilliseconds)));
+		}
+
+		#region 注释
+		//public async Task<string> SearchAsync()
+		//{
+		//	Stopwatch stopwatch = new Stopwatch();
+		//	await Task.Delay(Duration * 1000);
+		//	stopwatch.Stop();
+		//	return Result(stopwatch.ElapsedMilliseconds);
+		//}
+		#endregion
+
+	}
+}
+
+```
+4. Data.cs代码：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace 同步异步多线程.Datas
+{
+    public class Data
+    {
+        public readonly static List<Book> books = new() { 
+            new Book("封神演义",1),
+            new Book("三国演义",2),
+            new Book("水浒传",1),
+            new Book("西游记",1),
+            new Book("红楼梦",2),
+            new Book("聊斋志异",2),
+            new Book("儒林外史",1),
+            new Book("隋唐演义",1)
+        };
+
+        #region 注释
+        //public readonly static List<string> urlCollect = new()
+        //{
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/",
+        //    "https://www.sina.com.cn/"
+
+        //};
+        #endregion
+
+    }
+}
+
+```
+
 ### 60.异常
 （1）try语句：
 try语句用来指明因避免出现异常而被保护的代码片段，并在发生异常时提供代码处理异常。
@@ -2162,10 +3132,10 @@ namespace APP
  - 抽象成员不能实现代码块；
  - 抽象成员必须被子类用override关键字重写;
  例如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/04e741b1cf8e4ce5bd7a75222e416d93.png#pic_center)
-（2）虚成员和抽象成员的区别：
-抽象方法是只有方法名称，没有方法体（也就是没有方法具体实现），子类必须用override关键字重写父类抽象方法。
-虚函数有方法体，但是子类可以覆盖，也可不覆盖。
+ ![在这里插入图片描述](https://img-blog.csdnimg.cn/04e741b1cf8e4ce5bd7a75222e416d93.png#pic_center)
+ （2）虚成员和抽象成员的区别：
+ 抽象方法是只有方法名称，没有方法体（也就是没有方法具体实现），子类必须用override关键字重写父类抽象方法。
+ 虚函数有方法体，但是子类可以覆盖，也可不覆盖。
 ### 73.构造函数重载、静态构造函数、构造函数分别什么时候执行？
 先看代码展示：
 
@@ -2329,14 +3299,27 @@ public class Program
 （2）隐式转换：类型的转换不会丢失数据或精度，因此语言会自动给做的转换叫做隐式转换。
 （3）装箱：值类型到引用类型的隐式转换。任何值类型都可以被隐式转换为object类型，System.ValueType或InterfaceT；
 （4）拆箱：把装箱后的对象转换回值类型的过程。拆箱是显式转换。
-### 79.进程和线程分别是什么？谈谈进程和线程的区别与联系。
-（1）进程：构成运行程序的资源的集合。这些资源包括虚地址空间，文件句柄和许多其他程序运行所需的东西。
-（2）线程：在进程的内部，系统创建了一个称为线程的内核对象，它代表了真正执行的程序。
-（3）进程和线程的区别与联系：
-1. 默认情况下，一个进程只包含一个线程，从程序的开始一直执行到结束；
-2. 线程可以派生其他线程，因此在任意时刻，一个进程都可能包含不同状态的多个线程来执行程序的不同部分；
-3. 如果一个进程拥有多个线程，他们将共享进程的资源；
-系统为处理器执行所规划的单元是线程，不是进程。
+
+### 79.将 int 输出为二进制字符串
+
+```csharp
+class Test
+{
+    static void Main()
+    {
+        int value = 5;
+        var result= Convert.ToString(value, 2);
+        Console.WriteLine(result);
+        Console.ReadKey();
+    }
+}
+```
+输出结果：
+
+```csharp
+101
+```
+
 ### 80.一道c#试题
 ```csharp
 using System;
@@ -2361,105 +3344,12 @@ namespace  day
 ```
 结果如图：n1的值为1，n2的值为2
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/5dc0b3839f8b4fa3b7fd7ee7d72a99eb.png#pic_center)
-### 81.使用CancellationTokenSource 取消多线程
-CancellationTokenSource 用于取消多线程操作。
-使用步骤：
-（1）声明CancellationTokenSource 对象；
-（2）实例化 CancellationTokenSource 对象，此对象管理取消通知并将其发送给单个取消标记。并进行注册回调事件；
- 注意：想再次启动线程,必须重新再new CancellationTokenSource();因为取消了一次CancellationTokenSource.Cancel()，CancellationToken.IsCancellationRequested的标记一直为true;
-（3）Cancel()方法调用会设置cancellationManage.IsCancellationRequested为True;
-调用 CancellationTokenSource.Cancel 方法以提供取消通知。 这会将 CancellationToken.IsCancellationRequested 取消标记的每个副本上的属性设置为 true ；
-代码举例：
-
-```csharp
-using System;
-using System.Linq;
-using System.Threading;
-
-namespace practice01
-{
-
-    class Program
-    {
-        private static CancellationTokenSource cts;//1.声明CancellationTokenSource对象
-
-        static void Main(string[] args)
-        {
-            while (true)
-            {
-                Console.WriteLine("1.开始运行多线程");
-                Console.WriteLine("2.取消多线程");
-                switch (Console.ReadLine())
-                {
-                    case "1":
-                        BeginThread();
-                        break;
-                    case "2":
-                        CancelThread();
-                        break;
-                    default:
-                        break;
-                }
-            }
-
-            // Console.ReadKey();
-        }
-
-        /// <summary>
-        /// 回调停止方法
-        /// </当多线程结束即调用Cancel方法后，将会调用此回调方法>
-        private static void CallStopThread()
-        {
-            Console.WriteLine("回调停止方法");
-        }
-
-        /// <summary>
-        /// 取消方法
-        /// </summary>
-        private static void CancelThread()
-        {
-            cts.Cancel();//4.Cancel()方法调用会设置IsCancellationRequested为True;
-        }
-
-        /// <summary>
-        /// 开始运行线程方法
-        /// </summary>
-        private static void StartThread()
-        {
-            for (int i = 0; i < 1000000; i++)
-            {
-                if (cts.IsCancellationRequested) break;//如果为true，就跳出当前循环
-                Console.WriteLine($"开始运行线程方法,线程ID：{Thread.CurrentThread.ManagedThreadId}");
-                Thread.Sleep(1000);
-            }
-        }
-
-        /// <summary>
-        /// 开始运行线程
-        /// </summary>
-        private static void BeginThread()
-        {
-            Console.WriteLine("开始运行1方法");
-            cts = new CancellationTokenSource(); //2.实例化 CancellationTokenSource 对象，此对象管理取消通知并将其发送给单个取消标记。
-            cts.Token.Register(CallStopThread);//3.注册回调事件
-
-            Thread[] ths = new Thread[3];
-            for (int i = 0; i < ths.Count(); i++)
-            {
-                ths[i] = new Thread(StartThread);
-                ths[i].Start();
-            }
-        }
-    }
-}
-```
-![在这里插入图片描述](https://img-blog.csdnimg.cn/45cc100eb22f497d91787324e68c46b4.png#pic_center)
-### 82.C#中的单例模式与IOC
+### 81.C#中的单例模式与IOC
 今天看项目代码，在IOC(控制反转)这部分知识这边卡了壳，问了下同事，终于理解了它的用法。
 &emsp; 首先将一个类声明为单例模式下的类，然后将它放进IOC容器中，这样每次从IOC容器中取出的时候，就不用再重复实例化该类，减少内存的占用。
 &emsp; 因为传统的实例化都是通过用new关键字实例化，当频繁地在不同文件中使用该类的时候，就可能需要不断地通过new来实例化，极大消耗了内存占用；而通过将单例模式下的类注入IOC容器后，每次用该类的时候可以通过IOC.Get方法取出该类（不管从IOC容器中取多少次，只会对该类进行一次实例化，不会重复实例化）。
 
-### 83.C# string.Join的用法
+### 82.C# string.Join的用法
 发现了string类中一个特别好用的方法string.Join，先直接看效果：
 ```csharp
 int[] arrays = { 2, 8, 29, 19, 12, 13, 99, 89, 105, 108, 81 };
@@ -2478,7 +3368,7 @@ public static String Join<T>(String? separator, IEnumerable<T> values)方法
 // 一个包含要串联的对象的集合。
 
 
-### 84.C#中using
+### 83.C#中using
 #### 1.using指令
 用法：using 命名空间
 如：
@@ -2504,7 +3394,7 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
 
 }
 ```
-### 85.object.ReferenceEquals方法
+### 84.object.ReferenceEquals方法
 在.net中，可以用object.ReferenceEquals比较两个对象是否是同一个对象，是同一个对象的话，返回结果为true，反之返回false。
 如：
 ```csharp
@@ -2513,9 +3403,9 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
  bool result= object.ReferenceEquals(t1, t);
  Console.WriteLine(result);
 ```
-### 86.读取环境变量
+### 85.读取环境变量
 用Environment.GetEnvironmentVariable方法读取环境变量，并返回一个string类型的结果。
-### 87.C#新语法：顶级语句（C#9.0）
+### 86.C#新语法：顶级语句（C#9.0）
 1.使用vs2022新建一个.net core控制台应用，并选择.net6.0时会有一个是否选择使用顶级语句的按钮，如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/569f121d2fac4fea88fd78b4e60a9568.png#pic_center)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dd1512ca04024f2dac4721e97ebaa07a.png#pic_center)
@@ -2524,11 +3414,11 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
 2. 同一个项目中只能有一个文件具有顶级语句。
 3. 顶级语句中可以直接使用await语法，也可以声明函数，如：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/34bf1f6208b24a7989a7116e566f1905.png#pic_center)
-### 88.C#新语法：全局Using指令（C#10.0）
+### 87.C#新语法：全局Using指令（C#10.0）
 1.将 global 修饰符添加到 using 前，这个命名空间就应用到整个项目，不用重复using。
 2.通常创建一个专门用来编写全局using代码的C#文件。
 3.如果csproj中启用了<ImplicitUsings>enable</ImplicitUsings>，编译器会自动隐式增加对于System、System.Linq等常用命名空间的引入，不同各类型项目引入的命名空间也不一样。
-### 89.C#新语法:record类型（C#9.0）
+### 88.C#新语法:record类型（C#9.0）
 1.C# 9.0 中引入了 record，record 是一个特殊类，本质上是Class类型。用它来实现 model 在有些情况下会非常的好用。
 先看一段代码：
 ```csharp
@@ -2576,10 +3466,10 @@ Console.WriteLine(p1==p2);
 Console.WriteLine(p1==p3);
 Console.WriteLine(p1.FirstName);
 ```
-### 90.C#新语法:init（C#9.0）
+### 89.C#新语法:init（C#9.0）
 init是C# 9.0中引入的新的访问器。
 如果一个属性用get和init修饰，而不是get和set修饰，那么该属性只能在本类的构造函数中进行赋值，在本类的其他方法和其他类中均无法赋值。
-### 91.Sealed关键字
+### 90.Sealed关键字
 sealed的英文意思就是密封，禁止的意思，故名思义，就是由它修饰的类或方法将不能被继承或是重写。在c#中sealed关键字可以用来修饰类和方法。
 #### 1.sealed关键字修饰类
 当对一个类应用 sealed 修饰符时，此修饰符会阻止其他类从该类继承。
@@ -2622,10 +3512,7 @@ sealed的英文意思就是密封，禁止的意思，故名思义，就是由�
         }
     }
 ```
-### 92.异步编程中Task.Run 和 Task.Factory.StartNew 区别
-可以认为Task.Run是简化的Task.Factory.StartNew 的使用，除了需要指定一个线程是长时间占用的，否则就使用 Task.Run。Task.Run方法是从线程池中调用一个新的线程，并不是调用Task.Run方法就一定会开辟一个新的线程；而Task.Factory.StartNew方法是开辟一个新的线程。两个方法实际上没有太大的区别，因此推荐使用Task.Run方法。
-总的来讲，在需要设置线程是长时间运行的才需要使用 Task.Factory.StartNew 方法，不然就使用 Task.Run方法。
-### 93.C#中依赖注入的三种方式
+### 91.C#中依赖注入的三种方式
 #### 1.通过接口注入
 **接口注入：**
 相比构造函数注入和属性注入，接口注入显得有些复杂，使用也不常见。具体思路是先定义一个接口，包含一个设置依赖的方法。然后依赖类，继承并实现这个接口。
@@ -2819,7 +3706,7 @@ namespace Example
 }
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e8f2c797902842f0ab8cbd22a9010c14.png#pic_center)
-### 94.C#中yield关键字使用：yield return和yield break的作用
+### 92.C#中yield关键字使用：yield return和yield break的作用
 C#中，yield关键字的作用是将当前集合中的元素立即返回，只要没有yield break,方法还是会继续执行循环到迭代结束。
 1. yield return是一次一个的返回，yield return例子：
 ```csharp
@@ -2873,7 +3760,7 @@ namespace yield关键字
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bb0cb6a4f7e84c718b24156c29c4dbfb.png#pic_center)
 通过此代码可以看出，此代码返回的结果是1和2，不是1、2和3，因为用了yield break，因此enumerableFuc方法中的第四行yield return 3这一行没有被执行。
-### 95.C#中的克隆
+### 93.C#中的克隆
 克隆比较常用，所以.NET在System命名空间中提供了ICloneable接口，其中就是唯一的一个方法Clone()；使用Colne方法可以完成浅拷贝，但有时候我们还需要完成深拷贝以拷贝类中的引用类型的属性。先来看引用拷贝、浅拷贝、深拷贝三者的区别：
 区分 引用拷贝、浅拷贝和深拷贝：
 
@@ -3043,7 +3930,7 @@ namespace PrototypePattern
 
 
 
-### 96.Lazy（延迟初始化）的用法
+### 94.Lazy（延迟初始化）的用法
 #### 1.Lazy简介
 通过Lazy关键字，我们可以声明某个对象为仅仅当第一次使用的时候，再初始化，如果一直没有调用，那就不初始化，省去了一部分不必要的开销，提升了效率，同时Lazy是天生线程安全的。
 #### 2.应用场景
@@ -3147,7 +4034,7 @@ Data::.ctor->Initialized,name = Test
 Data::Print->name = Test
 Main->lazyData被初始化了吗? value = True
 ```
-### 97.字典：Dictionary
+### 95.字典：Dictionary
 #### 1.何时使用Dictionary而不是List
 * 通常情况下，我们可以用int类型的索引来从数组或集合中来查询所需要的数据，但是当索引不是int（如string和double），这时就需要使用Dictionary字典。
 * 当要存储的东西很多、列表很长时，可以使用Dictionary字典,字典的查询效率很高（List集合是循环遍历的查找方式，而字典是哈希查找）。
@@ -3214,7 +4101,7 @@ namespace prop
     }
 }
 ```
-### 98.字典：ConcurrentDictionary的使用
+### 96.字典：ConcurrentDictionary的使用
 ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/值对的线程安全集合。
 也就是说，ConcurrentDictionary可由多个线程同时访问，并且线程安全。
 
@@ -3222,101 +4109,8 @@ ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/
 
 ConcurrentDictionary的用法和Dictionary类似。
 
-### 99.TaskCompletionSource的使用
-MSDN链接：[添加链接描述](https://learn.microsoft.com/zh-cn/dotnet/standard/asynchronous-programming-patterns/)
+### 97. IEnumerable接口与yield return
 
-TaskCompletionSource生成Task方法，使用TaskCompletionSource很简单，只需要实例化它即可。TaskCompletionSource有一个Task属性，可以对该属性暴露的task做操作，比如让它wait或者ContinueWith等操作。当然，这个task由TaskCompletionSource完全控制。
-
-大多数时候，只在目标方法要调用基于事件API，又要返回Task的时候使用。比如下面的ApiWrapper方法，该方法要返回Task<string>,又要调用EventClass对象的Do方法，并且等到Do方法触发Done事件后，Task才能得到结果并返回。
-
-```csharp
-
-class CD_Ctor
-{
-   public static void Main()
-    {
-        var task = ApiWrapper(); 
-        Console.WriteLine("Foo4:"+Thread.CurrentThread.ManagedThreadId);
-        Console.WriteLine(task.Result);
-    }
-
-    public static Task<string> ApiWrapper()
-    {
-        var tcs=new TaskCompletionSource<string>();
-        var api = new EventClass();
-        api.Done += (args) => { tcs.TrySetResult(args); };
-        api.Do();
-        return tcs.Task;
-    }
-
-    public class EventClass
-    {
-        public Action<string> Done = (args) => { };
-        public void Do()
-        {
-            Console.WriteLine("EventClass:"+Thread.CurrentThread.ManagedThreadId);
-            Done("Done");
-        }
-    }
-}
-
-```
-
-再看一个例子：
-
-```csharp
-using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
-
-namespace prop
-{
-   public class Program
-    {
-
-        //选择车票
-        public static async Task<bool> ChoiceTicket(TaskCompletionSource<bool> tcs)
-        {
-            Console.WriteLine("选购火车票");
-            Console.WriteLine("跳转到到支付页面");
-
-            await tcs.Task;//到这里会等待直到其他地方设置了Task的状态
-            Console.WriteLine("订票完成");
-            return true;
-        }
-
-        //选择支付页面
-        public static async Task PayForMoney(TaskCompletionSource<bool> tcs)
-        {
-
-            await Task.Delay(3000).ContinueWith((t) => Console.WriteLine("选购支付宝支付"));
-
-            tcs.SetResult(false);
-            Console.WriteLine("支付完成");
-            Console.WriteLine("跳到火车票软件完成");
-        }
-        public static void Main()
-        {
-            TaskCompletionSource<bool> tcs = new();
-            Task.Run(async () => await ChoiceTicket(tcs));
-            Task.Run(async () => await PayForMoney(tcs));
-
-            Console.Read();
-        }
-    }
-}
-```
-输出结果：
-
-```bash
-选购火车票
-跳转到到支付页面
-选购支付宝支付
-订票完成
-支付完成
-跳到火车票软件完成
-```
-
-### 100. IEnumerable接口与yield return
 **在实际编程中，IEnumerable接口常常和yield关键字配合使用。**
 比如像下面这样的方法，通过yield return每次返回一个数据，即产生了一个数据就返回一个：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4170bd8c56f64dd99a2bae249d57cf26.png)
@@ -3380,7 +4174,7 @@ namespace App
 2022年10月18日 20:47:28
 ```
 
-### 101.反射和特性
+### 98.反射和特性
 #### 1.反射
 反射就是我们在只知道一个对象的外部而不了解内部结构的情况下，可以知道这个对象的内部实现。
 
@@ -3570,8 +4364,8 @@ namespace 测试
             (Activator.CreateInstance(AlarmID2Type[alarmID]) as IAlarmProcedure).HandleAsync(null, null); //根据传入的alarmID创造实例并调用相应的HandleAsync方法
         }
 ```
-### 102.属性和字段的区别？为什么要用属性？
- `时间：2022.11-2 22:47 `
+### 99.属性和字段的区别？为什么要用属性？
+ ` 时间：2022.11-2 22:47 `
  转眼间，距离7月份参加工作已经有4个月了，今天师傅问我C#中属性和字段的区别，我支支吾吾答了一小部分，等于没说（实感自己在编程学习方面的不足），师傅便给我语重心长地讲解了二者的区别，因此晚上回到酒店后做了如下整理：
 
 
@@ -3580,23 +4374,23 @@ namespace 测试
 
  2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
  字段一般都声明为private私有的，而属性一般都声明为public公有的。
- 
+
  3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
- 
+
  感觉师傅给我讲的关于属性和字段的区别以及属性的优点，我还是没有理解核心区别，今天先写总结到这里，日后再有更深层次的理解了，继续完善。
 
-### 103.事件Event的使用、与委托的区别
+### 100.事件Event的使用、与委托的区别
  ` 时间：2022.11-2 23:15`
  今天师傅给我讲了些项目代码中事件和委托的使用以及区别，并让我学会多使用evnet事件（可以少用action委托，多用事件），晚上回去作了些总结，记录如下：
  先分析委托因为封装不充分而产生的缺点：
 
  1. 错误使用赋值操作符导致原本的委托链被覆盖：
  如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
- 
+
  2. 在类的外部也可以调用委托：
  尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
- 总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
- 事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
+  总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
+  事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
 ```csharp
 public delegate void action(string str);
         public event action EventTs
@@ -3612,7 +4406,7 @@ public delegate void action(string str);
         }
 ```
 
-### 104.关于C#中序列化的一些小问题
+### 101.关于C#中序列化的一些小问题
 关于序列化的详细知识可参考此篇文章[C# Xml进行序列化与反序列化](https://blog.csdn.net/hjssss/article/details/88718634)
 
 1. 序列号的概念
@@ -3694,7 +4488,7 @@ Age: 20
 操作完成
 ```
 
-### 105.C#中的文件操作
+### 102.C#中的文件操作
 1. 通过FileInfo和DirectoryInfo类来读取文件和文件夹属性
 	包括：查看文件属性，创建文件，移动文件，重命名文件，判断路径是否存在，创建目录。
 2. 通过File来读写文件。
@@ -3874,19 +4668,19 @@ namespace _002正则表达式
     }
 }
 ```
-### 106.XML
+### 103.XML
 XML指可扩展标记语言，XML被设计用来传输和存储数据。XML被设计用来结构化、存储以及传输信息。
 
 1.[C# 序列类为 xml 可以使用的特性大全](https://blog.lindexi.com/post/C-%E5%BA%8F%E5%88%97%E7%B1%BB%E4%B8%BA-xml-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E7%89%B9%E6%80%A7%E5%A4%A7%E5%85%A8.html)
 2.[dotnet C# 序列化 XML 时进行自动格式化](https://blog.lindexi.com/post/dotnet-C-%E5%BA%8F%E5%88%97%E5%8C%96-XML-%E6%97%B6%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96.html)
 
-### 107.Json介绍
+### 104.Json介绍
 1.[C# json 转 xml 字符串](https://blog.lindexi.com/post/C-json-%E8%BD%AC-xml-%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
 2.[dotnet C# 如何让 Json 序列化数组时序列化继承类的属性](https://blog.lindexi.com/post/dotnet-C-%E5%A6%82%E4%BD%95%E8%AE%A9-Json-%E5%BA%8F%E5%88%97%E5%8C%96%E6%95%B0%E7%BB%84%E6%97%B6%E5%BA%8F%E5%88%97%E5%8C%96%E7%BB%A7%E6%89%BF%E7%B1%BB%E7%9A%84%E5%B1%9E%E6%80%A7.html)
 3.[dotnet 手动解决 json 解析中不合法字符串](https://blog.lindexi.com/post/dotnet-%E6%89%8B%E5%8A%A8%E8%A7%A3%E5%86%B3-json-%E8%A7%A3%E6%9E%90%E4%B8%AD%E4%B8%8D%E5%90%88%E6%B3%95%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
 4.[dotnet 使用 Newtonsoft.Json 输出枚举首字符小写](https://blog.lindexi.com/post/dotnet-%E4%BD%BF%E7%94%A8-Newtonsoft.Json-%E8%BE%93%E5%87%BA%E6%9E%9A%E4%B8%BE%E9%A6%96%E5%AD%97%E7%AC%A6%E5%B0%8F%E5%86%99.html)
 
-### 108.StopWatch计时器
+### 105.StopWatch计时器
 StopWatch类用于精确测量时间
 简单使用如下：
 
@@ -3937,207 +4731,8 @@ namespace StopWatch练习
 使用毫秒来输出：6585
 使用毫秒来输出：3014
 ```
-### 109.Thread.Abort()和Thread.ResetAbort()
-先看一个问题，如下，要在Main方法中如何操作才能执行Foo方法finally中的语句？
 
-```csharp
-using System.Collections.Concurrent;
-using System.Runtime.CompilerServices;
-
-namespace prop
-{
-   public class Program
-    {
-        static async void Main(string[] args)
-        {
-            // 请在此处写代码，调用 Foo 函数内的输出代码
-        }
-        private static void Foo()
-        {
-            try
-            {
-                while (true)
-                {
-                    
-                }
-            }
-            finally
-            {
-                Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
-            }
-        }
-    }
-}
-```
-答案之一：使用一个线程调用的方式，调用之后结束线程，此时就会输出
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp4
-{
-    using System.Collections.Concurrent;
-    using System.Runtime.CompilerServices;
-    using System.Threading;
-
-    namespace prop
-    {
-        public class Program
-        {
-            static void Main(string[] args)
-            {
-                // 请在此处写代码，调用 Foo 函数内的输出代码
-                var thread = new Thread(() =>
-                {
-                    Foo();
-                });
-                thread.Start();
-                Task.Delay(1000).Wait();
-                thread.Abort();//注意，在 dotnet core 不支持 Abort 方法
-                Console.ReadLine();
-            }
-            private static void Foo()
-            {
-                try
-                {
-                    while (true)
-                    {
-
-                    }
-                }
-                finally
-                {
-                    Console.WriteLine("尝试调用 Foo 函数执行这一句代码");
-                }
-            }
-        }
-    }
-}
-
-```
-引深一些：
-Thread类中的Abort方法用于终止正在运行的线程。它可以强制终止线程，而不管线程是否是Sleep中。在执行了Abort方法后，被终止的线程就会继续运行try catch finally 块中代码，因为是强行终止，catch块中之后的语句就不再会执行。除非在catch块中执行Thread.ResetAbort这个静态方法。
-先举例没有ResetAbort()的情况：
-
-```csharp
-using System;
-using System.Threading;
-
-class Test
-{
-    public static void Main()
-    {
-        Thread newThread = new Thread(new ThreadStart(TestMethod));
-        newThread.Start();
-        Thread.Sleep(1000);
-
-        Console.WriteLine("Main aborting new thread.");
-        newThread.Abort("Information from Main.");//强制中止newThread线程
-
-        newThread.Join();//等待newThread线程执行完
-        Console.WriteLine("New thread terminated - Main exiting.");
-        Console.ReadKey();
-    }
-
-    static void TestMethod()
-    {
-        try
-        {
-            while (true)
-            {
-                Console.WriteLine("New thread running.");
-                Thread.Sleep(1000);
-            }
-        }
-        catch (ThreadAbortException abortException)
-        {
-            Console.WriteLine((string)abortException.ExceptionState);
-        }
-        finally
-        {
-            Console.WriteLine("Do somthing else in funally{}.");
-        }
-        Console.WriteLine("Do somthing else here.");
-    }
-}
-```
-输出结果：
-
-```bash
-New thread running.
-Main aborting new thread.
-Information from Main.
-Do somthing else in funally{}.
-New thread terminated - Main exiting.
-```
-看输出结果，可以看到线程被Abort之后，执行catch和finally块中的内容，但是不会执行finally块之后的内容。
-再看增加ResetAbort()的代码：
-
-```csharp
-using System;
-using System.Threading;
-
-class Test
-{
-    public static void Main()
-    {
-        Thread newThread = new Thread(new ThreadStart(TestMethod));
-        newThread.Start();
-        Thread.Sleep(1000);
-
-        Console.WriteLine("Main aborting new thread.");
-        newThread.Abort("Information from Main.");//强制中止newThread线程
-
-        newThread.Join();//等待newThread线程执行完
-        Console.WriteLine("New thread terminated - Main exiting.");
-        Console.ReadKey();
-    }
-
-    static void TestMethod()
-    {
-        try
-        {
-            while (true)
-            {
-                Console.WriteLine("New thread running.");
-                Thread.Sleep(1000);
-                
-            }
-        }
-        catch (ThreadAbortException abortException)
-        {
-            Console.WriteLine((string)abortException.ExceptionState);
-            Thread.ResetAbort();
-        }
-        finally
-        {
-            Console.WriteLine("Do somthing else in funally{}.");
-        }
-        Console.WriteLine("Do somthing else here.");
-    }
-}
-
-```
-输出结果：
-
-```bash
-New thread running.
-Main aborting new thread.
-Information from Main.
-Do somthing else in funally{}.
-Do somthing else here.
-New thread terminated - Main exiting.
-```
-从结果中可以看到，线程被终止了，由于执行了Thread.ResetAbort()，因此就允许继续执行finally块之后的代码。
-注意: 如果Thread.ResetAbort()语句放在catch块中，最好应当把Thread.ResetAbort()语句放在catch{}代码块最后，否则会把abortException.ExceptionState中的内容给清空了。Thread.ResetAbort()还可以放在finally块中，它同样也可以允许继续执行finally块之后的代码。另外，Thread.ResetAbort()只能执行一次，不能执行二次及以上，否则会出新的异常。
-
-现在解释一下，在默认（不调用Thread.ResetAbort()）的情况下， finally块后的代码是执行不到的，这是由于 ThreadAbortException这个异常非常特殊，它会在finally块的最后（如果没有finally块，则是在catch块的最后）重新扔出一个 ThreadAbortException异常。(不过这个异常在外部抓不到，它仅仅是为了退出线程用的)。
-
-### 110.字符串首字符大写的方法。
+### 106.字符串首字符大写的方法。
 
 ```csharp
 using System;
@@ -4168,7 +4763,7 @@ class Test
 ```csharp
 Spider man
 ```
-### 111.使用下划线忽略使用的变量
+### 107.使用下划线忽略使用的变量
 这个用的比较多的是在 out 参数后，比如输出的out类型的参数用不到，就可以直接out var _。
 ```csharp
 class Test
@@ -4184,7 +4779,8 @@ class Test
     }
 }
 ```
-### 112.可空类型
+### 108.C#中?(可空类型)
+#### 1.?符号
 可以在值类型后加一个?符号，使用该符号声明的值类型可以赋值null。
 比如下面,numb变量可以为空。
 
@@ -4207,7 +4803,15 @@ class Test
 ```
 如果去掉int?numb=null中的？,在声明的时候就会报错。
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d962ffc2f1994653ade2c02c3228305e.png#pic_center)
-### 113.字符串的大量拼接使用 StringBuilder 代替
+#### 2.?.符号
+VS新的使用方式，判断？前的对象是否为空，不为空再获取对象的属性。
+例如：
+
+```csharp
+ManualReset?.Reset();//当ManualReset不为空时调用它的Reset方法
+```
+
+### 109.字符串的大量拼接使用 StringBuilder 代替
 根据字符串的原理，如果进行不断的拼接，将会带来一点性能损耗，原因是每次拼接都会创建新的字符串对象。
 
 ```csharp
@@ -4217,4 +4821,111 @@ for (int i = 0; i < n; i++)
 }
 ```
 如上面代码将会创建大量中间的字符串对象，而最终需要的对象仅仅只有一个字符串。一个优化的方法就是使用 StringBuilder 代替 string 此时能提升不少的性能。
+
+
+### 110.拼接 URI 路径
+需要将一个 URI 和另一个 URI 拼接如 https://blog.XXX.com/post/123 和 /api/12 拼接，拿到绝对路径 https://blog.XXX.com/api/12 可以使用下面方法：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Test
+{
+    static void Main()
+    {
+        var uri1 = new Uri("https://blog.XXX.com/post/123");
+        var uri2 = "/api/12";
+
+        if (Uri.TryCreate(uri1, uri2, out var absoluteUrl))
+        {
+            // 拼接成功，在这里就可以使用 absoluteUrl 拼接后的绝对路径
+            Console.WriteLine(absoluteUrl);
+        }
+        Console.ReadKey();
+    }
+
+}
+
+```
+输出结果：
+
+```csharp
+https://blog.xxx.com/api/12
+```
+
+
+### 111.使用Linq查找某个类集合中属性的最大值和最小值
+` 2023-3-11日：今天在工作写代码时，关于Linq这块的一个小需求竟然卡壳了，因时间紧急，便用了很笨的一种方法解决问题，晚上下班回到酒店做了整理，把这块学会，弥补不足。`
+
+今日遇到需求如下：查找一个集合类中某个属性的最大值和最小值，想使用Linq来实现。
+
+需求复现代码如下：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.Office.Interop.Excel;
+using static System.Net.Mime.MediaTypeNames;
+using Application = Microsoft.Office.Interop.Excel.Application;
+
+namespace LinqPractice
+{
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Data data = new Data();
+            data.jobDatas = init();
+            var maxValue = data.jobDatas.Select(e => e.Power).Max();
+            var minValue=data.jobDatas.Select(e=>e.Power).Min();
+            Console.WriteLine($"最大值:{maxValue}");
+            Console.WriteLine($"最小值:{minValue}");
+            Console.ReadKey();
+        }
+
+        public static List<JobData> init()
+        {
+            List<JobData> jobs = new List<JobData>();
+            jobs.Add(new JobData() { Power = 1 });
+            jobs.Add(new JobData() { Power = 3 });
+            jobs.Add(new JobData() { Power = 5 });
+            jobs.Add(new JobData() { Power = 7 });
+            jobs.Add(new JobData() { Power = 9});
+            return jobs;
+        }
+    }
+    public class JobData
+    {
+        public int Power { get; set; }
+    }
+    public class Data
+    {
+        public List<JobData> jobDatas {  get; set; }
+    }
+}
+```
+代码运行结果如下：
+```csharp
+最大值:9
+最小值:1
+```
+总结：
+可以通过Linq中的Select方法把集合中的每一项转换为另外一种类型。
+
+什么时候该用where什么时候该用select。其实也挺简单的，就是假如后面的表达式返回的是true 或者false的bool值的时候就用where，要是后面能直接得到值就用select。
+
+比如，以上代码Select(e=>e.Power)表达式中e=>e.Power返回的是值，因此就用select。
+
+
+
+
+
+
+
 

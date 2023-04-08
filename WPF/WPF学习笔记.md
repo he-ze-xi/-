@@ -2000,7 +2000,7 @@ EventManager.RegisterClassHandler(typeof(TextBox), TextBox.KeyDownEvent, new Rou
 
 xaml代码如下：
 
-```xaml
+```xml
  <Button Content="点击测试" Width="100" Height="40" ToolTip="oK">
             <Button.Background>
                 <SolidColorBrush>
@@ -2026,7 +2026,7 @@ xaml代码如下：
 
 1. 方法1：在 xaml 可以使用 " &#x0a"加一个英文分号表示换行，所以最简单的方法是在 Text 里面输入换行，如下：
 
-```xaml
+```xml
         <TextBlock Text="青青子衿，悠悠我心。&#x0a;纵我不往，子宁不嗣音？青青子佩，悠悠我思。&#x0a;纵我不往，子宁不来？挑兮达兮，在城阙兮。&#x0a;一日不见，如三月兮。">
             
         </TextBlock>
@@ -2054,7 +2054,7 @@ xaml代码如下：
 3. 方法3：通过 LineBreak 的方法换行：
 代码如下：
 
-```yaml
+```xml
         <TextBlock>
                 青青子衿，
                 <LineBreak/>
@@ -2070,12 +2070,12 @@ xaml代码如下：
 ### 46.WPF 去掉最大化按钮
 通过在窗口添加下面代码：
 
-```yaml
+```xml
 ResizeMode="NoResize"
 ```
 ### 47.WPF ListView 使用 WrapPanel 没有自动换行
 把ScrollViewer.HorizontalScrollBarVisibility属性禁用即可。
-```yaml
+```xml
 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
   <ListView.ItemsPanel>
     <ItemsPanelTemplate>
@@ -2089,7 +2089,7 @@ ResizeMode="NoResize"
 ### 49.WPF 如何给 Grid 的某一行添加背景色
 其实在 WPF 里面是不存在单独设置 Grid 的某一行的配色，但是想要达到这个视觉效果，可以通过 Border 配合做到。
 
-```yaml
+```xml
  <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
@@ -2100,7 +2100,372 @@ ResizeMode="NoResize"
 ```
 如上代码，想给这三行的第一行设置背景色，那么可以加一个Border，如下：
 
-```yaml
+```xml
   <Border Grid.Row="0" Background="Red"/>
 ```
 这样，这一行就变成了红色。
+
+### 50.WPF中使用OxyPlot包生成图表
+代码示例：
+
+1. 首先下载OxyPlot.WPF包；
+2. 在View中添加上述代码：
+
+```xml
+<Window x:Class="BlankApp1.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:oxyPlot="http://oxyplot.org/wpf"
+        Title="{Binding Title}" Height="350" Width="525" >
+    <Grid>
+        <oxyPlot:PlotView  Foreground="Black" Margin="5" Background="Transparent" Model="{Binding ChartModel}"/>
+    </Grid>
+</Window>
+
+```
+3.在ViewModel中代码如下：
+
+```csharp
+using OxyPlot;
+using OxyPlot.Axes;
+using OxyPlot.Legends;
+using OxyPlot.Series;
+using Prism.Mvvm;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace BlankApp1.ViewModels
+{
+
+    public class ChartData
+    {
+        public DateTime Date { get; set; }
+
+        public double Total { get; set; }
+
+        public double PassRate { get; set; }
+    }
+
+    public class MainWindowViewModel : BindableBase
+    {
+        private string _title = "Prism Application";
+        public string Title
+        {
+            get { return _title; }
+            set { SetProperty(ref _title, value); }
+        }
+
+        private PlotModel chartModel;
+
+        public PlotModel ChartModel
+        {
+            get { return chartModel; }
+            set { SetProperty(ref chartModel, value); }
+        }
+
+        /// <summary>
+        /// 根据数据生成图表模型
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        private PlotModel CreateChartModel(List<ChartData> list)
+        {
+            var model = new PlotModel() { Title = "OxyPlot测试" };
+
+            // 添加图例说明
+            model.Legends.Add(new Legend
+            {
+                LegendPlacement = LegendPlacement.Outside,
+                LegendPosition = LegendPosition.BottomCenter,
+                LegendOrientation = LegendOrientation.Horizontal,
+                LegendBorderThickness = 1,
+                LegendTextColor = OxyColors.Red
+            });
+
+            // 定义第一个Y轴y1，显示数量
+            var ay1 = new LinearAxis()
+            {
+                Key = "y1",
+                Position = AxisPosition.Left,
+            };
+
+
+            // 定义第二个Y轴y2，显示百分比
+            var ay2 = new LinearAxis()
+            {
+                Key = "y2",
+                Position = AxisPosition.Right,
+                Minimum = 0.1,
+                MajorStep = .1,
+                Maximum = 1,
+                LabelFormatter = v => $"{v:P1}"
+            };
+            // 在第二Y轴坐标50%和80%处显示网格线
+            ay2.ExtraGridlines = new double[2] { 0.5, 0.8 };
+            ay2.ExtraGridlineStyle = LineStyle.DashDashDot; // 网格线样式
+
+            // 定义X轴为日期轴，从15天前到现在
+            var minValue = DateTimeAxis.ToDouble(DateTime.Now.Date.AddDays(-15));
+            var maxValue = DateTimeAxis.ToDouble(DateTime.Now.Date);
+            var ax = new DateTimeAxis()
+            {
+                Minimum = minValue,
+                Maximum = maxValue,
+                StringFormat = "yyyy-MM-dd日",
+                MajorStep = 2,
+                Position = AxisPosition.Bottom,
+                Angle = 45,
+                IsZoomEnabled = false
+            };
+
+            // 定义柱形图序列，指定数据轴为Y1轴
+            var totalBarSeries = new LinearBarSeries();
+            totalBarSeries.YAxisKey = "y1";
+            totalBarSeries.BarWidth = 10;
+            //totalBarSeries.FillColor = OxyColor.FromArgb(69, 76, 175, 80);
+            //totalBarSeries.StrokeThickness = 1;
+            //totalBarSeries.StrokeColor = OxyColor.FromArgb(255, 76, 175, 80);
+            totalBarSeries.Title = "总数";
+            // 点击时弹出的label内容
+            totalBarSeries.TrackerFormatString = "{0}\r\n{2:dd}日: {4:0}";
+            // 设置数据绑定源和字段
+            totalBarSeries.ItemsSource = list;
+            totalBarSeries.DataFieldX = "Date";
+            totalBarSeries.DataFieldY = "Total";
+            // 下面为手动添加数据方式
+            //totalBarSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(DateTime.Now.Date.AddDays(-15)), 333));
+
+            // 定义三色折线图序列，指定数据轴为Y2轴
+            var passedRateSeries = new ThreeColorLineSeries();
+            passedRateSeries.Title = "通过率";
+            passedRateSeries.YAxisKey = "y2";
+            // 点击时弹出的label内容
+            passedRateSeries.TrackerFormatString = "{0}\r\n{2:dd}日: {4:P1}";
+            // 设置颜色阈值范围
+            passedRateSeries.LimitHi = .8;
+            passedRateSeries.LimitLo = .5;
+            // 设置数据绑定源和字段
+            passedRateSeries.ItemsSource = list;
+            passedRateSeries.DataFieldX = "Date";
+            passedRateSeries.DataFieldY = "PassRate";
+            // 下面为手动添加数据方式
+            //passedRateSeries.Points.Add(new DataPoint(DateTimeAxis.ToDouble(DateTime.Now.Date.AddDays(-15)), .750));
+            // 添加图标资源
+            model.Series.Add(totalBarSeries);
+            model.Series.Add(passedRateSeries);
+            model.Axes.Add(ay1);
+            model.Axes.Add(ay2);
+            model.Axes.Add(ax);
+            // 设置图形边框
+            model.PlotAreaBorderThickness = new OxyThickness(1, 0, 1, 1);
+            return model;
+        }
+
+        public MainWindowViewModel()
+        {
+            ChartModel=CreateChartModel(GetData());
+        }
+
+        /// <summary>
+        /// 模拟后台异步查询表格数据
+        /// </summary>
+        /// <returns></returns>
+        private List<ChartData> GetData()
+        {
+            var data = new List<ChartData>()
+            {
+                new ChartData { Date = DateTime.Now.Date.AddDays(-15), Total = 121, PassRate = .84 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-14), Total = 88, PassRate = .92 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-13), Total = 180, PassRate = .35 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-12), Total = 150, PassRate = .46 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-11), Total = 78, PassRate = .58 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-10), Total = 99, PassRate = .71 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-9), Total = 143, PassRate = .81 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-8), Total = 56, PassRate = .85 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-7), Total = 108, PassRate = .95 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-6), Total = 79, PassRate = .78 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-5), Total = 63, PassRate = .65 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-4), Total = 157, PassRate = .58 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-3), Total = 148, PassRate = .36 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-2), Total = 115, PassRate = .48 },
+                new ChartData { Date = DateTime.Now.Date.AddDays(-1), Total = 89, PassRate = .63 },
+                new ChartData { Date = DateTime.Now.Date, Total = 121, PassRate = .90 },
+            };
+            return data;
+        }
+    }
+}
+
+```
+4.运行程序，效果如下：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/05450ac428604b0aae2e76b36cff2196.png)
+### 50.WPF中使用avalonedit
+AvalonEdit是基于WPF的代码显示控件，在工业领域应用较多，简单用法如下：
+
+```xml
+<UserControl x:Class="BlankApp1.CustomAvalonEditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BlankApp1"
+             xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border BorderBrush="LightGray" BorderThickness="2">
+        <avalonEdit:TextEditor Name="textEditor" SyntaxHighlighting="XML"  
+                               ShowLineNumbers="True" FontFamily="Consolas" 
+                               FontSize="15pt" Background="White" 
+                               Foreground="Black" />
+    </Border>
+</UserControl>
+
+```
+
+```csharp
+using ICSharpCode.AvalonEdit.CodeCompletion;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace BlankApp1
+{
+    /// <summary>
+    /// CustomAvalonEditControl.xaml 的交互逻辑
+    /// </summary>
+    public partial class CustomAvalonEditControl : UserControl
+    {
+        public CustomAvalonEditControl()
+        {
+            InitializeComponent();
+            textEditor.TextChanged += TextEditor_TextChanged;
+            textEditor.TextArea.TextEntering += TextArea_TextEntering;
+        }
+
+        CompletionWindow completionWindow;
+        private void TextArea_TextEntering(object sender, TextCompositionEventArgs e)
+        {
+            if (e.Text.Length > 0 && completionWindow != null)
+            {
+                if (!char.IsLetterOrDigit(e.Text[0]))
+                {
+                    completionWindow.CompletionList.RequestInsertion(e);
+                }
+            }
+        }
+
+        private void TextEditor_TextChanged(object sender, EventArgs e)
+        {
+            ConfigText = textEditor.Text;
+        }
+
+        public string ConfigText
+        {
+            get { return (string)GetValue(ConfigTextProperty); }
+            set { SetValue(ConfigTextProperty, value); }
+        }
+
+        public static readonly DependencyProperty ConfigTextProperty =
+            DependencyProperty.Register("ConfigText", typeof(string), typeof(CustomAvalonEditControl),
+                new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, OnConfigTextChanged));
+
+        private static void OnConfigTextChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var edt = d as CustomAvalonEditControl;
+            if (e.NewValue is string newStr && newStr != edt.textEditor.Text)
+                edt.textEditor.Text = e.NewValue as string;
+        }
+    }
+}
+
+```
+运行效果如下：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/e388309183fb4dc799b532a490744824.png)
+### 51.WPF中使用CallerMemberName简化InotifyPropertyChanged的实现
+在WPF中，当我们使用MVVM的方式实现属性变更通知时，往往要实现INotifyPropertyChanged接口，如下：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlankApp1.Others
+{
+    public class Practice01 : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private string text;
+		public string Text
+		{
+			get { return text; }
+            set { text = value; OnPropertyChanged("Text"); }
+		}
+	}
+}
+
+```
+这么做有一个比较大的隐患，那就是用了字符串的硬编码的方式传递了属性名称，一旦拼写错误或因为重构代码忘记去更新这个字符串时，这样就会导致界面上得不到更新。（本身硬编码的方式来保证两者的一致性就是不靠谱的行为）
+
+虽然这本身并不是问题，但却不是很好的实践。也有人通过一些手段来解决这个问题，有的是通过表达式树，还有的通过Attribute注入的方式。
+
+从性能上来讲，注入是一个比较好的方式，但往往引入了比较复杂的框架。实际上，在C# 5.0中就引入了一个调用方信息的语法方便我们获取调用方的函数名称和位置，通过它可以非常简单快捷的解决上面的这个问题：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace BlankApp1.Others
+{
+    public class Practice01 : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        private string text;
+		public string Text
+		{
+			get { return text; }
+            set { text = value; OnPropertyChanged(); }
+		}
+	}
+}
+
+```
