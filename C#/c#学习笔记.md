@@ -1,25 +1,27 @@
-﻿﻿﻿@[TOC](目录)
+﻿
+﻿@[TOC](目录)
 
 ```bash 	
   	2022.06，我正式走上了所追求、热爱的编程道路，用此文记录"C#"学习过程中的问题点。
+  	此篇博客会常常更新，以不断修改知识点或添加新的知识点。
   	“书山有路勤为径，学海无涯苦作舟！”
     日后我也可以成为很厉害的技术大佬！
     
 ```
 
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3267ac06a4b342f6a73c59fa96c1cd8e.jpeg#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-pDKcT5Pu-1687711481062)(c#学习笔记.assets/3267ac06a4b342f6a73c59fa96c1cd8e.jpeg#pic_center)]
 
 ### 1.语句块
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e11bbe262854404d97393c63166b8413.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-DofWbkYx-1687711481065)(c#学习笔记.assets/e11bbe262854404d97393c63166b8413.png#pic_center)]
 
 ### 2.Write和WriteLine的区别：
 
 1. Write没有在字符串后面添加换行符，而WriteLine则在每个字符串后面添加了换行符。如图：
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/2763bc17077e408e8c13f2f04c20f797.png#pic_center)
+   [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-2St46hMj-1687711481065)(c#学习笔记.assets/2763bc17077e408e8c13f2f04c20f797.png#pic_center)]
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2160d820b9af47008aee71f51bc79318.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-O0wQTT7R-1687711481066)(c#学习笔记.assets/2160d820b9af47008aee71f51bc79318.png#pic_center)]
 
 2. 从命令行读取和输入的例子：
 
@@ -42,7 +44,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4ed60b063ce84a4d8c1c760e5e28f7f7.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-M6iFHIOd-1687711481066)(c#学习笔记.assets/4ed60b063ce84a4d8c1c760e5e28f7f7.png#pic_center)]
 
 ### 3.params
 
@@ -78,7 +80,7 @@ Console.ReadKey()是等待键盘输入，退出程序。使调试时能看到输
 
 在C#语言中，共有五种访问修饰符：public、private、protected、internal、protected internal。
 （1）作用范围：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4eK2TzPj-1687711481067)(c#学习笔记.assets/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)]
 （2）在c#中，
 
 1. 类、结构的默认修饰符是internal。
@@ -136,7 +138,7 @@ enum与struct的区别是：枚举里的变量都是整型的同类型，而stru
 值类型只需要一段单独的内存，用于存储实际的数据。
 引用类型需要两段内存，第一段存储实际的数据，它总是位于堆中；第二段是一个引用，指向数据在堆中的存放位置。
 对于值类型，数据存放在栈里；对于引用类型，实际数据存放在堆里而引用存放在栈里。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8942b2baa46c4d22ab74fc8ac3b38bb6.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YG4hWXit-1687711481067)(c#学习笔记.assets/8942b2baa46c4d22ab74fc8ac3b38bb6.png#pic_center)]
 
 ### 18.C#的4种变量
 
@@ -158,7 +160,7 @@ enum与struct的区别是：枚举里的变量都是整型的同类型，而stru
 
 ### 20.常量字段const表现得像静态字段，但在内存中没有存储位置。
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/27ee9e5c6ed04080898d33520c572f7e.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-rL7XU6P1-1687711481068)(c#学习笔记.assets/27ee9e5c6ed04080898d33520c572f7e.png#pic_center)]
 虽然常量成员表现得像一个静态量，但**不能将常量声明为静态static**，如：static const int a=3.14这句语法是错误的。
 
 ### 21.析构函数执行在类的实例被销毁之前需要的清理或释放非托管资源的行为。
@@ -243,7 +245,7 @@ namespace ConsoleApp10
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/493896ff1679480c897e75fb1aefc4c1.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-oTD5wi8Z-1687711481068)(c#学习笔记.assets/493896ff1679480c897e75fb1aefc4c1.png#pic_center)]
 
 #### 3. this用作索引器：
 
@@ -345,12 +347,12 @@ public class Program
 （2）基类的方法使用virtual标注；
 （3）派生类的方法使用override标注。
 可对比以下两图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/96218732bf764e3c88f1e03d1d54de9d.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3f13c4719bbb4b06b413d5e30e396975.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-WXkPTLvi-1687711481069)(c#学习笔记.assets/96218732bf764e3c88f1e03d1d54de9d.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-bqRJSYwA-1687711481069)(c#学习笔记.assets/3f13c4719bbb4b06b413d5e30e396975.png#pic_center)]
 
 ### 27. 构造函数初始化语句：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2bd56a65141e4c55b123d68643545321.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-2gzvFeKS-1687711481069)(c#学习笔记.assets/2bd56a65141e4c55b123d68643545321.png#pic_center)]
 如，一个简单的继承类程序：
 
 ```csharp
@@ -422,7 +424,7 @@ namespace Application
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9d905cbd6c284baf878289a4b20b03a6.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ku7AQnVP-1687711481070)(c#学习笔记.assets/9d905cbd6c284baf878289a4b20b03a6.png#pic_center)]
 
 而另外一种形式的构造函数初始化语句（通过this）可以让编译器使用该类中的其他构造函数。
 
@@ -432,7 +434,7 @@ namespace Application
 
 ### 29.本地变量与字段的区别：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c68062f503d043cdb70dc45cf58a815a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EyuiCecz-1687711481070)(c#学习笔记.assets/c68062f503d043cdb70dc45cf58a815a.png#pic_center)]
 
 ### 30.关键字var
 
@@ -465,27 +467,27 @@ namespace Application
 ### 33.输出参数out
 
 引用参数ref修饰的参数必须对其赋初值，但是初值不能是常量（即不能用const修饰），因为按引用传递可能会改变参数的值。在函数使用out参数时，必须看做是尚未赋值（不晓得为什么），实参传递给形参的值在函数执行时会丢失，参考以下代码段：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/be808637c443491c81b670211011f815.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6hzXUSpc-1687711481071)(c#学习笔记.assets/be808637c443491c81b670211011f815.png#pic_center)]
 
 ### 34.成员访问修饰符：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/55740405dd3e43f681e280103110a8a2.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Pa5SxNq8-1687711481071)(c#学习笔记.assets/5cbf00d5417640f39f6864cadf35f49a.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ciePkC8u-1687711481072)(c#学习笔记.assets/55740405dd3e43f681e280103110a8a2.png#pic_center)]
 
 ### 35.抽象类
 
 抽象类是指设计为被继承的类，抽象类只能被用作其他类的基类。
 （1）不能创建抽象类的实例；
 （2）抽象类必须使用abstract修饰符来声明，如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8b864f6a0c3b4037b1cec5ce290a0ed9.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-kMofgTEg-1687711481072)(c#学习笔记.assets/8b864f6a0c3b4037b1cec5ce290a0ed9.png#pic_center)]
 （3）抽象类可以包含抽象成员和普通的非抽象成员，即抽象类的成员可以是抽象成员和普通成员的任意组合。
 （4）抽象类自己可以派生另外一个抽象类，如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4ebde190e3c94f70b2985873326b6bed.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-FjV2woT1-1687711481072)(c#学习笔记.assets/4ebde190e3c94f70b2985873326b6bed.png#pic_center)]
 （5）**任何派生自抽象类的类必须使用override关键字实现该类的所有抽象成员，除非派生类自己也是抽象类**。
 看一段代码:
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d2aa6b92a43a49c4a48a30b7d86211d9.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-690q9Y2O-1687711481073)(c#学习笔记.assets/d2aa6b92a43a49c4a48a30b7d86211d9.png#pic_center)]
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/61d8773c2be04c9e964d8f892cb3043d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fkeymSlr-1687711481073)(c#学习笔记.assets/61d8773c2be04c9e964d8f892cb3043d.png#pic_center)]
 
 ### 36.静态类
 
@@ -617,7 +619,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/de8b1b0a8bc54ebb908be6dd97cb9888.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-kRkwN34z-1687711481074)(c#学习笔记.assets/de8b1b0a8bc54ebb908be6dd97cb9888.png#pic_center)]
 
 ### 41.结构和类的区别
 
@@ -629,30 +631,30 @@ namespace APP
 ### 42.关于静态字段
 
 **static修饰的静态字段被类的所有实例共享**，所有实例都访问同一内存位置。如果该内存位置的值被一个实例改变了，这种变化对于所有的实例都改变。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3b11cdc14fb746cf868c567e6c5aea7e.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-eoTj7jtI-1687711481074)(c#学习笔记.assets/3b11cdc14fb746cf868c567e6c5aea7e.png#pic_center)]
 
 ### 43.可以声明为static的类成员类型(重要)
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/251c410e0d1948fb94d4b159676a789c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-9td5UMDK-1687711481074)(c#学习笔记.assets/251c410e0d1948fb94d4b159676a789c.png#pic_center)]
 
 ### 44.枚举
 
 （1）枚举是一个值类型， 包含一组命名的常量，  枚举类型用 enum 关键字定义。如，声明一个简单的枚举类：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d52f6adae3f348b49583aefbca2e058e.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6N05ETp2-1687711481075)(c#学习笔记.assets/d52f6adae3f348b49583aefbca2e058e.png#pic_center)]
 （2）默认情况下， enum 的类型是 int。
 （3）**动态获得枚举类型的信息：**
 Enum.GetNames：该方法返回一个包含所有枚举名的字符串数组，如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/735f55bd872b40acb1a3c982d6572652.png#pic_center)Enum.GetValues：为了获得枚举的所有值， 可以使用 Enum.GetValues 。 Enum.GetValues 返回枚举值的一个数组。 为了获得整数值， 需要把它转换为枚举的底层类型， 为此应使用 foreach语句，如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e24172713c8a49e68e737efc4142b84c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZdnsODv6-1687711481075)(c#学习笔记.assets/735f55bd872b40acb1a3c982d6572652.png#pic_center)]Enum.GetValues：为了获得枚举的所有值， 可以使用 Enum.GetValues 。 Enum.GetValues 返回枚举值的一个数组。 为了获得整数值， 需要把它转换为枚举的底层类型， 为此应使用 foreach语句，如下图：
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-u0puBC3n-1687711481076)(c#学习笔记.assets/e24172713c8a49e68e737efc4142b84c.png#pic_center)]
 （4）Flags特性：没理解（后续学习）
 
 ### 45.数组
 
 （1）C#不支持动态数组，也就是说，数组一旦被创建，大小就固定了。
 （2）C#中的各种数组：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9366394396ee4806a52a7e5b864fcbcb.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-mpDNO64O-1687711481076)(c#学习笔记.assets/9366394396ee4806a52a7e5b864fcbcb.png#pic_center)]
 （3）数组中一些可用的方法和属性：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/14c68a2fa9184f3891ca2047c35cf8f1.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-GrfXJGjt-1687711481076)(c#学习笔记.assets/14c68a2fa9184f3891ca2047c35cf8f1.png#pic_center)]
 
 ### 46.委托
 
@@ -696,8 +698,8 @@ namespace enumExample
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/94b9e199e8d1490aa2c40acb1d755490.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f26b4771feb0417c8fb2bfc09a9c7a0f.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-KQdtD3sN-1687711481077)(c#学习笔记.assets/94b9e199e8d1490aa2c40acb1d755490.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4CFSngru-1687711481077)(c#学习笔记.assets/f26b4771feb0417c8fb2bfc09a9c7a0f.png#pic_center)]
 因此使用委托的步骤：
 （1）声明一个委托类型；
 
@@ -757,9 +759,9 @@ namespace ConsoleApp1
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/50add8640a284869b3f87338406e88e9.jpeg#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YnqE0qeM-1687711481078)(c#学习笔记.assets/50add8640a284869b3f87338406e88e9.jpeg#pic_center)]
 **调用带有返回值的委托：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/40b4c55fbf314b3199f181590c2530fa.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-D6Xfp5BY-1687711481078)(c#学习笔记.assets/40b4c55fbf314b3199f181590c2530fa.png#pic_center)]
 如：
 
 ```csharp
@@ -796,9 +798,9 @@ namespace ConsoleApp1
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/473e1f1ca4a34c958b0f27e4178ba222.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-B1zUiWBI-1687711481078)(c#学习笔记.assets/473e1f1ca4a34c958b0f27e4178ba222.png#pic_center)]
 **调用带有引用参数的委托：**
-![在这里插入图片描述](https://img-blog.csdnimg.cn/263bf92f9479414a9a2a963993ae64e1.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6AKdSPd1-1687711481079)(c#学习笔记.assets/263bf92f9479414a9a2a963993ae64e1.png#pic_center)]
 
 #### 2.Action委托
 
@@ -848,7 +850,7 @@ namespace ConsoleApp1
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0a429e3d1168499c8625e01fcf809a3c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jIaQDKyu-1687711481079)(c#学习笔记.assets/0a429e3d1168499c8625e01fcf809a3c.png#pic_center)]
 
 #### 3.Func委托
 
@@ -889,7 +891,7 @@ Func具有Func<TResult>、Func<T,Tresult>、Func<T1,T2,T3……,Tresult>17种类
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e8cfc4c202304afe99e77e6945d1d379.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4a2Ed9Uv-1687711481080)(c#学习笔记.assets/e8cfc4c202304afe99e77e6945d1d379.png#pic_center)]
 
 #### 4.Predicate委托
 
@@ -931,7 +933,7 @@ Func具有Func<TResult>、Func<T,Tresult>、Func<T1,T2,T3……,Tresult>17种类
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/69c64a3988d2485193840a78b6786341.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-N1gpMi5r-1687711481080)(c#学习笔记.assets/69c64a3988d2485193840a78b6786341.png#pic_center)]
 
 #### 5.这几种委托的区别：
 
@@ -943,15 +945,15 @@ Func具有Func<TResult>、Func<T,Tresult>、Func<T1,T2,T3……,Tresult>17种类
 ### 47.匿名方法
 
 匿名方法是在初始化委托时内联（inline）声明的方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e78e1d094cce4ada9aa7c079334d18e2.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8707f11d6b334f09b1b2bb4c9c0d28ac.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bc2e671e34fe4b448be88ebede0bd9e0.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-if9So7AG-1687711481080)(c#学习笔记.assets/e78e1d094cce4ada9aa7c079334d18e2.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HoL9m8Js-1687711481081)(c#学习笔记.assets/8707f11d6b334f09b1b2bb4c9c0d28ac.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-U1RL7qkz-1687711481081)(c#学习笔记.assets/bc2e671e34fe4b448be88ebede0bd9e0.png#pic_center)]
 
 ### 48.Lambda表达式
 
 Lambda表达式的出现很好地替代了匿名语法，它是匿名方法的简写形式,用来代替匿名方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7384da9d9767429a8f8123a0995c2f51.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f1f390676a374f238906385ca0c53b7d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-9oRNsyYy-1687711481082)(c#学习笔记.assets/7384da9d9767429a8f8123a0995c2f51.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-RRUn2QWb-1687711481082)(c#学习笔记.assets/f1f390676a374f238906385ca0c53b7d.png#pic_center)]
 
 ### 49.一些代码编写规范
 
@@ -1060,7 +1062,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/61d5ef731be3457b845cfc044701872e.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-8aOCgpdT-1687711481083)(c#学习笔记.assets/61d5ef731be3457b845cfc044701872e.png#pic_center)]
 （5）再如代码举例:
 
 ```csharp
@@ -1102,7 +1104,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ca09eafc244545bfa02300ed5fbc766b.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YYvEeWka-1687711481083)(c#学习笔记.assets/ca09eafc244545bfa02300ed5fbc766b.png#pic_center)]
 
 ### 51. 接口
 
@@ -1139,14 +1141,14 @@ namespace APP
 （6）只有类和接口才能实现接口，然而要实现接口，类和结构必须：在基类列表中包含接口名称，为每一个接口的成员提供实现。
 注意：**如果类实现了接口，它就必须实现类的所有成员；**
 如果类从基类继承并实现了接口，则基类列表中的基类名称必须放在所有接口之前，例如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2be9b8e855b1471ea132a974327c543d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-scrZM3q0-1687711481083)(c#学习笔记.assets/2be9b8e855b1471ea132a974327c543d.png#pic_center)]
 比较接口和抽象类：
 抽象类可以有
 （7）as运算符和接口一起配合使用是很好的选择。
 如果我们尝试将类对象的引用强制转换为类未实现的接口的引用，强制转换操作会抛出一个异常，可以通过使用as运算符来避免这个问题。具体如下：
 如果类实现了接口，表达式指向返回接口的引用。
 如果类没有实现接口，表达式返回null而不是异常。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b4fdf93c99e94ec89a72931ce9790d45.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-C2XdQRMl-1687711481084)(c#学习笔记.assets/b4fdf93c99e94ec89a72931ce9790d45.png#pic_center)]
 if(this !=null)判空的目的是看看接口是否拿到了类的实例。
 
 （8）类或结构可以实现任意数量的接口。
@@ -1184,7 +1186,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f1ca998866754b1c986be6941dc662f4.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Yhbgbcrm-1687711481084)(c#学习笔记.assets/f1ca998866754b1c986be6941dc662f4.png#pic_center)]
 （10）接口还可以继承接口，例如：
 
 ```csharp
@@ -1215,7 +1217,7 @@ namespace APP
 
  - **装箱：将值类型转换为引用类型的操作**。
  - **拆箱：相应地将引用类型转换成值类型。**
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/46c88735c3734d84ac8b00e837a4ba55.png#pic_center)
+   [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HER6bIva-1687711481085)(c#学习笔记.assets/46c88735c3734d84ac8b00e837a4ba55.png#pic_center)]
 
 #### （2）is运算符(用来检测转换是否成功，不像as操作符那样直接转换)：
 
@@ -1268,7 +1270,7 @@ as运算符和强制转换运算符类似，只是不抛出异常。如果转换
 语法如下：
 源表达式 as 目标类型
 **注意：** 目标类型必须是引用类型。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/be41243b67e341e2b2a7799dcee3a084.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-OKk6Gets-1687711481085)(c#学习笔记.assets/be41243b67e341e2b2a7799dcee3a084.png#pic_center)]
 （6）当长类型的数据转换成短数据时，数据可能会丢失，需要我们进行显示地强制转换。
 
 ### 53.泛型
@@ -1276,7 +1278,7 @@ as运算符和强制转换运算符类似，只是不抛出异常。如果转换
 泛型：多种类型可以共享一组代码。泛型允许我们声明类型参数化的代码，可以用不同的类型进行实例化，也就是说，我们可以用“类型占位符”来写代码，然后在创建类的实例时指明真实的类型。
 （1）**C#提供了5中泛型，包括：类、结构、接口、委托和方法。（注意：前四种是方法，而方法则是成员。）**
 （2）泛型类不是实际的类，而是类的模板，也就是说，我们要先从他们构建实际的类类型，然后创建这个构建后的类类型的实例。这个过程如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/049cda551932407d9e494766c33f3514.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-WH7CbZgG-1687711481086)(c#学习笔记.assets/049cda551932407d9e494766c33f3514.png#pic_center)]
 （3）**泛型类代码**
 看一段代码：
 
@@ -1335,7 +1337,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/146fac05402843d095c844ee3ca5a0a5.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EyUL9bQ4-1687711481086)(c#学习笔记.assets/146fac05402843d095c844ee3ca5a0a5.png#pic_center)]
 （4）泛型方法：
 泛型方法具有类型参数列表和可选的约束。
 
@@ -1343,9 +1345,9 @@ namespace APP
      封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
   2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
      如图：
-      ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
+      [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Lvd2NF6n-1687711481086)(c#学习笔记.assets/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)]
  3. 泛型方法的调用：
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
+    [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-MtJsjW5Q-1687711481087)(c#学习笔记.assets/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)]
  4. 泛型方法举例：
     代码：
 
@@ -1386,10 +1388,10 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d254270e4779434b89fa3666b7960d43.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YUQ0XsxR-1687711481087)(c#学习笔记.assets/d254270e4779434b89fa3666b7960d43.png#pic_center)]
 （5）扩展方法和泛型类：
 扩展方法可以和泛型类结合来使用，它允许我们将类中的静态方法关联到不同的泛型类上，还允许我们像调用类构造实例的实例方法一样来调用方法。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/492fcbff0ac247bd94b8f2554be66935.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ShBGOY1C-1687711481088)(c#学习笔记.assets/492fcbff0ac247bd94b8f2554be66935.png#pic_center)]
 代码举例：
 
 ```csharp
@@ -1441,7 +1443,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/224b5f1d98a14d06aa17f055babe0c81.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ja7jjkL2-1687711481088)(c#学习笔记.assets/224b5f1d98a14d06aa17f055babe0c81.png#pic_center)]
 （6） 泛型结构
 
 ```csharp
@@ -1474,10 +1476,10 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b90e3f172faa40f6acaf8c24701fa0d5.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-959Nb1ij-1687711481088)(c#学习笔记.assets/b90e3f172faa40f6acaf8c24701fa0d5.png#pic_center)]
 
 （7） 泛型委托
-![在这里插入图片描述](https://img-blog.csdnimg.cn/413723eca9514145aaf61da9919c7d3d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-9aILvV5z-1687711481089)(c#学习笔记.assets/413723eca9514145aaf61da9919c7d3d.png#pic_center)]
 代码举例：
 
 ```csharp
@@ -1515,7 +1517,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dca64bfc89fe40fda2b47f034989d62a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4WP6yP43-1687711481089)(c#学习笔记.assets/dca64bfc89fe40fda2b47f034989d62a.png#pic_center)]
 （8）泛型接口：
 代码示例1：泛型类继承泛型接口
 
@@ -1549,7 +1551,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7434617d52164253a3a7b132206f93e4.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-4ujMPEap-1687711481090)(c#学习笔记.assets/7434617d52164253a3a7b132206f93e4.png#pic_center)]
 代码示例2：非泛型类继承泛型接口
 
 ```csharp
@@ -1585,11 +1587,11 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2bf93eae33d3433a83270c5018db2a7a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-SWKQxbf2-1687711481090)(c#学习笔记.assets/2bf93eae33d3433a83270c5018db2a7a.png#pic_center)]
 
 ### 54.c#中的“\r”和“\n”问题
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/54e7df87da7b41b394b0cf0412256e8b.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EPvNIJFj-1687711481090)(c#学习笔记.assets/54e7df87da7b41b394b0cf0412256e8b.png#pic_center)]
 如下面一段代码：
 
 ```csharp
@@ -1610,7 +1612,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d5d9b174a4964e4f96f802000747ebc8.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-beobqtqc-1687711481091)(c#学习笔记.assets/d5d9b174a4964e4f96f802000747ebc8.png#pic_center)]
 
 ### 55.本地变量和字段是否会自动初始化？
 
@@ -1620,7 +1622,7 @@ namespace APP
 
 ### 56.属性相比公共字段的优点：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5ad0fb22f10c459ca54da3e18712ecb4.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6oQuSSIM-1687711481091)(c#学习笔记.assets/5ad0fb22f10c459ca54da3e18712ecb4.png#pic_center)]
 
 ### 57.枚举器和迭代器
 
@@ -1676,7 +1678,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/af05ba5963cd402b91cf43a9b9b9ae35.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-koxdvFzt-1687711481092)(c#学习笔记.assets/af05ba5963cd402b91cf43a9b9b9ae35.png#pic_center)]
 （7）join（联结）子句：
 LINQ中的Join接受两个集合然后创建一个新的集合，每一个元素包含两个原始集合中的原始成员。
 看一段代码：
@@ -1731,7 +1733,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f1ff347372ec4e5e9aa1189bc6cc847c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ipcGO7xo-1687711481092)(c#学习笔记.assets/f1ff347372ec4e5e9aa1189bc6cc847c.png#pic_center)]
 再看一段代码：
 
 ```csharp
@@ -1763,7 +1765,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3f3654c39257491f980a1d72b316d326.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jaw9irPW-1687711481092)(c#学习笔记.assets/3f3654c39257491f980a1d72b316d326.png#pic_center)]
 （8）orderby子句:
 orderby子句接受一个表达式并根据表达式顺序返回结果项。
 
@@ -1799,14 +1801,14 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/95f7dc84b3424c3a92d4f0809ac0556b.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-RMCsM9N3-1687711481093)(c#学习笔记.assets/95f7dc84b3424c3a92d4f0809ac0556b.png#pic_center)]
 （9）select ...group子句:
-![在这里插入图片描述](https://img-blog.csdnimg.cn/aef078a9f2c44df5add903c2ed0e19d5.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-qbaI7GAi-1687711481093)(c#学习笔记.assets/aef078a9f2c44df5add903c2ed0e19d5.png#pic_center)]
 (10)group子句：
 group子句按照一些标准进行分组。
 (11)查询延续：into子句：
 into子句可以接受查询的一部分结果并赋予另外一个名字，从而可以在查询的另一部中使用。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0630e516679d4da790f8e3568d99ebf7.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-2ljDWweE-1687711481094)(c#学习笔记.assets/0630e516679d4da790f8e3568d99ebf7.png#pic_center)]
 （12）再看一段代码：
 
 ```csharp
@@ -1846,15 +1848,15 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f28534867b714379a58ea9d2d00ff741.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-KTdfrzGY-1687711481094)(c#学习笔记.assets/f28534867b714379a58ea9d2d00ff741.png#pic_center)]
 
 （13）标准查询运算符：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/21255436dc6f48a1981b8b6aba690c89.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/899a085490b74f5383cb02d2c0279406.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6d02fa0a2ec64978821d72767e96f427.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/60875820280e420eb00096327b34b50c.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/784eef7c020d46209c276d1e41e202c1.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a04442a9e09445fe9fc63117413cb9b7.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-vsCPmn1r-1687711481094)(c#学习笔记.assets/21255436dc6f48a1981b8b6aba690c89.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-hHf1FVUk-1687711481095)(c#学习笔记.assets/899a085490b74f5383cb02d2c0279406.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-xvlvzqsF-1687711481095)(c#学习笔记.assets/6d02fa0a2ec64978821d72767e96f427.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-nOwHKrwK-1687711481096)(c#学习笔记.assets/60875820280e420eb00096327b34b50c.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-uyZesrWS-1687711481096)(c#学习笔记.assets/784eef7c020d46209c276d1e41e202c1.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-EwKBzQvE-1687711481096)(c#学习笔记.assets/a04442a9e09445fe9fc63117413cb9b7.png#pic_center)]
 （14）再看一段代码：
 
 ```csharp
@@ -1900,7 +1902,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/80d15586b0fb4ca2bd827a6a2e14a043.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-q6VBqadb-1687711481101)(c#学习笔记.assets/80d15586b0fb4ca2bd827a6a2e14a043.png#pic_center)]
 
 ### 59.线程、多线程、异步编程相关
 
@@ -2009,7 +2011,7 @@ namespace practice01
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/45cc100eb22f497d91787324e68c46b4.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-faGKNJZM-1687711481101)(c#学习笔记.assets/45cc100eb22f497d91787324e68c46b4.png#pic_center)]
 
 #### 3. 异步编程
 
@@ -2679,9 +2681,9 @@ New thread terminated - Main exiting.
 
 配合使用CancellationTokenSource和ManualResetEvent来实现线程的开始、暂停、继续、取消功能。
 先看效果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1d3bd2aff7714687b893a8abfc8b6f3c.gif#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-r76Qf6c1-1687711481102)(c#学习笔记.assets/1d3bd2aff7714687b893a8abfc8b6f3c.gif#pic_center)]
 代码如下(此代码例子中还有同步、并行、异步、事件的举例代码)：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4919b054ade6424db60b81005f6fc4f6.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YYo3N5D7-1687711481103)(c#学习笔记.assets/4919b054ade6424db60b81005f6fc4f6.png)]
 代码已经放在仓库，地址为：[仓库链接](https://gitee.com/hezexi/code-exercise/tree/Task%E7%BA%BF%E7%A8%8B%E7%9A%84%E5%BC%80%E5%A7%8B%E3%80%81%E6%9A%82%E5%81%9C%E3%80%81%E7%BB%A7%E7%BB%AD%E3%80%81%E5%81%9C%E6%AD%A2/)
 
 1. MainWindow.xaml代码：
@@ -3152,7 +3154,7 @@ result1值是2,result2值是2
 
 （1）try语句：
 try语句用来指明因避免出现异常而被保护的代码片段，并在发生异常时提供代码处理异常。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b8493429d10f4522ae380453b4e1603f.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fLdt2bFI-1687711481103)(c#学习笔记.assets/b8493429d10f4522ae380453b4e1603f.png#pic_center)]
 （2）try块后面必须跟catch块或finally块组合使用，不能单独使用
 （3）代码举例：
 
@@ -3185,13 +3187,13 @@ namespace Application
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0cec8d9a5d4340138ba7524474b32c28.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6tVFQ15g-1687711481104)(c#学习笔记.assets/0cec8d9a5d4340138ba7524474b32c28.png#pic_center)]
 
 ### 61.预处理指令
 
 （1）预处理指令指示编译器如何处理源代码。
 （2）预处理指令：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3148177a5d47497a8c45cd755ed1c885.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-SGI3B74T-1687711481105)(c#学习笔记.assets/3148177a5d47497a8c45cd755ed1c885.png#pic_center)]
 （3）#define和#undef只能用在源文件的第一行，也就是任何C#代码之前使用，在C#代码开始后，#define和#undef就不能再使用。
 
 ### 62.反射和特性
@@ -3199,13 +3201,13 @@ namespace Application
 （1）元数据：有关程序及其类型的数据称为元数据，它们保存在程序的程序集中。
 （2）程序在运行时，可以查看其他程序集或其本身的元数据。一个运行的程序可以查看本身的元数据和其他程序的元数据的行为叫做反射。
 （3）反射在System.Reflection命名空间中。
-（4）Type类![在这里插入图片描述](https://img-blog.csdnimg.cn/a21a6be8c7a7498da3d0c2c4aea8dcf7.png#pic_center)
+（4）Type类[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-mdAY4zId-1687711481105)(c#学习笔记.assets/a21a6be8c7a7498da3d0c2c4aea8dcf7.png#pic_center)]
 （5）特性：
 特性是一种允许我们向程序的程序集增加元数据的语言结构。它是用于保存程序结构信息的某种特殊类型的类。
 特性的目的就是告诉编译器把程序结构的某组元数据嵌入到程序集。
 （6）Obsolete特性：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/344d8d28e2f34584898cdaf15d7afac2.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9c8717a5eff4447499fdd7d29f362376.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Ff9ngClf-1687711481112)(c#学习笔记.assets/344d8d28e2f34584898cdaf15d7afac2.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-HQzC8wH3-1687711481114)(c#学习笔记.assets/9c8717a5eff4447499fdd7d29f362376.png#pic_center)]
 （7）Conditional特性
 （8）看一段代码，反射中SetValue和GetValue以及克隆的使用：
 
@@ -3257,11 +3259,11 @@ namespace _8_02
 ```
 
 运行结果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f640cd78372d46258dab3fdc00404190.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-uj9b67y0-1687711481114)(c#学习笔记.assets/f640cd78372d46258dab3fdc00404190.png#pic_center)]
 
 ### 63.字符串
 
-（1）字符串string类型的一些成员：![在这里插入图片描述](https://img-blog.csdnimg.cn/7ec2dcf9f0ca4e5092b8769dacd81286.png#pic_center)
+（1）字符串string类型的一些成员：[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-mTKMpZqx-1687711481115)(c#学习笔记.assets/7ec2dcf9f0ca4e5092b8769dacd81286.png#pic_center)]
 （2）Spilt方法：
 该方法很有用，该方法会将一个字符串分割成若干个子字符串，并将他们以数组的形式返回。将一组按照预定位置分隔字符串的分隔符传给Spilt方法，就可以指定如何处理输出数组中的空元素（当然，原始字符串依然不会改变）。代码举例如下：
 
@@ -3287,7 +3289,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6ee640b976304e43a87ceda8aa1322af.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-T96CKiFo-1687711481115)(c#学习笔记.assets/6ee640b976304e43a87ceda8aa1322af.png#pic_center)]
 （3）StringBuilder类
 StringBuilder类位于System.Text命名空间中，它可以帮助程序员动态、有效地产生字符串，并避免创建许多副本。代码举例如下：
 
@@ -3309,7 +3311,7 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bfa5c71f710c42cf9153b465a91c12d4.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-VdHc4gXM-1687711481115)(c#学习笔记.assets/bfa5c71f710c42cf9153b465a91c12d4.png#pic_center)]
 （4）把字符串解析为数据值
 解析允许我们接受表示值的字符串，并转化为实际的值，通过Parse静态方法。如：
 
@@ -3332,10 +3334,10 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c7ba34db65c94bf790adb321c11a5071.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-SfGb4W90-1687711481115)(c#学习笔记.assets/c7ba34db65c94bf790adb321c11a5071.png#pic_center)]
 但是，Parse方法有一个缺点，当转换不成功（即不能把string类型转化为其他类型）时会抛出一个异常，而在编程中要尽量避免异常。TryParse方法可以解决这个问题。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/715d715ccbb34b03a72670343a3f4b3f.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/529faf86840346e0aace9455c9f01e3a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-N0D1QwUN-1687711481116)(c#学习笔记.assets/715d715ccbb34b03a72670343a3f4b3f.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-nW9c8vju-1687711481116)(c#学习笔记.assets/529faf86840346e0aace9455c9f01e3a.png#pic_center)]
 
 ### 64.List < T >
 
@@ -3380,9 +3382,9 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/49b752e4ad624b79b87892bf2b95b035.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-budvEyTi-1687711481116)(c#学习笔记.assets/49b752e4ad624b79b87892bf2b95b035.png#pic_center)]
 （2）List的一些常用属性和方法：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/53f127a4ef6f48e782bb4f0d1591de2f.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-qnd9zv48-1687711481116)(c#学习笔记.assets/53f127a4ef6f48e782bb4f0d1591de2f.png#pic_center)]
 （3）可以用List<T>中的AsEnumerable()方法+lambda表达式结合的语句进行一些操作，如下代码：
 
 ```csharp
@@ -3424,7 +3426,7 @@ namespace practice7_25
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a4cefc345dba40e1b900097b8b9cc2ce.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-n0r0I2y6-1687711481117)(c#学习笔记.assets/a4cefc345dba40e1b900097b8b9cc2ce.png#pic_center)]
 
 
 ### 65.方法重载和重写的区别
@@ -3513,12 +3515,12 @@ namespace APP
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/226151d9c6ee4ea589893943f7462cbf.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-tMuPDew7-1687711481117)(c#学习笔记.assets/226151d9c6ee4ea589893943f7462cbf.png#pic_center)]
 
 ### 69.C#中如何判断传入值的数据类型
 
 （1）GetType方法：获取当前变量的类型对象
-![在这里插入图片描述](https://img-blog.csdnimg.cn/269e34b39d2d4e5591fd9bfa1eadccc7.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-MTFx516j-1687711481117)(c#学习笔记.assets/269e34b39d2d4e5591fd9bfa1eadccc7.png#pic_center)]
 （2）typeof运算符，在此笔记第41条已提到。
 
 ### 70.C#中唯一的非派生类是Object类
@@ -3529,7 +3531,7 @@ namespace APP
 
 当声明一个字符串变量时有一些字符是不能以平常的方式包含在变量中的。为了解决这个问题，C#提供了两种不同的C#转义字符方法:：
 （1）第一种方法是使用\
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4663f09db2b240ec9b8c3f11eccf242c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-YU9zltbP-1687711481118)(c#学习笔记.assets/4663f09db2b240ec9b8c3f11eccf242c.png#pic_center)]
 代码举例一可参考笔记第56条；
 代码举例二：
 
@@ -3544,11 +3546,11 @@ namespace APP
             Console.WriteLine("str3的值是{0}:", str3);
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c3ba3e6db41c45b581d184cc42a30361.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-N8Wj5joL-1687711481118)(c#学习笔记.assets/c3ba3e6db41c45b581d184cc42a30361.png#pic_center)]
 
 **注意：当出现"\\\n"时，结果是显示的是\n，而不会出现换行**
 （2）第二种C#转义字符方法是使用@
-![在这里插入图片描述](https://img-blog.csdnimg.cn/22f4433d77d74457b548c877378315db.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-fKyNUlmx-1687711481119)(c#学习笔记.assets/22f4433d77d74457b548c877378315db.png#pic_center)]
 代码举例：
 
 ```csharp
@@ -3559,7 +3561,7 @@ namespace APP
             Console.WriteLine("str2的值是{0}:", str2);
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0daf384e486f4192a3d2442127884a9d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-McyiLdsC-1687711481119)(c#学习笔记.assets/0daf384e486f4192a3d2442127884a9d.png#pic_center)]
 
 ### 72.抽象成员，哪些成员可以声明为抽象的，虚成员和抽象成员的区别
 
@@ -3570,7 +3572,7 @@ namespace APP
  - 抽象成员不能实现代码块；
  - 抽象成员必须被子类用override关键字重写;
    例如下图：
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/04e741b1cf8e4ce5bd7a75222e416d93.png#pic_center)
+    [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-gmyZJZIW-1687711481120)(c#学习笔记.assets/04e741b1cf8e4ce5bd7a75222e416d93.png#pic_center)]
     （2）虚成员和抽象成员的区别：
     抽象方法是只有方法名称，没有方法体（也就是没有方法具体实现），子类必须用override关键字重写父类抽象方法。
     虚函数有方法体，但是子类可以覆盖，也可不覆盖。
@@ -3630,7 +3632,7 @@ namespace practice7_25
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d7734c28203d49c9b95e54224f5c23be.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-6RaiGhtx-1687711481120)(c#学习笔记.assets/d7734c28203d49c9b95e54224f5c23be.png#pic_center)]
 
 十二字口诀：“**先静后构，静外到内，构内到外**”;
 **先静后构：**
@@ -3650,7 +3652,7 @@ namespace practice7_25
 
 ### 74.测验题：委托的创建和初始化
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6012af70786a47de8115e7706b2e52fb.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-tlyfJgs2-1687711481121)(c#学习笔记.assets/6012af70786a47de8115e7706b2e52fb.png#pic_center)]
 
 ```csharp
 public class Program
@@ -3677,12 +3679,12 @@ public class Program
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ac80b7a5374f45519ccca9071074d7e7.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-5qv122bE-1687711481121)(c#学习笔记.assets/ac80b7a5374f45519ccca9071074d7e7.png#pic_center)]
 
 ### 75.测验题：判断类型是否是隐式转换
 
 隐式转换：类型的转换不会丢失数据或精度。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0de14dac536d49b38d746bf317a3448c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-BOaNqy11-1687711481121)(c#学习笔记.assets/0de14dac536d49b38d746bf317a3448c.png#pic_center)]
 
 ```csharp
  public class Program
@@ -3712,7 +3714,7 @@ public class Program
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/54ea40d9a932440e8bf4bac2ac06c13c.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-gxcZ9S3y-1687711481122)(c#学习笔记.assets/54ea40d9a932440e8bf4bac2ac06c13c.png#pic_center)]
 
 ### 76.LINQ的部分知识点考察
 
@@ -3734,7 +3736,7 @@ public class Program
     }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/683888afd2c24cdebe43f8af8da6133d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-H4I5jzGr-1687711481122)(c#学习笔记.assets/683888afd2c24cdebe43f8af8da6133d.png#pic_center)]
 
 ### 77.哪些成员可以在接口内声明，列举接口和抽象类的区别？
 
@@ -3802,7 +3804,7 @@ namespace  day
 ```
 
 结果如图：n1的值为1，n2的值为2
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5dc0b3839f8b4fa3b7fd7ee7d72a99eb.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-nTnXHUHf-1687711481122)(c#学习笔记.assets/5dc0b3839f8b4fa3b7fd7ee7d72a99eb.png#pic_center)]
 
 ### 81.C#中的单例模式与IOC
 
@@ -3819,7 +3821,7 @@ int[] arrays = { 2, 8, 29, 19, 12, 13, 99, 89, 105, 108, 81 };
 Console.WriteLine(string.Join(",", arrays));
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/75b9b34bf3ae4c42b6d16d9f79adae61.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-17A8HlOw-1687711481123)(c#学习笔记.assets/75b9b34bf3ae4c42b6d16d9f79adae61.png#pic_center)]
 看出来了，string.Join(",", arrays)这部分代码将arrays数组中每个成员用","分隔开，方便快捷。
 下面是该方法原型：
 public static String Join<T>(String? separator, IEnumerable<T> values)方法
@@ -3893,14 +3895,14 @@ using (Class1 cls1 = new Class1(), cls2 = new Class1())
 ### 86.C#新语法：顶级语句（C#9.0）
 
 1.使用vs2022新建一个.net core控制台应用，并选择.net6.0时会有一个是否选择使用顶级语句的按钮，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/569f121d2fac4fea88fd78b4e60a9568.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dd1512ca04024f2dac4721e97ebaa07a.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Q4xwj7TL-1687711481123)(c#学习笔记.assets/569f121d2fac4fea88fd78b4e60a9568.png#pic_center)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-QjzH5oWF-1687711481124)(c#学习笔记.assets/dd1512ca04024f2dac4721e97ebaa07a.png#pic_center)]
 那么什么才是顶级语句？
 
 1. 直接在C#文件中直接编写入口方法的代码，不用类，不用Main。经典写法仍然支持。反编译一下了解真相。
 2. 同一个项目中只能有一个文件具有顶级语句。
 3. 顶级语句中可以直接使用await语法，也可以声明函数，如：
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/34bf1f6208b24a7989a7116e566f1905.png#pic_center)
+   [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-QcV1Rhep-1687711481124)(c#学习笔记.assets/34bf1f6208b24a7989a7116e566f1905.png#pic_center)]
 
 ### 87.C#新语法：全局Using指令（C#10.0）
 
@@ -3946,7 +3948,7 @@ public static void MainTest()
 
 这里的示例，用 record 声明了两个 model，第二个 model 声明的时候使用了简化的写法record RecordPerson2(string Name, int Age); 这样的声明意味着，构造方法有两个参数，分别是 string Name 和 int Age，并对应着两个属性，属性的声明方式和 RecordPerson 一样 public string Name { get; init; } 都是一个 get 一个 init。
 对于 record 支持一个 with 表达式，来修改某几个属性的值，这对于有很多属性都相同的场景来说是及其方便的，来看一下上面示例的输出结果。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c2097c45d8b84646905ea364ad3d2c0d.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-2CtyI4wD-1687711481125)(c#学习笔记.assets/c2097c45d8b84646905ea364ad3d2c0d.png#pic_center)]
 2.在C#9.0中增加了记录（record）类型的语法，编译器会为我们自动生成Equals、GetHashcode等方法。
 
 ```csharp
@@ -3973,7 +3975,7 @@ sealed的英文意思就是密封，禁止的意思，故名思义，就是由�
 #### 1.sealed关键字修饰类
 
 当对一个类应用 sealed 修饰符时，此修饰符会阻止其他类从该类继承。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9b779b11d72543499b5e746679503054.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-QlOz4hw0-1687711481125)(c#学习笔记.assets/9b779b11d72543499b5e746679503054.png#pic_center)]
 如上图，sealed关键字修饰了类B，类B可以继承自类A，但是类C无法从类B继承。
 
 #### 2.sealed关键字修饰方法或属性
@@ -4093,7 +4095,7 @@ Setter注入（Setter Injection）是指在客户类中，设置一个服务类�
 举例：
 
 1. UML图：
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/9de3f43a8f614366abea3e01f66ec604.png#pic_center)
+   [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-funja1eM-1687711481126)(c#学习笔记.assets/9de3f43a8f614366abea3e01f66ec604.png#pic_center)]
 2. 代码：
 
 ```csharp
@@ -4155,7 +4157,7 @@ namespace Example
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9d2e8969daa145d0b66e1ee8dfd5012f.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-oAfy7SH4-1687711481126)(c#学习笔记.assets/9d2e8969daa145d0b66e1ee8dfd5012f.png#pic_center)]
 
 #### 3.通过构造函数注入
 
@@ -4164,7 +4166,7 @@ namespace Example
 构造注入（Constructor Injection）是指在客户类中，设置一个服务类接口类型的数据成员，并以构造函数为注入点，这个构造函数接受一个具体的服务类实例为参数，并将它赋给服务类接口类型的数据成员。
 
 1. UML图：
-   ![在这里插入图片描述](https://img-blog.csdnimg.cn/8ad253eb36454d9dbffdbb28d0217f7c.png#pic_center)
+   [外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-aaAosiVy-1687711481127)(c#学习笔记.assets/8ad253eb36454d9dbffdbb28d0217f7c.png#pic_center)]
 2. 代码：
 
 ```csharp
@@ -4219,7 +4221,7 @@ namespace Example
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/e8f2c797902842f0ab8cbd22a9010c14.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-L2rsc6mf-1687711481127)(c#学习笔记.assets/e8f2c797902842f0ab8cbd22a9010c14.png#pic_center)]
 
 ### 92.C#中yield关键字使用：yield return和yield break的作用
 
@@ -4251,7 +4253,7 @@ namespace yield关键字
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bab39cdd19164669b05e7380cafc3b52.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-Ay4CLNRS-1687711481127)(c#学习笔记.assets/bab39cdd19164669b05e7380cafc3b52.png#pic_center)]
 通过单步调试即可发现，enumerableFuc方法每次被调用就会返回一个数据，第一次调用enumerableFuc方法会返回1，第二次调用会返回2，第三次调用会返回3。
 
 2. yield break用于结束返回（终止迭代），yield break例子：
@@ -4280,7 +4282,7 @@ namespace yield关键字
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/bb0cb6a4f7e84c718b24156c29c4dbfb.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-1qBHuMuR-1687711481128)(c#学习笔记.assets/bb0cb6a4f7e84c718b24156c29c4dbfb.png#pic_center)]
 通过此代码可以看出，此代码返回的结果是1和2，不是1、2和3，因为用了yield break，因此enumerableFuc方法中的第四行yield return 3这一行没有被执行。
 
 ### 93.C#中的克隆
@@ -4572,6 +4574,60 @@ Data::Print->name = Test
 Main->lazyData被初始化了吗? value = True
 ```
 
+##### 用法3：利用Lazy关键字来构造一个单例类
+
+用法：
+
+```csharp
+        private static Lazy<Client> instance = new Lazy<Client>(() => new Client());
+
+        public static Client GetInsatce() => instance.Value;
+```
+
+代码举例：
+
+```csharp
+namespace ConsoleApp9
+{
+    public class Client
+    {
+        private static Lazy<Client> instance = new Lazy<Client>(() => new Client());
+
+        public static Client GetInsatce() => instance.Value;
+
+        private int testNumber=1;
+        public int TestNumber
+        {
+            get { return testNumber; }
+            set { testNumber = value; }
+        }
+
+        public void Test()
+        {
+            TestNumber = 2;
+        }
+
+    }
+
+    public class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine($"{Client.GetInsatce().TestNumber}");
+            Client.GetInsatce().Test();
+            Console.WriteLine($"{Client.GetInsatce().TestNumber}");
+        }
+    }
+}
+```
+
+运行结果：
+
+```bash
+1
+2
+```
+
 ### 95.字典：Dictionary
 
 #### 1.何时使用Dictionary而不是List
@@ -4659,18 +4715,18 @@ ConcurrentDictionary的用法和Dictionary类似。
 
 **在实际编程中，IEnumerable接口常常和yield关键字配合使用。**
 比如像下面这样的方法，通过yield return每次返回一个数据，即产生了一个数据就返回一个：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4170bd8c56f64dd99a2bae249d57cf26.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-njt0hXnl-1687711481128)(c#学习笔记.assets/4170bd8c56f64dd99a2bae249d57cf26.png)]
 又或者像下面这样的用法：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/52b5a4fab2da4fcf98e92758d163adda.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-xazrLJfU-1687711481129)(c#学习笔记.assets/52b5a4fab2da4fcf98e92758d163adda.png)]
 
 在一些返回集合数据的接口中，我们经常能看到IEnumerable接口的身影，那什么是Enumerable呢？首先它跟C#中的enum关键字所表达的意思是不同的， 从翻译上来看：可枚举的，展开来说就是它的数据是一枚一枚可以让我们列举出来。就像人们排队去打疫苗，排队的人就是可枚举的，他们有的开车，有走着，有早有晚全都按照先来后到的顺序排好队，当医生开始进行打疫苗的工作时，他并不关心有多少人在排队，也不关心是否有人迟到，当然也不能越过第一个人让其后边的人先进来打，他只能说“请下一个人进来打疫苗”，如果没人响应医生就等着，直到有人进来开始接种，当前这个人完成接种后，医生继续叫下一个人，直到所有人都打完疫苗。这样的情景在编程中就体现为对Enumerable数据的操作。
 
 下面看看IEnumerable接口中都有什么东西：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d2a57f601f1245b6a4ef60a1b75ec09e.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-k1uH02nW-1687711481129)(c#学习笔记.assets/d2a57f601f1245b6a4ef60a1b75ec09e.png)]
 IEnumerable< T >泛型接口中：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/1fc36f4a32154be2858228a90ac83983.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-9n1NIC0q-1687711481129)(c#学习笔记.assets/1fc36f4a32154be2858228a90ac83983.png)]
 这两个接口中都有一个IEnumerator的接口，我们称之为枚举器，
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0de171dd8bdc44a4899f83903afacd0e.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-p085vYCa-1687711481130)(c#学习笔记.assets/0de171dd8bdc44a4899f83903afacd0e.png)]
 IEnumerator接口有三个成员，Current就是保存的当前数据对象，MoveNext方法则是将指针指向下个对象(类似打疫苗情景中的"下一位")，Reset则是将指针复位，泛型版接口则对其内部名为Current的成员指定了类型。也就是说通过枚举我们可以获取一个枚举器，通过枚举器我们能找到一个个数据对象，明白了这一点，我们就能大体上了解如何通过IEnumerable来获取数据了。
 
 如下代码中有一个返回IEnumerable< string >的方法，用来模拟数据的产生，其中用到了一个yield关键字，**yield return就是部分返回（产生了一个数据，就返回一个）**，这个方法最终的运行效果就是一秒钟返回一个当前时间构成一个IEnumerable<string>集合,代码如下：
@@ -4729,8 +4785,8 @@ namespace App
 反射就是我们在只知道一个对象的外部而不了解内部结构的情况下，可以知道这个对象的内部实现。
 
 可以通过Type类获取程序集、模块、类的相关信息，可以看到Type类继承自IReflect接口，如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/3a5885e488814693b3ad730c74db3f76.png)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/77cdaf584b9848c8ad35b02c061e5338.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-7JSs84r1-1687711481130)(c#学习笔记.assets/3a5885e488814693b3ad730c74db3f76.png)]
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZjF3xxWS-1687711481131)(c#学习笔记.assets/77cdaf584b9848c8ad35b02c061e5338.png)]
 代码演示：
 
 ```csharp
@@ -5039,7 +5095,7 @@ namespace _11_3
 }
 ```
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f11abf1f5fe04731a8e1e08e2c6fe551.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-jfiNDNlA-1687711481131)(c#学习笔记.assets/f11abf1f5fe04731a8e1e08e2c6fe551.png)]
 输出结果：
 
 ```csharp
@@ -5049,7 +5105,7 @@ Age: 20
 操作完成
 ```
 
-### 102.C#中的文件操作
+### 102.C#中的流和文件操作
 
 1. 通过FileInfo和DirectoryInfo类来读取文件和文件夹属性
    包括：查看文件属性，创建文件，移动文件，重命名文件，判断路径是否存在，创建目录。
@@ -5176,13 +5232,13 @@ namespace _002正则表达式
 }
 ```
 
-#### 4.使用FileStream来读写文件
+#### 4.使用FileStream流来读写文件
 
 FileStream(文件流) 这个类主要用于二进制文件中读写，也可以使用它读写任何文件（包括一些图像、音频文件）。
 
 文件流FileStream 位于命名空间System.IO下，主要用来操作文件流，与File类的读取写入相比File类读取文件时是一次性读取，在操作大型文件时容易导致内存飙升，FileStream类则可以对一个文件分多次进行读取，每次只读取一部分，节省内存空间。FileStream就像把水缸里的水一瓢一瓢的取出来，而不像File类一次性倒出来，因此FileStream对电脑的内存占用资源占用方面相对较小，使用范围更广。
 
-#### 5.使用StreamReader和StreamWriter读写文本文件
+#### 5.使用StreamReader和StreamWriter流读写文本文件
 
 StreamReader(流读取器)和StreamWriter(流写入器)专门用于读写文本文件。
 
@@ -5240,12 +5296,161 @@ namespace _002正则表达式
 }
 ```
 
+#### 6.MemoryStream流
+
+数据 —> 通过inputStream()、Read()转化为流 —> 通过outputStream()、Writer()转化为数据，就像流是通过一个小细管道传输的，input输入管道变为流，output输出管道变为数据，流类读取数据为流，流将流写入数据。
+
+**C#中的MemoryStream是一个实现了Stream类的内存流类，用于在内存中读写数据。**
+
+下面是一些常用的属性和方法：
+
+**属性：**
+
+```bash
+CanRead：获取一个值，该值指示当前流是否支持读取操作。
+CanSeek：获取一个值，该值指示当前流是否支持查找操作。
+CanWrite：获取一个值，该值指示当前流是否支持写入操作。
+Capacity：获取或设置内存流的初始大小。
+Length：获取内存流中的字节数。
+Position：获取或设置当前读写位置。
+```
+
+**方法：**
+
+```bash
+Close()：关闭当前流并释放与之关联的所有资源（如缓冲区）。
+Flush()：清除此流的缓冲区，并将缓冲数据写入基础设备。
+GetBuffer()：返回内存流的缓冲区数组。
+Read(byte[] buffer, int offset, int count)：从内存流中读取指定字节数到缓冲区中。
+Seek(long offset, SeekOrigin origin)：将当前读写位置设置为给定的偏移量。
+SetLength(long value)：设置内存流的长度。
+ToArray()：将内存流中的内容复制到一个字节数组中。
+Write(byte[] buffer, int offset, int count)：将指定的字节数组写入内存流中。
+```
+
+代码举例：
+
+```csharp
+using System;
+using System.IO;
+
+class Program
+{
+    static void Main()
+    {
+
+        MemoryStream stream = new MemoryStream();// 创建一个内存流对象
+
+
+        byte[] buffer = System.Text.Encoding.UTF8.GetBytes("Hello World");// 将一个字符串写入内存流中
+        stream.Write(buffer, 0, buffer.Length);
+
+      
+        byte[] result = stream.ToArray();// 将内存流中的数据读取到一个新的字节数组中
+
+        Console.WriteLine(System.Text.Encoding.UTF8.GetString(result));
+
+        // 关闭内存流
+        stream.Close();
+    }
+}
+
+```
+
+#### 7.为什么部分IO流在调用Close()方法之前要先调用flush()方法
+
+很多人可能一直比较纠结为什么有的带有缓冲功能的流在CLose()方法之前要先调用flush()方法 ,
+
+我们先大概说一下带缓冲功能的流的原理 : 如果是需要频繁的对文件进行读或写 , 普通流的速度会比较慢 , 而缓冲流是在普通流的基础上多了一个缓冲区 , 当读或写的数据达到一定量 , 再自动往文件里进行读写 , 如果没有装满缓冲区文件就已经读(写)完毕 , 那么这个时候已经读写到缓冲区的数据需要手动使其朝目标文件进行读写。
+
+这个手动的过程 , 就是我们这里提到的flush()方法 .
+
+换句话说 , 如果是文件读写完的同时缓冲区刚好装满 , 那么缓冲区会把里面的数据朝目标文件自动进行读或写 , 这种时候你直接调用close()方法不会出现问题 ; 但是如果文件在读写完成时 , 缓冲区没有装满 , 就直接调用close()方法 , 这个时候装在缓冲区的数据就不会自动的朝目标文件进行读或写 , 从而造成缓冲区中的这部分数据丢失 , 所以这个是时候就需要在close()之前先调用flush()方法 , 手动使缓冲区数据读写到目标文件. 举个例子: 如果一个文件大小是20kb , 我们的缓冲区大小是15kb , 如果Close()方法之前没有先调用flush()方法 , 那么这个时候剩余的5kb数据就会丢失 。
+
+代码举例：
+利用定时器对文件进行频繁地写入操作：
+
+```csharp
+using System.Timers;
+
+namespace ConsoleApp1
+{
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			Console.WriteLine("Hello, World!");
+			TestWriteLog();
+			Console.ReadKey();
+		}
+
+		public static void TestWriteLog()
+		{
+			System.Timers.Timer timer = new System.Timers.Timer();
+			timer.Interval = 50;
+			timer.Enabled = true;
+			timer.Elapsed += new ElapsedEventHandler((s,e)=>WriteLog(s,e,"你好"));
+		}
+
+
+
+		private static void WriteLog(object source, ElapsedEventArgs e, string log)
+		{
+			string dir = @"D:/LineScanLog";
+			if(!Directory.Exists(dir))
+			{
+				Directory.CreateDirectory(dir);
+			}
+
+			string filePath = Path.Combine(dir, "LineScanLog.txt");
+			if (!File.Exists(filePath))
+			{
+				File.Create(filePath);
+			}
+
+			try
+			{
+				using (FileStream fs = new FileStream(filePath, FileMode.Append))
+				{
+					using(StreamWriter sw = new StreamWriter(fs))
+					{
+						sw.WriteLine($"{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff")}, {log}");
+						sw.Flush();
+					}
+					fs.Close();
+				}
+
+			}catch (Exception ex)
+			{
+
+			}
+		}
+	}
+}
+```
+
 ### 103.XML
 
 XML指可扩展标记语言，XML被设计用来传输和存储数据。XML被设计用来结构化、存储以及传输信息。
 
 1.[C# 序列类为 xml 可以使用的特性大全](https://blog.lindexi.com/post/C-%E5%BA%8F%E5%88%97%E7%B1%BB%E4%B8%BA-xml-%E5%8F%AF%E4%BB%A5%E4%BD%BF%E7%94%A8%E7%9A%84%E7%89%B9%E6%80%A7%E5%A4%A7%E5%85%A8.html)
 2.[dotnet C# 序列化 XML 时进行自动格式化](https://blog.lindexi.com/post/dotnet-C-%E5%BA%8F%E5%88%97%E5%8C%96-XML-%E6%97%B6%E8%BF%9B%E8%A1%8C%E8%87%AA%E5%8A%A8%E6%A0%BC%E5%BC%8F%E5%8C%96.html)
+
+#### 1.MemoryStream和XmlSerializer配合来序列化和反序列化
+
+```csharp
+        public Client Clone()
+        {
+            XmlSerializer xmlSerializer = new XmlSerializer(this.GetType());
+            using (MemoryStream ms = new MemoryStream())
+            {
+                xmlSerializer.Serialize(ms, this);
+                ms.Position = 0;
+                return (Client)xmlSerializer.Deserialize(ms);
+            }
+        }
+```
+
 
 ### 104.Json介绍
 
@@ -5386,7 +5591,7 @@ class Test
 ```
 
 如果去掉int?numb=null中的？,在声明的时候就会报错。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d962ffc2f1994653ade2c02c3228305e.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-sEdMhLpD-1687711481132)(c#学习笔记.assets/d962ffc2f1994653ade2c02c3228305e.png#pic_center)]
 
 #### 2.?.符号
 
@@ -5451,7 +5656,8 @@ https://blog.xxx.com/api/12
 
 ### 111.使用Linq查找某个类集合中属性的最大值和最小值
 
-` 2023-3-11日：今天在工作写代码时，关于Linq这块的一个小需求竟然卡壳了，因时间紧急，便用了很笨的一种方法解决问题，晚上下班回到酒店做了整理，把这块学会，弥补不足。`
+` 2023-3-11 23:36记录。`
+`今天在工作写代码时，关于Linq这块的一个小需求竟然卡壳了，因时间紧急，便用了很笨的一种方法解决问题，晚上下班回到酒店做了整理，把这块学会，弥补不足。`
 
 今日遇到需求如下：查找一个集合类中某个属性的最大值和最小值，想使用Linq来实现。
 
@@ -5654,7 +5860,7 @@ showsomething(isNameNull ?? errorMes);
 
 #### 1. 这道题要考察的知识点：
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/42bc8fc949a744e3b7c4b7795a693b8b.png#pic_center)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ObYbY8fE-1687711481133)(c#学习笔记.assets/42bc8fc949a744e3b7c4b7795a693b8b.png#pic_center)]
 
 #### 2.问题
 
@@ -5691,7 +5897,7 @@ class Transform
 ```
 
 这段代码实际是有问题的，如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/ecd8d27880774fdf9dd1723d6fed84d8.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-of4IZiIX-1687711481135)(c#学习笔记.assets/ecd8d27880774fdf9dd1723d6fed84d8.png)]
 
 #### 3.分析
 
@@ -5737,7 +5943,7 @@ class Transform
 ```
 
 果然上述的改写只是将属性的写法转为本质写法-写成两个普通的方法。结果还是报一样的编译错误。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/89d32bef02984d4f8acad1e4076e3f05.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-C86qYAMz-1687711481136)(c#学习笔记.assets/89d32bef02984d4f8acad1e4076e3f05.png)]
 再修改一下：
 
 ```csharp
@@ -5851,7 +6057,7 @@ bbbsccc
 dddseee
 ```
 
-### 117. .Net中托管资源、非托管资源、内存申请与释放相关
+### 117. Net中托管资源、非托管资源、内存申请与释放相关
 
 #### 1.托管和非托管的资源
 
@@ -5871,12 +6077,17 @@ dddseee
 
 #### 2.Marshal静态类
 
+##### 1.Marshal类简介
+
+**众所周知，C#在大部分情况下，内存都是由.Net托管的，而有一些特殊的类，它能够进行一些非托管的操作，这通常用于在和c/C++代码进行交互时。**
 Marshal是一个方法集合，主要应用在C#和非托管代码交互时，主要有如下方法：
 
 * 分配非托管内存
 * 复制非托管内存块
 * 将托管类型转换为非托管类型
 * 其他方法（与非托管代码交互时）
+
+
 
 **使用 Marshal 做出可以快速释放内存的大数组**
 使用方法：
@@ -6010,9 +6221,9 @@ namespace BlankApp2.Views
 以上有三个按钮，Add Buffer、Remove Buffer 和 Force GC。每点一次 Add Buffer 会申请 1 GB 的内存，并添加到 mBuffer 中。每点一次 Remove Buffer 会从 mBuffer 中移除 1 GB 的内存。当点击 Force GC 的时候会强制执行一次完全的垃圾回收。
 
 现在我点击4次Add Buffer按钮，BlankApp2进程的内存大约达到了4个G，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/93ebd3831ab24236bf987266b553c5ca.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-IPch3g8w-1687711481137)(c#学习笔记.assets/93ebd3831ab24236bf987266b553c5ca.png)]
 接着，我再点击4次 Remove Buffer，发现内存并没有释放。紧接着，我点击了一次Force GC，发现内存马上就被释放到了98.7MB，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b56d7efc12f34d3db1c0c1410f4ea554.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-uShFRvyo-1687711481137)(c#学习笔记.assets/b56d7efc12f34d3db1c0c1410f4ea554.png)]
 
 #### 4.IDisposable接口
 
@@ -6187,7 +6398,7 @@ After Run!
 **显然加上了GC.SuppressFinalize(this)后，对象的析构函数没有被调用。**
 
 表格总结：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6fec62a37d1446f0af41cc5e8bbb6b92.png)
+[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-ZVA7HRh3-1687711481137)(c#学习笔记.assets/6fec62a37d1446f0af41cc5e8bbb6b92.png)]
 
 #### 5.Net自带的List一旦分配了内存，无论是Remove还是Clear都不会释放任何空间。
 
@@ -6282,7 +6493,338 @@ img.Save("c:/1.jpg", ImageFormat.Jpeg);
 img.Save("c:/1.gif", ImageFormat.Gif);
 ```
 
-### 119.
+### 119.C#中Export和Import特性标签
+
+使用Export和Import特性标签主要是为了让程序进行解耦。
+
+代码举例如下：
+
+```csharp
+using System;
+using System.ComponentModel.Composition;
+using System.ComponentModel.Composition.Hosting;
+using System.Linq;
+using System.Reflection;
+
+namespace ConsoleApp1
+{
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			Go go = new Go();
+
+			//获取当前执行的程序集中所有的标有特性标签的代码段
+			AssemblyCatalog catalog = new AssemblyCatalog(Assembly.GetExecutingAssembly());
+
+			//将所有Export特性标签存放进组件容器中（其实是一个数组里面）
+			CompositionContainer container = new CompositionContainer(catalog);
+
+			//找到所传入对象中所有拥有Import特性标签的属性，并在组件容器的数组中找到与这些属性匹配的Export特性标签所标注的类，然后进行实例化并给这些属性赋值。
+			//简而言之，就是找到与Import对应的Export所标注的类，并用这个类的实例来给Import所标注的属性赋值，用于解耦。
+			container.ComposeParts(go);
+
+			if (go.test != null)
+			{
+				go.test.show();
+			}
+			Console.ReadLine();
+		}
+	}
+
+	//定义一个测试接口
+	interface ITest
+	{
+		void show();
+
+	}
+
+	//Export出去的类型和名称都要和Import标注的属性匹配，类型可以写ITest, 也可以写Test
+	[Export("wakaka", typeof(ITest))]
+	class Test : ITest
+	{
+		public void show()
+		{
+			Console.WriteLine("OK");
+		}
+	}
+
+	class Go
+	{
+		[Import("wakaka")]
+		public ITest test { get; set; }
+	}
+}
+```
+
+输出结果：
+
+```bash
+ok
+```
+
+### 120.Math类
+
+C# Math 类主要用于一些与数学相关的计算。
+
+一些常用的方法如下：
+
+|                |                                              |
+| -------------- | -------------------------------------------- |
+| 方法           | 描述                                         |
+| Math.Abs()     | 取绝对值                                     |
+| Math.Ceiling() | 返回大于或等于指定的双精度浮点数的最小整数值 |
+| Math.Floor()   | 返回小于或等于指定的双精度浮点数的最大整数值 |
+| Math.Equals()  | 返回指定的对象实例是否相等                   |
+| Math.Max()     | 返回两个数中较大数的值                       |
+| Math.Min()     | 返回两个数中较小数的值                       |
+| Math.Sqrt()    | 返回指定数字的平方根                         |
+| Math.Round()   | 返回四舍五入后的值                           |
+|                |                                              |
+
+### 121.什么是窗口句柄
+
+举个例子：
+
+你有你自己的身份证号,一报身份证号，你应该知道是你了
+你也有名字，当然名字复杂点,并且不是唯一，没有数字来得方便,
+所以,窗口句柄就相当于身份证号，每个窗口都有一个编号,操作系统用这个编号来发送消息的.这就是操作系统的消息机制。
+
+一个窗口如果里面有组件的话,那么每个组件也会有窗口句柄，这里的窗口提的是WINDOW,不带那个S的，表示的就是一个框，所以说,翻译上的不同,我认为也可以翻译成"框句柄",这比较符合实情,接下来,就可以对这个句柄进行操作了。
+
+如果可以隐藏一个窗口,就发送消息让他隐藏,这里就用到API,当然API是比较多的,所有的功能都是通过API实现的。
+
+更专业一点：
+
+在Windows中，是一个32为无符号整数值，句柄是一个系统内部数据结构的引用，例如，当你操作一个窗口，或说是一个Delphi窗体时，系统会给你一个该窗口的句柄，系统会通知你：你正在操作142号窗口，就此，你的应用程序就能要求系统对142号窗口进行操作——移动窗口、改变窗口大小、把窗口极小化为图标，等等。实际上许多Windows API函数把句柄作为它的第一个参数，如GDI（图形设备接口）句柄、菜单句柄、实例句柄、位图句柄等等，不仅仅局限于窗口函数。
+
+### 122.BlockingCollection
+` 于2023-6-26 23:49记录。`
+`这两日在看项目代码时，遇到了BlockingCollection类的一些用法，从未见过此用法，查找下资料学习下。 `
+
+#### 1.BlockingCollection简介
+多线程操作集合时，ConcurrentQueue 是我常用的，一直用得也挺爽，突然发现了 BlockingCollection，原来还可以更简单。
+
+BlockingCollection ，与经典的阻塞队列数据结构类似，能够适用于多个任务添加和删除数据，提供阻塞和限界能力，它是一个自带阻塞功能的线程安全集合。BlockingCollection<T> 是类，和 ConcurrentQueue<T> 有点像，不同的是，BlockingCollection<T>自带阻塞功能。
+
+#### 2.常用方法和属性
+
+```c#
+1.Add方法：用于向集合添加元素。
+    
+2.Take方法方法：用于从集合中获取元素。当集合为空时，Take 方法将阻塞，直到获取到新元素。
+    
+3.CompleteAdding方法：告诉容器，添加元素完成，标记集合为完成状态。此时如果还想继续添加会发生异常，因此不能再向集合中添加元素，调用 Add 将抛出 System.InvalidOperationException 异常；调用 CompleteAdding 方法将使阻塞状态的 Take 方法抛出 System.InvalidOperationException 异常。
+    
+4.实例化 BlockingCollection<T> 时，可以传入 boundedCapacity 参数，设置集合的上限，集合中元素到达上限后，Add 方法将阻塞。
+    
+5.TryAdd 方法在集合满时，不会阻塞，而是直接返回 false，并且丢弃要插入的元素。
+    
+6.TryTake：从容器中取出元素并删除，在集合为空时不会阻塞，而是会返回 false。
+
+7.TryPeek：从容器中取出元素，但不删除。
+
+8.IsCompleted：告诉消费线程，生产者线程还在继续运行中，任务还未完成。
+    
+9.当有多个线程 Take 时，将形成一个 Take 队列，依次获取到元素。
+
+```
+
+#### 3.代码举例
+##### 例子1
+
+一个任务往容器里面添加数据，另一个任务把数据从容器中取出，进行处理。
+
+下面的代码很简单，使用BlockingCollection定义一个消息队列，然后使用AddMessage方法向队列中添加消息。重点看一下Process方法，里面写了一个死循环，里面调用BlockingCollection的Take方法，当队列中如果没有消息时，则阻塞队列，所以并不会一直循环。等到有新消息进来时，它就会继续处理。还有一个，我们在这个类中使用单独的线程来作执行Process方法。
 
 
 
+```c#
+using System.Collections.Concurrent;
+using System.Drawing;
+using System.Timers;
+
+namespace ConsoleApp1
+{
+	public class MessageDistributer
+	{
+		private BlockingCollection<string> messageQueue;
+		private Thread thread;
+
+        public MessageDistributer()
+        {
+			messageQueue=new BlockingCollection<string>(1000);//该集合中元素最大值为1000
+			thread = new Thread(ProcessMessage);
+			thread.IsBackground = true; //即主程序结束后，线程随之结束。如果thread.IsBackground = false，那么主程序结束后，线程不会随之结束
+		}
+        public void AddMessage(string str)
+		{
+			messageQueue.Add(str);
+		}
+
+		public void ProcessMessage()
+		{
+			while (!messageQueue.IsCompleted)
+			{
+				var message=messageQueue.Take();
+				SendMessage(message);
+			}
+		}
+
+		public void Start()
+		{
+			thread.Start();
+		}
+
+		public void SendMessage(string mes)
+		{
+            Console.WriteLine($"发送消息成功:{mes}");
+        }
+
+	}
+
+
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			var messageDistributer=new MessageDistributer();
+			messageDistributer.Start();
+
+			string message = string.Empty;
+			while (true)
+			{
+                Console.WriteLine("请输入消息内容：");
+				message=Console.ReadLine();
+				if (message == "exit")
+				{
+                    Console.WriteLine("退出成功");
+                    break;
+				}
+				messageDistributer.AddMessage(message);
+				Thread.Sleep(500);
+            }
+		}
+	}
+}
+```
+
+输出结果：
+
+```bash
+请输入消息内容：
+晚上好
+发送消息成功:晚上好
+请输入消息内容：
+123
+发送消息成功:123
+请输入消息内容：
+exit
+退出成功
+```
+
+##### 例子2
+
+还可以将Action委托作为消息放到队列中，这样可以实现一个任务执行器。
+
+```c#
+using System.Collections.Concurrent;
+using System.Drawing;
+using System.Timers;
+
+namespace ConsoleApp1
+{
+	public class ActionWorker
+	{
+		private BlockingCollection<Action> actionQuene;
+		private Thread thread;
+
+        public ActionWorker()
+        {
+            actionQuene=new BlockingCollection<Action>(1001);
+			thread = new Thread(ProcessMessage);
+			thread.IsBackground = true;
+        }
+		public void AddAction(Action action)
+		{
+			actionQuene.Add(action);	
+		}
+
+		public void ProcessMessage()
+		{
+			while(!actionQuene.IsCompleted)
+			{
+				var action=actionQuene.Take();
+				try
+				{
+					action?.Invoke();
+				}
+				catch(Exception e) 
+				{
+
+				}
+			}
+		}
+
+		public void Start()
+		{
+			thread.Start();
+		}
+	}
+
+	public class Program
+	{
+
+		public static void Show(string str)
+		{
+            Console.WriteLine($"{DateTime.Now.ToString("MM-dd HH:mm:ss::fff,")+str}");
+        }
+		static void Main(string[] args)
+		{
+
+			ActionWorker worker = new ActionWorker();
+			worker.Start();
+
+			while (true)
+			{
+				Console.WriteLine("请输入内容：");
+				string str = string.Empty;
+				str = Console.ReadLine();
+				if (str == null || str == "exit")
+				{
+                    Console.WriteLine("退出");
+					break;
+                }
+				worker.AddAction(() =>
+				{
+					Show(str);
+				});
+
+				Thread.Sleep(500);
+            }
+
+		}
+	}
+}
+```
+
+输出结果：
+
+```bash
+请输入内容：
+123
+06-26 00:42:39:437, 123
+请输入内容：
+456
+06-26 00:42:42:893, 456
+请输入内容：
+exit
+退出
+```
+### 123.Thread类中IsBackground属性
+` 于2023-6-26 00:53记录。`
+
+Thread的IsBackground = true;//主程序结束后，线程随之结束【日常要用到的】。
+Thread的IsBackground = false;//主程序结束后，线程不会随之结束。
+### 124.ConcurrentQueue
+**线程安全的集合使用Concurrent开头的集合就可以了。**多线程操作集合时，可以考虑用ConcurrentQueue。
