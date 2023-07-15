@@ -1,4 +1,5 @@
-﻿﻿﻿﻿@[TOC](目录)
+﻿
+﻿﻿﻿@[TOC](目录)
 
 ```bash 	
   	2022.06，我正式走上了所追求、热爱的编程道路，用此文记录"C#"学习过程中的问题点。
@@ -13,8 +14,6 @@
 ### 1.语句块
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e11bbe262854404d97393c63166b8413.png#pic_center)
-
-
 
 ### 2.Write和WriteLine的区别：
 
@@ -1106,108 +1105,124 @@ namespace APP
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ca09eafc244545bfa02300ed5fbc766b.png#pic_center)
 
-### 51. 接口
+### 51.接口
+#### 1.什么是接口
 
-（1）**接口的声明不能包含以下成员：
-数据成员、静态成员。
-接口的声明只能包含如下类型的非静态成员函数的声明：
-方法、属性、事件、索引器。**
-（2）这些函数成员的声明不能包含任何实现代码，在每一个成员声明的主体后必须使用分号；
-（3）接口名称必须从大写的I开始写起；
-（4）下面声明一个简单的接口：
+> 接口是使用interface关键字声明的数据类型。
+
+#### 2.接口的作用是是什么
+
+1. 作为一个客观的规范
+
+> 比如，如果把接口比做一个合同，这个合同规定了你能做什么事情，但是没有规定你怎么做。那么实现了这个接口的人就相当于履行合同的人，这个人必须按照合同的规定去做事情，但是不同的人在做这些事情时可以有不同的实现。
 
 ```csharp
- public interface IMyinterFace1
-    {
-        int add(int low, int high);
-        double reduce(double low, double high);
-    }
+/// <summary>
+ /// IDo代表合同，规定了一年必须赚到100万元
+ /// </summary>
+ public interface IDo
+ {
+     void Do();//一年内赚到100万元
+ }
+
+ /// <summary>
+ /// 履行合同的人
+ /// </summary>
+ public class Person01: IDo
+ { 
+     public void Do()
+     {
+         Console.WriteLine("通过工地打工赚100万");
+     }
+ }
+
+ /// <summary>
+ /// 履行合同的人
+ /// </summary>
+ public class Person02: IDo
+ {
+     public void Do()
+     {
+         Console.WriteLine("通过炒股赚100万");
+     }
+ }
 ```
 
-（5）接口的访问性和接口成员的访问性之间有一些区别：
-接口的声明可以有任何的访问修饰符（但一般都为public），如：private、protected、internal、public。而接口的成员是隐式public的，不能有任何的访问修饰符，包括public。例如下面的这段代码：
+
+2. 实现多态
+
+>接口的主要目的是为不相关的类提供通用的处理服务，实现多态。
+多态的定义：同一操作作用于不同的对象，可以有不同的的解释，产生不同的执行结果，这就是多态性。
+比如下面代码，公司的每个人都是一个对象，有份工作需要对公司所有租房的人进行发放补助。一般来说，我们需要一一访问每个人才能知道他有没有租房，但是，倘若我们定义了一个接口，并且规定继承这个接口的人一定是租房了的，那么我只需要检查你是否实现这个接口就行。
+事实上，很多时候，一一访问是做不到的，因为业务是多变的，但是功能是固定的，因此接口就能很好地弥补这种情况，在主体框架中只对接口进行编程，而不需要关注实现，这样才能让系统更加稳固。
 
 ```csharp
- public interface IMyinterFace1
-    {
-        //接口成员不允许有访问修饰符
-        int add(int low, int high);//正确
-        double reduce(double low, double high);//正确
-        public int add_1(int low, int high);//错误
-        private double reduce_2(double low, double high);//错误
-    }
-```
-
-（6）只有类和接口才能实现接口，然而要实现接口，类和结构必须：在基类列表中包含接口名称，为每一个接口的成员提供实现。
-注意：**如果类实现了接口，它就必须实现类的所有成员；**
-如果类从基类继承并实现了接口，则基类列表中的基类名称必须放在所有接口之前，例如下图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/2be9b8e855b1471ea132a974327c543d.png#pic_center)
-比较接口和抽象类：
-抽象类可以有
-（7）as运算符和接口一起配合使用是很好的选择。
-如果我们尝试将类对象的引用强制转换为类未实现的接口的引用，强制转换操作会抛出一个异常，可以通过使用as运算符来避免这个问题。具体如下：
-如果类实现了接口，表达式指向返回接口的引用。
-如果类没有实现接口，表达式返回null而不是异常。
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b4fdf93c99e94ec89a72931ce9790d45.png#pic_center)
-if(this !=null)判空的目的是看看接口是否拿到了类的实例。
-
-（8）类或结构可以实现任意数量的接口。
-（9）如果一个类实现了多个接口，并且其中一些接口具有相同的签名和返回类型的成员，那么类可以实现单个成员来满足所有包含重复成员的接口。例如：
-
-```csharp
-using System;
-namespace APP
+namespace Csharp接口
 {
-    interface IMyinterFace1
+    /// <summary>
+    /// IRent代表租房的接口
+    /// </summary>
+    public interface IRent
     {
-        void PrintOut(string s);
+        void Do();
     }
 
-    interface IMyinterFace2
+    /// <summary>
+    /// 租过房子的人
+    /// </summary>
+    public class Person01 : IRent
     {
-        void PrintOut(string t);
-    }
-
-    public class AP : IMyinterFace1,IMyinterFace2
-    {
-        public void PrintOut(string s)
+        public void Do()
         {
-            Console.WriteLine(s);
+            Console.WriteLine("我是张三，有租房");
         }
     }
-    public class A
+
+    /// <summary>
+    /// 租过房子的人
+    /// </summary>
+    public class Person02 : IRent
     {
-        static void Main()
+        public void Do()
         {
-            AP aP = new AP();
-            aP.PrintOut("你好世界！");
+            Console.WriteLine("我是李四，有租房");
+        }
+    }
+
+    public class Program
+    {
+        public static void Main()
+        {
+            IRent do01 = new Person01();//接口类型来引用对象
+            do01.Do();
+
+            IRent do02 = new Person02();
+            do02.Do();
+
+            Console.ReadKey();
         }
     }
 }
+
 ```
+#### 3.接口的特点是什么
 
-![在这里插入图片描述](https://img-blog.csdnimg.cn/f1ca998866754b1c986be6941dc662f4.png#pic_center)
-（10）接口还可以继承接口，例如：
+>    1. 接口是抽象的行为，规定了能做什么，没规定怎么做。
+>    2. 实现了接口必须实现接口的所有成员。
+#### 4.接口如何使用
+> 
+>    1. 类继承接口 Class A ： interface B，interface C
+>       类需要实现继承接口中所有的方法，支持多继承。
+> 
+>    2. 接口继承接口 interface A ：interface B，interface C
+>       接口不能实现继承接口的任何方法，支持多继。
+#### 6.接口和抽象类的区别
 
-```csharp
-  interface IMyinterFace1
-    {
-        void PrintOut(string s);
-    }
-
-    interface IMyinterFace2
-    {
-        void PrintOut(string t);
-    }
-
-    interface IMyinterFace3 : IMyinterFace1, IMyinterFace2
-    {
-
-    }
-```
-
-(11)接口隔离原则：在实际项目中，可以实现一些小接口，而不是把功能都集中在一个大接口里。
-
+>  1. 接口的主要作用是定义类型之间的契约，实现了接口的类必须按照接口定义的契约来实现它的成员，从而可以实现不同类型之间的通用性和互换性。抽象类的主要作用是为了实现多态性，它可以为子类提供一组基础功能，并要求子类必须实现一些具体的方法。抽象类可以包含一些具体的实现，但同时也可以包含一些抽象的成员，子类必须实现这些抽象成员。
+>  
+>  2. 使用接口的主要场景是当你需要定义一组通用的规范或契约时。比如说，你可以定义一个 IDisposable 接口，规定实现该接口的类型必须实现 Dispose 方法，用于释放资源。又比如，你可以定义一个 IComparer 接口，规定实现该接口的类型必须实现 Compare 方法，用于比较两个对象的大小。使用抽象类的主要场景是当你需要为子类提供一组基础功能，并要求子类必须实现一些具体的方法时。比如说，你可以定义一个 Animal 抽象类，规定所有动物都必须具有 Eat 和 Sleep 方法，但对于不同的动物，它们的实现方法是不同的，因此你可以定义一个 Dog 类和一个 Cat 类，分别继承 Animal 类，并实现它的抽象方法。
+>  
+>  3. 接口和抽象类都可以用来定义一组抽象的方法和属性，但它们的应用场景有所不同。当你需要定义一组通用的规范或契约时，应该使用接口；当你需要为子类提供一组基础功能，并要求子类必须实现一些具体的方法时，应该使用抽象类。
 ### 52.转换
 
 转换是接收一个类型的值并使用它作为另一个类型的等价值的过程。
@@ -1341,15 +1356,15 @@ namespace APP
 （4）泛型方法：
 泛型方法具有类型参数列表和可选的约束。
 
-    1. 泛型方法有两个参数列表：
-       封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
-    2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
-       如图：
-         ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
-   3. 泛型方法的调用：
-      ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
-   4. 泛型方法举例：
-      代码：
+  1. 泛型方法有两个参数列表：
+     封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
+  2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
+     如图：
+       ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
+ 3. 泛型方法的调用：
+    ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
+ 4. 泛型方法举例：
+    代码：
 
 ```csharp
 using System;
@@ -2390,6 +2405,8 @@ F
 
 在C#里面可以使用关键词lock加上一个对象作为锁定，在进入lock的逻辑，只能有一个线程获取锁，因此在lock里面的代码只能被一个线程同时执行。
 
+**lock锁的究竟是什么？是lock下面的代码块吗，不，是locker对象。我们想象一下，locker对象相当于一把门锁（或者钥匙），后面代码块相当于屋里的资源。哪个线程先控制这把锁，就有权访问代码块，访问完成后再释放权限，下一个线程再进行访问。注意：如果代码块中的逻辑执行时间很长，那么其他线程也会一直等下去，直到上一个线程执行完毕，释放锁。**
+
 Lock关键字实际上是一个语法糖，它将Monitor对象进行封装，给object加上一个互斥锁，A进程进入此代码段时，会给object对象加上互斥锁，此时其他B进程进入此代码段时检查object对象是否有锁？如果有锁则继续等待A进程运行完该代码段并且解锁object对象之后，B进程才能够获取object对象为其加上锁，访问代码段。
 
 例如，以下代码就是标准的锁定方法的代码：
@@ -3039,7 +3056,6 @@ namespace 同步异步多线程.Datas
 }
 
 ```
-
 #### 10.Task的一些用法详解
 
 Task是微软在.Net 4.0时代推出来的，Task看起来像一个Thread，实际上，它是在ThreadPool的基础上进行的封装，Task的控制和扩展性很强，在线程的延续、阻塞、取消、超时等方面远胜于Thread和ThreadPool，所以一经问世，基本ThreadPool就被取代了。
@@ -3149,7 +3165,29 @@ static void Main(string[] args)
 result1值是2,result2值是2
 线程Id是1,当前时间是:2023/4/17 23:22:01
 ```
+#### 11.Thread类中IsBackground属性
+Thread的IsBackground = true;//后台线程，当主程序结束后，线程随之结束【日常要用到的】。
+Thread的IsBackground = false;//前台线程，当主程序结束后，线程不会随之结束。
 
+#### 12.C# 前台线程和后台线程的区别(重要知识点)
+
+前台线程和后台线程唯一区别：应用程序必须运行完所有的前台线程才会完全退出，若前台线程未执行完成，关闭应用程序后，应用程序并没有完全退出，在任务管理器中还存在此进程；而对于后台线程，应用程序则可以不考虑其是否已经运行完毕而直接退出，所有的后台线程在应用程序退出时都会自动结束。
+
+1. 在任何时候我们都可以通过线程的IsBackground属性改变线程的前后台属性：
+* thread.IsBackground=false；前台线程
+
+* thread.IsBackground=true；后台线程
+
+2. 应用程序的主线程以及使用Thread构造的线程都默认为前台线程
+
+    线程池线程也就是使用 ThreadPool.QueueUserWorkItem()和Task工厂创建的线程都默认为后台线程。
+
+线程由程序员创建，可是创建的方式不同，总体来说有两种，一种是个人构造，也就是使用thread类new线程对象创建，这一类线程是大部分程序员知道的，也叫专用线程;还有一种是由CLR创建，这一类线程主要存在于线程池中，也叫线程池线程。对于这两种线程的好坏，建议最好使用线程池线程，不要大量使用专用线程。
+
+从回收的角度来看又可分为前台线程和后台线程：
+
+* 后台线程：后台线程是可以随时被CLR关闭而不引发异常的，也就是说当后台线程被关闭时，资源的回收是立即的，不等待的，也不考虑后台线程是否执行完成，就算是正在执行中也立即被终止。【后台，存在于黑暗之中默默无闻，它的消亡和存在，别人也感受不到】
+* 前台线程：前台线程是不会被立即关闭的，它的关闭只会发生在自己执行完成时，不受外在因素的影响。假如应用程序退出，造成它的前台线程终止，此时CLR仍然保持活动并运行，使应用程序能继续运行，当它的的前台线程都终止后，整个进程才会被销毁。
 ### 60.异常
 
 （1）try语句：
@@ -3195,7 +3233,6 @@ namespace Application
 （2）预处理指令：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3148177a5d47497a8c45cd755ed1c885.png#pic_center)
 （3）#define和#undef只能用在源文件的第一行，也就是任何C#代码之前使用，在C#代码开始后，#define和#undef就不能再使用。
-
 ### 62.反射和特性
 
 （1）元数据：有关程序及其类型的数据称为元数据，它们保存在程序的程序集中。
@@ -3743,13 +3780,13 @@ public class Program
 （1）可以在接口内声明的成员：方法、属性、事件、索引器。
 （2）接口和抽象类的区别：
 
-    1. 接口中不能声明常量和字段，抽象类中可以声明任何类成员；
-    2. 在接口中只能定义成员，但不能具体实现，在抽象类中除了抽象方法外，其他成员允许有具体的实现；
-    3. 接口中没有实例构造函数，也就是说没有构造函数，抽象类中有构造函数；
-    4. 接口成员不能使用任何访问修饰符，抽象类中的类成员可以使用任意的访问修饰符；
-    5. 继承接口的类或结构必须隐式或显式实现接口中的所有成员，否则需要将实现类定义为抽象类，并将接口中未实现的成员以抽象的方式实现，继承抽象类的类必须重写实现抽象类中的所有抽象方法，或者抽象类继承抽象类，可以重写部分抽象方法；
-    6. 接口不能作为派生类继承，抽象类可以继承非抽象类或抽象类；
-    7. 接口可以作为基类来多继承：接口、类和结构，抽象类可以作为基类只能实现单继承，只能让非抽象类或者抽象类继承。
+  1. 接口中不能声明常量和字段，抽象类中可以声明任何类成员；
+  2. 在接口中只能定义成员，但不能具体实现，在抽象类中除了抽象方法外，其他成员允许有具体的实现；
+  3. 接口中没有实例构造函数，也就是说没有构造函数，抽象类中有构造函数；
+  4. 接口成员不能使用任何访问修饰符，抽象类中的类成员可以使用任意的访问修饰符；
+  5. 继承接口的类或结构必须隐式或显式实现接口中的所有成员，否则需要将实现类定义为抽象类，并将接口中未实现的成员以抽象的方式实现，继承抽象类的类必须重写实现抽象类中的所有抽象方法，或者抽象类继承抽象类，可以重写部分抽象方法；
+  6. 接口不能作为派生类继承，抽象类可以继承非抽象类或抽象类；
+  7. 接口可以作为基类来多继承：接口、类和结构，抽象类可以作为基类只能实现单继承，只能让非抽象类或者抽象类继承。
 
 ### 78.什么叫显式转换，什么叫隐式转换？装箱和拆箱又是什么？
 
@@ -4701,15 +4738,22 @@ namespace prop
     }
 }
 ```
+### 96.什么是窗口句柄
 
-### 96.字典：ConcurrentDictionary的使用
+举个例子：
 
-ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/值对的线程安全集合。
-也就是说，ConcurrentDictionary可由多个线程同时访问，并且线程安全。
+你有你自己的身份证号,一报身份证号，你应该知道是你了
+你也有名字，当然名字复杂点,并且不是唯一，没有数字来得方便,
+所以,窗口句柄就相当于身份证号，每个窗口都有一个编号,操作系统用这个编号来发送消息的.这就是操作系统的消息机制。
 
-对于c#中使用的List<T>,Dictionary<TKey, TValue>等常用的集合，如果需要在多线程中有写操作，会线程不安全，需要加锁（lock）。而ConcurrentDictionary无需手动加锁即可实现多线程中的写操作。
+一个窗口如果里面有组件的话,那么每个组件也会有窗口句柄，这里的窗口提的是WINDOW,不带那个S的，表示的就是一个框，所以说,翻译上的不同,我认为也可以翻译成"框句柄",这比较符合实情,接下来,就可以对这个句柄进行操作了。
 
-ConcurrentDictionary的用法和Dictionary类似。
+如果可以隐藏一个窗口,就发送消息让他隐藏,这里就用到API,当然API是比较多的,所有的功能都是通过API实现的。
+
+更专业一点：
+
+在Windows中，是一个32为无符号整数值，句柄是一个系统内部数据结构的引用，例如，当你操作一个窗口，或说是一个Delphi窗体时，系统会给你一个该窗口的句柄，系统会通知你：你正在操作142号窗口，就此，你的应用程序就能要求系统对142号窗口进行操作——移动窗口、改变窗口大小、把窗口极小化为图标，等等。实际上许多Windows API函数把句柄作为它的第一个参数，如GDI（图形设备接口）句柄、菜单句柄、实例句柄、位图句柄等等，不仅仅局限于窗口函数。
+
 
 ### 97. IEnumerable接口与yield return
 
@@ -4981,13 +5025,13 @@ namespace 测试
 
 **属性的本质就是方法，get和set两个方法构成。**
 
-    1. 字段只管存值，不管对数据的操作，字段一定是占用内存的。
-       属性可以占用内存，也可以不占用，当属性中封装了字段时，那么属性会占用内存，当不封装字段而是做了其他操作时，是可以不占用内存的。
+  1. 字段只管存值，不管对数据的操作，字段一定是占用内存的。
+     属性可以占用内存，也可以不占用，当属性中封装了字段时，那么属性会占用内存，当不封装字段而是做了其他操作时，是可以不占用内存的。
 
-    2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
-       字段一般都声明为private私有的，而属性一般都声明为public公有的。
+  2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
+     字段一般都声明为private私有的，而属性一般都声明为public公有的。
 
-    3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
+  3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
 
  感觉师傅给我讲的关于属性和字段的区别以及属性的优点，我还是没有理解核心区别，今天先写总结到这里，日后再有更深层次的理解了，继续完善。
 
@@ -4997,13 +5041,13 @@ namespace 测试
  今天师傅给我讲了些项目代码中事件和委托的使用以及区别，并让我学会多使用evnet事件（可以少用action委托，多用事件），晚上回去作了些总结，记录如下：
  先分析委托因为封装不充分而产生的缺点：
 
-    1. 错误使用赋值操作符导致原本的委托链被覆盖：
-       如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
+  1. 错误使用赋值操作符导致原本的委托链被覆盖：
+     如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
 
-    2. 在类的外部也可以调用委托：
-       尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
-       总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
-       事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
+  2. 在类的外部也可以调用委托：
+     尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
+     总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
+     事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
 
 ```csharp
 public delegate void action(string str);
@@ -5105,7 +5149,7 @@ Age: 20
 操作完成
 ```
 
-### 102.C#中的流和文件操作
+### 102.C#中的流和文件操作相关
 
 1. 通过FileInfo和DirectoryInfo类来读取文件和文件夹属性
    包括：查看文件属性，创建文件，移动文件，重命名文件，判断路径是否存在，创建目录。
@@ -5355,6 +5399,178 @@ class Program
     }
 }
 
+```
+#### 7.C#中操作表格
+如下例子，向一个csv文件中写入数据并读取：
+
+以下代码需要注意一点：
+
+> 注意File.Create方法返回的是一个流，必须要调用Close方法关闭流，否则会报异常提示正在被其他的线程占用，因此不能用File.Create(),要用File.Create.Close方法
+
+
+```csharp
+using System.Text;
+
+namespace ConsoleApp3
+{
+	public class TestItem
+	{
+		public DateTime DateTime { get; set; }
+		public string Value { get; set; }
+	}
+
+	public class Program
+	{
+		static void Main(string[] args)
+		{
+			for(int i = 0; i < 10; i++)
+			{
+				WriteToCsv(new TestItem { DateTime = DateTime.Now, Value = i.ToString() });
+			}
+			ReadFromCsv();
+			Console.ReadKey();
+		}
+		public static bool WriteToCsv(TestItem testItem)
+		{
+			try
+			{
+				var logSavePath = @"D:/Test/TestCsv.csv";
+				if (!File.Exists(logSavePath))
+				{
+					File.Create(logSavePath).Close();//注意File.Create方法返回的是一个流，必须要调用Close方法关闭流，否则会报异常提示正在被其他的线程占用，因此不能用File.Create(),要用File.Create.Close方法
+					using (var fs = new FileStream(logSavePath, FileMode.Append))
+					{
+						using (var ws = new StreamWriter(fs, Encoding.UTF8))//设置编码方式为UTF8
+						{
+							ws.WriteLine("时间, 监测值");
+						}
+					}
+				}
+				using (var fs = new FileStream(logSavePath, FileMode.Append))
+				{
+					using (var ws = new StreamWriter(fs))
+					{
+						ws.WriteLine($"{testItem.DateTime},{testItem.Value}");
+					}
+				}
+			}
+			catch (Exception ex)
+			{
+
+			}
+			return true;
+		}
+
+		public static bool ReadFromCsv()
+		{
+			try
+			{
+				var savePath = @"D:/Test/TestCsv.csv";
+				if (File.Exists(savePath))
+				{
+					using (FileStream fs = new FileStream(savePath, FileMode.Open))
+					{
+						using (StreamReader sr = new StreamReader(fs))
+						{
+							while (sr.ReadLine() is string str)
+							{
+								List<string> strLists = str.Split(',').ToList();
+								if (strLists[0] == "")
+								{
+									break;
+								}
+								else
+								{
+									Console.Write(strLists[0] + ", " + strLists[1]);
+									Console.WriteLine();
+								}
+							}
+						}
+					}
+				}
+				
+			}
+			catch (Exception ex)
+			{
+
+			}
+			return true;
+		}
+	}
+}
+```
+运行结果：
+
+```bash
+时间,  监测值
+2023/7/7 18:17:18, 0
+2023/7/7 18:17:18, 1
+2023/7/7 18:17:18, 2
+2023/7/7 18:17:18, 3
+2023/7/7 18:17:18, 4
+2023/7/7 18:17:18, 5
+2023/7/7 18:17:18, 6
+2023/7/7 18:17:18, 7
+2023/7/7 18:17:18, 8
+2023/7/7 18:17:18, 9
+```
+#### 8.C# 使用File.Create方法创建文件时，报进程被占用
+在一个程序里偶然用了System.IO.File.Create去创建文件，运行时一直报错（进程被占用），后来在网上找到了解决办法，引用了一下。
+
+判断是否有当前的文件存在，不存在则进行创建，在进行操作:
+
+```csharp
+if(!File.Exists(fileName))
+{
+    File.Create(fileName);
+}
+```
+但是当我运行到发现没有当前的文件，就直接创建当前文件，之后直接进行操作，出问题了直接报出异常，当前文件正在另一个进程中使用……仔细一看 System.IO.File.Create(fileName)返回的类型是FileStream，ND文件流，文件流不关闭不出异常那才叫怪呢。
+
+提供两种解决的方法：
+方法一：
+
+```csharp
+if(!File.Exists(fileName))
+{
+    File.Create(fileName).Close();
+}
+```
+方法二：
+
+```csharp
+if(!File.Exists(fileName))
+{
+    using(File.Create(fileName))
+ 
+    {
+ 
+        //……
+ 
+    }
+}
+```
+#### 9.C# 以非独占方式打开文件(FileShare)
+使用C#开发中，当一个程序正在读写某个文件，另一个程序则无法操作此文件。
+
+使用FileStream类，其中的FileShare参数可设置文件的共享方式：
+* FileShare.None 谢绝共享当前文件
+* FileShare.Read 允许别的程序读取当前文件
+* FileShare.Write 允许别的程序写当前文件
+* FileShare.ReadWrite 允许别的程序读写当前文件
+
+下面代码中将文件的FileShare属性设置为Read，程序在读写文件时，其他程序可以查看此文件
+
+> 每次以追加的方式向文件中写入数据，并且给本程序赋予读写的权限来操作该文件，但是其他程序只能读取该文件
+
+```csharp
+					using (var fs = new FileStream(logSavePath, FileMode.Append,FileAccess.ReadWrite,FileShare.ReadWrite))//每次以追加的方式向文件中写入数据，并且给本程序赋予读写的权限来操作该文件，但是其他程序只能读取该文件
+					{
+						using (var ws = new StreamWriter(fs, Encoding.UTF8))//设置编码方式为UTF8
+						{
+							ws.WriteLine("时间, 监测值");
+						}
+					}
 ```
 
 ### 103.XML
@@ -5995,7 +6211,7 @@ dddseee
 3. **托管和非托管的资源指的是存储在托管或本机堆中的对象。**
 
 4. C#编程的一个优点是程序员不需要担心具体的内存管理，垃圾回收器会自动处理所有的内存清理工作。尽管**垃圾收集器释放存储在托管堆中的托管对象，但不释放本机堆中的对象**。必须由开发人员自己释放它们。
-   **垃圾回收器的出现意味着，通常不需要担心不再需要的对象，只要让这些对象的所有引用都超出作用域，并允许垃圾回收器在需要时释放内存即可。但是，垃圾回收器不知道如何释放非托管的资源（例如，文件句柄、网络连接和数据库连接）。**托管类在封装对非托管资源的直接或间接引用时，需要制定专门的规则，确保非托管的资源在回收类的一个
+   **垃圾回收器的出现意味着，通常不需要担心不再需要的对象，只要让这些对象的所有引用都超出作用域，并允许垃圾回收器在需要时释放内存即可。但是，垃圾回收器不知道如何释放非托管的资源（例如，文件句柄、网络连接和数据库连接）。** 托管类在封装对非托管资源的直接或间接引用时，需要制定专门的规则，确保非托管的资源在回收类的一个
    实例时释放。
    **在定义一个类时，可以使用两种机制来自动释放非托管的资源**。这些机制常常放在一起实现，因为每种机制都为问题提供了略为不同的解决方法。这两种机制是：
 
@@ -6504,41 +6720,33 @@ C# Math 类主要用于一些与数学相关的计算。
 | Math.Round()   | 返回四舍五入后的值                           |
 |                |                                              |
 
-### 121.什么是窗口句柄
+### 121.C#中线程安全集合(Concurrent命名空间下)
+Concurrent命名空间下提供多个线程安全集合类方案。
+C#中线程安全集合汇总：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8786abc5993b43a88cb97a2e6f980cff.png)
+#### 1.ConcurrentDictionary
 
-举个例子：
+ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/值对的线程安全集合。
+也就是说，ConcurrentDictionary可由多个线程同时访问，并且线程安全。
 
-你有你自己的身份证号,一报身份证号，你应该知道是你了
-你也有名字，当然名字复杂点,并且不是唯一，没有数字来得方便,
-所以,窗口句柄就相当于身份证号，每个窗口都有一个编号,操作系统用这个编号来发送消息的.这就是操作系统的消息机制。
+对于c#中使用的List<T>,Dictionary<TKey, TValue>等常用的集合，如果需要在多线程中有写操作，会线程不安全，需要加锁（lock）。而ConcurrentDictionary无需手动加锁即可实现多线程中的写操作。
 
-一个窗口如果里面有组件的话,那么每个组件也会有窗口句柄，这里的窗口提的是WINDOW,不带那个S的，表示的就是一个框，所以说,翻译上的不同,我认为也可以翻译成"框句柄",这比较符合实情,接下来,就可以对这个句柄进行操作了。
-
-如果可以隐藏一个窗口,就发送消息让他隐藏,这里就用到API,当然API是比较多的,所有的功能都是通过API实现的。
-
-更专业一点：
-
-在Windows中，是一个32为无符号整数值，句柄是一个系统内部数据结构的引用，例如，当你操作一个窗口，或说是一个Delphi窗体时，系统会给你一个该窗口的句柄，系统会通知你：你正在操作142号窗口，就此，你的应用程序就能要求系统对142号窗口进行操作——移动窗口、改变窗口大小、把窗口极小化为图标，等等。实际上许多Windows API函数把句柄作为它的第一个参数，如GDI（图形设备接口）句柄、菜单句柄、实例句柄、位图句柄等等，不仅仅局限于窗口函数。
-
-### 122.BlockingCollection
-
-` 于2023-6-26 23:49记录。`
-`这两日在看项目代码时，遇到了BlockingCollection类的一些用法，从未见过此用法，查找下资料学习下。 `
-
-#### 1.BlockingCollection简介
+ConcurrentDictionary的用法和Dictionary类似。
+#### 2.BlockingCollection
+##### 1.BlockingCollection简介
 
 多线程操作集合时，ConcurrentQueue 是我常用的，一直用得也挺爽，突然发现了 BlockingCollection，原来还可以更简单。
 
 BlockingCollection ，与经典的阻塞队列数据结构类似，能够适用于多个任务添加和删除数据，提供阻塞和限界能力，它是一个自带阻塞功能的线程安全集合。BlockingCollection<T> 是类，和 ConcurrentQueue<T> 有点像，不同的是，BlockingCollection<T>自带阻塞功能。
 
-#### 2.常用方法和属性
+##### 2.常用方法和属性
 
 ```c#
 1.Add方法：用于向集合添加元素。
     
 2.Take方法方法：用于从集合中获取元素。当集合为空时，Take 方法将阻塞，直到获取到新元素。
     
-3.CompleteAdding方法：告诉容器，添加元素完成，标记集合为完成状态。此时如果还想继续添加会发生异常，因此不能再向集合中添加元素，调用 Add 将抛出 System.InvalidOperationException 异常；调用 CompleteAdding 方法将使阻塞状态的 Take 方法抛出 System.InvalidOperationException 异常。
+3.CompleteAdding方法：告诉容器，添加元素完成，标记集合为完成状态。CompleteAdding 方法是直接不允许任何元素被加入集合；当使用了 CompleteAdding 方法后且集合内没有元素的时候，另一个属性 IsCompleted 此时会为 True，这个属性可以用来判断是否当前集合内的所有元素都被处理完。
     
 4.实例化 BlockingCollection<T> 时，可以传入 boundedCapacity 参数，设置集合的上限，集合中元素到达上限后，Add 方法将阻塞。
     
@@ -6548,15 +6756,28 @@ BlockingCollection ，与经典的阻塞队列数据结构类似，能够适用�
 
 7.TryPeek：从容器中取出元素，但不删除。
 
-8.IsCompleted：告诉消费线程，生产者线程还在继续运行中，任务还未完成。
+8.IsCompleted：判断当前集合是否处理完。
     
 9.当有多个线程 Take 时，将形成一个 Take 队列，依次获取到元素。
 
+10.GetConsumingEnumerable方法：这个方法会遍历集合取出数据，一旦发现集合空了，则阻塞自己，直到集合中又有元素了再开始遍历。当CompleteAdding方法被调用即IsCompleted被标记为true时，GetConsumingEnumerable枚举会自动结束。
 ```
 
-#### 3.代码举例
+##### 3.代码举例
+先看这一段代码的作用：
 
-##### 例子1
+```csharp
+Task.Factory.StartNew(() =>
+{
+        foreach (string value in blockingCollection.GetConsumingEnumerable())
+        {
+            Console.WriteLine("Worker A: " + value);
+        }
+});
+```
+BlockingCollection.GetConsumingEnumerable 方法是关键，这个方法会遍历集合取出数据，一旦发现集合空了，则阻塞自己，直到集合中又有元素了再开始遍历。
+
+###### 1.例子1
 
 一个任务往容器里面添加数据，另一个任务把数据从容器中取出，进行处理。
 
@@ -6648,7 +6869,7 @@ exit
 退出成功
 ```
 
-##### 例子2
+###### 1.例子2
 
 还可以将Action委托作为消息放到队列中，这样可以实现一个任务执行器。
 
@@ -6746,14 +6967,26 @@ namespace ConsoleApp1
 exit
 退出
 ```
-
-### 123.Thread类中IsBackground属性
-
-` 于2023-6-26 00:53记录。`
-
-Thread的IsBackground = true;//主程序结束后，线程随之结束【日常要用到的】。
-Thread的IsBackground = false;//主程序结束后，线程不会随之结束。
-
-### 124.ConcurrentQueue
-
+#### 3.ConcurrentQueue
+ 
 **线程安全的集合使用Concurrent开头的集合就可以了。** 多线程操作集合时，可以考虑用ConcurrentQueue。
+##### 1.ConcurrentQueue简介
+ConcurrentQueue队列是一个高效的线程安全的队列。
+
+ConcurrentQueue表示线程安全的先进先出 (FIFO) 集合。
+
+经典的多线程应用问题就是：有一个或多个线程（生产者线程）产生一些数据，还有一个或者多个线程（消费者线程）要取出这些数据并执行一些相应的工作。
+##### 2.常用方法和属性
+```csharp
+1.TryPeek方法：尝试返回该集合开头处的对象，但不将其移除。
+2.Enqueue方法：入队操作。
+3.TryDequeue方法：出队操作。如果当前队列为空，返回false，否则返回队列的第一个元素。
+4.Count方法：返回当前队列中元素的个数。
+5.IsEmpty方法：判断当前队列是否为空。
+
+```
+
+
+
+
+

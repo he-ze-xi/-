@@ -1,6 +1,6 @@
 ﻿@[TOC](目录)
 ```bash
-此篇博客聚集了自己写过的一些WPF界面设计Demo。
+个人比较喜欢研究WPF界面设计, 此篇博客聚集了自己写过的一些WPF界面设计Demo。
 ```
 # 1.设计一个优美的注册界面
 ## 1.实现效果
@@ -2716,6 +2716,92 @@ namespace WpfApp2
 	}
 
 
+}
+
+```
+# 8.设计一个圆形进度条
+## 1.简介
+
+> 主要用StrokeDashArray来绘制图形。
+
+> 思路：
+> 1. 用Rectangle来画2个圆环，一个浅色作为进度条的背景，一个深色作为进度条进度显示。
+> 2. 然后通过设置StrokeDashArray来调整进度的多少，并通过StrokeDashCap把进度条两端也弄成圆弧。但是值得注意的是，通过设置StrokeDashArray来调整进度的多少，设置的并不是1%的进度，而是圆弧长度，因此还需要其他方法来设置进度条进度。
+> 3. 通过TextBox中输入的值来手动设置进度值，并通过TextChanged事件来刷新进度条进度。
+> 4. 接下来主要就是计算百分比的问题：
+> StrokeDashArray的单位长度不是1，而是StrokeThickness，所以整个StrokeDashArray的长度是这个圆环的周长，但是要用StrokeThickness的值为单位。
+## 2. 实现效果
+![在这里插入图片描述](https://img-blog.csdnimg.cn/8feccdc2da1b422da6efe75d31cdd8b4.gif#pic_center)
+## 3.代码展示
+MainWindow.xaml代码：
+
+```xml
+<Window
+    x:Class="BlankApp1.Views.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:prism="http://prismlibrary.com/"
+    Title="{Binding Title}"
+    Width="525"
+    Height="350"
+    prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Rectangle Width="100" Height="100" Stroke="LightGreen" StrokeThickness="20" RadiusX="50" RadiusY="50"/>
+        <Rectangle x:Name="progressBar" RenderTransformOrigin="0.5,0.5" Width="100" Height="100" Stroke="Purple" StrokeDashArray="1,100" StrokeDashCap="Round" StrokeThickness="20" RadiusX="50" RadiusY="50">
+            <Rectangle.RenderTransform>
+                <RotateTransform Angle="90"/>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <TextBox x:Name="txt" Background="Transparent" Width="50" Height="30" Text="0" TextAlignment="Center" FontSize="22" TextChanged="txt_TextChanged"/>
+    </Grid>
+</Window>
+
+```
+
+MainWindow.xaml.cs代码：
+
+```csharp
+using System;
+using System.Windows;
+using System.Windows.Media;
+
+namespace BlankApp1.Views
+{
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
+		private void txt_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+		{
+			double pro = 0;
+			try
+			{
+				pro = Convert.ToDouble(txt.Text);
+			}
+			catch(Exception ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+			finally
+			{
+				CaluculateProgress(pro,progressBar.RadiusX,progressBar.StrokeThickness);
+			}
+		}
+
+		void CaluculateProgress(double pro,double radius,double thickness)
+		{
+			double r = radius - thickness / 2;///圆环半径，计算方法为：外弧半径-thickness的一半
+			double perimeter = 2 * Math.PI * r / thickness;//圆弧长度，计算方法为：圆弧的周长除以单位长度
+			double step = pro / 100*perimeter;//进度，计算方法为：圆弧的长度除以比例
+			progressBar.StrokeDashArray = new DoubleCollection() { step, 100 };
+		}
+	}
 }
 
 ```
