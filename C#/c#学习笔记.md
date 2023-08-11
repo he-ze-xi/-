@@ -1,5 +1,4 @@
-﻿
-﻿﻿﻿@[TOC](目录)
+﻿﻿﻿﻿@[TOC](目录)
 
 ```bash 	
   	2022.06，我正式走上了所追求、热爱的编程道路，用此文记录"C#"学习过程中的问题点。
@@ -14,6 +13,8 @@
 ### 1.语句块
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e11bbe262854404d97393c63166b8413.png#pic_center)
+
+
 
 ### 2.Write和WriteLine的区别：
 
@@ -1106,6 +1107,7 @@ namespace APP
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ca09eafc244545bfa02300ed5fbc766b.png#pic_center)
 
 ### 51.接口
+
 #### 1.什么是接口
 
 > 接口是使用interface关键字声明的数据类型。
@@ -1152,9 +1154,9 @@ namespace APP
 2. 实现多态
 
 >接口的主要目的是为不相关的类提供通用的处理服务，实现多态。
-多态的定义：同一操作作用于不同的对象，可以有不同的的解释，产生不同的执行结果，这就是多态性。
-比如下面代码，公司的每个人都是一个对象，有份工作需要对公司所有租房的人进行发放补助。一般来说，我们需要一一访问每个人才能知道他有没有租房，但是，倘若我们定义了一个接口，并且规定继承这个接口的人一定是租房了的，那么我只需要检查你是否实现这个接口就行。
-事实上，很多时候，一一访问是做不到的，因为业务是多变的，但是功能是固定的，因此接口就能很好地弥补这种情况，在主体框架中只对接口进行编程，而不需要关注实现，这样才能让系统更加稳固。
+>多态的定义：同一操作作用于不同的对象，可以有不同的的解释，产生不同的执行结果，这就是多态性。
+>比如下面代码，公司的每个人都是一个对象，有份工作需要对公司所有租房的人进行发放补助。一般来说，我们需要一一访问每个人才能知道他有没有租房，但是，倘若我们定义了一个接口，并且规定继承这个接口的人一定是租房了的，那么我只需要检查你是否实现这个接口就行。
+>事实上，很多时候，一一访问是做不到的，因为业务是多变的，但是功能是固定的，因此接口就能很好地弥补这种情况，在主体框架中只对接口进行编程，而不需要关注实现，这样才能让系统更加稳固。
 
 ```csharp
 namespace Csharp接口
@@ -1205,24 +1207,28 @@ namespace Csharp接口
 }
 
 ```
+
 #### 3.接口的特点是什么
 
 >    1. 接口是抽象的行为，规定了能做什么，没规定怎么做。
 >    2. 实现了接口必须实现接口的所有成员。
+
 #### 4.接口如何使用
-> 
->    1. 类继承接口 Class A ： interface B，interface C
->       类需要实现继承接口中所有的方法，支持多继承。
-> 
->    2. 接口继承接口 interface A ：interface B，interface C
->       接口不能实现继承接口的任何方法，支持多继。
+
+>       1. 类继承接口 Class A ： interface B，interface C
+>          类需要实现继承接口中所有的方法，支持多继承。
+>
+>       2. 接口继承接口 interface A ：interface B，interface C
+>          接口不能实现继承接口的任何方法，支持多继。
+
 #### 6.接口和抽象类的区别
 
 >  1. 接口的主要作用是定义类型之间的契约，实现了接口的类必须按照接口定义的契约来实现它的成员，从而可以实现不同类型之间的通用性和互换性。抽象类的主要作用是为了实现多态性，它可以为子类提供一组基础功能，并要求子类必须实现一些具体的方法。抽象类可以包含一些具体的实现，但同时也可以包含一些抽象的成员，子类必须实现这些抽象成员。
->  
+>
 >  2. 使用接口的主要场景是当你需要定义一组通用的规范或契约时。比如说，你可以定义一个 IDisposable 接口，规定实现该接口的类型必须实现 Dispose 方法，用于释放资源。又比如，你可以定义一个 IComparer 接口，规定实现该接口的类型必须实现 Compare 方法，用于比较两个对象的大小。使用抽象类的主要场景是当你需要为子类提供一组基础功能，并要求子类必须实现一些具体的方法时。比如说，你可以定义一个 Animal 抽象类，规定所有动物都必须具有 Eat 和 Sleep 方法，但对于不同的动物，它们的实现方法是不同的，因此你可以定义一个 Dog 类和一个 Cat 类，分别继承 Animal 类，并实现它的抽象方法。
->  
+>
 >  3. 接口和抽象类都可以用来定义一组抽象的方法和属性，但它们的应用场景有所不同。当你需要定义一组通用的规范或契约时，应该使用接口；当你需要为子类提供一组基础功能，并要求子类必须实现一些具体的方法时，应该使用抽象类。
+
 ### 52.转换
 
 转换是接收一个类型的值并使用它作为另一个类型的等价值的过程。
@@ -1356,15 +1362,15 @@ namespace APP
 （4）泛型方法：
 泛型方法具有类型参数列表和可选的约束。
 
-  1. 泛型方法有两个参数列表：
-     封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
-  2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
-     如图：
-       ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
- 3. 泛型方法的调用：
-    ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
- 4. 泛型方法举例：
-    代码：
+    1. 泛型方法有两个参数列表：
+       封闭在圆括号内的方法参数列表和封闭在尖括号内的类型参数列表。
+    2. 要声明泛型方法，需要：在方法名称之后和方法参数列表之前防止类型参数列表，并在方法参数列表后放置可选的约束子句。
+       如图：
+         ![在这里插入图片描述](https://img-blog.csdnimg.cn/71e9ba404b20440ab94e1f2e691f9c66.png#pic_center)
+   3. 泛型方法的调用：
+      ![在这里插入图片描述](https://img-blog.csdnimg.cn/a5ca9aecd69b45fbb1e13736611e1c4a.png#pic_center)
+   4. 泛型方法举例：
+      代码：
 
 ```csharp
 using System;
@@ -3056,6 +3062,7 @@ namespace 同步异步多线程.Datas
 }
 
 ```
+
 #### 10.Task的一些用法详解
 
 Task是微软在.Net 4.0时代推出来的，Task看起来像一个Thread，实际上，它是在ThreadPool的基础上进行的封装，Task的控制和扩展性很强，在线程的延续、阻塞、取消、超时等方面远胜于Thread和ThreadPool，所以一经问世，基本ThreadPool就被取代了。
@@ -3165,7 +3172,9 @@ static void Main(string[] args)
 result1值是2,result2值是2
 线程Id是1,当前时间是:2023/4/17 23:22:01
 ```
+
 #### 11.Thread类中IsBackground属性
+
 Thread的IsBackground = true;//后台线程，当主程序结束后，线程随之结束【日常要用到的】。
 Thread的IsBackground = false;//前台线程，当主程序结束后，线程不会随之结束。
 
@@ -3174,13 +3183,14 @@ Thread的IsBackground = false;//前台线程，当主程序结束后，线程不
 前台线程和后台线程唯一区别：应用程序必须运行完所有的前台线程才会完全退出，若前台线程未执行完成，关闭应用程序后，应用程序并没有完全退出，在任务管理器中还存在此进程；而对于后台线程，应用程序则可以不考虑其是否已经运行完毕而直接退出，所有的后台线程在应用程序退出时都会自动结束。
 
 1. 在任何时候我们都可以通过线程的IsBackground属性改变线程的前后台属性：
+
 * thread.IsBackground=false；前台线程
 
 * thread.IsBackground=true；后台线程
 
 2. 应用程序的主线程以及使用Thread构造的线程都默认为前台线程
 
-    线程池线程也就是使用 ThreadPool.QueueUserWorkItem()和Task工厂创建的线程都默认为后台线程。
+   线程池线程也就是使用 ThreadPool.QueueUserWorkItem()和Task工厂创建的线程都默认为后台线程。
 
 线程由程序员创建，可是创建的方式不同，总体来说有两种，一种是个人构造，也就是使用thread类new线程对象创建，这一类线程是大部分程序员知道的，也叫专用线程;还有一种是由CLR创建，这一类线程主要存在于线程池中，也叫线程池线程。对于这两种线程的好坏，建议最好使用线程池线程，不要大量使用专用线程。
 
@@ -3188,6 +3198,40 @@ Thread的IsBackground = false;//前台线程，当主程序结束后，线程不
 
 * 后台线程：后台线程是可以随时被CLR关闭而不引发异常的，也就是说当后台线程被关闭时，资源的回收是立即的，不等待的，也不考虑后台线程是否执行完成，就算是正在执行中也立即被终止。【后台，存在于黑暗之中默默无闻，它的消亡和存在，别人也感受不到】
 * 前台线程：前台线程是不会被立即关闭的，它的关闭只会发生在自己执行完成时，不受外在因素的影响。假如应用程序退出，造成它的前台线程终止，此时CLR仍然保持活动并运行，使应用程序能继续运行，当它的的前台线程都终止后，整个进程才会被销毁。
+
+#### 13.向线程里面传递数据
+
+如果想往线程的启动方法里面传递参数，最简单直接的方式是使用Lambda表达式，在里面使用参数的调用方法。
+如：
+
+```csharp
+namespace ConsoleApp12
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            WriteY();
+        }
+
+        public static void WriteY()
+        {
+            Thread t = new Thread(() =>
+            {
+                Print("你好");
+            });
+
+            t.Start();
+        }
+
+        public static void Print(string mes)
+        {
+            Console.WriteLine($"{mes}");
+        }
+    }
+}
+```
+
 ### 60.异常
 
 （1）try语句：
@@ -3233,6 +3277,7 @@ namespace Application
 （2）预处理指令：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3148177a5d47497a8c45cd755ed1c885.png#pic_center)
 （3）#define和#undef只能用在源文件的第一行，也就是任何C#代码之前使用，在C#代码开始后，#define和#undef就不能再使用。
+
 ### 62.反射和特性
 
 （1）元数据：有关程序及其类型的数据称为元数据，它们保存在程序的程序集中。
@@ -3780,13 +3825,13 @@ public class Program
 （1）可以在接口内声明的成员：方法、属性、事件、索引器。
 （2）接口和抽象类的区别：
 
-  1. 接口中不能声明常量和字段，抽象类中可以声明任何类成员；
-  2. 在接口中只能定义成员，但不能具体实现，在抽象类中除了抽象方法外，其他成员允许有具体的实现；
-  3. 接口中没有实例构造函数，也就是说没有构造函数，抽象类中有构造函数；
-  4. 接口成员不能使用任何访问修饰符，抽象类中的类成员可以使用任意的访问修饰符；
-  5. 继承接口的类或结构必须隐式或显式实现接口中的所有成员，否则需要将实现类定义为抽象类，并将接口中未实现的成员以抽象的方式实现，继承抽象类的类必须重写实现抽象类中的所有抽象方法，或者抽象类继承抽象类，可以重写部分抽象方法；
-  6. 接口不能作为派生类继承，抽象类可以继承非抽象类或抽象类；
-  7. 接口可以作为基类来多继承：接口、类和结构，抽象类可以作为基类只能实现单继承，只能让非抽象类或者抽象类继承。
+    1. 接口中不能声明常量和字段，抽象类中可以声明任何类成员；
+    2. 在接口中只能定义成员，但不能具体实现，在抽象类中除了抽象方法外，其他成员允许有具体的实现；
+    3. 接口中没有实例构造函数，也就是说没有构造函数，抽象类中有构造函数；
+    4. 接口成员不能使用任何访问修饰符，抽象类中的类成员可以使用任意的访问修饰符；
+    5. 继承接口的类或结构必须隐式或显式实现接口中的所有成员，否则需要将实现类定义为抽象类，并将接口中未实现的成员以抽象的方式实现，继承抽象类的类必须重写实现抽象类中的所有抽象方法，或者抽象类继承抽象类，可以重写部分抽象方法；
+    6. 接口不能作为派生类继承，抽象类可以继承非抽象类或抽象类；
+    7. 接口可以作为基类来多继承：接口、类和结构，抽象类可以作为基类只能实现单继承，只能让非抽象类或者抽象类继承。
 
 ### 78.什么叫显式转换，什么叫隐式转换？装箱和拆箱又是什么？
 
@@ -4738,6 +4783,7 @@ namespace prop
     }
 }
 ```
+
 ### 96.什么是窗口句柄
 
 举个例子：
@@ -5025,13 +5071,13 @@ namespace 测试
 
 **属性的本质就是方法，get和set两个方法构成。**
 
-  1. 字段只管存值，不管对数据的操作，字段一定是占用内存的。
-     属性可以占用内存，也可以不占用，当属性中封装了字段时，那么属性会占用内存，当不封装字段而是做了其他操作时，是可以不占用内存的。
+    1. 字段只管存值，不管对数据的操作，字段一定是占用内存的。
+       属性可以占用内存，也可以不占用，当属性中封装了字段时，那么属性会占用内存，当不封装字段而是做了其他操作时，是可以不占用内存的。
 
-  2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
-     字段一般都声明为private私有的，而属性一般都声明为public公有的。
+    2. 字段是给类自己内部用的，属性是给外部调用这个类的时候用的。
+       字段一般都声明为private私有的，而属性一般都声明为public公有的。
 
-  3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
+    3. 属性跟字段最根本区别就在于属性是类似于方法，字段就是变量。通过属性的set和get函数可以限制字段的一些功能，以达到某种目的。
 
  感觉师傅给我讲的关于属性和字段的区别以及属性的优点，我还是没有理解核心区别，今天先写总结到这里，日后再有更深层次的理解了，继续完善。
 
@@ -5041,13 +5087,13 @@ namespace 测试
  今天师傅给我讲了些项目代码中事件和委托的使用以及区别，并让我学会多使用evnet事件（可以少用action委托，多用事件），晚上回去作了些总结，记录如下：
  先分析委托因为封装不充分而产生的缺点：
 
-  1. 错误使用赋值操作符导致原本的委托链被覆盖：
-     如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
+    1. 错误使用赋值操作符导致原本的委托链被覆盖：
+       如果一个委托通过 **"+="** 绑定了多个方法，那么当委托通过 **"="** 绑定方法时，之前所有通过 **“+=”** 方式绑定的方法都将被覆盖。
 
-  2. 在类的外部也可以调用委托：
-     尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
-     总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
-     事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
+    2. 在类的外部也可以调用委托：
+       尤其是委托可以在类的外部（即不同类之间）使用，就会显得很混乱，而且会容易造成错误操作。
+       总结下来就是：委托封装的不好，没有很严格规范的使用规则，事件则解决了这些问题：
+       事件本质是对委托的封装，事件只能在类内调用，+=和-=是事件允许的唯一运算符，可以为事件定义事件访问器。有两个访问器add和remove，声明事件的访问器和声明一个属性差不多：
 
 ```csharp
 public delegate void action(string str);
@@ -5400,7 +5446,9 @@ class Program
 }
 
 ```
+
 #### 7.C#中操作表格
+
 如下例子，向一个csv文件中写入数据并读取：
 
 以下代码需要注意一点：
@@ -5499,6 +5547,7 @@ namespace ConsoleApp3
 	}
 }
 ```
+
 运行结果：
 
 ```bash
@@ -5514,7 +5563,9 @@ namespace ConsoleApp3
 2023/7/7 18:17:18, 8
 2023/7/7 18:17:18, 9
 ```
+
 #### 8.C# 使用File.Create方法创建文件时，报进程被占用
+
 在一个程序里偶然用了System.IO.File.Create去创建文件，运行时一直报错（进程被占用），后来在网上找到了解决办法，引用了一下。
 
 判断是否有当前的文件存在，不存在则进行创建，在进行操作:
@@ -5525,6 +5576,7 @@ if(!File.Exists(fileName))
     File.Create(fileName);
 }
 ```
+
 但是当我运行到发现没有当前的文件，就直接创建当前文件，之后直接进行操作，出问题了直接报出异常，当前文件正在另一个进程中使用……仔细一看 System.IO.File.Create(fileName)返回的类型是FileStream，ND文件流，文件流不关闭不出异常那才叫怪呢。
 
 提供两种解决的方法：
@@ -5536,6 +5588,7 @@ if(!File.Exists(fileName))
     File.Create(fileName).Close();
 }
 ```
+
 方法二：
 
 ```csharp
@@ -5550,10 +5603,13 @@ if(!File.Exists(fileName))
     }
 }
 ```
+
 #### 9.C# 以非独占方式打开文件(FileShare)
+
 使用C#开发中，当一个程序正在读写某个文件，另一个程序则无法操作此文件。
 
 使用FileStream类，其中的FileShare参数可设置文件的共享方式：
+
 * FileShare.None 谢绝共享当前文件
 * FileShare.Read 允许别的程序读取当前文件
 * FileShare.Write 允许别的程序写当前文件
@@ -6200,347 +6256,7 @@ bbbsccc
 dddseee
 ```
 
-### 117. .Net中托管资源、非托管资源、内存申请与释放相关
-
-#### 1.托管和非托管的资源
-
-1. .Net所指的托管只是针对内存这一个方面，并不是对于所有的资源；因此对于**Stream**，数据库的连接，GDI+的相关对象，还有Com对象等等，这些资源并不是受到.Net管理而统称为非托管资源。而对于内存的释放和回收，系统提供了垃圾回收器(GC-Garbage Collector)，而至于其他资源则需要手动进行释放。
-
-2. .Net类型分为两大类，一个就是值类型，另一个就是引用类型。前者是分配在栈上，并不需要GC回收；后者是分配在堆上，因此它的内存释放和回收需要通过GC来完成。GC的全称为“Garbage Collector”,顾名思义就是垃圾回收器，那么只有被称为垃圾的对象才能被GC回收。也就是说，**一个引用类型对象所占用的内存需要被GC回收，需要先成为垃圾**。那么.Net如何判定一个引用类型对象是垃圾呢，.Net的判断很简单，**只要判定此对象或者其包含的子对象没有任何引用是有效的，那么系统就认为它是垃圾**。对于内存中的垃圾分为两种，一种是需要调用对象的析构函数，另一种是不需要调用的。GC对于前者的回收需要通过两步完成，第一步是调用对象的析构函数，第二步是回收内存，但是要注意这两步不是在GC一次轮循完成，即需要两次轮循；相对于后者，则只是回收内存而已。
-
-3. **托管和非托管的资源指的是存储在托管或本机堆中的对象。**
-
-4. C#编程的一个优点是程序员不需要担心具体的内存管理，垃圾回收器会自动处理所有的内存清理工作。尽管**垃圾收集器释放存储在托管堆中的托管对象，但不释放本机堆中的对象**。必须由开发人员自己释放它们。
-   **垃圾回收器的出现意味着，通常不需要担心不再需要的对象，只要让这些对象的所有引用都超出作用域，并允许垃圾回收器在需要时释放内存即可。但是，垃圾回收器不知道如何释放非托管的资源（例如，文件句柄、网络连接和数据库连接）。** 托管类在封装对非托管资源的直接或间接引用时，需要制定专门的规则，确保非托管的资源在回收类的一个
-   实例时释放。
-   **在定义一个类时，可以使用两种机制来自动释放非托管的资源**。这些机制常常放在一起实现，因为每种机制都为问题提供了略为不同的解决方法。这两种机制是：
-
-* 声明一个析构函数（或终结器），作为类的一个成员；
-* 在类中实现System.IDisposable接口；
-
-#### 2.Marshal静态类
-
-众所周知，C#在大部分情况下，内存都是由.Net托管的，而有一些特殊的类，它能够进行一些非托管的操作，这通常用于在和c/C++代码进行交互时。Marshal是一个方法集合，主要应用在C#和非托管代码交互时，主要有如下方法：
-
-* 分配非托管内存
-* 复制非托管内存块
-* 将托管类型转换为非托管类型
-* 其他方法（与非托管代码交互时）
-
-**使用 Marshal 做出可以快速释放内存的大数组**
-使用方法：
-
-```csharp
-        static void Main(string[] args)
-        {
-            for (int i = 0; i < 10000; i++)
-            {
-                Foo();
-            }
-            Console.ReadKey();
-        }
-
-        private static void Foo()
-        {
-            int n = 100000;//长度
-            IntPtr buffer = Marshal.AllocHGlobal(sizeof(int) * n);
-        }
-```
-
-这段代码跑起来大概会到4个G。
-调用
-
-```csharp
- Marshal.FreeHGlobal(buffer);
-```
-
-这行代码会将内存减少到几M左右。
-
-#### 3.GC.Collect
-
-```bash
-2023-5-6日 晚上1点15分。
-没睡着，因为今天工作中遇到了一个内存泄漏问题，还没排查到具体原因，刚才睡觉一直在想这个事情，穿上衣服再来搜集下内存泄漏的处理方法，以便尽早解决此问题。
-```
-
-**注意：析构函数只能被GC来调用。**
-
-**.NET里面有一个GC.Collect()吧,它的功能就是强制对所有代进行垃圾回收。**
-
-首先举个例子：
-
-```bash
-学生入学：
-schoolList.Add(curStudent);
-roomList.Add(curStudent);
-学生毕业时：
-schoolList.Remove(stuIndex);
-忘记了roomList.Remove(stuIndex);
-而schoolList和roomList都是全局变量。
-此时roomList有对curStudent的引用，
-curStudent无法被GC回收。
-```
-
-.NET CLR中对于大于85000字节的内存既不像引用类型那样分配到普通堆上，也不像值类型那样分配到栈上，而是分配到了一个特殊的称为LOH的内部堆上，这部分的内存只有在GC执行完全回收，也就是回收二代内存的时候才会回收。因此，考虑如下情形：假设你的程序每次都要分配一个大型对象（大于85000字节），但却很少分配小对象，导致2代垃圾回收从不执行，即使这些大对象不再被引用，依然得不到释放，最终导致内存泄漏。示例代码：
-
-```xml
-    <StackPanel Orientation="Vertical">
-        <Button x:Name="btnAddBuffer" Content="Add Buffer" Width="100" Margin="50" Click="btnAddBuffer_Click"/>
-        <Button x:Name="btnRemoveBuffer" Content="Remove Buffer " Width="100" Margin="50" Click="btnRemoveBuffer_Click"/>
-        <Button  x:Name="btnForceGCBuffer" Content="Force GC" Width="100" Margin="50" Click="btnForceGCBuffer_Click"/>
-    </StackPanel>
-```
-
-```csharp
-using System;
-using System.Collections.Generic;
-using System.Windows;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-
-namespace BlankApp2.Views
-{
-	/// <summary>
-	/// Interaction logic for MainWindow.xaml
-	/// </summary>
-	public partial class MainWindow : Window
-	{
-		private readonly List<byte[]> mBuffer = new List<byte[]>();
-
-		public MainWindow()
-		{
-			InitializeComponent();
-		}
-
-		/// <summary>
-		/// 每次调用该点击事件会增加1个G内存
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void btnAddBuffer_Click(object sender, RoutedEventArgs e)
-		{
-			var buffer = new byte[1024 * 1024 * 1024];
-
-			for (int i = 0; i < buffer.Length; i++)
-			{
-				buffer[i] = 100;
-			}
-
-			mBuffer.Add(buffer);
-
-		}
-
-		/// <summary>
-		/// 原则上，每次调用该点击事件可能会减少1个G内存(注意：是可能，不是一定)
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void btnRemoveBuffer_Click(object sender, RoutedEventArgs e)
-		{
-			if (mBuffer.Count <= 0) return;
-			mBuffer.RemoveAt(0);
-		}
-
-		/// <summary>
-		/// 强制调用垃圾回收器
-		/// </summary>
-		/// <param name="sender"></param>
-		/// <param name="e"></param>
-		private void btnForceGCBuffer_Click(object sender, RoutedEventArgs e)
-		{
-			GC.Collect();
-			GC.WaitForPendingFinalizers();
-		}
-	}
-}
-
-```
-
-以上有三个按钮，Add Buffer、Remove Buffer 和 Force GC。每点一次 Add Buffer 会申请 1 GB 的内存，并添加到 mBuffer 中。每点一次 Remove Buffer 会从 mBuffer 中移除 1 GB 的内存。当点击 Force GC 的时候会强制执行一次完全的垃圾回收。
-
-现在我点击4次Add Buffer按钮，BlankApp2进程的内存大约达到了4个G，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/93ebd3831ab24236bf987266b553c5ca.png)
-接着，我再点击4次 Remove Buffer，发现内存并没有释放。紧接着，我点击了一次Force GC，发现内存马上就被释放到了98.7MB，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b56d7efc12f34d3db1c0c1410f4ea554.png)
-
-#### 4.IDisposable接口
-
-在C#中，推荐使用System.IDisposable接口替代析构函数。
-
-**提示：实现Dispose方法的时候，一定要加上“GC.SuppressFinalize( this )”语句，避免再让GC调用对象的析构函数。**
-
-IDisposable接口定义了一种模式（具有语言级的支持），该模式为释放非托管的资源提供了确定的机制，并避免产生析构函数固有的与垃圾回收器相关的问题。
-
-IDisposable接口声明了一个Dispose（）方法，它不带参数，返回void。MyClass类的Dispose（）方法的实现代码如下：
-
-```csharp
-class MyClass: IDisposable
-{
-	public void Dispose()
-	{
-	// implementation
-	}
-}
-```
-
-Dispose()方法的实现代码显式地释放由对象直接使用的所有非托管资源，并在所有也实现IDisposable接口的封装对象上调用Dispose()方法。这样，Dispose()方法为何时释放非托管资源提供了精确的控制。
-
-例如下面的例子展示了析构函数和Dispose方法的调用顺序：
-
-```csharp
-namespace ConsoleApp4
-{
-	public class DisposeClass : IDisposable
-	{
-		~DisposeClass()
-		{
-			Console.WriteLine("Destructor called!");
-		}
-
-		public void Dispose()
-		{
-			Console.WriteLine("Dispose called!");
-		}
-	}
-	class Program
-	{
-		public static void Create()
-		{
-			DisposeClass myClass = new DisposeClass();
-		}
-
-		public static void CallGC()
-		{
-			GC.Collect();
-		}
-
-		static void Main()
-		{
-			Create();
-			Console.WriteLine("After created!");
-			CallGC();
-			Console.ReadKey();
-		}
-	}
-}
-```
-
-运行结果：
-
-显然，以上代码，在出了Create函数外，myClass对象的析构函数没有被立刻调用，而是等显示调用GC.Collect才被调用。
-
-
-对于Dispose来说，也需要显示的调用，但是对于继承了IDisposable的类型对象可以使用using这个关键字，这样对象的Dispose方法在出了using范围后会被自动调用。例如如下代码：
-
-```csharp
-namespace ConsoleApp4
-{
-	public class DisposeClass : IDisposable
-	{
-		~DisposeClass()
-		{
-			Console.WriteLine("Destructor called!");
-		}
-
-		public void Dispose()
-		{
-			Console.WriteLine("Dispose called!");
-		}
-	}
-	class Program
-	{
-		public static void Create()
-		{
-			using (DisposeClass myClass = new DisposeClass())
-			{
-
-			}
-		}
-
-		public static void CallGC()
-		{
-			GC.Collect();
-		}
-
-		static void Main()
-		{
-			Create();
-			Console.WriteLine("After created!");
-			CallGC();
-			Console.ReadKey();
-		}
-	}
-}
-```
-
-运行结果：
-
-```bash
-Dispose called!
-After created!
-Destructor called!
-```
-
-**那么对于如上DisposeClass类型的Dispose实现来说，事实上GC还需要调用对象的析构函数，按 照前面的GC流程来说，GC对于需要调用析构函数的对象来说，至少经过两个步骤，即首先调用对象的析构函数，其次回收内存。也就是说，按照上面所写的 Dispose函数，虽说被执行了，但是GC还是需要执行析构函数，那么一个完整的Dispose函数，应该通过调用 GC.SuppressFinalize(this )来告诉GC，让它不用再调用对象的析构函数中。**
-例子如下：
-
-```csharp
-namespace ConsoleApp4
-{
-	public class DisposeClass : IDisposable
-	{
-		~DisposeClass()
-		{
-			Console.WriteLine("Destructor called!");
-		}
-
-		public void Dispose()
-		{
-			Console.WriteLine("Dispose called!");
-			GC.SuppressFinalize(this);//告诉GC不需要再调用对象的析构函数了
-		}
-	}
-	class Program
-	{
-		public static void Run()
-		{
-			using (DisposeClass myClass = new DisposeClass())
-			{
-
-			}
-		}
-
-		public static void CallGC()
-		{
-			GC.Collect();
-		}
-
-		static void Main()
-		{
-			Run();
-			Console.WriteLine("After Run!");
-			CallGC();
-			Console.ReadKey();
-		}
-	}
-}
-```
-
-运行结果：
-
-```bash
-Dispose called!
-After Run!
-```
-
-**显然加上了GC.SuppressFinalize(this)后，对象的析构函数没有被调用。**
-
-表格总结：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6fec62a37d1446f0af41cc5e8bbb6b92.png)
-
-#### 5.Net自带的List一旦分配了内存，无论是Remove还是Clear都不会释放任何空间。
-
-### 118.C#中图像Image类
+### 117.C#中图像Image类
 
 #### 1.概述
 
@@ -6631,7 +6347,7 @@ img.Save("c:/1.jpg", ImageFormat.Jpeg);
 img.Save("c:/1.gif", ImageFormat.Gif);
 ```
 
-### 119.C#中Export和Import特性标签
+### 118.C#中Export和Import特性标签
 
 使用Export和Import特性标签主要是为了让程序进行解耦。
 
@@ -6701,7 +6417,7 @@ namespace ConsoleApp1
 ok
 ```
 
-### 120.Math类
+### 119.Math类
 
 C# Math 类主要用于一些与数学相关的计算。
 
@@ -6720,10 +6436,12 @@ C# Math 类主要用于一些与数学相关的计算。
 | Math.Round()   | 返回四舍五入后的值                           |
 |                |                                              |
 
-### 121.C#中线程安全集合(Concurrent命名空间下)
+### 120.C#中线程安全集合(Concurrent命名空间下)
+
 Concurrent命名空间下提供多个线程安全集合类方案。
 C#中线程安全集合汇总：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8786abc5993b43a88cb97a2e6f980cff.png)
+
 #### 1.ConcurrentDictionary
 
 ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/值对的线程安全集合。
@@ -6732,7 +6450,9 @@ ConcurrentDictionary<TKey,TValue> 类表示可由多个线程同时访问的键/
 对于c#中使用的List<T>,Dictionary<TKey, TValue>等常用的集合，如果需要在多线程中有写操作，会线程不安全，需要加锁（lock）。而ConcurrentDictionary无需手动加锁即可实现多线程中的写操作。
 
 ConcurrentDictionary的用法和Dictionary类似。
+
 #### 2.BlockingCollection
+
 ##### 1.BlockingCollection简介
 
 多线程操作集合时，ConcurrentQueue 是我常用的，一直用得也挺爽，突然发现了 BlockingCollection，原来还可以更简单。
@@ -6764,6 +6484,7 @@ BlockingCollection ，与经典的阻塞队列数据结构类似，能够适用�
 ```
 
 ##### 3.代码举例
+
 先看这一段代码的作用：
 
 ```csharp
@@ -6775,6 +6496,7 @@ Task.Factory.StartNew(() =>
         }
 });
 ```
+
 BlockingCollection.GetConsumingEnumerable 方法是关键，这个方法会遍历集合取出数据，一旦发现集合空了，则阻塞自己，直到集合中又有元素了再开始遍历。
 
 ###### 1.例子1
@@ -6967,16 +6689,21 @@ namespace ConsoleApp1
 exit
 退出
 ```
+
 #### 3.ConcurrentQueue
- 
+
 **线程安全的集合使用Concurrent开头的集合就可以了。** 多线程操作集合时，可以考虑用ConcurrentQueue。
+
 ##### 1.ConcurrentQueue简介
+
 ConcurrentQueue队列是一个高效的线程安全的队列。
 
 ConcurrentQueue表示线程安全的先进先出 (FIFO) 集合。
 
 经典的多线程应用问题就是：有一个或多个线程（生产者线程）产生一些数据，还有一个或者多个线程（消费者线程）要取出这些数据并执行一些相应的工作。
+
 ##### 2.常用方法和属性
+
 ```csharp
 1.TryPeek方法：尝试返回该集合开头处的对象，但不将其移除。
 2.Enqueue方法：入队操作。
@@ -6986,7 +6713,387 @@ ConcurrentQueue表示线程安全的先进先出 (FIFO) 集合。
 
 ```
 
+### 121.强制结束进程
+
+> taskkill /f /im 后加上要杀死的进程名称。例如：
+> taskkill /f /im Test.exe
+
+### 122.托管和非托管的资源
+
+1. .Net所指的托管只是针对内存这一个方面，并不是对于所有的资源；因此对于**Stream**，数据库的连接，GDI+的相关对象，还有Com对象等等，这些资源并不是受到.Net管理而统称为非托管资源。而对于内存的释放和回收，系统提供了垃圾回收器(GC-Garbage Collector)，而至于其他资源则需要手动进行释放。
+
+2. .Net类型分为两大类，一个就是值类型，另一个就是引用类型。前者是分配在栈上，并不需要GC回收；后者是分配在堆上，因此它的内存释放和回收需要通过GC来完成。GC的全称为“Garbage Collector”,顾名思义就是垃圾回收器，那么只有被称为垃圾的对象才能被GC回收。也就是说，**一个引用类型对象所占用的内存需要被GC回收，需要先成为垃圾**。那么.Net如何判定一个引用类型对象是垃圾呢，.Net的判断很简单，**只要判定此对象或者其包含的子对象没有任何引用是有效的，那么系统就认为它是垃圾**。对于内存中的垃圾分为两种，一种是需要调用对象的析构函数，另一种是不需要调用的。GC对于前者的回收需要通过两步完成，第一步是调用对象的析构函数，第二步是回收内存，但是要注意这两步不是在GC一次轮循完成，即需要两次轮循；相对于后者，则只是回收内存而已。
+
+3. **托管和非托管的资源指的是存储在托管或本机堆中的对象。**
+
+4. C#编程的一个优点是程序员不需要担心具体的内存管理，垃圾回收器会自动处理所有的内存清理工作。尽管**垃圾收集器释放存储在托管堆中的托管对象，但不释放本机堆中的对象**。必须由开发人员自己释放它们。
+   **垃圾回收器的出现意味着，通常不需要担心不再需要的对象，只要让这些对象的所有引用都超出作用域，并允许垃圾回收器在需要时释放内存即可。但是，垃圾回收器不知道如何释放非托管的资源（例如，文件句柄、网络连接和数据库连接）。** 托管类在封装对非托管资源的直接或间接引用时，需要制定专门的规则，确保非托管的资源在回收类的一个
+   实例时释放。
+   **在定义一个类时，可以使用两种机制来自动释放非托管的资源**。这些机制常常放在一起实现，因为每种机制都为问题提供了略为不同的解决方法。这两种机制是：
+
+* 声明一个析构函数（或终结器），作为类的一个成员；
+* 在类中实现System.IDisposable接口；
+
+### 123.Marshal静态类
+
+众所周知，C#在大部分情况下，内存都是由.Net托管的，而有一些特殊的类，它能够进行一些非托管的操作，这通常用于在和c/C++代码进行交互时。Marshal是一个方法集合，主要应用在C#和非托管代码交互时，主要有如下方法：
+
+* 分配非托管内存
+* 复制非托管内存块
+* 将托管类型转换为非托管类型
+* 其他方法（与非托管代码交互时）
+
+**使用 Marshal 做出可以快速释放内存的大数组**
+使用方法：
+
+```csharp
+        static void Main(string[] args)
+        {
+            for (int i = 0; i < 10000; i++)
+            {
+                Foo();
+            }
+            Console.ReadKey();
+        }
+
+        private static void Foo()
+        {
+            int n = 100000;//长度
+            IntPtr buffer = Marshal.AllocHGlobal(sizeof(int) * n);
+        }
+```
+
+这段代码跑起来大概会到4个G。
+调用
+
+```csharp
+ Marshal.FreeHGlobal(buffer);
+```
+
+这行代码会将内存减少到几M左右。
+
+### 124.GC.Collect
+
+```bash
+2023-5-6日 晚上1点15分。
+没睡着，因为今天工作中遇到了一个内存泄漏问题，还没排查到具体原因，刚才睡觉一直在想这个事情，穿上衣服再来搜集下内存泄漏的处理方法，以便尽早解决此问题。
+```
+
+**注意：析构函数只能被GC来调用。**
+
+**.NET里面有一个GC.Collect()吧,它的功能就是强制对所有代进行垃圾回收。**
+
+首先举个例子：
+
+```bash
+学生入学：
+schoolList.Add(curStudent);
+roomList.Add(curStudent);
+学生毕业时：
+schoolList.Remove(stuIndex);
+忘记了roomList.Remove(stuIndex);
+而schoolList和roomList都是全局变量。
+此时roomList有对curStudent的引用，
+curStudent无法被GC回收。
+```
+
+.NET CLR中对于大于85000字节的内存既不像引用类型那样分配到普通堆上，也不像值类型那样分配到栈上，而是分配到了一个特殊的称为LOH的内部堆上，这部分的内存只有在GC执行完全回收，也就是回收二代内存的时候才会回收。因此，考虑如下情形：假设你的程序每次都要分配一个大型对象（大于85000字节），但却很少分配小对象，导致2代垃圾回收从不执行，即使这些大对象不再被引用，依然得不到释放，最终导致内存泄漏。示例代码：
+
+```xml
+    <StackPanel Orientation="Vertical">
+        <Button x:Name="btnAddBuffer" Content="Add Buffer" Width="100" Margin="50" Click="btnAddBuffer_Click"/>
+        <Button x:Name="btnRemoveBuffer" Content="Remove Buffer " Width="100" Margin="50" Click="btnRemoveBuffer_Click"/>
+        <Button  x:Name="btnForceGCBuffer" Content="Force GC" Width="100" Margin="50" Click="btnForceGCBuffer_Click"/>
+    </StackPanel>
+```
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Windows;
+using System.Windows.Media;
+using System.Windows.Media.Animation;
+
+namespace BlankApp2.Views
+{
+	/// <summary>
+	/// Interaction logic for MainWindow.xaml
+	/// </summary>
+	public partial class MainWindow : Window
+	{
+		private readonly List<byte[]> mBuffer = new List<byte[]>();
+
+		public MainWindow()
+		{
+			InitializeComponent();
+		}
+
+		/// <summary>
+		/// 每次调用该点击事件会增加1个G内存
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void btnAddBuffer_Click(object sender, RoutedEventArgs e)
+		{
+			var buffer = new byte[1024 * 1024 * 1024];
+
+			for (int i = 0; i < buffer.Length; i++)
+			{
+				buffer[i] = 100;
+			}
+
+			mBuffer.Add(buffer);
+
+		}
+
+		/// <summary>
+		/// 原则上，每次调用该点击事件可能会减少1个G内存(注意：是可能，不是一定)
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void btnRemoveBuffer_Click(object sender, RoutedEventArgs e)
+		{
+			if (mBuffer.Count <= 0) return;
+			mBuffer.RemoveAt(0);
+		}
+
+		/// <summary>
+		/// 强制调用垃圾回收器
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
+		private void btnForceGCBuffer_Click(object sender, RoutedEventArgs e)
+		{
+			GC.Collect();
+			GC.WaitForPendingFinalizers();
+		}
+	}
+}
+
+```
+
+以上有三个按钮，Add Buffer、Remove Buffer 和 Force GC。每点一次 Add Buffer 会申请 1 GB 的内存，并添加到 mBuffer 中。每点一次 Remove Buffer 会从 mBuffer 中移除 1 GB 的内存。当点击 Force GC 的时候会强制执行一次完全的垃圾回收。
+
+现在我点击4次Add Buffer按钮，BlankApp2进程的内存大约达到了4个G，如图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/93ebd3831ab24236bf987266b553c5ca.png)
+接着，我再点击4次 Remove Buffer，发现内存并没有释放。紧接着，我点击了一次Force GC，发现内存马上就被释放到了98.7MB，如图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/b56d7efc12f34d3db1c0c1410f4ea554.png)
+
+### 125.IDisposable接口
+
+在C#中，推荐使用System.IDisposable接口替代析构函数。
+
+**提示：实现Dispose方法的时候，一定要加上“GC.SuppressFinalize( this )”语句，避免再让GC调用对象的析构函数。**
+
+IDisposable接口定义了一种模式（具有语言级的支持），该模式为释放非托管的资源提供了确定的机制，并避免产生析构函数固有的与垃圾回收器相关的问题。
+
+IDisposable接口声明了一个Dispose（）方法，它不带参数，返回void。MyClass类的Dispose（）方法的实现代码如下：
+
+```csharp
+class MyClass: IDisposable
+{
+	public void Dispose()
+	{
+	// implementation
+	}
+}
+```
+
+Dispose()方法的实现代码显式地释放由对象直接使用的所有非托管资源，并在所有也实现IDisposable接口的封装对象上调用Dispose()方法。这样，Dispose()方法为何时释放非托管资源提供了精确的控制。
+
+例如下面的例子展示了析构函数和Dispose方法的调用顺序：
+
+```csharp
+namespace ConsoleApp4
+{
+	public class DisposeClass : IDisposable
+	{
+		~DisposeClass()
+		{
+			Console.WriteLine("Destructor called!");
+		}
+
+		public void Dispose()
+		{
+			Console.WriteLine("Dispose called!");
+		}
+	}
+	class Program
+	{
+		public static void Create()
+		{
+			DisposeClass myClass = new DisposeClass();
+		}
+
+		public static void CallGC()
+		{
+			GC.Collect();
+		}
+
+		static void Main()
+		{
+			Create();
+			Console.WriteLine("After created!");
+			CallGC();
+			Console.ReadKey();
+		}
+	}
+}
+```
+
+运行结果：
+
+显然，以上代码，在出了Create函数外，myClass对象的析构函数没有被立刻调用，而是等显示调用GC.Collect才被调用。
 
 
+对于Dispose来说，也需要显示的调用，但是对于继承了IDisposable的类型对象可以使用using这个关键字，这样对象的Dispose方法在出了using范围后会被自动调用。例如如下代码：
 
+```csharp
+namespace ConsoleApp4
+{
+	public class DisposeClass : IDisposable
+	{
+		~DisposeClass()
+		{
+			Console.WriteLine("Destructor called!");
+		}
 
+		public void Dispose()
+		{
+			Console.WriteLine("Dispose called!");
+		}
+	}
+	class Program
+	{
+		public static void Create()
+		{
+			using (DisposeClass myClass = new DisposeClass())
+			{
+
+			}
+		}
+
+		public static void CallGC()
+		{
+			GC.Collect();
+		}
+
+		static void Main()
+		{
+			Create();
+			Console.WriteLine("After created!");
+			CallGC();
+			Console.ReadKey();
+		}
+	}
+}
+```
+
+运行结果：
+
+```bash
+Dispose called!
+After created!
+Destructor called!
+```
+
+**那么对于如上DisposeClass类型的Dispose实现来说，事实上GC还需要调用对象的析构函数，按 照前面的GC流程来说，GC对于需要调用析构函数的对象来说，至少经过两个步骤，即首先调用对象的析构函数，其次回收内存。也就是说，按照上面所写的 Dispose函数，虽说被执行了，但是GC还是需要执行析构函数，那么一个完整的Dispose函数，应该通过调用 GC.SuppressFinalize(this )来告诉GC，让它不用再调用对象的析构函数中。**
+例子如下：
+
+```csharp
+namespace ConsoleApp4
+{
+	public class DisposeClass : IDisposable
+	{
+		~DisposeClass()
+		{
+			Console.WriteLine("Destructor called!");
+		}
+
+		public void Dispose()
+		{
+			Console.WriteLine("Dispose called!");
+			GC.SuppressFinalize(this);//告诉GC不需要再调用对象的析构函数了
+		}
+	}
+	class Program
+	{
+		public static void Run()
+		{
+			using (DisposeClass myClass = new DisposeClass())
+			{
+
+			}
+		}
+
+		public static void CallGC()
+		{
+			GC.Collect();
+		}
+
+		static void Main()
+		{
+			Run();
+			Console.WriteLine("After Run!");
+			CallGC();
+			Console.ReadKey();
+		}
+	}
+}
+```
+
+运行结果：
+
+```bash
+Dispose called!
+After Run!
+```
+
+**显然加上了GC.SuppressFinalize(this)后，对象的析构函数没有被调用。**
+
+表格总结：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/6fec62a37d1446f0af41cc5e8bbb6b92.png)
+
+### 126.Net自带的List一旦分配了内存，无论是Remove还是Clear都不会释放任何空间。
+
+### 127.可能造成内存泄漏和内存溢出的几种情况
+
+#### 1.内存溢出和内存泄漏简介
+
+内存溢出：通俗理解就是内存不够，系统中存在无法回收的内存或程序运行要用到的内存大于能提供的最大内存，从而造成“Out of memory”之类的错误，使程序不能正常运行。
+
+内存泄露：内存泄漏指由于疏忽或错误造成程序不能释放或不能及时释放已经不再使用的内存的情况，是应用程序分配某段内存后，由于设计错误，失去了对该段内存的控制，因而造成了内存不能回收和不能及时回收，最后可能导致程序运行缓慢或者崩溃的问题。
+
+造成内存泄漏的可能原因：
+1、你的对象仍被引用但实际上却未被使用。 由于它们被引用，因此GC将不会收集它们，这样它们将永久保存并占用内存。
+2、当你以某种方式分配非托管内存（比如用Marshal静态类来操作内存，但没有垃圾回收）并且不释放它们。
+
+#### 2.使用未退订的event事件造成的内存泄漏
+
+注意当使用+=来订阅事件的时候，在不用的时候要用-=来取消订阅,这样才能取消对事件的引用以减少内存泄漏现象。
+
+#### 3.静态变量
+
+静态变量中的成员所占的内存，如果不手动处理是不会释放内存的，单态模式的对象也是静态的，所以需要特别注意。因为静态对象中的成员所占的内存不会释放，如果此成员是以个对象，同时此对象中的成员所占的内存也不会释放，以此类推，如果此对象很复杂，而且是静态的就很容易造成内存泄露。
+
+### 128.AppDomain.CurrentDomain.BaseDirectory
+
+C#中使用AppDomain.CurrentDomain.BaseDirectory来获取程序的运行路径。例如：
+
+```csharp
+        static void Main(string[] args)
+        {
+            Console.WriteLine(AppDomain.CurrentDomain.BaseDirectory);
+            Console.ReadKey();
+        }
+```
+
+输出结果：
+
+```csharp
+D:\c#\project\ConsoleApp14\bin\Debug\net6.0\
+```
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/54a61fbd0ce246b29edd8f21a76c3d7a.png)
+
+### 129.

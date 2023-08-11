@@ -1,5 +1,4 @@
-﻿
-@[TOC](目录)
+﻿@[TOC](目录)
 
 ```bash
 “书山有路勤为径，学海无涯苦作舟！”
@@ -8,6 +7,9 @@
 ```
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3c51088946e84609b197ae00068aa614.jpeg#pic_center)
+
+
+
 ### 1.Wpf中内置的控件
 
 * 按钮：Button和RepeatButton。
@@ -23,14 +25,20 @@
 * 导航：Frame、Hyperlink、Page、NavigationWindow、TabControl。
 * 选项：CheckBox、ComboBox、ListBox、RadioButton、Slider。
 * 用户信息：AccessText、Label、Popup、ProgressBar、StatusBar、TextBlock、ToolTip。
+
 ### 2.Template模板
+
 在WPF中有三种类型的模板,分别为为数据模板**DataTemplate** 、 控件模板**ControlTemplate**、面板模板**ItemsPanelTemplate**。
+
 #### 1.ControlTemplate
+
 ControlTemplate它决定了控件“长成什么样子”，并让开发者有机会在控件原有的内部逻辑基础上扩展自己的逻辑,它不仅能用于来定义控件的外观、样式, 还可通过控件模板的触发器(ControlTemplate.Triggers)修改控件的行为、响应动画等。
 举例：
+
 - 效果：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/fda7696fd8f541d1aa9f42d077dfb5c9.gif#pic_center)
+  ![在这里插入图片描述](https://img-blog.csdnimg.cn/fda7696fd8f541d1aa9f42d077dfb5c9.gif#pic_center)
 - 代码：
+
 ```xml
 <Window.Resources>
         <ControlTemplate TargetType="Button" x:Key="ButtonTemplate">
@@ -55,17 +63,21 @@ ControlTemplate它决定了控件“长成什么样子”，并让开发者有�
         <Button Content="One " Margin="1" Template="{StaticResource ButtonTemplate}"/>
     </UniformGrid>
 ```
+
 #### 2.数据模板（CellTemplate、ItemTemplate、ContentTemplate）
- 1. 简介
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8948e8c4114b42a7aaa0d7cbcb35a68f.png#pic_center)
+
+  1. 简介
+     ![在这里插入图片描述](https://img-blog.csdnimg.cn/8948e8c4114b42a7aaa0d7cbcb35a68f.png#pic_center)
+
 - Grid这种列表表格中修改Cell的数据格式, CellTemplate可以修改单元格的展示数据的方式。
 - 针对列表类型的控件, 例如树形控件，下拉列表，列表控件, 可以修改其中的ItemTemplate。
 - 修改ContentTemplate, 例UserControl控件的数据展现形式。
 
- 2. CellTemplate 模板
-通过实现在DataGrid表格的列中添加按钮，来练习CellTemplate 模板的使用：
-效果如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/23e63cc5a547416c803a89c6b5f4c4c0.png#pic_center)
+  2. CellTemplate 模板
+     通过实现在DataGrid表格的列中添加按钮，来练习CellTemplate 模板的使用：
+     效果如图：
+     ![在这里插入图片描述](https://img-blog.csdnimg.cn/23e63cc5a547416c803a89c6b5f4c4c0.png#pic_center)
+
 ```xml
 <DataGrid  Height="260" AutoGenerateColumns="False" IsReadOnly="True"  ItemsSource="{Binding Loglists}" SelectedItem="{Binding SelectedCurrent}">
                                                 <DataGrid.Columns>
@@ -87,10 +99,12 @@ ControlTemplate它决定了控件“长成什么样子”，并让开发者有�
                                                 </DataGrid.Columns>
                                             </DataGrid>
 ```
+
 3. ItemTemplate模板
-通过实现在ComboBox和ListBox中绑定后台并设置DataTemplate ，来练习ItemTemplate模板的使用：
-效果如下：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/b3f6db80ecee4a89bb693d8b29a50c42.png#pic_center)
+   通过实现在ComboBox和ListBox中绑定后台并设置DataTemplate ，来练习ItemTemplate模板的使用：
+   效果如下：
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/b3f6db80ecee4a89bb693d8b29a50c42.png#pic_center)
+
 ```xml
 <Window.Resources>
         <DataTemplate x:Key="comTemplate">
@@ -109,12 +123,14 @@ ControlTemplate它决定了控件“长成什么样子”，并让开发者有�
         </Grid>
     </Grid>
 ```
+
 ```csharp
 public class ShowColorModel
     {
         public string Cl { get; set; }
     }
 ```
+
 ```csharp
  List<ShowColorModel> ColorList = new List<ShowColorModel>();
             ColorList.Add(new ShowColorModel() { Cl= "#FF8C00" });
@@ -127,11 +143,15 @@ public class ShowColorModel
             cob.ItemsSource = ColorList;
             lib.ItemsSource = ColorList;
 ```
+
 而DataTemplate是数据内容的展示方式，一条数据显示成什么样子，是简单的文本还是直观的图形就由它来决定了。
+
 #### 3.面板模板ItemsPanelTemplate
+
 ItemsPanelTemplate用于定义集合控件的容器外观，如ListBox,Combox 等等。
 
 ### 4.对话框
+
 （1）**消息框MessageBox**，是一个对话框，用于快速显示信息并允许用户做出决策。
 使用方法如代码所示：
 
@@ -165,6 +185,7 @@ ItemsPanelTemplate用于定义集合控件的容器外观，如ListBox,Combox �
         }
     }
 ```
+
 运行如图:
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d38b10510e504b02986178b2ca7a9271.gif#pic_center)
 MessageBoxButton的属性：
@@ -176,6 +197,7 @@ MessageBoxResult的属性：
 （2）**通用对话框 Dialog**
 示例：“打开文件”对话框:
 使用方法如代码所示：
+
 ```xml
     <Grid>
         <Button Width="100" Height="30" Content="Click me" Click="Button_Click"/>
@@ -209,10 +231,12 @@ MessageBoxResult的属性：
         }
     }
 ```
+
 代码运行如图:
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d4604c3ba778491e8c7551f5e3fda524.gif#pic_center)
 示例："保存文件"对话框:
 使用方法如代码所示：
+
 ```xml
     <Grid>
         <Button Width="100" Height="30" Content="Click me" Click="Button_Click"/>
@@ -249,6 +273,7 @@ MessageBoxResult的属性：
         }
     }
 ```
+
 代码运行如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/8292ffa290624f478405e406828c5d77.gif#pic_center)
 示例：“打印”对话框:
@@ -259,17 +284,23 @@ MessageBoxResult的属性：
         <Button Width="100" Height="30" Content="Click me" Click="Button_Click"/>
     </Grid>
 ```
+
 ```csharp
             var dialog = new System.Windows.Controls.PrintDialog();//实例化一个打印文件的对话框
             dialog.PageRangeSelection = System.Windows.Controls.PageRangeSelection.AllPages;
             dialog.UserPageRangeEnabled = true;
             bool? result = dialog.ShowDialog();
 ```
+
 代码运行如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/d152371004f04ae0bbbcaa27ef0eaa4a.gif#pic_center)
+
 ### 5.ContentPresenter
+
 ContentPresenter是一个基础控件，其他的控件可以继承他，主要作用是实现内容的显示，可以是任何内容。
+
 ### 6.画刷
+
 * LinearGradientBrush是线性渐变画刷。
 * SolidColorBrush 是纯色画刷。
 * RadialGradientBrush是径向渐变画刷。
@@ -277,6 +308,7 @@ ContentPresenter是一个基础控件，其他的控件可以继承他，主要�
 * GradientBrush是渐变画刷。
 
 #### 1.LinearGradientBrush
+
 示例如下：
 
 ```xml
@@ -297,16 +329,20 @@ ContentPresenter是一个基础控件，其他的控件可以继承他，主要�
         </Grid>
     </Grid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dfdd442b22374c9a82bc7c4ea9ef860f.png)
+
 ### 7.路由事件
+
 （1）Button中有个click事件，该事件就是定义好的路由事件。
 （2）路由事件和依赖属性一样，也需要注册，使用 EventManager.RegisterRoutedEvent方法来注册路由事件。
 （3）自定义一个路由事件的例子：
 
- 1. 首先添加一个用户控件，名为UserControl1，如图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4ab34eafac17483c8c1ba57060d2719d.png#pic_center)
-以下代码中包含前三个步骤，
+  1. 首先添加一个用户控件，名为UserControl1，如图：
+     ![在这里插入图片描述](https://img-blog.csdnimg.cn/4ab34eafac17483c8c1ba57060d2719d.png#pic_center)
+     以下代码中包含前三个步骤，
+
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -381,13 +417,16 @@ namespace WpfApp2.CustomControls
 }
 
 ```
+
 到目前为止，路由事件的准备工作已经完成，接下里开始最后一个步骤：调用该用户控件，并实现路由事件即可。
+
 ```csharp
     <Grid>
         <!--在MainWindow.xaml文件中引入自定义的UserControl1用户控件-->
         <CustomControls:UserControl1 MyRoutedEventHandler="UserControl1_MyRoutedEventHandler" HorizontalAlignment="Center" Height="100"  VerticalAlignment="Center" Width="100"/>
     </Grid>
 ```
+
 最后在MainWindow.xaml.cs文件中实现该路由事件的具体功能即可：
 
 ```csharp
@@ -396,20 +435,25 @@ namespace WpfApp2.CustomControls
             MessageBox.Show("Hello:" + e.Source.ToString());
         }
 ```
+
 运行结果如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/1aac352b9b05410fa6d185d5f01f977c.png#pic_center)
 单击Test按钮后，会弹出右边的那个对话框，成功实现单击Test按钮触发自定义的路由事件。
+
 ### 8.依赖属性
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4934978d68864601af43b1620078f640.png)
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f53a3d8b424a4aadb807d273fb77aa33.png)
+
 #### 1.先看一个例子
+
 先举个例子，在WPF中如果我们自定义了一个叫ButtonExpand的用户控件，该控件继承自按钮Button类，这时我们想向ButtonExpand控件中添加一张背景图Image类以实现背景图效果，而Button类中没有这个Image属性，我们就可以在这时注册一个依赖项属性，此时该控件就有了这个新的属性，在前台xaml文件中我们就可以直接使用这个新的属性。
 一个简短的例子来注册并使用依赖属性：
 
- 1. 首先建立一个用户控件StreamingStatusButton，用于自定义控件外观：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/4989ab8b63ca476cbe141729681feffe.png#pic_center)
+  1. 首先建立一个用户控件StreamingStatusButton，用于自定义控件外观：
+     ![在这里插入图片描述](https://img-blog.csdnimg.cn/4989ab8b63ca476cbe141729681feffe.png#pic_center)
 
- 2. 其次在StreamingStatusButton.xaml文件中实现代码（那个ImageSource属性是即将要注册的依赖属性）：
+  2. 其次在StreamingStatusButton.xaml文件中实现代码（那个ImageSource属性是即将要注册的依赖属性）：
 
 ```xml
 <UserControl x:Class="WpfApp1.customcontrols.StreamingStatusButton"
@@ -449,6 +493,7 @@ namespace WpfApp2.CustomControls
 </UserControl>
 
 ```
+
 其次在StreamingStatusButton.xaml.cs后台文件中注册ImageSource依赖属性：
 
 ```csharp
@@ -492,20 +537,24 @@ namespace WpfApp1.customcontrols
 }
 
 ```
- 1. 然后在MainWindow.xaml文件中引入该自定义控件，并给刚才注册的ImageSource依赖属性赋值即可。
+
+  1. 然后在MainWindow.xaml文件中引入该自定义控件，并给刚才注册的ImageSource依赖属性赋值即可。
+
 ```xml
 <customcontrols:StreamingStatusButton  ImageSource="assets/s1.png" />
 ```
+
 #### 2.WPF为什么需要依赖属性
+
 以上是一个使用依赖属性的简单例子，那么WPF为什么需要依赖属性？
 
  WPF的设计理念是：数据驱动，UI与逻辑松耦合。
 
 1. 什么是依赖属性？
-依赖属性是一种可以自已没有值，但是可以通过Binding方式，从数据源（依赖别人的数据）获得值的属性。
+   依赖属性是一种可以自已没有值，但是可以通过Binding方式，从数据源（依赖别人的数据）获得值的属性。
 
 2. 为什么要有依赖属性
-传统的CLR属性：
+   传统的CLR属性：
 
 ```csharp
 public class Person
@@ -524,13 +573,14 @@ public class Person
      }
  }
 ```
+
 CLR属性存在的问题：
 
 在多继承的情况下，每次继承，父类的字段都被继承，孙孙辈对象占用内存空间不可避免的膨胀。
 
 3. 如何添加依赖属性？
-在多继承，大多数字段并没有被修改的情况下，如何少对象的体积。
-数据驱动指导思想下，数据如何保存简单一致，同步
+   在多继承，大多数字段并没有被修改的情况下，如何少对象的体积。
+   数据驱动指导思想下，数据如何保存简单一致，同步
 
 ```csharp
 // 1. 使类型继承DependencyObject类
@@ -556,13 +606,17 @@ CLR属性存在的问题：
         }
     }
 ```
+
 4. 依赖属性的优势：
+
 * 解决多继承，且大多数字段值不改变的情况下，减少内存占比
-将一个DependencyProperty对象存储在一个全局的Hashtable中；通过依赖对象(DependencyObject)的GetValue和SetValue存取数据；
+  将一个DependencyProperty对象存储在一个全局的Hashtable中；通过依赖对象(DependencyObject)的GetValue和SetValue存取数据；
 
 * 以数据为中心，当数据源改变时，所以关联的UI数据改变
-依赖属性值可以通过Binding依赖于其它对象上，这就使得数据源一变动；依赖于此数据源的依赖属性全部进行更新
+  依赖属性值可以通过Binding依赖于其它对象上，这就使得数据源一变动；依赖于此数据源的依赖属性全部进行更新
+
 #### 3.什么时候需要定义依赖属性？
+
 * 希望支持动态资源引用
 
 * 希望支持动画
@@ -580,8 +634,10 @@ CLR属性存在的问题：
 * 希望得到WPF样式器的支持，比如在wpf窗口中直接修改该属性
 
 ### 9.命令Command
+
 一个简单地创建一些Command命令的例子：
- 2. 如下图，在Base文件中，创建一个CommandBase类，该类存放了command命令的初始化工作
+
+  2. 如下图，在Base文件中，创建一个CommandBase类，该类存放了command命令的初始化工作
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/27720f2c6de34de98b47be7a47367a48.png#pic_center)
 CommandBase.cs代码如下：
@@ -638,10 +694,10 @@ namespace WpfApp1.Base
 }
 
 ```
+
 2. 在ViewModels文件夹下，有一个MainViewModel类，该类存放了主界面MainWindow的一些需要绑定的数据和命令。该类代码如下：
 
 ```csharp
-
 //这个类存放了MainWindow界面中一些Command命令的定义
 
 
@@ -684,6 +740,7 @@ namespace WpfApp1.ViewModels
 }
 
 ```
+
 到此，command命令已经定义好，接下来直接在前台.xaml文件中使用即可：
 
 ```xml
@@ -693,31 +750,45 @@ namespace WpfApp1.ViewModels
 ```xml
 <Button x:Name="btnContact" Command="{Binding btnContactCommand}"/>
 ```
+
 ### 10.给样式赋值 {x:Null} 可以清除样式
+
 ### 11.MVVM模式
+
 （1）MVVM:Model-View-ViewModel
 （2）为什么使用MVVM模式：
- 1. 团队层面 ：统一的思维方式和实现方法；
- 2. 架构层面：稳定、解耦、富有禅意；
- 3. 代码层面：可读、可测、可替换。
+
+  1. 团队层面 ：统一的思维方式和实现方法；
+  2. 架构层面：稳定、解耦、富有禅意；
+  3. 代码层面：可读、可测、可替换。
 
 （3）什么是Model?
 现实世界中对象的抽象结果。比如，现实世界中有一些学生，那么对应到Model里面就是Student类；有一些动物，那么对应到Model就是Animals。
 （4）什么是View和ViewModel?
+
  - View=UI,VIew也就是一些前台的xaml界面；
  - ViewModel=Model for View;
  - ViewModel与View的沟通依靠两种方式：用于传递数据的数据属性、用于传递操作的命令属性。
+
 ### 12.ObservableCollection和List的比较
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/cca0d436de48486fafd061123a97a9cf.png#pic_center)
 ObservableCollection是一个动态集合，已经实现了INotifyPropertyChanged接口，不需要再实现因此PropertyChanged方法，因此能自动刷新前台页面。而List集合则没有实现INotifyPropertyChanged接口，我们需要自己实现List集合的PropertyChanged方法，才能在前台页面实现动态刷新。
+
 ### 13.MergedDictionaries 属性
+
 该属性相当于对ResourceDictionary资源字典进行分类。
+
 ### 14.margin和padding
+
 margin是自己与父容器的间距；
 padding是自己与子控件的间距。
+
 ### 15.Convert
+
 什么时候用到Convert？
 在wpf中，常常会遇到这种情况：给定一组数据，但是我们需要在前台xaml界面中把它转化为相对应的其他的数据类型。例如，我们定义了一个学生类，如下：
+
 ```csharp
     public class Student
     {
@@ -726,13 +797,16 @@ padding是自己与子控件的间距。
         public string Sex { get; set; }
     }
 ```
+
 而此时客户给出的是这种的数据：Sex属性并不是“男”或者“女”，而是0或1。而我们在前台界面呈现出的应该是“男”或“女”，而不是显示0或1，此时我们就需要用到convert转化，把客户输入的0转化为“男”，1转化为“女”。
+
 ```csharp
  new Student() { ID = "1", Name = "Peter", Sex = "0" },
                 new Student() { ID = "2", Name = "Tom", Sex = "1" },
                 new Student() { ID = "3", Name = "Ben", Sex = "0" }
 
 ```
+
 所以此时定义一个类SexConvert，该类用于将string类型的0或1转化为string类型的男或女，
 
 ```csharp
@@ -762,6 +836,7 @@ public  class SexConvert: IValueConverter
         }
     }
 ```
+
 这时只需要在前台xaml页面引入即可，在控件里这样写：把该lc:SexConvert 类以资源的形式添加进窗口资源中：
 
 ```xml
@@ -769,14 +844,20 @@ public  class SexConvert: IValueConverter
         <lc:SexConvert x:Key="IFC"/>
     </Window.Resources>
 ```
+
 然后在控件里的使用方法如下：
+
 ```xml
 <GridViewColumn Header="性别" Width="150" DisplayMemberBinding="{Binding SexList,Converter={StaticResource IFC}}"/>
 ```
+
 此时就成功实现convert转化了。
+
 ### 16.INotifyPropertyChanged接口
+
 当前台页面和后台ViewModel中的数据源通过binding绑定后，如果后台数据源发生改变，那么修改后的数据是不会自动刷新到前台xaml页面中的，这是我们需要用到INotifyPropertyChanged接口了。当类继承INotifyPropertyChanged接口并实现后，如果后台数据修改，那么修改后的数据就会自动刷新到前台页面中了。
 一般来说，定义一个INotifedChangedBse 类，来继承这个INotifyPropertyChanged接口，以后其他的ViewModel类要想再使用这个接口，就可以直接继承INotifedChangedBse 类，不用再每次使用时都实现接口的方法了，减少了代码的重复性，很方便。如下图：
+
 ```csharp
     //定义一个INotifedChangedBse类，该类继承自INotifyPropertyChanged接口，当后台数据中数据发生改变时，可以通知前台也发生相应变化。
   public  class INotifedChangedBse : INotifyPropertyChanged
@@ -791,7 +872,9 @@ public  class SexConvert: IValueConverter
         }
     }
 ```
+
 比如有一个ShowCourseWindowViewModel 类，该类继承额了INotifedChangedBse类，那么这个ShowCourseWindowViewModel 类自然也拥有INotifedChangedBse类的RaiseProperChanged方法了，如下图：
+
 ```csharp
 public class ShowCourseWindowViewModel : INotifedChangedBse
     {
@@ -819,8 +902,11 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         }
     }
 ```
+
 ### 17.DataTrigger
+
 定义：当绑定的数据满足指定的条件时,应用(指定的)属性或执行操作的触发器；
+
 ### 18.wpf中后台代码引用解决方案资源管理器中图片资源
 
 比如在.xaml代码中有一个image类的组件，并用x:name起名为playerStateButton，如图：
@@ -828,6 +914,7 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
 ```xml
  <Image x:Name="playerStateButton" Source="/Image/pause.png" Margin="0" />
 ```
+
 同时文件资源管理器中有一个名为play.png的图片，在后台代码.xaml.cs中想用代码更换这个image的source属性，并使其设置为play.png，如下代码就可以实现：
 
 ```csharp
@@ -835,17 +922,23 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
 ```
 
 ### 19.触发器
+
 #### （1）简介
+
 顾名思义, 触发器可以理解为, 当达到了触发的条件, 那么就执行预期内的响应, 可以是样式、数据变化、动画等。
 触发器通过 Style.Triggers集合连接到样式中, 每个样式都可以有任意多个触发器, 并且每个触发器都是 System.Windows.TriggerBase的派生类实例, 以下是触发器的类型：
+
 - Trigger : 监测依赖属性的变化、触发器生效；
 - MultiTrigger : 通过多个条件的设置、达到满足条件、触发器生效；
 - DataTrigger : 通过数据的变化、触发器生效；
 - MultiDataTrigger : 多个数据条件的触发器；
 - EventTrigger : 事件触发器, 触发了某类事件时, 触发器生效；
+
 #### （2）Trigger的使用
+
 效果如下，当鼠标进入Brder的范围时，背景变成浅蓝色，边框变成黄色；当不在Border的范围时，景变成红色，边框变成黑色：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f0b6cf5230d740e1a094d362c0d0aa6a.gif#pic_center)
+
 ```csharp
  <Window.Resources>
         <Style x:Key="borderStyle" TargetType="Border">
@@ -870,10 +963,13 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         </Grid>
     </Grid>
 ```
+
 #### （3）MultiTrigger的使用
+
 和Trigger类似, MultiTrigger可以设置多个条件满足时,触发,。下面以TextBox为例, 做一个简单的Demo
 当鼠标进入文本框的范围, 并且光标设置到TextBox上, 则把TextBox的背景颜色改变成Red，效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/288da08776c74e86a38a4c816deb0418.gif#pic_center)
+
 ```xml
  <Window.Resources>
         <Style x:Key="TextBoxStyle" TargetType="TextBox">
@@ -898,12 +994,15 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         </StackPanel>
     </Grid>
 ```
+
 #### （4）EventTrigger的使用
+
 触发了某类事件, 触发器执行响应。
 当鼠标进入按钮的范围中, 在0.02秒内, 把按钮的字体变成18号
 当鼠标离开按钮的范围时, 在0.02秒内, 把按钮的字体变成13号 。
  代码及效果如下所示:
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/3219675060ae4d05bdeefe8a656c83e4.gif#pic_center)
+
 ```xml
 <Window.Resources>
         <Style x:Key="btnStyle" TargetType="Button">
@@ -938,10 +1037,13 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         </StackPanel>
     </Grid>
 ```
+
 ### 20.ItemsControl的使用
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/fdc842903d9e43e28b3db9acac3136ad.png#pic_center)
 代码：
+
 ```xml
   <Grid>
         <ItemsControl Grid.Row="1" ItemsSource="{Binding TaskBars}">
@@ -983,6 +1085,7 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         </ItemsControl>
     </Grid>
 ```
+
 ```csharp
     public class MyTasks
     {
@@ -1010,7 +1113,9 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         }
     }
 ```
+
 ### 21.ListBox的使用
+
 举例：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0144113d1b01435ebd346103f3093a05.png#pic_center)
 
@@ -1035,8 +1140,11 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
         </ListBox>
     </Grid>
 ```
+
 ### 22.ScrollViewer的使用
+
 （1）留意一下这样一段代码：
+
 ```xml
 				<ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
@@ -1044,10 +1152,12 @@ public class ShowCourseWindowViewModel : INotifedChangedBse
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 ```
+
 ItemsControl.ItemsPanel是定义ItemsControl各个项的布局，ItemsPanelTemplate是用来定义集合控件的容器外观，此处设置为WrapPanel，表示各个项的布局是Wrap布局即排列完一行继续排列下一行。
 （2）效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/dcf10be22a20493a96137bf88652c68a.png#pic_center)
 前台代码如下：
+
 ```xml
     <Grid>
         <ScrollViewer>
@@ -1088,7 +1198,9 @@ ItemsControl.ItemsPanel是定义ItemsControl各个项的布局，ItemsPanelTempl
         </ScrollViewer>
     </Grid>
 ```
+
 后台代码如下：
+
 ```csharp
 public class MyTasksViewModel
     {
@@ -1111,18 +1223,26 @@ public class MyTasksViewModel
 
     }
 ```
+
 ### 23.UpdateSourceTrigger属性
+
 遇到了这样一行代码：
+
 ```xml
  <ToggleButton IsChecked="{Binding IsUsed, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 ```
+
 这行代码的意思是：该控件的IsChecked属性绑定到后台的IsUsed属性，当IsUsed属性值发生变化时，就会改变控件的IsChecked状态。
 UpdateSourceTrigger的默认值是Default，其他值有PropertyChanged、LostFocus和Explicit。
+
  - PropertyChanged：当属性值发生改变时，源就会被更新；
  - LostFocus：当失去焦点的时候，源就会被更新；
  - Explicit：必须通过手动更新来推送。
+
 ### 24.wpf中的TextBox实现密码样式、水印、后台绑定功能
+
 在写一个登录页面时，遇到了一些小问题，想把输入的密码和后台进行绑定，并且使用密码样式（即输入的密码要显示为黑色的小圆点）和水印提示,使用纯原生的TextBox或PasswordBox并不能满足上述需求。因为PasswordBox有密码样式，但是不支持数据绑定，而TextBox支持数据绑定，但是不支持密码样式。因此对TextBox设计样式，并成功实现以下两个需求：密码样式和水印提示
+
 ```xml
 <Style TargetType="{x:Type TextBox}" x:Key="textBoxStyle">
                 <Setter Property="TextDecorations">
@@ -1181,10 +1301,14 @@ UpdateSourceTrigger的默认值是Default，其他值有PropertyChanged、LostFo
 ```xml
  <TextBox x:Name="passwordBox" Width="410" ToolTip="提示:密码为用户名拼音"  FontSize="35" Height="70"  Margin="50,0,0,40" Text="{Binding InputPassword}" Style="{StaticResource textBoxStyle}"/>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bf618d2e950e4a09bf44887a930b309a.gif#pic_center)
+
 ### 25.MultiBinding
+
 MultiBinding 允许绑定多个源，MultiBinding必须和转换器Converter一起使用。下面这个例子是将DataGrid 中的一个DataGridTextColumn 绑定到两个值上面而不是传统的一个值。
+
 ```xml
 <StackPanel Grid.Row="0">
             <DataGrid  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" x:Name="Courseslist" AutoGenerateColumns="False" IsReadOnly="True" Width="780" Height="600" ItemsSource="{Binding CoursesDataList}">
@@ -1209,7 +1333,9 @@ MultiBinding 允许绑定多个源，MultiBinding必须和转换器Converter一�
 ```xml
         <lc:IsCourseFreeConvert x:Key="IFC"/>
 ```
+
 课程信息的Model类：
+
 ```csharp
   public class CoursesData : INotifedChangedBse
     {
@@ -1248,6 +1374,7 @@ MultiBinding 允许绑定多个源，MultiBinding必须和转换器Converter一�
 ```
 
 定义的一个用于多值转换的类：
+
 ```csharp
    //定义一个用于多值转换的类
   public  class IsCourseFreeConvert: IMultiValueConverter //如果是单个绑定时，定义的转换器类需要继承自IValueConverter接口;如果是多个绑定，定义的转换器类需要继承自IsCourseFreeConvert接口
@@ -1285,9 +1412,12 @@ MultiBinding 允许绑定多个源，MultiBinding必须和转换器Converter一�
         }
     }
 ```
+
 最后实现转换后的效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/095c911d77c24b109f49512e95dd917c.png#pic_center)
+
 ### 26.Stylet框架中事件聚合器的使用
+
 先看效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/79919b571c7646f4bfa0d11483aa1271.gif#pic_center)
 通过点击右侧区域RunModelButtonView中的“启动”按钮和“退出”按钮发布两个信号，然后在左侧区域MainView对应的MainViewViewModel中订阅发布的两个信号。
@@ -1296,6 +1426,7 @@ MultiBinding 允许绑定多个源，MultiBinding必须和转换器Converter一�
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6f26b46974554d0488609ee190161355.png#pic_center)
 
 1. 首先自定义一个事件类：建立一个文件夹Event,添加一个事件类ShowProcessEvent，并实现如下代码：
+
 ```csharp
 public class ShowProcessEvent 
     {
@@ -1312,7 +1443,9 @@ public class ShowProcessEvent
         }
     }
 ```
+
 2.把事件类加入到事件聚合器中并发布信号： 在RunModelButtonViewModel中实现点击两个按钮后发布事件功能：
+
 ```csharp
  public class RunModelButtonViewModel : Screen, IView
     {
@@ -1336,7 +1469,9 @@ public class ShowProcessEvent
         }
     }
 ```
+
 3. 订阅事件：在MainViewViewModel订阅事件聚合器中加入的自定义事件爱你类,首先MainViewViewModel必须继承IHandle接口并在尖括号里加入自定义的事件类名称,其次实现接口中的Handle方法并在此方法里写出订阅事件后要执行的逻辑，最后在构造函数里订阅自定义的事件类即可：
+
 ```csharp
 public class MainViewModel : Screen, IPage,IHandle<ShowProcessEvent>
  public MainViewModel()
@@ -1349,9 +1484,13 @@ public class MainViewModel : Screen, IPage,IHandle<ShowProcessEvent>
   	//此方法里写订阅事件后具体的逻辑
   }
 ```
+
 ### 27.DataGrid表格
+
 WPF中的DataGrid表格是一个很复杂而且很常用的控件，这里面有好多知识点，简单记录下对DataGrid表格的学习。
+
 #### 1.DataGrid中一些常见的属性：
+
 1. **CanUserReorderColumns**：是否允许用户通过使用鼠标拖拽列标题，更改列的显示顺序；
 
 2. **AutoGenerateColumns**：是否根据数据源集合自动生成列，如果设置成false，那么就需要自己定义一些列；
@@ -1371,7 +1510,9 @@ WPF中的DataGrid表格是一个很复杂而且很常用的控件，这里面有
 9. **DecimalPlaces**：小数要显示的位数;
 
 #### 2. DataGrid列（重点）
+
 目前DataGrid中可用的列有如下：
+
 * DataGridTextColumn：用于展示普通文本的列
 * DataGridCheckBoxColumn：用于在列上展示一些单选框，以表示用户是否选中；
 * DataGridComboBoxColumn：用于展示一些可供用户从列表集合中选择的数据列；
@@ -1379,19 +1520,20 @@ WPF中的DataGrid表格是一个很复杂而且很常用的控件，这里面有
 * DataGridTemplateColumn：自定义单元格的列，可以在这个列里自定义一些布局，比如加个按钮；
 
 下图是微软官方给出的关于这几种列的数据类型：
-| 生成的列类型 |  数据类型|
-|--|--|
-| DataGridTextColumn | String类型 |
-| DataGridCheckBoxColumn| Bool类型|
-| DataGridComboBoxColumn| Enum类型|
-| DataGridHyperlinkColumn| Uri类型|
+
+| 生成的列类型            | 数据类型   |
+| ----------------------- | ---------- |
+| DataGridTextColumn      | String类型 |
+| DataGridCheckBoxColumn  | Bool类型   |
+| DataGridComboBoxColumn  | Enum类型   |
+| DataGridHyperlinkColumn | Uri类型    |
 
 下面直接上代码来展示效果：
 
 1. 文件结构（这是基于Prism模板创建的工程，只需要关注DataGridExampleView和DataGridExampleViewModel这两个文件的代码即可，其他文件可以忽略）：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7a34035c76db416abcc6d4f392994963.png)
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/7a34035c76db416abcc6d4f392994963.png)
 2. DataGridExampleView代码：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/00502aef655541aa888b1c5a4183c3cb.png)
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/00502aef655541aa888b1c5a4183c3cb.png)
 
 ```xml
 <UserControl x:Class="BlankApp1.Views.DataGridExampleView"
@@ -1438,7 +1580,8 @@ WPF中的DataGrid表格是一个很复杂而且很常用的控件，这里面有
 ```
 
 3. DataGridExampleViewModel代码：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/76e0c48cd6574a5295e3b8b89a033fae.png)
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/76e0c48cd6574a5295e3b8b89a033fae.png)
+
 ```csharp
 using Prism.Mvvm;
 using Prism.Regions;
@@ -1490,8 +1633,9 @@ namespace BlankApp1.ViewModels
 }
 
 ```
+
 4. 转换器QQConverter类
-![在这里插入图片描述](https://img-blog.csdnimg.cn/079291a0845d431a9f3528a7998e7627.png)
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/079291a0845d431a9f3528a7998e7627.png)
 
 ```csharp
 using System;
@@ -1525,21 +1669,28 @@ namespace BlankApp1.Converter
 }
 
 ```
+
 5. 运行演示：
 
 ![](https://img-blog.csdnimg.cn/ce647000c6fc4b8db5a752ee1ce5b9de.png)
+
 ### 28.行为Behaviors
+
 #### 1.什么是行为？
+
 1. 行为是Blend中的自带资产。
-如果要在VS中使用行为需要下载一个包Microsoft.Xaml.Behaviors.Wpf：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/99f3217481d04f8a9cc7768aa02af9f0.png)
+   如果要在VS中使用行为需要下载一个包Microsoft.Xaml.Behaviors.Wpf：
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/99f3217481d04f8a9cc7768aa02af9f0.png)
 2. 控件的界面逻辑大都可以被认为是行为：TextBox在被聚焦后自动全选、在Window中按下Esc会退出、Button点击后会弹出一个小窗口、Grid按照某种方式排布子控件。
 3. 行为本质上是基于附加属性(AP)实现的。
 4. 行为本身也继承了DependencyObject。
 
 #### 2.怎么使用Behaviors
+
 每个控件添加的行为是一个个单独的实例，而且可以添加多个行为(存放在Collection中)。
+
 ##### 1.使用包中自带的行为：
+
 比如要对一个Border实现拖拽效果，可以使用MouseDragElementBehavior：
 
 ```xml
@@ -1561,9 +1712,12 @@ namespace BlankApp1.Converter
 </Window>
 
 ```
+
 运行效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bfc41667b1d64691a0f5bff47f3b4fac.gif#pic_center)
+
 ##### 2.自定义一个行为
+
 1. 自定义一个行为：当鼠标移入、移除该行为附加的控件时，控件的背景色会发生改变：
 
 ```csharp
@@ -1629,6 +1783,7 @@ namespace BlankApp1.Behaviors
 </Window>
 
 ```
+
 效果展示：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/348c886825c744f5a48a0c23f39af61b.gif#pic_center)
 2.自定义一个行为：点击按钮会改变其他TextBox的内容:
@@ -1703,9 +1858,12 @@ namespace BlankApp1.Behaviors
     </StackPanel>
 </Window>
 ```
+
 运行效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f75820a256af4bc6a8cccaeaa9f9f41a.gif#pic_center)
+
 ### 29.触发器Triggers(非WPF原生)
+
 Microsoft.Xaml.Behaviors.Wpf包中既包含行为，也包含触发器。
 
 1. 有有点类似WPF的原生Triggers，在触发某些条件时会发生一些变化。
@@ -1737,7 +1895,6 @@ Microsoft.Xaml.Behaviors.Wpf包中既包含行为，也包含触发器。
 ```
 
 ```csharp
-
 using Microsoft.Xaml.Behaviors;
 using Microsoft.Xaml.Behaviors.Core;
 using Prism.Commands;
@@ -1785,6 +1942,7 @@ namespace BlankApp1.ViewModels
 }
 
 ```
+
 运行效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/be984bb0fee7412a81a955304e40d9b7.gif#pic_center)
 例子2，点击按钮，会关闭当前窗口的Close方法来关闭窗口：
@@ -1810,9 +1968,13 @@ namespace BlankApp1.ViewModels
 </Window>
 
 ```
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a9eaf097857f4de9ba972e9f3989c957.gif#pic_center)
+
 ### 30.长按按钮(非单击)来执行方法
+
 1.定义一个附加属性，当长按按钮一定时间后会执行某个方法
+
 ```csharp
 using System;
 using System.Collections.Generic;
@@ -1903,6 +2065,7 @@ namespace BlankApp1.CustomDPs
 }
 
 ```
+
 2.在界面引用该附加属性
 
 ```xml
@@ -1920,9 +2083,13 @@ namespace BlankApp1.CustomDPs
 </Window>
 
 ```
+
 ### 31.背景或边框使用 Border 代替 Grid 控件
+
 如果只是需要显示背景色或者只是为了显示边框，此时选用 Grid 控件就太重了，可以使用 Border 代替，减少内存占用以及提升对象初始化性能。
+
 ### 32.公开在 XAML 中使用对象的访问权限
+
 在 XAML 中使用的对象，包括转换器以及自定义元素等，推荐将这部分类的定义的可访问权限，在不影响整个框架设计的情况下，设置为 public 权限，用来提升 XAML 创建对象的性能
 
 原因是在 XAML 创建对象的时候，会通过反射的方法创建，而如果是反射创建的话，使用 public 权限，可以让类的构造函数被 WPF 框架进行缓存，可以大大提高对象创建的性能。
@@ -1930,13 +2097,19 @@ namespace BlankApp1.CustomDPs
 给 XAML 里面创建的类型应该是公开的，这样才能发挥 XAML 的创建对象性能。如果类型是 internal 的，那么 XAML 每次创建都需要反射创建
 
 在 XAML 里面的创建的类型包括了用户自定义控件和转换器等类型，这些类型推荐是作为公开的，除非是确实不能公开的类型
+
 ### 33.尽可能使用 TextBlock 代替 Label 控件
+
 在 WPF 中，存在一个框架设计问题是引入了 Label 这个定位不够明确的控件。在所有使用 Label 的地方，都应该尽可能使用 TextBlock 代替，用来提升性能。其实在 WPF 中 Label 也仅仅只是对 TextBlock 的封装，除了性能比 TextBlock 更差之外，几乎没有别的差别。
+
 ### 34.调用 Dispatcher.Invoke 时需要判断是否可以使用 Dispatcher.InvokeAsync 代替
+
 在使用 WPF 的 Dispatcher.Invoke 时，如果遇到异步，是有可能出现锁的相互等待。因此更多推荐使用 Dispatcher.InvokeAsync 代替，如果可以修改为 Dispatcher.InvokeAsync 那么推荐使用 Dispatcher.InvokeAsync 代替。如果需要等待 Invoke 内容执行完成，记得使用 Dispatcher.InvokeAsync 时需要加上 await 等待。
 
 不想思考的话，默认使用 Dispatcher.InvokeAsync 就好了，除非有特别需求，否则少用 Dispatcher.Invoke 方法或 Dispatcher.BeginInvoke 方法。
+
 ### 35.调用 Dispatcher.Invoke 里面使用 Shutdown 方法可以使用 InvokeShutdown 代替
+
 如下面代码
 
 ```csharp
@@ -1951,10 +2124,15 @@ namespace BlankApp1.CustomDPs
 ```csharp
  Application.Current.Dispatcher.InvokeShutdown();
 ```
+
 ### 36.不要使用 Dispatcher.InvokeShutdown 方法退出应用
+
 应该使用 Application.Current.Dispatcher.InvokeShutdown 或者是 Application.Current.Shutdown 进行退出，不应该使用 Dispatcher.InvokeShutdown 方法退出应用。
+
 ### 37.给 DispatcherTimer 设置 Interval 属性
+
 #### 1.DispatcherTimer 的使用和注意事项
+
 如果创建一个空的 DispatcherTimer 对象，没有设置 Interval 属性，也没有加上事件，直接开始，那将会空跑 UI 线程，让 UI 线程开始拉满一个 CPU 资源。
 
 这是因为 DispatcherTimer 对象在没有设置 Interval 属性时，此属性的值就是 0 时间，也就是不断执行。
@@ -1977,19 +2155,25 @@ namespace BlankApp1.CustomDPs
 			MPLable.Foreground = (MPLable.Foreground == System.Windows.Media.Brushes.Yellow ? System.Windows.Media.Brushes.Red : System.Windows.Media.Brushes.Yellow);
 		}
 ```
+
 #### 2.DispatcherTimer的作用，与Dispatcher有什么瓜葛？
+
 Dispatcher（这里我们把Dispatcher简单的看做是一个线程）需要处理各种各样的任务，比如响应键盘输入、鼠标移动、渲染界面等，这些任务有各自的优先级，而DispatcherTimer就是要将一个指定优先级的任务插入到Dispatcher的任务队列中，并让其在指定时间间隔（Interval）之后被处理。需要注意的是，Dispatcher只保证在DispatcherTimer的时间间隔到达之前不会去处理该定时器的任务，至于定时器的任务具体会在什么时候被处理，取决于任务自身的优先级以及Dispatcher当时的任务队列情况。
+
 ### 38.当鼠标滑过一个被禁用的元素时，让ToolTip 显示
+
 在WPF中，当鼠标划过一些禁用元素时，设置了ToolTip属性后，是不会有提示的效果，比如下面代码：
 
 ```xml
  <Button Content="点击测试" Width="100" Height="40" ToolTip="oK" IsEnabled="False" />
 ```
+
 但是当设置设置ToolTipService.ShowOnDisabled为 true时，被禁用的元素就可以显示ToolTip的内容了，如：
 
 ```xml
  <Button Content="点击测试" Width="100" Height="40" ToolTip="oK" IsEnabled="False" ToolTipService.ShowOnDisabled="True"/>
 ```
+
 ### 39.资源字典引用
 
 ```xml
@@ -2001,8 +2185,22 @@ Dispatcher（这里我们把Dispatcher简单的看做是一个线程）需要处
     </ResourceDictionary>
   </Application.Resources>
 ```
+
 设计器挖的一个坑是 component 如果写两次，如 ;component;component 那么设计器依然能帮你找到资源，但是运行就炸了。
-### 40.判断 WPF 程序使用管理员权限运行
+
+### 40.设置WPF程序管理员身份运行和判断是否使用管理员权限运行
+
+#### 1.以管理员身份运行
+
+新建一个WPF程序，然后右键单击项目，添加清单文件，如图：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/f58b42e5dc5541cd8d8588f169c44607.png)
+打开此文件，将矩形框中内容修改为如下：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/6a6ebefb55db4384b6b4f6c96643eded.png)
+运行程序即可以管理员身份运行。
+
+
+#### 2.判断是否管理员身份运行
+
 引用命名空间，复制下面代码，然后调用 IsAdministrator 方法，如果返回 true 就是使用管理员权限运行：
 
 ```csharp
@@ -2014,13 +2212,17 @@ Dispatcher（这里我们把Dispatcher简单的看做是一个线程）需要处
             return windowsPrincipal.IsInRole(WindowsBuiltInRole.Administrator);
         }
 ```
+
 ### 41.注册全局事件
+
 如果需要注册一个类型的全局事件，如拿到 TextBox 的全局输入，那么可以使用下面代码：
 
 ```csharp
 EventManager.RegisterClassHandler(typeof(TextBox), TextBox.KeyDownEvent, new RoutedEventHandler(方法));
 ```
+
 ### 42.高版本的 WPF 引用低版本类库导致无法启动
+
 如果在一个 .net 4.0 的 WPF 程序引用一个 .net 2.0 的库，那么就会让程序无法运行，解决方法添加useLegacyV2RuntimeActivationPolicy。
 
 打开 app.config 添加 useLegacyV2RuntimeActivationPolicy="true" 在 startup 元素
@@ -2035,6 +2237,7 @@ EventManager.RegisterClassHandler(typeof(TextBox), TextBox.KeyDownEvent, new Rou
 </startup>
 </configuration>
 ```
+
 ### 43.使用十进制设置颜色
 
 xaml代码如下：
@@ -2070,12 +2273,13 @@ xaml代码如下：
             
         </TextBlock>
 ```
+
 效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a026ab0ebb994643af3b9b3ee51fa209.png#pic_center)
 
 
 2. 方法2：使用xml:space="preserve"直接输入换行。添加了 space 就可以在换行的时候自动换行。
-代码如下：
+   代码如下：
 
 ```yaml
         <TextBlock xml:space="preserve">
@@ -2088,10 +2292,12 @@ xaml代码如下：
             </TextBlock.Text>
         </TextBlock>
 ```
+
 效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/da04a83609434604a7db15c5a1edce6d.png)
+
 3. 方法3：通过 LineBreak 的方法换行：
-代码如下：
+   代码如下：
 
 ```xml
         <TextBlock>
@@ -2103,17 +2309,22 @@ xaml代码如下：
                 子宁不嗣音？
         </TextBlock>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/27d5b32294ad45769499de2b041e7d89.png)
 
 ### 46.WPF 去掉最大化按钮
+
 通过在窗口添加下面代码：
 
 ```xml
 ResizeMode="NoResize"
 ```
+
 ### 47.WPF ListView 使用 WrapPanel 没有自动换行
+
 把ScrollViewer.HorizontalScrollBarVisibility属性禁用即可。
+
 ```xml
 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled">
   <ListView.ItemsPanel>
@@ -2123,9 +2334,13 @@ ResizeMode="NoResize"
   </ListView.ItemsPanel>
 </ListView>
 ```
+
 ### 48.WPF 让 TextBox 支持水平滚动
+
 只需要设置 HorizontalScrollBarVisibility 可见就可以了。
+
 ### 49.WPF 如何给 Grid 的某一行添加背景色
+
 其实在 WPF 里面是不存在单独设置 Grid 的某一行的配色，但是想要达到这个视觉效果，可以通过 Border 配合做到。
 
 ```xml
@@ -2137,14 +2352,17 @@ ResizeMode="NoResize"
         </Grid.RowDefinitions>
     </Grid>
 ```
+
 如上代码，想给这三行的第一行设置背景色，那么可以加一个Border，如下：
 
 ```xml
   <Border Grid.Row="0" Background="Red"/>
 ```
+
 这样，这一行就变成了红色。
 
 ### 50.WPF中使用OxyPlot包生成图表
+
 代码示例：
 
 1. 首先下载OxyPlot.WPF包；
@@ -2164,6 +2382,7 @@ ResizeMode="NoResize"
 </Window>
 
 ```
+
 3.在ViewModel中代码如下：
 
 ```csharp
@@ -2339,9 +2558,12 @@ namespace BlankApp1.ViewModels
 }
 
 ```
+
 4.运行程序，效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/05450ac428604b0aae2e76b36cff2196.png)
+
 ### 50.WPF中使用avalonedit
+
 AvalonEdit是基于WPF的代码显示控件，在工业领域应用较多，简单用法如下：
 
 ```xml
@@ -2432,9 +2654,12 @@ namespace BlankApp1
 }
 
 ```
+
 运行效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/e388309183fb4dc799b532a490744824.png)
+
 ### 51.WPF中使用CallerMemberName简化InotifyPropertyChanged的实现
+
 在WPF中，当我们使用MVVM的方式实现属性变更通知时，往往要实现INotifyPropertyChanged接口，如下：
 
 ```csharp
@@ -2469,6 +2694,7 @@ namespace BlankApp1.Others
 }
 
 ```
+
 这么做有一个比较大的隐患，那就是用了字符串的硬编码的方式传递了属性名称，一旦拼写错误或因为重构代码忘记去更新这个字符串时，这样就会导致界面上得不到更新。（本身硬编码的方式来保证两者的一致性就是不靠谱的行为）
 
 虽然这本身并不是问题，但却不是很好的实践。也有人通过一些手段来解决这个问题，有的是通过表达式树，还有的通过Attribute注入的方式。
@@ -2508,7 +2734,9 @@ namespace BlankApp1.Others
 }
 
 ```
+
 ### 52.在WPF中，可以使用“Bogus”包中Faker命名空间下的代码来伪造一些数据
+
 用法如下：
 
 ```csharp
@@ -2558,11 +2786,13 @@ namespace BlankApp1.Models
 ```
 
 ### 53.WPF实现带模糊搜索的DataGrid
+
 效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ef427e951a8448ec98882c94f5f252eb.gif#pic_center)
+
 1. 项目结构：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/dc38a5f92fb64cd3891f461b96a91bc2.png)
-2.Employee.cs代码：
+   ![在这里插入图片描述](https://img-blog.csdnimg.cn/dc38a5f92fb64cd3891f461b96a91bc2.png)
+   2.Employee.cs代码：
 
 ```csharp
 using Bogus;
@@ -2609,6 +2839,7 @@ namespace BlankApp1.Models
 }
 
 ```
+
 3. MainWindow.xaml代码：
 
 ```xml
@@ -2650,6 +2881,7 @@ namespace BlankApp1.Models
 </Window>
 
 ```
+
 4. MainWindowViewModel.cs代码：
 
 ```csharp
@@ -2731,13 +2963,16 @@ namespace BlankApp1.ViewModels
 }
 
 ```
+
 ### 54.WPF中的Stretch属性
+
 `奶奶滴，现在是2023-4-15日凌晨1点53分，在刚才用WPF写一个个人项目时，遇到了图片加载不出来的问题，搞到现在终于解决了，强忍着困意写下此知识点，避免以后再遇到此问题`
 ![原代码：](https://img-blog.csdnimg.cn/e16e4b2257ee444d959ff9ee496cab7c.png)
 我在image控件中加载了一个资源图片，并将Stretch属性设置成了None，图片加载不出来。然后将None改成了Fill，如上图红色矩形框所示，图片就加载出来了。
 查了下资料，
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/ec2ae868d4984edbb7f3cb189117f36b.png)
 原因大抵是图片太大，属性设置成了None，导致图片会按原始大小显示，图片太大，于是就未在image控件上显示完全，造成一种图片未显示的问题。
+
 ### 55.WPF中的阴影效果DropShadowEffect
 
 ```xml
@@ -2749,9 +2984,12 @@ namespace BlankApp1.ViewModels
             </TextBlock>
         </Border>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/da3d1117f3364c10b49d9d77e606e776.png)
+
 ### 56.WPF中的Application
+
 WPF中的Application对象用来进行一些全局的行为和操作，并且每个 Domain （应用程序域）中仅且只有一个 Application 实例存在。
 
 微软把WPF中经常使用的功能都封装在 Application 类中了。 Application 类具体有以下功能:
@@ -2764,17 +3002,20 @@ WPF中的Application对象用来进行一些全局的行为和操作，并且每
 * 跟踪和管理导航
 
 #### 1.Application类中与应用程序生存期相关的方法和事件
-|  |  |  |
-|--|--|--|
-|方法名|事件|作用|
-| |Activated |在应用程序获得输入焦点时调用|
-||Deactivated|在应用程序失去输入焦点时调用|
-||SessionEnding|在用户退出登录或系统关机前调用|
-||Exit|在应用程序退出前调用|
-|Shutdown||使应用程序退出|
-||Startup|当调用Run方法时，系统调用此方法|
-|  |  |  |
+
+|          |               |                                 |
+| -------- | ------------- | ------------------------------- |
+| 方法名   | 事件          | 作用                            |
+|          | Activated     | 在应用程序获得输入焦点时调用    |
+|          | Deactivated   | 在应用程序失去输入焦点时调用    |
+|          | SessionEnding | 在用户退出登录或系统关机前调用  |
+|          | Exit          | 在应用程序退出前调用            |
+| Shutdown |               | 使应用程序退出                  |
+|          | Startup       | 当调用Run方法时，系统调用此方法 |
+|          |               |                                 |
+
 ### 57.WPF 常用的9种布局方式
+
 * Grid
 
 * StackPanel
@@ -2837,6 +3078,7 @@ WPF中基本图形包括以下几个，都是Shaper类的派生类。
         </Line>
     </Grid>
 ```
+
 1. 使用X1和Y1两个属性可以设置它的起点坐标，X2和Y2可以设置终点坐标。
 2. StrokeDashArray用来画虚线，[关于StrokeDashArray的详细介绍](https://blog.csdn.net/huzhenv5/article/details/103745362?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522168294124916800197079285%2522%252C%2522scm%2522%253A%252220140713.130102334..%2522%257D&request_id=168294124916800197079285&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-103745362-null-null.142%5Ev86%5Einsert_down28,239%5Ev2%5Einsert_chatgpt&utm_term=StrokeDashArray&spm=1018.2226.3001.4187)。
 3. Stroke是颜色。
@@ -2844,6 +3086,7 @@ WPF中基本图形包括以下几个，都是Shaper类的派生类。
 5. StrokeEndLineCap管的是末端的形状。
 
 #### 2.矩形
+
 矩形由边线(stroke)和填充(Fill)组成。
 
 ```xml
@@ -2916,8 +3159,10 @@ WPF中基本图形包括以下几个，都是Shaper类的派生类。
         </Rectangle>
     </Grid>
 ```
+
 效果如下：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/19de0dd354b144708f85425abd5888f3.png)
+
 #### 3.椭圆
 
 ```xml
@@ -2939,11 +3184,15 @@ WPF中基本图形包括以下几个，都是Shaper类的派生类。
         </Ellipse>
     </Grid>
 ```
+
 效果如图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a01935dd39654c6bb5960a9229b24aab.png)
+
 #### 4.Path
+
 Path的Data属性是Geometry类，但Geometry类是个抽象的类，所有我们不能在XAML直接使用`<Geometry>`标签。我们可以使用是Geometry的子类。子类包括：
 **1. LineGeometry，直线几何图形；
+
 2. RectangleGeometry，矩形几何图形；
 3. EllipseGeometry，椭圆几何图形；
 4. PathGeometry，路径几何图形（功能最强大）；
@@ -2952,6 +3201,7 @@ Path的Data属性是Geometry类，但Geometry类是个抽象的类，所有我�
 7. GeometryGroup，多图形组合，形成几何图形组；**
 
 ##### 1.简单用法如下：
+
 ```xml
   <Window.Resources>
         <!--这里存放一些图标的绘制情况-->
@@ -2988,8 +3238,10 @@ Path的Data属性是Geometry类，但Geometry类是个抽象的类，所有我�
         <Path Width="120" Height="100" Data="{StaticResource contact}" Fill="Black" Stretch="UniformToFill"/>
     </UniformGrid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/08b9e26dba594dcbab0e9c65072905f2.png)
+
 ##### 2.在ControlTemplate中使用Path(自定义控件外观)
 
 ```xml
@@ -3024,10 +3276,12 @@ Path的Data属性是Geometry类，但Geometry类是个抽象的类，所有我�
         <Button   Width="200" Height="200" Content="点击测试" Style="{StaticResource btnStyle}"  Click="Button_Click"/>
     </Grid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/f2a1a16629ce4fa7ac548899c3210865.png)
 
 #### 5.裁剪Clip
+
 例子：
 1.
 原图：
@@ -3042,10 +3296,14 @@ Path的Data属性是Geometry类，但Geometry类是个抽象的类，所有我�
         </Image>
     </Border>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b463c36885b946048c995056513d32a1.png)
+
 #### 6.图形的效果和变形
+
 ##### 1.图形效果Effect
+
 Effect 类有三个派生类，它们是：
 
 1. BlurEffect：模糊效果
@@ -3089,15 +3347,20 @@ Effect同样有多种写法，可以写在样式中，也可以写在控件本�
         </Button>
     </Grid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/26d30bee6f4d4d78990158f9a0bfa670.png)
+
 ##### 2.图形的变形
+
 WPF中变形包括：尺寸、位置、坐标系比列、旋转角度等的变化。
 控制变形的属性有两个，分别是：
+
 1. RenderTransform：呈现变形，定义在 UIElement类中。
 2. LayoutTransform：布局变形，定义在 FrameworkElement类中。
 
 RenderTransform和LayoutTransform两个变形属性均可使用以下变化形式，变化的形式有：
+
 * MatrixTransform：矩阵变形；
 * RotateTransform：旋转变形；
 * ScaleTransform：坐标系变形；
@@ -3106,7 +3369,9 @@ RenderTransform和LayoutTransform两个变形属性均可使用以下变化形�
 * TransformGroup：变形组（多个独立变形放在一起）；
 
 ###### 1.RenderTransform
+
 **不影响界面的布局效果。**
+
 ```xml
 <Grid>
         <Grid.ColumnDefinitions>
@@ -3129,9 +3394,12 @@ RenderTransform和LayoutTransform两个变形属性均可使用以下变化形�
         </Button>
     </Grid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/78e380b7375947ddbdb941459655421f.png)
+
 ###### 2.LayoutTransform
+
 **影响界面的布局效果，导致窗体布局重新测算。**
 
 ```xml
@@ -3154,9 +3422,12 @@ RenderTransform和LayoutTransform两个变形属性均可使用以下变化形�
         </Button>
     </Grid>
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/6d6dc35bf9ba48b18f9f38e89ce38afa.png)
+
 ### 59.WPF中的动画
+
 动画的本质就是在一个时间段内对象位置、角度、颜色、透明度等属性值的连续变化。
 
 **WPF把一组协同的动画也称为Storyboard。**
@@ -3169,7 +3440,9 @@ WPF动画大致可分为2种，分别是**AnimationTimeline(简单动画)和Stor
 
 Timeline、AnimationTimeline和Storyboard的关系如下所示：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9419d652ec7043f8b8f88cd56e98a246.png)
+
 #### 1.简单动画
+
 AnimationTimeline的派生类有：
 
 * BooleanAnimationBase
@@ -3199,7 +3472,9 @@ AnimationTimeline的派生类有：
 
 如DoubleAnimationBase完整地派生出了3个具体动画，如下所示：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/4aa7d36b8c4546d0ac27c2469e9acabc.png#pic_center)
+
 ##### 1.简单线性动画
+
 简单线性动画”是指仅由变化起点、变化终点、变化幅度、变化时间4个要素构成的动画：
 
 * 变化时间（Duration属性）：必须指定，数据类型为Duration。
@@ -3249,6 +3524,7 @@ private void Button_Click(object sender, RoutedEventArgs e)
 }
 
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b8c75ac3692f4d5384c850edd218997f.gif#pic_center)
 以下几处值得注意：
@@ -3257,8 +3533,11 @@ private void Button_Click(object sender, RoutedEventArgs e)
 * **尽管表现出来的是Button在移动，但DoubleAnimation的作用目标并不是Button而是TranslateTransform实例。**
 * **用来制作动画的属性必须是依赖属性，TranslateTransform的XProperty和YProperty就是两个依赖属性。**
 * **UIElement和Animatable两个类都定义有BeginAnimation方法，方法的调用者就是动画要作用的目标对象，两个参数分别指明被作用的依赖属性和设计好的动画。**
+
 #### 2.高级动画
+
 ##### 1.CombinedGeometry
+
 在WPF中，提供了一个CombinedGeometry对象可以使两个几何图形合并产生效果。
 
 CombinedGeometry类：表示由两个 Geometry 对象组合定义的二维几何形状。
@@ -3328,10 +3607,12 @@ namespace 面包屑控件.Views
 }
 
 ```
+
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/a90a1261e38c47c488d1d3b91cea8835.gif#pic_center)
 
 ### 60.WPF使用AForge类库操作USB摄像头拍照并保存
+
 借鉴别人的，后续会慢慢优化。
 先看效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/49347235d8c9427681ab717bddc1c343.png)
@@ -3544,14 +3825,20 @@ namespace BlankApp2.Others
 }
 
 ```
+
 ### 61.在WPF程序中使用命令行
+
 有时候会在运行WPF程序的时候将一些测试数据打印至控制台，那么该如何在WPF程序中添加控制台呢？
 
 双击项目打开配置文件，将OutputType中WinExe改为Exe即可，如下图：![在这里插入图片描述](https://img-blog.csdnimg.cn/96e6ebb7739b479fba3007949f4d5ef8.png)
+
 ### 62.在WPF程序中使用Winfrom的控件
+
 双击项目打开配置文件，添加一行 `<UseWindowsForms>true</UseWindowsForms>`，并引入using System.Windows.Forms命名空间，如下图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/b3512dbe7382420ab471c8e88bafbf90.png)
+
 ### 63.数据模板选择器DataTemplateSelector
+
 DataTemplateSelector提供一种方式，用于根据数据对象和数据绑定元素来选择 DataTemplate，为数据模型内不同的属性值应用不同的数据模板，多用于容器。
 
 例子如下：
@@ -3630,6 +3917,7 @@ DataTemplateSelector提供一种方式，用于根据数据对象和数据绑定
 </Window>
 
 ```
+
 **MainWindowViewModel.cs：**
 
 ```csharp
@@ -3681,6 +3969,7 @@ namespace BlankApp3.ViewModels
 }
 
 ```
+
 **TemplateSelector.cs：**
 
 ```csharp
@@ -3718,7 +4007,9 @@ namespace BlankApp3.Others
 
 效果：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/390ce1ac58fd4567bac54f0ec75db3b6.png)
+
 ### 64.WPF 中 XAML 使用 String.Format 格式化字符串示例
+
 具体请看下面效果图
 
 xaml代码：
@@ -3789,6 +4080,7 @@ xaml代码：
         </GroupBox>
     </UniformGrid>
 ```
+
 后台代码：
 
 ```csharp
@@ -3851,10 +4143,12 @@ namespace 面包屑控件.ViewModels
 }
 
 ```
+
 效果图：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/2f2b0b6ada004fba931f3efe4902887a.png)
 
 ### 65.WPF实现窗口双击改变大小、窗口拖拽
+
 代码展示：
 
 ```xml
@@ -3919,11 +4213,96 @@ namespace BlankApp1.Views
 }
 
 ```
+
 ### 66.WPF在后台拿到VIew页面定义的资源
+
 例如，在View页面定义了这样一个属性：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/c34c813642434c41a0e88cedb76f6ac0.png)
 
 那么如何在后代拿到这个名称为FanAnimation的资源？
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9f3705005645485cae0405ef2c28fe69.png)
 
-### 67.
+### 67.WPF中画圆小技巧
+
+多采用RadiusX和RadiusY。
+
+比如Rectangle为矩形，中央位置是宽高的正中间。加入现在宽高都为100，那么中心位置50，故将Center设置为"50，50"。
+
+RadiusX:表示X轴方向上的圆角半径
+
+RadiusY:表示Y轴方向上的圆角半径
+
+设置为Rectangle中心为圆心，50为半径，即可得到一个以50为半径的圆。
+
+代码举例：
+
+```xml
+    <Grid>
+        <Rectangle Width="100" Height="100" Stroke="LightGreen" StrokeThickness="20" RadiusX="50" RadiusY="50"/>
+    </Grid>
+```
+
+效果：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/416c45afe7fe446a830dd096cff3bff3.png)
+
+### 68.WPF程序拦截所有的异常
+
+当我们在写代码时候，有时候会对代码做一些形如try catch finally等一些异常捕获处理操作。但是有的时候对代码没做异常处理的时候会引发崩溃。例如下面的代码，当我们点击按钮的时候，程序会遇到异常并闪退，如下：
+
+```xml
+    <Grid>
+        <Button Height="100" Width="200" Click="Button_Click"/>
+    </Grid>
+```
+
+```csharp
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            throw new Exception("按钮点击事件处理失败，请检查");
+        }
+```
+
+这是我们不能接受的 。
+
+当我们遇到这个问题 要一个一个的去寻找 担惊受怕  那有没有一个方法 能拦截所有的异常 不然程序挂掉那?
+
+有的， WPF 中 DispatcherUnhandledException事件！
+
+我们在APP里 重写 Onstartup 方法并显示所有的异常。当程序中有任何未异常的时候，都会进入App_DispatcherUnhandledException方法并被捕获，不会引发程序闪退和崩溃，如下：
+
+```csharp
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace WpfApp6
+{
+    /// <summary>
+    /// App.xaml 的交互逻辑
+    /// </summary>
+    public partial class App : Application
+    {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+            DispatcherUnhandledException += App_DispatcherUnhandledException;
+        }
+
+        private void App_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e)
+        {
+            MessageBox.Show(e.Exception.ToString());
+            e.Handled = true;//该异常被标记为已处理
+        }
+    }
+}
+
+```
+
+动图演示：
+![在这里插入图片描述](https://img-blog.csdnimg.cn/85443210e49844f1841ad512c7aed3f3.gif#pic_center)
+
+### 69.
