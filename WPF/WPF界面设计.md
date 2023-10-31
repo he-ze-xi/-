@@ -1,15 +1,19 @@
-﻿@[TOC](目录)
-```bash
-个人比较喜欢研究WPF界面设计, 此篇博客聚集了自己写过的一些WPF界面设计Demo。
-```
+﻿﻿﻿@[TOC](目录)
+
+> 个人比较喜欢研究WPF界面设计, 此篇博客聚集了自己写过的一些WPF界面设计Demo。
+> 
+![在这里插入图片描述](WPF界面设计.assets/dd2f61fcde2144a39f627329dfb86174.jpeg)
+
+
 # 1.设计一个优美的注册界面
 ## 1.实现效果
-1.静态图：![在这里插入图片描述](https://img-blog.csdnimg.cn/d8299390d55c4961bff6d6d8daf220bf.png#pic_center)
+1.静态图：![在这里插入图片描述](WPF界面设计.assets/d8299390d55c4961bff6d6d8daf220bf.png)
 2.动态图：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/9dbe85449c014e37b1c61ae6b492a425.gif#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/9dbe85449c014e37b1c61ae6b492a425.gif)
+
 ## 2.代码展示
 1.文件结构：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7e49c81284694e90bea6aec591b1686e.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/7e49c81284694e90bea6aec591b1686e.png)
 
 2.MainWindow.xaml代码：
 
@@ -413,7 +417,7 @@ namespace RegisterPage.UserControls
 ```
 # 2.简易登录按钮设计
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/73d9f42708704840817728db626d3b1c.png)
+![在这里插入图片描述](WPF界面设计.assets/73d9f42708704840817728db626d3b1c.png)
 ## 2.代码展示
 ```xml
 <mah:MetroWindow  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls" x:Class="cms.Windows.LoginWindow"
@@ -456,15 +460,17 @@ namespace RegisterPage.UserControls
 
 # 3.设计一个优美的注册登录界面（连接数据库）
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/0feddfce9ed347199f8fcb01362f1bab.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/6012b3de9cbf4842819c33ac01654f8b.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/0feddfce9ed347199f8fcb01362f1bab.png)
+![在这里插入图片描述](WPF界面设计.assets/6012b3de9cbf4842819c33ac01654f8b.png)
 
 视频展示该界面：[视频链接](https://www.bilibili.com/video/BV1N34y1h7Z5/)
+
 ## 2.代码展示
-1. 工程目录：![在这里插入图片描述](https://img-blog.csdnimg.cn/4a59d1dc57d04790b56d32516d6691e3.png#pic_center)
+
+1. 工程目录：![在这里插入图片描述](WPF界面设计.assets/4a59d1dc57d04790b56d32516d6691e3.png)
 2. 数据库部署：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/d522f26f5af8412eaaa8715da26721d9.png#pic_center)
-![在这里插入图片描述](https://img-blog.csdnimg.cn/5678851ad9834670b942a7a1f20ac414.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/d522f26f5af8412eaaa8715da26721d9.png)
+![在这里插入图片描述](WPF界面设计.assets/5678851ad9834670b942a7a1f20ac414.png)
 3. LoginPage.xaml代码：
 
 ```xml
@@ -846,11 +852,11 @@ namespace Login
 
 # 4.设计一个简单的在线教育系统界面
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/24688b5eb4be4da1add0a8dc9283b417.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/24688b5eb4be4da1add0a8dc9283b417.png)
 ## 2.代码展示
-![在这里插入图片描述](https://img-blog.csdnimg.cn/fb6e50846e814d03a48b05b9978bcd48.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/fb6e50846e814d03a48b05b9978bcd48.png)
 图片：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/7530f87637fa4298b47374265bdffa54.png#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/7530f87637fa4298b47374265bdffa54.png)
 
 1. App.xaml
 
@@ -1705,12 +1711,12 @@ namespace WpfApp1.customcontrols
 ```
 # 5. 设计一个Dashboard
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/859d529319ca4144995b7f37797e2ee1.png)
+![在这里插入图片描述](WPF界面设计.assets/859d529319ca4144995b7f37797e2ee1.png)
 ## 2.代码展示
 需要安装一个包，来加载图标资源
-![在这里插入图片描述](https://img-blog.csdnimg.cn/c6ef22758b204d899ff9d411a54277f2.png)
+![在这里插入图片描述](WPF界面设计.assets/c6ef22758b204d899ff9d411a54277f2.png)
 工程结构：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/a23ed16ef51f41488a010574798e0cd4.png)
+![在这里插入图片描述](WPF界面设计.assets/a23ed16ef51f41488a010574798e0cd4.png)
 App.xaml：
 
 ```xml
@@ -2545,7 +2551,7 @@ namespace WpfApp1
 ```
 # 6.设计一个旋转风扇
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/03e56f7c812e44d08075d7e07736527b.gif#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/03e56f7c812e44d08075d7e07736527b.gif)
 ## 2.代码展示
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/9b2a56924747431e9619e6c1b625c5ed.png)
 MainWindow.xaml代码：
@@ -2632,7 +2638,7 @@ namespace WpfApp2
 ```
 # 7.设计一个带有波浪效果的进度球
 ## 1.实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/446efceccb4a4fd78752f7e0ee837cbd.gif#pic_center)
+![在这里插入图片描述](WPF界面设计.assets/446efceccb4a4fd78752f7e0ee837cbd.gif)
 ## 2.代码展示
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/bf1cdde336574027a55c72053eb3e087.png)
 MainWindow.xaml代码：
@@ -2731,7 +2737,8 @@ namespace WpfApp2
 > 4. 接下来主要就是计算百分比的问题：
 > StrokeDashArray的单位长度不是1，而是StrokeThickness，所以整个StrokeDashArray的长度是这个圆环的周长，但是要用StrokeThickness的值为单位。
 ## 2. 实现效果
-![在这里插入图片描述](https://img-blog.csdnimg.cn/8feccdc2da1b422da6efe75d31cdd8b4.gif#pic_center)
+
+![在这里插入图片描述](WPF界面设计.assets/8feccdc2da1b422da6efe75d31cdd8b4.gif)
 ## 3.代码展示
 MainWindow.xaml代码：
 
